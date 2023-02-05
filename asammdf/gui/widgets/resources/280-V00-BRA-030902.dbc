@@ -1,0 +1,2853 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: AP21 Display PP11 VA11 AP11 PPHMx EventRec PP12 FB11 FB12 APHMx APIO11 APVN7 APVN5 VA12 Log SD12 SD11 VC MPHMx3 MPHMx DC11 DC12 DC13 DC14 HM12 HM11 FB PP HMVN5 HM HMx CC11 DC AP VA VCVN9 None MPHM12 FBHM11 MPHM11 FBHM12 VC11 VC12 IO11
+
+
+BO_ 932 PP11_PDO3_Numeric_Display: 8 PP11
+ SG_ PP11wIS : 0|16@1- (0.03662221,0) [0|1200] "V"  Display
+ SG_ PP11wEFC : 16|16@1- (0.03662221,0) [0|1200] "V"  Display
+ SG_ PP11wIM : 32|16@1- (0.03051851,0) [0|1000] "A"  Display
+
+BO_ 1188 PP11_PDO4_Numeric_Display: 8 PP11
+ SG_ PP11wLIM_Temp : 0|16@1- (0.00976592,0) [-320|320] "degreeC"  Display
+ SG_ PP11wFR : 16|16@1- (0.00305185,0) [0|100] "Km/h"  Display,PPHMx,EventRec
+ SG_ PP11wPWMDem : 32|16@1- (0.00305185,0) [0|100] "%"  Display
+
+BO_ 933 PP12_PDO3_Numeric_Display: 8 PP12
+ SG_ PP12wIS : 0|16@1- (0.03662221,0) [0|1200] "V"  Display
+ SG_ PP12wEFC : 16|16@1- (0.03662221,0) [0|1200] "V"  Display
+ SG_ PP12wIM : 32|16@1- (0.03051851,0) [0|1000] "A"  Display
+
+BO_ 1189 PP12_PDO4_Numeric_Display: 8 PP12
+ SG_ PP12wLIM_Temp : 0|16@1- (0.00976592,0) [-320|320] "degreeC"  Display
+ SG_ PP12wFR : 16|16@1- (0.00305185,0) [0|100] "Km/h"  Display,PPHMx,EventRec
+ SG_ PP12wPWMDem : 32|16@1- (0.00305185,0) [0|100] "%"  Display
+
+BO_ 682 FB11_PDO2_Numeric_Display: 8 FB11
+ SG_ FB11wSupplyPress : 0|16@1+ (0.01,0) [0|160] "Bar"  Display
+ SG_ FB11wPWMDemand : 16|16@1+ (0.1,0) [0|100] "%"  Display
+ SG_ FB11wALinePress : 32|16@1+ (0.1,0) [0|100] "Bar"  Display
+ SG_ FB11bCalForce : 48|8@1+ (333,0) [0|62000] "N"  Display
+
+BO_ 684 FB12_PDO2_Numeric_Display: 8 FB12
+ SG_ FB12wSupplyPress : 0|16@1+ (0.01,0) [0|160] "Bar"  Display
+ SG_ FB12wPWMDemand : 16|16@1+ (0.1,0) [0|100] "%"  Display
+ SG_ FB12wALinePress : 32|16@1+ (0.1,0) [0|100] "Bar"  Display
+ SG_ FB12bCalForce : 48|8@1+ (333,0) [0|62000] "N"  Display
+
+BO_ 666 APIO11_PDO2_Numeric_APHMx: 8 APIO11
+ SG_ IO11wRefDCCT : 0|16@1+ (0.00063128125,0) [0|20] "V"  APHMx,AP11
+ SG_ IO11wV_DCCT : 16|16@1+ (0.00063128125,0) [0|20] "V"  APHMx,AP11
+ SG_ IO11wV_NTC : 32|16@1+ (0.0003125,0) [0|10] "V"  APHMx
+ SG_ IO11wLV_Smpl : 48|16@1+ (0.002945221875,0) [0|60] "V"  APHMx,AP11
+
+BO_ 1178 APIO11_PDO4_Numeric_APHMx: 8 APIO11
+ SG_ IO11wChSmpl : 0|16@1+ (0.00197778125,0) [0|60] "V"  APHMx
+ SG_ IO11wSupplyPress : 16|16@1+ (0.000594539,-3.4473844) [0|13.78952] "Bar"  Display
+ SG_ IO11wPT1PN : 32|16@1+ (0.000594539,-3.4473844) [0|13.78952] "Bar"  Display
+ SG_ IO11wPT2PN : 48|16@1+ (0.000594539,-3.4473844) [0|13.78952] "Bar"  Display
+
+BO_ 645 APVN5_PDO2_Numeric_APVN7: 8 APVN5
+ SG_ VN5bEtime : 0|8@1+ (1,0) [0|255] "min."  APVN7,Display
+ SG_ VN5bBatCap : 8|8@1+ (1,0) [0|255] "Ah"  APVN7,Display
+ SG_ VN5bBatChg : 16|8@1+ (1,0) [0|255] "Ah"  APVN7,Display
+ SG_ VN5bCapTstDay : 24|8@1+ (1,0) [1|31] "Day"  APVN7,Display
+ SG_ VN5bCapTstMonth : 32|8@1+ (1,0) [1|12] "Month"  APVN7,Display
+ SG_ VN5bCapTstYear : 40|8@1+ (1,0) [2000|2255] "Year"  APVN7,Display
+ SG_ VN5bCapTestDur : 48|8@1+ (1,0) [0|255] "minutes"  APVN7,Display
+ SG_ VN5bTempEnd : 56|8@1- (1,0) [-40|100] "Deg C"  APVN7,Display
+
+BO_ 901 APVN5_PDO3_Numeric_APVN7: 8 APVN5
+ SG_ VN5bT_Bat : 0|8@1- (1,0) [-40|100] "Deg C"  APVN7,Display
+ SG_ VN5wV_Bat : 16|16@1+ (0.01,0) [0|60] "V"  APVN7,Display
+ SG_ VN5wI_Bat : 32|16@1- (0.01,0) [-300|300] "A"  APVN7,Display
+
+BO_ 942 AP11_PDO3_Numeric_Display: 8 AP11
+ SG_ AP11bHV : 0|8@1+ (4,0) [0|1024] "V"  Display
+ SG_ AP11bInv1LineV : 8|8@1+ (4,0) [0|1024] "V"  Display
+ SG_ AP11bInv2LineV : 16|8@1+ (4,0) [0|1024] "V"  Display
+ SG_ AP11_Spare_Bit_24 : 24|8@1+ (4,0) [0|1024] "V"  Display
+ SG_ AP11bLVPS_OutV : 32|8@1+ (0.25,0) [0|64] "V"  Display
+ SG_ AP11bLVPS_OutC : 40|8@1+ (1,0) [0|255] "A"  Display
+ SG_ AP11bBattBoxTmp : 48|8@1- (0.5,0) [-40|100] "Deg C"  Display
+
+BO_ 1198 AP11_PDO4_Numeric_Display: 8 AP11
+ SG_ AP11bInvV1 : 0|8@1+ (2,0) [0|512] "V"  Display
+ SG_ AP11bInvV2 : 8|8@1+ (2,0) [0|512] "V"  Display
+ SG_ AP11bInvCr1 : 16|8@1+ (1,0) [0|255] "A"  Display
+ SG_ AP11bInvCr2 : 24|8@1+ (1,0) [0|255] "A"  Display
+
+BO_ 690 VA11_PDO2_Numeric_Display: 8 VA11
+ SG_ VA11bOHHtPwr : 0|8@1+ (1,0) [0|100] "%"  Display
+ SG_ VA11wFAT : 16|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA12
+ SG_ VA11wRAT : 32|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA12
+ SG_ VA11wStandbyTemp : 48|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA12
+
+BO_ 1202 VA11_PDO4_Numeric_Display: 8 VA11
+ SG_ VA11wSAT1 : 0|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA12
+ SG_ VA11wSAT2 : 16|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA12
+ SG_ VA11bRATSPC : 32|8@1- (1,0) [-25|100] "Deg C"  Display
+ SG_ VA11bRATSPH : 40|8@1- (1,0) [-25|100] "Deg C"  Display
+ SG_ VA11bSTSPC : 48|8@1- (1,0) [-25|100] "Deg C"  Display
+ SG_ VA11bSTSPH : 56|8@1- (1,0) [-25|100] "Deg C"  Display
+
+BO_ 510 VA11_PDO5_Numeric_Display: 8 VA11
+ SG_ VA11wCAHGB : 0|16@1- (0.1,0) [0|28] "Bar"  Display
+ SG_ VA11wCBHGB : 16|16@1- (0.1,0) [0|28] "Bar"  Display
+ SG_ VA11wComprAHour : 32|16@1+ (1,0) [0|65535] "Hours"  Display
+ SG_ VA11wComprBHour : 48|16@1+ (1,0) [0|65535] "Hours"  Display
+
+BO_ 691 VA12_PDO2_Numeric_Display: 8 VA12
+ SG_ VA12bOHHtPwr : 0|8@1+ (1,0) [0|100] "%"  Display
+ SG_ VA12wFAT : 16|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA11
+ SG_ VA12wRAT : 32|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA11
+ SG_ VA12wStandbyTemp : 48|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA11
+
+BO_ 1203 VA12_PDO4_Numeric_Display: 8 VA12
+ SG_ VA12wSAT1 : 0|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA11
+ SG_ VA12wSAT2 : 16|16@1- (0.1,0) [-25|100] "Deg C"  Display,VA11
+ SG_ VA12bRATSPC : 32|8@1- (1,0) [-25|100] "Deg C"  Display
+ SG_ VA12bRATSPH : 40|8@1- (1,0) [-25|100] "Deg C"  Display
+ SG_ VA12bSTSPC : 48|8@1- (1,0) [-25|100] "Deg C"  Display
+ SG_ VA12bSTSPH : 56|8@1- (1,0) [-25|100] "Deg C"  Display
+
+BO_ 511 VA12_PDO5_Numeric_Display: 8 VA12
+ SG_ VA12wCAHGB : 0|16@1- (0.1,0) [0|28] "Bar"  Display
+ SG_ VA12wCBHGB : 16|16@1- (0.1,0) [0|28] "Bar"  Display
+ SG_ VA12wComprAHour : 32|16@1+ (1,0) [0|65535] "Hours"  Display
+ SG_ VA12wComprBHour : 48|16@1+ (1,0) [0|65535] "Hours"  Display
+
+BO_ 404 SD11_PDO1_Numeric_VA11: 8 SD11
+ SG_ SD11bDamper1PFR : 16|8@1+ (1,0) [0|100] "%"  VA11,Display
+ SG_ SD11bDamper2PFR : 32|8@1+ (1,0) [0|100] "%"  VA11,Display
+ SG_ SD11xOff_End : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ SD11xOff_Center : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ SD11xToggleBit : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ SD11xSmk_End : 8|1@1+ (1,0) [0|1] ""  Display,Log,VA11,VA12,SD12
+ SG_ SD11xSmk_Center : 12|1@1+ (1,0) [0|1] ""  Display,Log,VA11,VA12,SD12
+ SG_ SD11xNP_End : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ SD11xNP_Center : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ SD11xTF_End : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ SD11xTF_Center : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ SD11xHM_End : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ SD11xHM_Center : 15|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 405 SD12_PDO1_Numeric_VA12: 8 SD12
+ SG_ SD12bDamper1PFR : 16|8@1+ (1,0) [0|100] "%"  VA12,Display
+ SG_ SD12bDamper2PFR : 32|8@1+ (1,0) [0|100] "%"  VA12,Display
+ SG_ SD12xOff_End : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ SD12xToggleBit : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ SD12xSmk_End : 8|1@1+ (1,0) [0|1] ""  Display,Log,VA11,VA12,SD11
+ SG_ SD12xNP_End : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ SD12xTF_End : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ SD12xHM_End : 11|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 398 DC11_PDO1_Numeric_Display: 8 DC11
+ SG_ DC11bTD1CRCC : 16|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC11bTD1ORCC : 24|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC11xTD1CLS : 0|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC11xTD1DECS : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1DOCS : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTEU1DCS : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1IS : 4|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC11xTD1OS : 5|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC11xTD1BpS : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xER1AS : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1TB : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xER1IS : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1RIPS : 10|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC11xTD1CSS : 11|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC11xTD1CSE : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1PTS : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1FRS : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1DTS : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC11xTD1DESF : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1DSLWE : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xER1IFUS : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xER1IFIS : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1MOF : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1LS1F : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1TCL : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1LSW2F : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1LSW3F : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1EVF : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1ERSF : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1K2F : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1K3F : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1K5F : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1CSF : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1K4F : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1CSEF : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1IO2SF : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1IO1SF : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1SHF : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1SLF : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1ULF : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1ESF : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1OOF : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1OCF : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1RF : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC11xTD1ReEx : 60|1@1+ (1,0) [0|1] ""  Display,Log,VC,MPHMx
+
+BO_ 399 DC12_PDO1_Numeric_Display: 8 DC12
+ SG_ DC12bTD2CRCC : 16|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC12bTD2ORCC : 24|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC12xTD2CLS : 0|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC12xTD2DECS : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2DOCS : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTEU2DCS : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2IS : 4|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC12xTD2OS : 5|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC12xTD2BpS : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xER2AS : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2TB : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xER2IS : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2RIPS : 10|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC12xTD2CSS : 11|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC12xTD2CSE : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2PTS : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2FRS : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2DTS : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC12xTD2DESF : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2DSLWE : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xER2IFUS : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xER2IFIS : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2MOF : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2LS1F : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2TCL : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2LSW2F : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2LSW3F : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2EVF : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2ERSF : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2K2F : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2K3F : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2K5F : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2CSF : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2K4F : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2CSEF : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2IO2SF : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2IO1SF : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2SHF : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2SLF : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2ULF : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2ESF : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2OOF : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2OCF : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2RF : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC12xTD2ReEx : 60|1@1+ (1,0) [0|1] ""  Display,Log,VC,MPHMx
+
+BO_ 400 DC13_PDO1_Numeric_Display: 8 DC13
+ SG_ DC13bTD3CRCC : 16|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC13bTD3ORCC : 24|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC13xTD3CLS : 0|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC13xTD3DECS : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3DOCS : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTEU3DCS : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3IS : 4|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC13xTD3OS : 5|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC13xTD3BpS : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xER3AS : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3TB : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xER3IS : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3RIPS : 10|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC13xTD3CSS : 11|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC13xTD3CSE : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3PTS : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3FRS : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3DTS : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC13xTD3DESF : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3DSLWE : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xER3IFUS : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xER3IFIS : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3MOF : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3LS1F : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3TCL : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3LSW2F : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3LSW3F : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3EVF : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3ERSF : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3K2F : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3K3F : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3K5F : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3CSF : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3K4F : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3CSEF : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3IO2SF : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3IO1SF : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3SHF : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3SLF : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3ULF : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3ESF : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3OOF : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3OCF : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3RF : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC13xTD3ReEx : 60|1@1+ (1,0) [0|1] ""  Display,Log,VC,MPHMx
+
+BO_ 401 DC14_PDO1_Numeric_Display: 8 DC14
+ SG_ DC14bTD4CRCC : 16|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC14bTD4ORCC : 24|8@1+ (1,0) [0|255] "-"  Display
+ SG_ DC14xTD4CLS : 0|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC14xTD4DECS : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4DOCS : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTEU4DCS : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4IS : 4|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC14xTD4OS : 5|1@1+ (1,0) [0|1] ""  Display,VC,MPHMx3
+ SG_ DC14xTD4BpS : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xER4AS : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4TB : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xER4IS : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4RIPS : 10|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC14xTD4CSS : 11|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ DC14xTD4CSE : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4PTS : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4FRS : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4DTS : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ DC14xTD4DESF : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4DSLWE : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xER4IFUS : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xER4IFIS : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4MOF : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4LS1F : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4TCL : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4LSW2F : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4LSW3F : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4EVF : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4ERSF : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4K2F : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4K3F : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4K5F : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4CSF : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4K4F : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4CSEF : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4IO2SF : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4IO1SF : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4SHF : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4SLF : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4ULF : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4ESF : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4OOF : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4OCF : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4RF : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ DC14xTD4ReEx : 60|1@1+ (1,0) [0|1] ""  Display,Log,VC,MPHMx
+
+BO_ 508 HM11_PDO5_Numeric_HM12: 8 HM11
+ SG_ HM11wScreenNb : 0|16@1+ (1,0) [0|255] "-"  HM12
+
+BO_ 509 HM11_PDO5_Numeric_HM11: 8 HM11
+ SG_ HM12wScreenNb : 0|16@1+ (1,0) [0|255] "-"  HM11
+
+BO_ 389 HMVN5_PDO1_Numeric_Display: 8 HMVN5
+ SG_ VN5bNodeAddr : 56|8@1+ (1,0) [22|25] ""  Display
+ SG_ VN5xCapTestEnbl : 8|1@1+ (1,0) [0|1] ""  Display,APVN7
+ SG_ VN5xCapTestRun : 9|1@1+ (1,0) [0|1] ""  Display,APVN7
+ SG_ VN5xZS : 10|1@1+ (1,0) [0|1] ""  Display,EventRec
+ SG_ VN5xManual : 11|1@1+ (1,0) [0|1] ""  FB,PP,Display
+ SG_ VN5xABRS : 12|1@1+ (1,0) [0|1] ""  VC,Display
+ SG_ VN5xPBA : 13|1@1+ (1,0) [0|1] ""  VC,Display
+ SG_ VN5xLineSpeed : 0|1@1+ (1,0) [0|1] ""  PP,Display
+ SG_ VN5xRBRR : 1|1@1+ (1,0) [0|1] ""  VC,Display
+ SG_ VN5xRSR : 2|1@1+ (1,0) [0|1] ""  VC,Display
+ SG_ VN5xTHR : 3|1@1+ (1,0) [0|1] ""  VC,Display
+
+BO_ 902 HMVN5_PDO7_Numeric_HM: 8 HMVN5
+ SG_ VN5dwOdometer : 32|32@1+ (0.1,0) [0|1.7E+300] "km"  HM
+
+BO_ 438 CC11_PDO1_Numeric_Display: 8 CC11
+ SG_ CC11bMsgNum : 48|8@1+ (1,0) [0|255] ""  Display
+ SG_ CC11bMsgVol : 56|8@1+ (1,0) [0|100] ""  Display
+ SG_ CC11xPowerOnRst : 0|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xRadioActive : 1|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xPAACall : 2|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xPIP1CallOn2 : 3|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xPIP1CallOn1 : 4|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xPIP1CallReq : 5|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xPIP2CallOn2 : 6|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xPIP2CallOn1 : 7|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xPIP2CallReq : 8|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xHAP1Call : 9|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xHAP2Call : 10|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ CC11xBadPlayCmd : 16|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPID1_Fault : 17|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPID2_Fault : 18|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPIP1CallFail : 19|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPIP2CallFail : 20|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPS2_Fault : 21|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xTDL_Fault : 22|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPAA_Fault : 24|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPS1_Fault : 25|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xRCL_Fault : 26|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xLCL_Fault : 27|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xRadFault : 28|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xVPIU_Fault : 29|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPIP1Fault : 30|1@1+ (1,0) [0|1] ""  Log
+ SG_ CC11xPIP2Fault : 31|1@1+ (1,0) [0|1] ""  Log
+
+BO_ 393 VCVN9_PDO1_Numeric_CC11: 8 VCVN9
+ SG_ VN9bPA_MT : 24|8@1+ (1,0) [0|255] "-"  CC11,DC,Display
+ SG_ VN9bPA_MV1 : 32|8@1+ (1,0) [0|50] "-"  CC11,Display
+ SG_ VN9bPA_MV2 : 40|8@1+ (1,0) [0|50] "-"  CC11,Display
+ SG_ VN9bPA_MP : 48|8@1+ (1,0) [1|5] "-"  CC11,Display
+ SG_ VN9bVehicleID : 56|8@1+ (1,0) [0|255] "-"  DC,HM,PP,FB,AP,VA
+ SG_ VN9xSC : 16|1@1+ (1,0) [0|1] ""  VA,PP,AP11,Display
+ SG_ VN9xTD11OC : 0|1@1+ (1,0) [0|1] ""  DC11,Display
+ SG_ VN9xTD12OC : 1|1@1+ (1,0) [0|1] ""  DC12,Display
+ SG_ VN9xTD13OC : 2|1@1+ (1,0) [0|1] ""  DC13,Display
+ SG_ VN9xTD14OC : 3|1@1+ (1,0) [0|1] ""  DC14,Display
+
+BO_ 420 PP11_PDO1_Status_Display: 8 PP11
+ SG_ PP11xPCU_Hlty : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xHSCB_Closed : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xZeroSpeed : 5|1@1+ (1,0) [0|1] ""  Display,MPHMx
+ SG_ PP11xEBRC : 4|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xPE : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xFWD : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xREV : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xACCS : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xDECS : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xNBST : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xSC : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xHSB : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xSLFT : 11|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xRBD : 10|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xESLV : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11x3PhHlty : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xLF1A : 23|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xLF2A : 22|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xOSL1 : 21|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xOSL2 : 20|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xPTEContAct : 19|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP11xDBAct : 18|1@1+ (1,0) [0|1] ""  Display
+
+BO_ 421 PP12_PDO1_Status_Display: 8 PP12
+ SG_ PP12xPCU_Hlty : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xHSCB_Closed : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xZeroSpeed : 5|1@1+ (1,0) [0|1] ""  Display,MPHMx
+ SG_ PP12xEBRC : 4|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xPE : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xFWD : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xREV : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xACCS : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xDECS : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xNBST : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xSC : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xHSB : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xSLFT : 11|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xRBD : 10|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xESLV : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12x3PhHlty : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xLF1A : 23|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xLF2A : 22|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xOSL1 : 21|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xOSL2 : 20|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xPTEContAct : 19|1@1+ (1,0) [0|1] ""  Display
+ SG_ PP12xDBAct : 18|1@1+ (1,0) [0|1] ""  Display
+
+BO_ 406 FBHM11_PDO1_Status_FB11: 8 FBHM11
+ SG_ HM11xSelValve : 8|1@1+ (1,0) [0|1] ""  FB11,Display
+ SG_ HM11xPressSwitch : 23|1@1+ (1,0) [0|1] ""  FB11,Display
+ SG_ HM11xTI : 0|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11xA1 : 1|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11xA2 : 2|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11xTDCLS : 3|1@1+ (1,0) [0|1] ""  HM12
+ SG_ HM11xDeadManR : 6|1@1+ (1,0) [0|1] ""  MPHMx
+ SG_ HM11xDeadMan : 7|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11xTDOL : 9|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xTDOR : 10|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xTDCL : 11|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xTDCR : 12|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xRun : 13|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11xEnd2 : 14|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xMPI : 16|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xUncouple : 17|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xTBleftRel : 18|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xTBrightRel : 19|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xTBreleaseC : 20|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xTBapplyC : 21|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xCoupFace : 22|1@1+ (1,0) [0|1] ""  VC
+ SG_ HM11xZSbyPass : 15|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11xTDCLNOSBP : 29|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11qxTrainRecov : 40|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxZS : 41|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxEBtimer : 42|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxBuzzer : 43|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxManualMode : 44|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxHeadLights : 45|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxMarkerLigh : 46|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxNot_MC : 48|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxDoorUnlock : 49|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxPECLatched : 50|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxPBRCLatche : 51|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxWiper_Rese : 53|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxWiper_Low : 52|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxWiper_High : 54|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxIntLight : 55|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxCoupStat : 56|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11qxUncouple : 57|1@1+ (1,0) [0|1] ""  MPHM12
+ SG_ HM11qxHMS_Fault : 58|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11qxPBRC : 59|1@1+ (1,0) [0|1] ""  HM12,Display
+ SG_ HM11xToggleBit : 63|1@1+ (1,0) [0|1] ""  HM12
+ SG_ HM11xPSA_Reset : 62|1@1+ (1,0) [0|1] ""  HM11,HM12
+ SG_ HM11xEBRC : 30|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xVATC_ZS : 24|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xREV : 25|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xDEC : 26|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xFWD : 27|1@1+ (1,0) [0|1] ""  None
+ SG_ HM11xACC : 28|1@1+ (1,0) [0|1] ""  None
+
+BO_ 409 FBHM12_PDO1_Status_FB12: 8 FBHM12
+ SG_ HM12xSelValve : 8|1@1+ (1,0) [0|1] ""  FB12,Display
+ SG_ HM12xPressSwitch : 23|1@1+ (1,0) [0|1] ""  FB12,Display
+ SG_ HM12xTI : 0|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12xA1 : 1|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12xA2 : 2|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12xTDCLS : 3|1@1+ (1,0) [0|1] ""  HM11
+ SG_ HM12xDeadManR : 6|1@1+ (1,0) [0|1] ""  MPHMx
+ SG_ HM12xDeadMan : 7|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12xTDOL : 9|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xTDOR : 10|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xTDCL : 11|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xTDCR : 12|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xRun : 13|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12xEnd2 : 14|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xMPI : 16|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xUncouple : 17|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xTBleftRel : 18|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xTBrightRel : 19|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xTBreleaseC : 20|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xTBapplyC : 21|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xCoupFace : 22|1@1+ (1,0) [0|1] ""  VC
+ SG_ HM12xZSbyPass : 15|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12xTDCLNOSBP : 29|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12qxTrainRecov : 40|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxZS : 41|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxEBtimer : 42|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxBuzzer : 43|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxManualMode : 44|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxHeadLights : 45|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxMarkerLigh : 46|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxNot_MC : 48|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxDoorUnlock : 49|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxPECLatched : 50|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxPBRCLatche : 51|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxWiper_Rese : 53|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxWiper_Low : 52|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxWiper_High : 54|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxIntLight : 55|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxCoupStat : 56|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12qxUncouple : 57|1@1+ (1,0) [0|1] ""  MPHM11
+ SG_ HM12qxHMS_Fault : 58|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12qxPBRC : 59|1@1+ (1,0) [0|1] ""  HM11,Display
+ SG_ HM12xToggleBit : 63|1@1+ (1,0) [0|1] ""  HM11
+ SG_ HM12xPSA_Reset : 62|1@1+ (1,0) [0|1] ""  HM11,HM12
+ SG_ HM12xEBRC : 30|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xVATC_ZS : 24|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xREV : 25|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xDEC : 26|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xFWD : 27|1@1+ (1,0) [0|1] ""  None
+ SG_ HM12xACC : 28|1@1+ (1,0) [0|1] ""  None
+
+BO_ 426 FB11_PDO1_Status_Display: 8 FB11
+ SG_ FB11xBAS : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xDEC : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xPBCOM : 2|1@1+ (1,0) [0|1] ""  Display,PPHMx
+ SG_ FB11xEBCOM : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xPMRL : 4|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11_Spare_Bit_5 : 5|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xEBR : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xDValve : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xJValve : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xPPort : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11_Spare_Bit_10 : 10|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xEValve : 11|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11_Spare_Bit_12 : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xPBA : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xWSA : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xSELV : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB11xPSW4 : 16|1@1+ (1,0) [0|1] ""  Display
+
+BO_ 428 FB12_PDO1_Status_Display: 8 FB12
+ SG_ FB12xBAS : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xDEC : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xPBCOM : 2|1@1+ (1,0) [0|1] ""  Display,PPHMx
+ SG_ FB12xEBCOM : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xPMRL : 4|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12_Spare_Bit_5 : 5|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xEBR : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xDValve : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xJValve : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xPPort : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12_Spare_Bit_10 : 10|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xEValve : 11|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12_Spare_Bit_12 : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xPBA : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xWSA : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xSELV : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ FB12xPSW4 : 16|1@1+ (1,0) [0|1] ""  Display
+
+BO_ 390 APVN5_PDO5_Status_Display: 8 APVN5
+ SG_ VN5xChgUndef : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ VN5xBatCB_Open : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xGF_PosBus : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xGF_NegBus : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xEtimeLT60 : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xEtimeLT15 : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xBatTempFault : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xT_Bat_High : 7|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xTB1LF : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xTB1RF : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xTB2LF : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xTB2RF : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xSupplyPressL : 12|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xPT1PN_LowP : 13|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xPT2PN_LowP : 14|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xSupplyPressH : 50|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xPT1PN_HighP : 51|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xPT2PN_HighP : 52|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xFExtingRemov : 16|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xBAM_Release : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xBAM_Halt : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xLatchedPSA : 17|1@1+ (1,0) [0|1] ""  Display,Log,HMx
+ SG_ VN5xHM_ConfigControlMissmatch : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xFB_ConfigControlMissmatch : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xHVAC_ConfigControlMissmatch : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xPCU_ConfigControlMissmatch : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xSD_ConfigControlMissmatch : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xVATC_ConfigControlMissmatch : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ Reserved : 48|1@1+ (1,0) [0|1] ""  Display
+ SG_ VN5xDC_ConfigControlMissmatch : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VN5xPP11_NetFail : 18|1@1+ (1,0) [0|1] ""  Log,Display,HMx,PPHMx
+ SG_ VN5xPP12_NetFail : 19|1@1+ (1,0) [0|1] ""  Log,Display,HMx,PPHMx
+ SG_ VN5xFB11_NetFail : 20|1@1+ (1,0) [0|1] ""  Log,Display,HMx,PPHMx
+ SG_ VN5xFB12_NetFail : 21|1@1+ (1,0) [0|1] ""  Log,Display,HMx,PPHMx
+ SG_ VN5xAP11_NetFail : 22|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xVA11_NetFail : 23|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xVA12_NetFail : 24|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xSD11_NetFail : 25|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xSD12_NetFail : 26|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xDC11_NetFail : 27|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xDC12_NetFail : 28|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xDC13_NetFail : 29|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xDC14_NetFail : 30|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xCC11_NetFail : 31|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xVC11_NetFail : 32|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xVC12_NetFail : 33|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xHM11_NetFail : 34|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xHM12_NetFail : 35|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+ SG_ VN5xIO11_NetFail : 36|1@1+ (1,0) [0|1] ""  Log,Display,HMx
+
+BO_ 430 AP11_PDO1_Status_Display: 8 AP11
+ SG_ AP11xPrechg : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xSlfTst : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11_Spare_Bit_2 : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xCB1PhOK : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xHVAvl : 4|1@1+ (1,0) [0|1] ""  Display,VC
+ SG_ AP11xHeater1_On : 5|1@1+ (1,0) [0|1] ""  Display,VA
+ SG_ AP11xHeater2_On : 6|1@1+ (1,0) [0|1] ""  Display,VA
+ SG_ AP11x3PhPP11F_OK : 7|1@1+ (1,0) [0|1] ""  PP11
+ SG_ AP11x3PhPP12F_OK : 8|1@1+ (1,0) [0|1] ""  PP12
+ SG_ AP11x3PhBP11OK : 9|1@1+ (1,0) [0|1] ""  FB11
+ SG_ AP11x3PhBP12OK : 10|1@1+ (1,0) [0|1] ""  FB12
+ SG_ AP11xInv1_Healthy : 11|1@1+ (1,0) [0|1] ""  VA11
+ SG_ AP11xInv2_Healthy : 12|1@1+ (1,0) [0|1] ""  VA12
+ SG_ AP11xLVPS_Oper : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xInv1Cont2C : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xInv2Cont3C : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xACEBCont4C : 16|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xStandbyMode : 17|1@1+ (1,0) [0|1] ""  Display
+
+BO_ 434 VA11_PDO1_Status_Display: 8 VA11
+ SG_ VA11xOff : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xTestCool2 : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xTestHeat : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xPreheating : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xPrecooling : 4|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xStandbyOff : 5|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xStandbyHeat : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xStandbyCool : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xLockedOut : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xVentilation : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCool1 : 10|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCool2 : 11|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xHeat : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xReheat : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xHighAmbient : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xSD_Off : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xACpowerOff : 16|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xPumpdown : 17|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xSAFOn : 18|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xAFOn : 19|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCFLS : 20|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCFHS : 21|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCAOn : 22|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCBOn : 23|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCAPumpDwn : 24|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xCBPumpDwn : 25|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xTHOn : 26|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xWHeatOn : 27|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA11xTurnOnHeat1 : 40|1@1+ (1,0) [0|1] ""  AP11,Display,VA12
+ SG_ VA11xTurnOnHeat2 : 41|1@1+ (1,0) [0|1] ""  AP11,Display,VA12
+ SG_ VA11bDamper1PSP : 48|8@1+ (1,0) [0|100] "%"  SD11
+ SG_ VA11bDamper2PSP : 56|8@1+ (1,0) [0|100] "%"  SD11
+
+BO_ 435 VA12_PDO1_Status_Display: 8 VA12
+ SG_ VA12xOff : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xTestCool2 : 1|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xTestHeat : 2|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xPreheating : 3|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xPrecooling : 4|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xStandbyOff : 5|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xStandbyHeat : 6|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xStandbyCool : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xLockedOut : 8|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xVentilation : 9|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCool1 : 10|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCool2 : 11|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xHeat : 12|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xReheat : 13|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xHighAmbient : 14|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xSD_Off : 15|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xACpowerOff : 16|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xPumpdown : 17|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xSAFOn : 18|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xAFOn : 19|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCFLS : 20|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCFHS : 21|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCAOn : 22|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCBOn : 23|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCAPumpDwn : 24|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xCBPumpDwn : 25|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xTHOn : 26|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xWHeatOn : 27|1@1+ (1,0) [0|1] ""  Display
+ SG_ VA12xTurnOnHeat1 : 40|1@1+ (1,0) [0|1] ""  AP11,Display,VA11
+ SG_ VA12xTurnOnHeat2 : 41|1@1+ (1,0) [0|1] ""  AP11,Display,VA11
+
+BO_ 394 VC11_PDO1_Status_Display: 8 VC11
+ SG_ VC11xInControl : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ VC11xATOA : 1|1@1+ (1,0) [0|1] ""  Display
+
+BO_ 396 VC12_PDO1_Status_Display: 8 VC12
+ SG_ VC12xInControl : 0|1@1+ (1,0) [0|1] ""  Display
+ SG_ VC12xATOA : 1|1@1+ (1,0) [0|1] ""  Display
+
+BO_ 676 PP11_PDO2_Alarm_PP12: 8 PP11
+ SG_ PP11xPCULoss : 7|1@1+ (1,0) [0|1] ""  PP12
+ SG_ PP11xLossProp : 6|1@1+ (1,0) [0|1] ""  HMx
+ SG_ PP11xLCK : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xIntrnl24VFt : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xErorDCBusMe : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xLWA : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xLHA : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xTHD : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xGCD : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xHBT : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xCFD : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xMOCD : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xPUD : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xFCD : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xPGD1 : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xGPLVD : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xCPLVD : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xWDTD : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xWDT1 : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xOVD : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xOVTD1 : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xFRIR : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xADIR : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xTMIR : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xCHKD : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xCHKDA : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xHBD : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xHBDA : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xPEIR : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xOVTD2 : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xHBRDA : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xOPRDA : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xGSERR : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xPGD2 : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xLVB_Low : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP11xTHPTF : 36|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 677 PP12_PDO2_Alarm_PP11: 8 PP12
+ SG_ PP12xPCULoss : 7|1@1+ (1,0) [0|1] ""  PP11
+ SG_ PP12xLossProp : 6|1@1+ (1,0) [0|1] ""  HMx
+ SG_ PP12xLCK : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xIntrnl24VFt : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xErorDCBusMe : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xLWA : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xLHA : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xTHD : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xGCD : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xHBT : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xCFD : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xMOCD : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xPUD : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xFCD : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xPGD1 : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xGPLVD : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xCPLVD : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xWDTD : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xWDT1 : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xOVD : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xOVTD1 : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xFRIR : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xADIR : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xTMIR : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xCHKD : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xCHKDA : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xHBD : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xHBDA : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xPEIR : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xOVTD2 : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xHBRDA : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xOPRDA : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xGSERR : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xPGD2 : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xLVB_Low : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ PP12xTHPTF : 36|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 938 FB11_PDO3_Alarm_Display: 8 FB11
+ SG_ FB11xCAN1 : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xNVA1 : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xNVT1 : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xIOA1 : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xACT1 : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCFG1 : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xEEP1 : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCOD1 : 7|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS111 : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS121 : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS211 : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS221 : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS311 : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS321 : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS411 : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xS421 : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO111 : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO121 : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO211 : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO221 : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO311 : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO321 : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO411 : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xO421 : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCO11 : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCO21 : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xECU1 : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_27 : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_28 : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_29 : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_30 : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_31 : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCAN2 : 32|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xNVA2 : 33|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xNVT2 : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xIOA2 : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xACT2 : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCFG2 : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xEEP2 : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCOD2 : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY12 : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY22 : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY32 : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY42 : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY52 : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY62 : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY72 : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRY82 : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xWD02 : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_49 : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_50 : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_51 : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_52 : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_53 : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_54 : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_55 : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCAN3 : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xNVA3 : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xNVT3 : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xIOA3 : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xACT3 : 60|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCFG3 : 61|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xEEP3 : 62|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCOD3 : 63|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 1194 FB11_PDO4_Alarm_Display: 8 FB11
+ SG_ FB11x70 : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x72 : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x73 : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xD01 : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x16 : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x26 : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x36 : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x46 : 7|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x12_1 : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x22_1 : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x32_1 : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11x42_1 : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xDV_1 : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xDV_2 : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xDV_3 : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xDV_4 : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_16 : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xSLTO : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xROFF : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRABW : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRLRN : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRLEK : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRVLT : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRINT : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRATE : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xPUMP : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xPTHI : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xPTLO : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xCONT : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_29 : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xSLRP : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xAPUD : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_32 : 32|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_33 : 33|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xASTA : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xAEEP : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xPWHI : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xPWLO : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xFEBR : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xFPBM : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xECUR : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xMANP : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xECUL : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xFDBD : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xPPRT : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xPWLS : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xFDBR : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xBTOR : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xSTOR : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xRRAC : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11xWSPD : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_51 : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_52 : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_53 : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_54 : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_55 : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_56 : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_57 : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_58 : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_59 : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_60 : 60|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_61 : 61|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_62 : 62|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB11_Spare_Bit_63 : 63|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 940 FB12_PDO3_Alarm_Display: 8 FB12
+ SG_ FB12xCAN1 : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xNVA1 : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xNVT1 : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xIOA1 : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xACT1 : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCFG1 : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xEEP1 : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCOD1 : 7|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS111 : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS121 : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS211 : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS221 : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS311 : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS321 : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS411 : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xS421 : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO111 : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO121 : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO211 : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO221 : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO311 : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO321 : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO411 : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xO421 : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCO11 : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCO21 : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xECU1 : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_27 : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_28 : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_29 : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_30 : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_31 : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCAN2 : 32|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xNVA2 : 33|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xNVT2 : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xIOA2 : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xACT2 : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCFG2 : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xEEP2 : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCOD2 : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY12 : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY22 : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY32 : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY42 : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY52 : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY62 : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY72 : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRY82 : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xWD02 : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_49 : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_50 : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_51 : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_52 : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_53 : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_54 : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_55 : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCAN3 : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xNVA3 : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xNVT3 : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xIOA3 : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xACT3 : 60|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCFG3 : 61|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xEEP3 : 62|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCOD3 : 63|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 1196 FB12_PDO4_Alarm_Display: 8 FB12
+ SG_ FB12x70 : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x72 : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x73 : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xD01 : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x16 : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x26 : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x36 : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x46 : 7|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x12_1 : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x22_1 : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x32_1 : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12x42_1 : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xDV_1 : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xDV_2 : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xDV_3 : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xDV_4 : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_16 : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xSLTO : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xROFF : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRABW : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRLRN : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRLEK : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRVLT : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRINT : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRATE : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xPUMP : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xPTHI : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xPTLO : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xCONT : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_29 : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xSLRP : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xAPUD : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_32 : 32|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_33 : 33|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xASTA : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xAEEP : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xPWHI : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xPWLO : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xFEBR : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xFPBM : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xECUR : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xMANP : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xECUL : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xFDBD : 43|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xPPRT : 44|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xPWLS : 45|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xFDBR : 46|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xBTOR : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xSTOR : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xRRAC : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12xWSPD : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_51 : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_52 : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_53 : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_54 : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_55 : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_56 : 56|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_57 : 57|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_58 : 58|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_59 : 59|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_60 : 60|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_61 : 61|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_62 : 62|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ FB12_Spare_Bit_63 : 63|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 686 AP11_PDO2_Alarm_Display: 8 AP11
+ SG_ AP11xHVHigh : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xTstFailed : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInvOvrCur1 : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInvOvrCur2 : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xLVPS_OvVolt : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xBkBatLow1 : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xBkBatLow2 : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11_Spare_Bit_7 : 7|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xBlrCB1Opn : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xBlrCB2Opn : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInFuseBlow1 : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInFuseBlow2 : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInFuseBlow3 : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInFuseBlow4 : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xFHS1GFD : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xFHS2GFD : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv1GFD : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv2GFD : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xSPhaseCBO : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xVA11CBO : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xVA12CBO : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xPP11CBO : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xPP12CBO : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xLim1Fan1CBO : 23|1@1+ (1,0) [0|1] ""  Display,Log,PP11
+ SG_ AP11xLim1Fan2CBO : 24|1@1+ (1,0) [0|1] ""  Display,Log,PP11
+ SG_ AP11xLim2Fan1CBO : 25|1@1+ (1,0) [0|1] ""  Display,Log,PP12
+ SG_ AP11xLim2Fan2CBO : 26|1@1+ (1,0) [0|1] ""  Display,Log,PP12
+ SG_ AP11xACCBO : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xBPump1CBO : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xBPump2CBO : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv1Ded : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv2Ded : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv1OvCr : 32|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv2OvCr : 33|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11_Spare_Bit_34 : 34|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11_Spare_Bit_35 : 35|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xLVPSDed : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11_Spare_Bit_37 : 37|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11_Spare_Bit_38 : 38|1@1+ (1,0) [0|1] ""  Display
+ SG_ AP11xInComFlt : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xLVPSOTmp : 40|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv1OTmp : 41|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xInv2OTmp : 42|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xLim1Fan1Hot : 43|1@1+ (1,0) [0|1] ""  Display,Log,PP11
+ SG_ AP11xLim1Fan2Hot : 44|1@1+ (1,0) [0|1] ""  Display,Log,PP11
+ SG_ AP11xLim2Fan1Hot : 45|1@1+ (1,0) [0|1] ""  Display,Log,PP12
+ SG_ AP11xLim2Fan2Hot : 46|1@1+ (1,0) [0|1] ""  Display,Log,PP12
+ SG_ AP11xBatTher : 47|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xK3031fail : 48|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xK3032fail : 49|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xK302fail : 50|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xFHC1fail : 51|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xFHC2fail : 52|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xK1061fail : 53|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xK1011fail : 54|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xK1062fail : 55|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ AP11xK1012fail : 56|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 946 VA11_PDO3_Alarm_Display: 8 VA11
+ SG_ VA11xCompA_CBT : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xCompB_CBT : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xOHHBT : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xWHCBT : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xSAFCBT : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xCondFBreaker : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xAFCBT : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xDTHCBT : 7|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xRATSF : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xFATSF : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xSTSF : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xSATS1F : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xSATS2F : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xRCAPSF : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xRCBPSF : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xFAD1PF : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xFAD2PF : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xCompA_CF : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xCompB_CF : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xSAFCF : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xAFCF : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xOHH_ECF : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xOHH_CCF : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xDoorTHCF : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xCFECF : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xFCLHSCF : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xWindHCF : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xAirFlowFlt : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xLowPresAFlt : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xLowPresBFlt : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xHiPresAFlt : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xHiPresBFlt : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xPmpDownAFlt : 32|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xPmpDownBFlt : 33|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xOHH_90C : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xOHH_180C : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xHot_ColdA : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xSAFMO : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xCFMO : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA11xAirFlowSwitchFlt : 39|1@1+ (1,0) [0|1] ""  Display,Log
+
+BO_ 947 VA12_PDO3_Alarm_Display: 8 VA12
+ SG_ VA12xCompA_CBT : 0|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xCompB_CBT : 1|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xOHHBT : 2|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xWHCBT : 3|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xSAFCBT : 4|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xCondFBreaker : 5|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xAFCBT : 6|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xDTHCBT : 7|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xRATSF : 8|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xFATSF : 9|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xSTSF : 10|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xSATS1F : 11|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xSATS2F : 12|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xRCAPSF : 13|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xRCBPSF : 14|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xFAD1PF : 15|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xFAD2PF : 16|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xCompA_CF : 17|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xCompB_CF : 18|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xSAFCF : 19|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xAFCF : 20|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xOHH_ECF : 21|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xOHH_CCF : 22|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xDoorTHCF : 23|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xCFECF : 24|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xFCLHSCF : 25|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xWindHCF : 26|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xAirFlowFlt : 27|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xLowPresAFlt : 28|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xLowPresBFlt : 29|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xHiPresAFlt : 30|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xHiPresBFlt : 31|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xPmpDownAFlt : 32|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xPmpDownBFlt : 33|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xOHH_90C : 34|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xOHH_180C : 35|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xHot_ColdA : 36|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xSAFMO : 37|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xCFMO : 38|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12xAirFlowSwitchFlt : 39|1@1+ (1,0) [0|1] ""  Display,Log
+ SG_ VA12bDamper1PSP : 48|8@1+ (1,0) [0|100] "%"  SD12
+ SG_ VA12bDamper2PSP : 56|8@1+ (1,0) [0|100] "%"  SD12
+
+BO_ 662 HM11_PDO2_Alarm_Log: 8 HM11
+ SG_ HM11xMP_SRA1ET_Fail : 1|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K7MP_Latch_Fail : 2|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K7MP_Fail : 3|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K3MP_Fail : 4|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K5MP_Fail : 5|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K9MP_Fail : 6|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K8MP_Fail : 7|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW4MP_Fail : 8|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW5MP_Fail : 9|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW2MP_Fail : 10|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW4MP_SW6MP_Fail : 11|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW4MP_Stuck : 12|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW5MP_SW7MP_Fail : 13|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW5MP_Stuck : 14|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW6MP_Stuck : 15|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_SW7MP_Stuck : 16|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K5MP_Latch_Fail : 17|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K4MP_Fail : 18|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_K1MP_Fail : 19|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_AT1ET_Fail : 20|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xMP_Obstruction : 46|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM11xLogAt100 : 63|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xAPU_Log_Full : 21|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xBattery_Log_Full : 22|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xComms_Log_Full : 23|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xDC11_Log_Full : 24|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xDC12_Log_Full : 25|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xDC13_Log_Full : 26|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xDC14_Log_Full : 27|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xFB11_Log_Full : 28|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xFB12_Log_Full : 29|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xHM11_Log_Full : 30|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xHM12_Log_Full : 31|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xVA11_Log_Full : 32|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xVA12_Log_Full : 33|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xIO11_Log_Full : 34|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xMP11_Log_Full : 35|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xMP12_Log_Full : 36|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xNet_Log_Full : 37|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xPP11_Log_Full : 38|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xPP12_Log_Full : 39|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xSD11_Log_Full : 40|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xSD12_Log_Full : 41|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xSD13_Log_Full : 42|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xVC11_Log_Full : 43|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xVC12_Log_Full : 44|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xVehicle_Log_Full : 45|1@1+ (1,0) [0|1] ""  HM12,Display,Log
+ SG_ HM11xWindHeatOn : 0|1@1+ (1,0) [0|1] ""  VA11
+
+BO_ 665 HM12_PDO2_Alarm_Log: 8 HM12
+ SG_ HM12xMP_SRA1ET_Fail : 1|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K7MP_Latch_Fail : 2|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K7MP_Fail : 3|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K3MP_Fail : 4|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K5MP_Fail : 5|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K9MP_Fail : 6|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K8MP_Fail : 7|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW4MP_Fail : 8|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW5MP_Fail : 9|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW2MP_Fail : 10|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW4MP_SW6MP_Fail : 11|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW4MP_Stuck : 12|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW5MP_SW7MP_Fail : 13|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW5MP_Stuck : 14|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW6MP_Stuck : 15|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_SW7MP_Stuck : 16|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K5MP_Latch_Fail : 17|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K4MP_Fail : 18|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_K1MP_Fail : 19|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_AT1ET_Fail : 20|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xMP_Obstruction : 46|1@1+ (1,0) [0|1] ""  Log
+ SG_ HM12xLogAt100 : 63|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xAPU_Log_Full : 21|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xBattery_Log_Full : 22|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xComms_Log_Full : 23|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xDC11_Log_Full : 24|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xDC12_Log_Full : 25|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xDC13_Log_Full : 26|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xDC14_Log_Full : 27|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xFB11_Log_Full : 28|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xFB12_Log_Full : 29|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xHM11_Log_Full : 30|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xHM12_Log_Full : 31|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xVA11_Log_Full : 32|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xVA12_Log_Full : 33|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xIO11_Log_Full : 34|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xMP11_Log_Full : 35|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xMP12_Log_Full : 36|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xNet_Log_Full : 37|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xPP11_Log_Full : 38|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xPP12_Log_Full : 39|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xSD11_Log_Full : 40|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xSD12_Log_Full : 41|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xSD13_Log_Full : 42|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xVC11_Log_Full : 43|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xVC12_Log_Full : 44|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xVehicle_Log_Full : 45|1@1+ (1,0) [0|1] ""  HM11,Display,Log
+ SG_ HM12xWindHeatOn : 0|1@1+ (1,0) [0|1] ""  VA12
+
+BO_ 410 IO11_PDO1_Status_HMx: 8 IO11
+ SG_ IO11xBatt_CB2BS : 0|1@1+ (1,0) [0|1] ""  Display,AP11,APHMx
+ SG_ IO11xCompresHlty : 3|1@1+ (1,0) [0|1] ""  HMx
+ SG_ IO11xFExtingOK : 6|1@1+ (1,0) [0|1] ""  HMx
+ SG_ IO11xBAM_Release : 7|1@1+ (1,0) [0|1] ""  HMx,Display
+ SG_ IO11xBAM_Halt : 2|1@1+ (1,0) [0|1] ""  HMx
+ SG_ IO11xPSA : 1|1@1+ (1,0) [0|1] ""  HMx
+
+BO_ 906 VC11_PDO3_Alarm_Log: 8 VC11
+ SG_ VC11xVATC_V_A1 : 0|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A2 : 1|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A3 : 2|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A4 : 3|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A5 : 4|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A6 : 5|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A7 : 6|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A8 : 7|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A9 : 8|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A10 : 9|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A11 : 10|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A12 : 11|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A13 : 12|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A14 : 13|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A15 : 14|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A16 : 15|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A17 : 16|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A18 : 17|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A19 : 18|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A20 : 19|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A21 : 20|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A22 : 21|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A23 : 22|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A24 : 23|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A25 : 24|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A26 : 25|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A27 : 26|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A28 : 27|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A29 : 28|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A30 : 29|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A31 : 30|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A32 : 31|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A33 : 32|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A34 : 33|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A35 : 34|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A36 : 35|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A37 : 36|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A38 : 37|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A39 : 38|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A40 : 39|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A41 : 40|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A42 : 41|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A43 : 42|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A44 : 43|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A45 : 44|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A46 : 45|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A47 : 46|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A48 : 47|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A49 : 48|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A50 : 49|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A51 : 50|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A52 : 51|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A53 : 52|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A54 : 53|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A55 : 54|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A56 : 55|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A57 : 56|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A58 : 57|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A59 : 58|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A60 : 59|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A61 : 60|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A62 : 61|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A63 : 62|1@1+ (1,0) [0|1] ""  Log,VC12
+ SG_ VC11xVATC_V_A64 : 63|1@1+ (1,0) [0|1] ""  Log,VC12
+
+BO_ 908 VC12_PDO3_Alarm_Log: 8 VC12
+ SG_ VC12xVATC_V_A1 : 0|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A2 : 1|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A3 : 2|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A4 : 3|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A5 : 4|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A6 : 5|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A7 : 6|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A8 : 7|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A9 : 8|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A10 : 9|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A11 : 10|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A12 : 11|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A13 : 12|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A14 : 13|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A15 : 14|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A16 : 15|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A17 : 16|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A18 : 17|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A19 : 18|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A20 : 19|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A21 : 20|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A22 : 21|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A23 : 22|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A24 : 23|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A25 : 24|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A26 : 25|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A27 : 26|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A28 : 27|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A29 : 28|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A30 : 29|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A31 : 30|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A32 : 31|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A33 : 32|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A34 : 33|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A35 : 34|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A36 : 35|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A37 : 36|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A38 : 37|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A39 : 38|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A40 : 39|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A41 : 40|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A42 : 41|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A43 : 42|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A44 : 43|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A45 : 44|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A46 : 45|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A47 : 46|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A48 : 47|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A49 : 48|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A50 : 49|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A51 : 50|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A52 : 51|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A53 : 52|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A54 : 53|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A55 : 54|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A56 : 55|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A57 : 56|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A58 : 57|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A59 : 58|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A60 : 59|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A61 : 60|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A62 : 61|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A63 : 62|1@1+ (1,0) [0|1] ""  Log,VC11
+ SG_ VC12xVATC_V_A64 : 63|1@1+ (1,0) [0|1] ""  Log,VC11
+
+BO_ 1157 HMVN5_PDO4_Command_PP11: 8 HMVN5
+ SG_ VN5xPP11Reset : 2|1@1+ (1,0) [0|1] ""  PP11
+ SG_ VN5xPP12Reset : 3|1@1+ (1,0) [0|1] ""  PP12
+ SG_ VN5xECU1_Reset : 4|1@1+ (1,0) [0|1] ""  FB11
+ SG_ VN5xECU2_Reset : 5|1@1+ (1,0) [0|1] ""  FB12
+ SG_ VN5xECU1_FltR : 8|1@1+ (1,0) [0|1] ""  FB11
+ SG_ VN5xECU2_FltR : 9|1@1+ (1,0) [0|1] ""  FB12
+ SG_ VN5xECU1_PumpR : 10|1@1+ (1,0) [0|1] ""  FB11
+ SG_ VN5xECU2_PumpR : 11|1@1+ (1,0) [0|1] ""  FB12
+ SG_ VN5bSbutton : 16|8@1+ (1,0) [0|255] ""  FB11,FB12
+ SG_ VN5xSBMode : 12|1@1+ (1,0) [0|1] ""  FB11,FB12
+ SG_ VN5xAPU_OSC : 13|1@1+ (1,0) [0|1] ""  AP11,Display
+ SG_ VN5xAPUTest : 14|1@1+ (1,0) [0|1] ""  AP11
+ SG_ VN5xVA11Auto : 24|1@1+ (1,0) [0|1] ""  VA11,HMx
+ SG_ VN5xVA11Off : 25|1@1+ (1,0) [0|1] ""  VA11,HMx
+ SG_ VN5xVA11TstCool2 : 26|1@1+ (1,0) [0|1] ""  VA11,HMx
+ SG_ VN5xVA11TestHeat : 27|1@1+ (1,0) [0|1] ""  VA11,HMx
+ SG_ VN5xVA12Auto : 28|1@1+ (1,0) [0|1] ""  VA12,HMx
+ SG_ VN5xVA12Off : 29|1@1+ (1,0) [0|1] ""  VA12,HMx
+ SG_ VN5xVA12TstCool2 : 30|1@1+ (1,0) [0|1] ""  VA12,HMx
+ SG_ VN5xVA12TestHeat : 31|1@1+ (1,0) [0|1] ""  VA12,HMx
+ SG_ VN5nHeat_Set : 56|8@1+ (1,0) [13|19] "Deg C"  VA,HMx,Display
+ SG_ VN5xSmkOff_E1 : 32|1@1+ (1,0) [0|1] ""  SD11
+ SG_ VN5xSmkTest_E1 : 33|1@1+ (1,0) [0|1] ""  SD11
+ SG_ VN5xSmkReset_E1 : 34|1@1+ (1,0) [0|1] ""  SD11
+ SG_ VN5xSmkOff_Ctr : 35|1@1+ (1,0) [0|1] ""  SD11
+ SG_ VN5xSmkTest_Ctr : 36|1@1+ (1,0) [0|1] ""  SD11
+ SG_ VN5xSmkReset_Ctr : 37|1@1+ (1,0) [0|1] ""  SD11
+ SG_ VN5xSmkOff_E2 : 38|1@1+ (1,0) [0|1] ""  SD12
+ SG_ VN5xSmkTest_E2 : 39|1@1+ (1,0) [0|1] ""  SD12
+ SG_ VN5xSmkReset_E2 : 40|1@1+ (1,0) [0|1] ""  SD12
+ SG_ VN5xSmkToggleBit : 41|1@1+ (1,0) [0|1] ""  SD11,SD12
+ SG_ VN5xTD11PLCR : 46|1@1+ (1,0) [0|1] ""  DC11
+ SG_ VN5xTD12PLCR : 47|1@1+ (1,0) [0|1] ""  DC12
+ SG_ VN5xTD13PLCR : 48|1@1+ (1,0) [0|1] ""  DC13
+ SG_ VN5xTD14PLCR : 49|1@1+ (1,0) [0|1] ""  DC14
+ SG_ VN5xTD_RB : 50|1@1+ (1,0) [0|1] ""  DC
+ SG_ VN5xTD_RSF : 51|1@1+ (1,0) [0|1] ""  DC
+ SG_ VN5xPIP1Reset : 52|1@1+ (1,0) [0|1] ""  CC11
+ SG_ VN5xPIP2Reset : 53|1@1+ (1,0) [0|1] ""  CC11
+
+
+
+CM_ SG_ 932 PP11wIS "Line voltage";
+CM_ SG_ 932 PP11wEFC "Filter capacitor voltage";
+CM_ SG_ 932 PP11wIM "LIM current";
+CM_ SG_ 1188 PP11wLIM_Temp "LIM Temperature";
+CM_ SG_ 1188 PP11wFR "Velocity";
+CM_ SG_ 1188 PP11wPWMDem "PWM Modulated Trainline Signal Feedback";
+CM_ SG_ 933 PP12wIS "Line voltage";
+CM_ SG_ 933 PP12wEFC "Filter capacitor voltage";
+CM_ SG_ 933 PP12wIM "LIM current";
+CM_ SG_ 1189 PP12wLIM_Temp "LIM Temperature";
+CM_ SG_ 1189 PP12wFR "Velocity";
+CM_ SG_ 1189 PP12wPWMDem "PWM Modulated Thrust Signal Feedback";
+CM_ SG_ 682 FB11wSupplyPress "Supply Pressure";
+CM_ SG_ 682 FB11wPWMDemand "Brake Demand Echo";
+CM_ SG_ 682 FB11wALinePress "A Line Pressure";
+CM_ SG_ 682 FB11bCalForce "Caliper Force";
+CM_ SG_ 684 FB12wSupplyPress "Supply Pressure";
+CM_ SG_ 684 FB12wPWMDemand "Brake Demand Echo";
+CM_ SG_ 684 FB12wALinePress "A Line Pressure";
+CM_ SG_ 684 FB12bCalForce "Caliper Force";
+CM_ SG_ 666 IO11wRefDCCT "Battery DCCT Reference (Current sensor signal offset)";
+CM_ SG_ 666 IO11wV_DCCT "Battery DCCT Voltage (Current sensor output signal)";
+CM_ SG_ 666 IO11wV_NTC "Battery NTC voltage (Thermistor temperature sensor)";
+CM_ SG_ 666 IO11wLV_Smpl "LVDC Sample ";
+CM_ SG_ 1178 IO11wChSmpl "Chassis Sample ";
+CM_ SG_ 1178 IO11wSupplyPress "Main Reservoir Pneumatic Supply Air Pressure";
+CM_ SG_ 1178 IO11wPT1PN "Transducer #1 Pneumatic Supply Air Pressure";
+CM_ SG_ 1178 IO11wPT2PN "Transducer #2 Pneumatic Supply Air Pressure";
+CM_ SG_ 645 VN5bEtime "Battery Time Available";
+CM_ SG_ 645 VN5bBatCap "Battery capacity";
+CM_ SG_ 645 VN5bBatChg "Battery charge level";
+CM_ SG_ 645 VN5bCapTstDay "Date (day) of last capacity test";
+CM_ SG_ 645 VN5bCapTstMonth "Date (month) of last capacity test";
+CM_ SG_ 645 VN5bCapTstYear "Date (year) of last capacity test";
+CM_ SG_ 645 VN5bCapTestDur "Duration of last capacity test";
+CM_ SG_ 645 VN5bTempEnd "Battery temperature at the end of last capacity test";
+CM_ SG_ 901 VN5bT_Bat "Battery temperature";
+CM_ SG_ 901 VN5wV_Bat "Battery voltage";
+CM_ SG_ 901 VN5wI_Bat "Battery current";
+CM_ SG_ 942 AP11bHV "APU input voltage";
+CM_ SG_ 942 AP11bInv1LineV "Inverter #1 Line Voltage ";
+CM_ SG_ 942 AP11bInv2LineV "Inverter #2 Line Voltage ";
+CM_ SG_ 942 AP11_Spare_Bit_24 "Spare";
+CM_ SG_ 942 AP11bLVPS_OutV "LVPS Output Voltage ";
+CM_ SG_ 942 AP11bLVPS_OutC "LVPS Output Current";
+CM_ SG_ 942 AP11bBattBoxTmp "Battery Box Temperature ";
+CM_ SG_ 1198 AP11bInvV1 "Inverter #1 Voltage Output";
+CM_ SG_ 1198 AP11bInvV2 "Inverter #2 Voltage Output";
+CM_ SG_ 1198 AP11bInvCr1 "Inverter #1 Current Output";
+CM_ SG_ 1198 AP11bInvCr2 "Inverter #2 Current Output";
+CM_ SG_ 690 VA11bOHHtPwr "Overhead Heater Power";
+CM_ SG_ 690 VA11wFAT "Fresh Air Temperature";
+CM_ SG_ 690 VA11wRAT "Return Air Temperature ";
+CM_ SG_ 690 VA11wStandbyTemp "Standby Temperature ";
+CM_ SG_ 1202 VA11wSAT1 "Supply Air Temperature 1";
+CM_ SG_ 1202 VA11wSAT2 "Supply Air Temperature 2";
+CM_ SG_ 1202 VA11bRATSPC "Return Air Temperature Set Point (Cooling)";
+CM_ SG_ 1202 VA11bRATSPH "Return Air Temperature Set Point (Heating)";
+CM_ SG_ 1202 VA11bSTSPC "Standby Temperataure Set Point (Cooling)";
+CM_ SG_ 1202 VA11bSTSPH "Standby Temperataure Set Point (Heating)";
+CM_ SG_ 510 VA11wCAHGB "Compressor A Hot Gas Pressure";
+CM_ SG_ 510 VA11wCBHGB "Compressor B Hot Gas Pressure";
+CM_ SG_ 510 VA11wComprAHour "Compressor A Running Hours";
+CM_ SG_ 510 VA11wComprBHour "Compressor B Running Hours";
+CM_ SG_ 691 VA12bOHHtPwr "Overhead Heater Power";
+CM_ SG_ 691 VA12wFAT "Fresh Air Temperature";
+CM_ SG_ 691 VA12wRAT "Return Air Temperature ";
+CM_ SG_ 691 VA12wStandbyTemp "Standby Temperature ";
+CM_ SG_ 1203 VA12wSAT1 "Supply Air Temperature 1";
+CM_ SG_ 1203 VA12wSAT2 "Supply Air Temperature 2";
+CM_ SG_ 1203 VA12bRATSPC "Return Air Temperature Set Point (Cooling)";
+CM_ SG_ 1203 VA12bRATSPH "Return Air Temperature Set Point (Heating)";
+CM_ SG_ 1203 VA12bSTSPC "Standby Temperataure Set Point (Cooling)";
+CM_ SG_ 1203 VA12bSTSPH "Standby Temperataure Set Point (Heating)";
+CM_ SG_ 511 VA12wCAHGB "Compressor A Hot Gas Pressure";
+CM_ SG_ 511 VA12wCBHGB "Compressor B Hot Gas Pressure";
+CM_ SG_ 511 VA12wComprAHour "Compressor A Running Hours";
+CM_ SG_ 511 VA12wComprBHour "Compressor B Running Hours";
+CM_ SG_ 404 SD11bDamper1PFR "Fresh Air Damper 1 Position Feedback Percent";
+CM_ SG_ 404 SD11bDamper2PFR "Fresh Air Damper 2 Position Feedback Percent";
+CM_ SG_ 404 SD11xOff_End "Smoke Detector Off - End";
+CM_ SG_ 404 SD11xOff_Center "Smoke Detector Off - Center";
+CM_ SG_ 404 SD11xToggleBit "Toggle Bit";
+CM_ SG_ 404 SD11xSmk_End "Smoke Detected - End Car";
+CM_ SG_ 404 SD11xSmk_Center "Smoke Detected - Center Car";
+CM_ SG_ 404 SD11xNP_End "No Power - End Car";
+CM_ SG_ 404 SD11xNP_Center "No Power - Center Car";
+CM_ SG_ 404 SD11xTF_End "Test Failed - End Car";
+CM_ SG_ 404 SD11xTF_Center "Test Failed - Center Car";
+CM_ SG_ 404 SD11xHM_End "Head Missing - End Car";
+CM_ SG_ 404 SD11xHM_Center "Head Missing - Center Car";
+CM_ SG_ 405 SD12bDamper1PFR "Fresh Air Damper 1 Position Feedback Percent";
+CM_ SG_ 405 SD12bDamper2PFR "Fresh Air Damper 2 Position Feedback Percent";
+CM_ SG_ 405 SD12xOff_End "Smoke Detector Off - End";
+CM_ SG_ 405 SD12xToggleBit "Toggle Bit";
+CM_ SG_ 405 SD12xSmk_End "Smoke Detected - End Car";
+CM_ SG_ 405 SD12xNP_End "No Power - End Car";
+CM_ SG_ 405 SD12xTF_End "Test Failed - End Car";
+CM_ SG_ 405 SD12xHM_End "Head Missing - End Car";
+CM_ SG_ 398 DC11bTD1CRCC "Close Recycle Count";
+CM_ SG_ 398 DC11bTD1ORCC "Open Recycle Count";
+CM_ SG_ 398 DC11xTD1CLS "Closed and Locked";
+CM_ SG_ 398 DC11xTD1DECS "Enable Command Feedback";
+CM_ SG_ 398 DC11xTD1DOCS "Open Command Feedback";
+CM_ SG_ 398 DC11xTEU1DCS "Emergency Unlock Disable Command Feedback";
+CM_ SG_ 398 DC11xTD1IS "Isolated";
+CM_ SG_ 398 DC11xTD1OS "Fully Open";
+CM_ SG_ 398 DC11xTD1BpS "Bypassed";
+CM_ SG_ 398 DC11xER1AS "Emergency Release Activated";
+CM_ SG_ 398 DC11xTD1TB "Toggle Bit (for PDO update every 10 seconds)";
+CM_ SG_ 398 DC11xER1IS "Emergency Release Inhibited";
+CM_ SG_ 398 DC11xTD1RIPS "Recycle in Progress";
+CM_ SG_ 398 DC11xTD1CSS "Crew Switch Open Present";
+CM_ SG_ 398 DC11xTD1CSE "Crew Switch Enable Signal";
+CM_ SG_ 398 DC11xTD1PTS "PTE Connected";
+CM_ SG_ 398 DC11xTD1FRS "Fault Reset in Progress";
+CM_ SG_ 398 DC11xTD1DTS "Diagnostic Test in Progress";
+CM_ SG_ 398 DC11xTD1DESF "Door Enable Signal Fault";
+CM_ SG_ 398 DC11xTD1DSLWE "Door Status Lost Without Enable Present";
+CM_ SG_ 398 DC11xER1IFUS "Emergency Release Fail Uninhibited";
+CM_ SG_ 398 DC11xER1IFIS "Emergency Release Fail Inhibited";
+CM_ SG_ 398 DC11xTD1MOF "Motor Overload Fault";
+CM_ SG_ 398 DC11xTD1LS1F "Lock Solenoid 1 Release Fault";
+CM_ SG_ 398 DC11xTD1TCL "Door Time Compensation at Limit";
+CM_ SG_ 398 DC11xTD1LSW2F "Lock Switch S2 Fault";
+CM_ SG_ 398 DC11xTD1LSW3F "Lock Switch S3 Fault";
+CM_ SG_ 398 DC11xTD1EVF "Encoder Supply Volts Fault";
+CM_ SG_ 398 DC11xTD1ERSF "Emergency Release Switch Fault";
+CM_ SG_ 398 DC11xTD1K2F "Relay K2 Fault";
+CM_ SG_ 398 DC11xTD1K3F "Relay K3 Fault";
+CM_ SG_ 398 DC11xTD1K5F "Relay K5 Fault";
+CM_ SG_ 398 DC11xTD1CSF "Crew Switch Fault";
+CM_ SG_ 398 DC11xTD1K4F "Relay K4 Fault";
+CM_ SG_ 398 DC11xTD1CSEF "Crew Switch Enable Fault";
+CM_ SG_ 398 DC11xTD1IO2SF "Spare Input #2 Status is ON";
+CM_ SG_ 398 DC11xTD1IO1SF "Spare Input #1 Status is ON";
+CM_ SG_ 398 DC11xTD1SHF "Supply Voltage Over 60 Volts";
+CM_ SG_ 398 DC11xTD1SLF "Supply Voltage Below 33 Volts";
+CM_ SG_ 398 DC11xTD1ULF "Unlocking Attempts Exceeded";
+CM_ SG_ 398 DC11xTD1ESF "Encoder Signal Fault";
+CM_ SG_ 398 DC11xTD1OOF "Obstacle on Opening too Frequent";
+CM_ SG_ 398 DC11xTD1OCF "Obstacle on Closing too Frequent";
+CM_ SG_ 398 DC11xTD1RF "RAM Failure";
+CM_ SG_ 398 DC11xTD1ReEx "Recycles Exceeded";
+CM_ SG_ 399 DC12bTD2CRCC "Close Recycle Count";
+CM_ SG_ 399 DC12bTD2ORCC "Open Recycle Count";
+CM_ SG_ 399 DC12xTD2CLS "Closed and Locked";
+CM_ SG_ 399 DC12xTD2DECS "Enable Command Feedback";
+CM_ SG_ 399 DC12xTD2DOCS "Open Command Feedback";
+CM_ SG_ 399 DC12xTEU2DCS "Emergency Unlock Disable Command Feedback";
+CM_ SG_ 399 DC12xTD2IS "Isolated";
+CM_ SG_ 399 DC12xTD2OS "Fully Open";
+CM_ SG_ 399 DC12xTD2BpS "Bypassed";
+CM_ SG_ 399 DC12xER2AS "Emergency Release Activated";
+CM_ SG_ 399 DC12xTD2TB "Toggle Bit (for PDO update every 10 seconds)";
+CM_ SG_ 399 DC12xER2IS "Emergency Release Inhibited";
+CM_ SG_ 399 DC12xTD2RIPS "Recycle in Progress";
+CM_ SG_ 399 DC12xTD2CSS "Crew Switch Open Present";
+CM_ SG_ 399 DC12xTD2CSE "Crew Switch Enable Signal";
+CM_ SG_ 399 DC12xTD2PTS "PTE Connected";
+CM_ SG_ 399 DC12xTD2FRS "Fault Reset in Progress";
+CM_ SG_ 399 DC12xTD2DTS "Diagnostic Test in Progress";
+CM_ SG_ 399 DC12xTD2DESF "Door Enable Signal Fault";
+CM_ SG_ 399 DC12xTD2DSLWE "Door Status Lost Without Enable Present";
+CM_ SG_ 399 DC12xER2IFUS "Emergency Release Fail Uninhibited";
+CM_ SG_ 399 DC12xER2IFIS "Emergency Release Fail Inhibited";
+CM_ SG_ 399 DC12xTD2MOF "Motor Overload Fault";
+CM_ SG_ 399 DC12xTD2LS1F "Lock Solenoid 1 Release Fault";
+CM_ SG_ 399 DC12xTD2TCL "Door Time Compensation at Limit";
+CM_ SG_ 399 DC12xTD2LSW2F "Lock Switch S2 Fault";
+CM_ SG_ 399 DC12xTD2LSW3F "Lock Switch S3 Fault";
+CM_ SG_ 399 DC12xTD2EVF "Encoder Supply Volts Fault";
+CM_ SG_ 399 DC12xTD2ERSF "Emergency Release Switch Fault";
+CM_ SG_ 399 DC12xTD2K2F "Relay K2 Fault";
+CM_ SG_ 399 DC12xTD2K3F "Relay K3 Fault";
+CM_ SG_ 399 DC12xTD2K5F "Relay K5 Fault";
+CM_ SG_ 399 DC12xTD2CSF "Crew Switch Fault";
+CM_ SG_ 399 DC12xTD2K4F "Relay K4 Fault";
+CM_ SG_ 399 DC12xTD2CSEF "Crew Switch Enable Fault";
+CM_ SG_ 399 DC12xTD2IO2SF "Spare Input #2 Status is ON";
+CM_ SG_ 399 DC12xTD2IO1SF "Spare Input #1 Status is ON";
+CM_ SG_ 399 DC12xTD2SHF "Supply Voltage Over 60 Volts";
+CM_ SG_ 399 DC12xTD2SLF "Supply Voltage Below 33 Volts";
+CM_ SG_ 399 DC12xTD2ULF "Unlocking Attempts Exceeded";
+CM_ SG_ 399 DC12xTD2ESF "Encoder Signal Fault";
+CM_ SG_ 399 DC12xTD2OOF "Obstacle on Opening too Frequent";
+CM_ SG_ 399 DC12xTD2OCF "Obstacle on Closing too Frequent";
+CM_ SG_ 399 DC12xTD2RF "RAM Failure";
+CM_ SG_ 399 DC12xTD2ReEx "Recycles Exceeded";
+CM_ SG_ 400 DC13bTD3CRCC "Close Recycle Count";
+CM_ SG_ 400 DC13bTD3ORCC "Open Recycle Count";
+CM_ SG_ 400 DC13xTD3CLS "Closed and Locked";
+CM_ SG_ 400 DC13xTD3DECS "Enable Command Feedback";
+CM_ SG_ 400 DC13xTD3DOCS "Open Command Feedback";
+CM_ SG_ 400 DC13xTEU3DCS "Emergency Unlock Disable Command Feedback";
+CM_ SG_ 400 DC13xTD3IS "Isolated";
+CM_ SG_ 400 DC13xTD3OS "Fully Open";
+CM_ SG_ 400 DC13xTD3BpS "Bypassed";
+CM_ SG_ 400 DC13xER3AS "Emergency Release Activated";
+CM_ SG_ 400 DC13xTD3TB "Toggle Bit (for PDO update every 10 seconds)";
+CM_ SG_ 400 DC13xER3IS "Emergency Release Inhibited";
+CM_ SG_ 400 DC13xTD3RIPS "Recycle in Progress";
+CM_ SG_ 400 DC13xTD3CSS "Crew Switch Open Present";
+CM_ SG_ 400 DC13xTD3CSE "Crew Switch Enable Signal";
+CM_ SG_ 400 DC13xTD3PTS "PTE Connected";
+CM_ SG_ 400 DC13xTD3FRS "Fault Reset in Progress";
+CM_ SG_ 400 DC13xTD3DTS "Diagnostic Test in Progress";
+CM_ SG_ 400 DC13xTD3DESF "Door Enable Signal Fault";
+CM_ SG_ 400 DC13xTD3DSLWE "Door Status Lost Without Enable Present";
+CM_ SG_ 400 DC13xER3IFUS "Emergency Release Fail Uninhibited";
+CM_ SG_ 400 DC13xER3IFIS "Emergency Release Fail Inhibited";
+CM_ SG_ 400 DC13xTD3MOF "Motor Overload Fault";
+CM_ SG_ 400 DC13xTD3LS1F "Lock Solenoid 1 Release Fault";
+CM_ SG_ 400 DC13xTD3TCL "Door Time Compensation at Limit";
+CM_ SG_ 400 DC13xTD3LSW2F "Lock Switch S2 Fault";
+CM_ SG_ 400 DC13xTD3LSW3F "Lock Switch S3 Fault";
+CM_ SG_ 400 DC13xTD3EVF "Encoder Supply Volts Fault";
+CM_ SG_ 400 DC13xTD3ERSF "Emergency Release Switch Fault";
+CM_ SG_ 400 DC13xTD3K2F "Relay K2 Fault";
+CM_ SG_ 400 DC13xTD3K3F "Relay K3 Fault";
+CM_ SG_ 400 DC13xTD3K5F "Relay K5 Fault";
+CM_ SG_ 400 DC13xTD3CSF "Crew Switch Fault";
+CM_ SG_ 400 DC13xTD3K4F "Relay K4 Fault";
+CM_ SG_ 400 DC13xTD3CSEF "Crew Switch Enable Fault";
+CM_ SG_ 400 DC13xTD3IO2SF "Spare Input #2 Status is ON";
+CM_ SG_ 400 DC13xTD3IO1SF "Spare Input #1 Status is ON";
+CM_ SG_ 400 DC13xTD3SHF "Supply Voltage Over 60 Volts";
+CM_ SG_ 400 DC13xTD3SLF "Supply Voltage Below 33 Volts";
+CM_ SG_ 400 DC13xTD3ULF "Unlocking Attempts Exceeded";
+CM_ SG_ 400 DC13xTD3ESF "Encoder Signal Fault";
+CM_ SG_ 400 DC13xTD3OOF "Obstacle on Opening too Frequent";
+CM_ SG_ 400 DC13xTD3OCF "Obstacle on Closing too Frequent";
+CM_ SG_ 400 DC13xTD3RF "RAM Failure";
+CM_ SG_ 400 DC13xTD3ReEx "Recycles Exceeded";
+CM_ SG_ 401 DC14bTD4CRCC "Close Recycle Count";
+CM_ SG_ 401 DC14bTD4ORCC "Open Recycle Count";
+CM_ SG_ 401 DC14xTD4CLS "Closed and Locked";
+CM_ SG_ 401 DC14xTD4DECS "Enable Command Feedback";
+CM_ SG_ 401 DC14xTD4DOCS "Open Command Feedback";
+CM_ SG_ 401 DC14xTEU4DCS "Emergency Unlock Disable Command Feedback";
+CM_ SG_ 401 DC14xTD4IS "Isolated";
+CM_ SG_ 401 DC14xTD4OS "Fully Open";
+CM_ SG_ 401 DC14xTD4BpS "Bypassed";
+CM_ SG_ 401 DC14xER4AS "Emergency Release Activated";
+CM_ SG_ 401 DC14xTD4TB "Toggle Bit (for PDO update every 10 seconds)";
+CM_ SG_ 401 DC14xER4IS "Emergency Release Inhibited";
+CM_ SG_ 401 DC14xTD4RIPS "Recycle in Progress";
+CM_ SG_ 401 DC14xTD4CSS "Crew Switch Open Present";
+CM_ SG_ 401 DC14xTD4CSE "Crew Switch Enable Signal";
+CM_ SG_ 401 DC14xTD4PTS "PTE Connected";
+CM_ SG_ 401 DC14xTD4FRS "Fault Reset in Progress";
+CM_ SG_ 401 DC14xTD4DTS "Diagnostic Test in Progress";
+CM_ SG_ 401 DC14xTD4DESF "Door Enable Signal Fault";
+CM_ SG_ 401 DC14xTD4DSLWE "Door Status Lost Without Enable Present";
+CM_ SG_ 401 DC14xER4IFUS "Emergency Release Fail Uninhibited";
+CM_ SG_ 401 DC14xER4IFIS "Emergency Release Fail Inhibited";
+CM_ SG_ 401 DC14xTD4MOF "Motor Overload Fault";
+CM_ SG_ 401 DC14xTD4LS1F "Lock Solenoid 1 Release Fault";
+CM_ SG_ 401 DC14xTD4TCL "Door Time Compensation at Limit";
+CM_ SG_ 401 DC14xTD4LSW2F "Lock Switch S2 Fault";
+CM_ SG_ 401 DC14xTD4LSW3F "Lock Switch S3 Fault";
+CM_ SG_ 401 DC14xTD4EVF "Encoder Supply Volts Fault";
+CM_ SG_ 401 DC14xTD4ERSF "Emergency Release Switch Fault";
+CM_ SG_ 401 DC14xTD4K2F "Relay K2 Fault";
+CM_ SG_ 401 DC14xTD4K3F "Relay K3 Fault";
+CM_ SG_ 401 DC14xTD4K5F "Relay K5 Fault";
+CM_ SG_ 401 DC14xTD4CSF "Crew Switch Fault";
+CM_ SG_ 401 DC14xTD4K4F "Relay K4 Fault";
+CM_ SG_ 401 DC14xTD4CSEF "Crew Switch Enable Fault";
+CM_ SG_ 401 DC14xTD4IO2SF "Spare Input #2 Status is ON";
+CM_ SG_ 401 DC14xTD4IO1SF "Spare Input #1 Status is ON";
+CM_ SG_ 401 DC14xTD4SHF "Supply Voltage Over 60 Volts";
+CM_ SG_ 401 DC14xTD4SLF "Supply Voltage Below 33 Volts";
+CM_ SG_ 401 DC14xTD4ULF "Unlocking Attempts Exceeded";
+CM_ SG_ 401 DC14xTD4ESF "Encoder Signal Fault";
+CM_ SG_ 401 DC14xTD4OOF "Obstacle on Opening too Frequent";
+CM_ SG_ 401 DC14xTD4OCF "Obstacle on Closing too Frequent";
+CM_ SG_ 401 DC14xTD4RF "RAM Failure";
+CM_ SG_ 401 DC14xTD4ReEx "Recycles Exceeded";
+CM_ SG_ 508 HM11wScreenNb "Screen number";
+CM_ SG_ 509 HM12wScreenNb "Screen number";
+CM_ SG_ 389 VN5bNodeAddr "Physical node address where network master function is executed";
+CM_ SG_ 389 VN5xCapTestEnbl "Battery Capacity Test Enabled";
+CM_ SG_ 389 VN5xCapTestRun "Battery Capacity Test Presently Running";
+CM_ SG_ 389 VN5xZS "Manual control Zero Speed";
+CM_ SG_ 389 VN5xManual "Train in Manual mode";
+CM_ SG_ 389 VN5xABRS "All Brakes Released Status";
+CM_ SG_ 389 VN5xPBA "Park Brake Applied";
+CM_ SG_ 389 VN5xLineSpeed "Line speed";
+CM_ SG_ 389 VN5xRBRR "Reduced Brake Rate Request";
+CM_ SG_ 389 VN5xRSR "Reduced Speed Request";
+CM_ SG_ 389 VN5xTHR "Train Hold Request";
+CM_ SG_ 902 VN5dwOdometer "Vehicle Odometer";
+CM_ SG_ 438 CC11bMsgNum "Message # Currently Playing";
+CM_ SG_ 438 CC11bMsgVol "Message Volume Level";
+CM_ SG_ 438 CC11xPowerOnRst "Power ON Reset OK";
+CM_ SG_ 438 CC11xRadioActive "Radio Voice Call in progress";
+CM_ SG_ 438 CC11xPAACall "PA Amplifier in use";
+CM_ SG_ 438 CC11xPIP1CallOn2 "PIP1 Call Connected - 2way ";
+CM_ SG_ 438 CC11xPIP1CallOn1 "PIP1 Call Connected - 1way";
+CM_ SG_ 438 CC11xPIP1CallReq "PIP1 Call Request";
+CM_ SG_ 438 CC11xPIP2CallOn2 "PIP2 Call Connected - 2way  ";
+CM_ SG_ 438 CC11xPIP2CallOn1 "PIP2 Call Connected - 1way";
+CM_ SG_ 438 CC11xPIP2CallReq "PIP2 Call Request";
+CM_ SG_ 438 CC11xHAP1Call "HAP1 In Use";
+CM_ SG_ 438 CC11xHAP2Call "HAP2 In Use";
+CM_ SG_ 438 CC11xBadPlayCmd "Invalid 'PLAY' command";
+CM_ SG_ 438 CC11xPID1_Fault "PID1 - RS-485 Communication Failure";
+CM_ SG_ 438 CC11xPID2_Fault "PID2 - RS-485 Communication Failure";
+CM_ SG_ 438 CC11xPIP1CallFail "PIP1 Fail To Place Call";
+CM_ SG_ 438 CC11xPIP2CallFail "PIP2 Fail To Place Call";
+CM_ SG_ 438 CC11xPS2_Fault "Radio Power Supply Fault";
+CM_ SG_ 438 CC11xTDL_Fault "CCU TDL(Train Data Line) Fault";
+CM_ SG_ 438 CC11xPAA_Fault "PA Amplifier Fault";
+CM_ SG_ 438 CC11xPS1_Fault "CCU Power Supply Fault";
+CM_ SG_ 438 CC11xRCL_Fault "Radio Control Link Fault ";
+CM_ SG_ 438 CC11xLCL_Fault "CCU LCL (Local Control Link) Fault ";
+CM_ SG_ 438 CC11xRadFault "Radio Data Link Fault ";
+CM_ SG_ 438 CC11xVPIU_Fault "Train Voice Announcement Unit Fault";
+CM_ SG_ 438 CC11xPIP1Fault "PIP1 Failed Functional Test";
+CM_ SG_ 438 CC11xPIP2Fault "PIP2 Failed Functional Test";
+CM_ SG_ 393 VN9bPA_MT "Public Address Message Type";
+CM_ SG_ 393 VN9bPA_MV1 "Public Address Message Variable 1";
+CM_ SG_ 393 VN9bPA_MV2 "Public Address Message Variable 2";
+CM_ SG_ 393 VN9bPA_MP "Public Address Message Priority";
+CM_ SG_ 393 VN9bVehicleID "Vehicle ID (from the equipment in control of the train)";
+CM_ SG_ 393 VN9xSC "Standby Command";
+CM_ SG_ 393 VN9xTD11OC "Door 1 Open Command ";
+CM_ SG_ 393 VN9xTD12OC "Door 2 Open Command ";
+CM_ SG_ 393 VN9xTD13OC "Door 3 Open Command  ";
+CM_ SG_ 393 VN9xTD14OC "Door 4 Open Command ";
+CM_ SG_ 420 PP11xPCU_Hlty "PCU Healthy";
+CM_ SG_ 420 PP11xHSCB_Closed "High Speed Circuit Breaker Closed";
+CM_ SG_ 420 PP11xZeroSpeed "ZeroSpeed";
+CM_ SG_ 420 PP11xEBRC "Emergency brake released command Feedback";
+CM_ SG_ 420 PP11xPE "Propulsion Enable Command Feedback";
+CM_ SG_ 420 PP11xFWD "Forward command Feedback";
+CM_ SG_ 420 PP11xREV "Reverse command Feedback";
+CM_ SG_ 420 PP11xACCS "Acceleration command Feedback";
+CM_ SG_ 420 PP11xDECS "Deceleration command Feedback";
+CM_ SG_ 420 PP11xNBST "Boost current command Feedback";
+CM_ SG_ 420 PP11xSC "Standby command Feedback";
+CM_ SG_ 420 PP11xHSB "High-slip brake mode";
+CM_ SG_ 420 PP11xSLFT "Self test in progress";
+CM_ SG_ 420 PP11xRBD "Train roll back";
+CM_ SG_ 420 PP11xESLV "Line input voltage 750VDC Low";
+CM_ SG_ 420 PP11x3PhHlty "480 VAC - 3 Phases Healthy For PCU Fan";
+CM_ SG_ 420 PP11xLF1A "LIM fan 1 alarm - feedback from APU";
+CM_ SG_ 420 PP11xLF2A "LIM fan 2 alarm - feedback from APU";
+CM_ SG_ 420 PP11xOSL1 "Over speed level 1";
+CM_ SG_ 420 PP11xOSL2 "Over speed level 2";
+CM_ SG_ 420 PP11xPTEContAct "PTE Control Active";
+CM_ SG_ 420 PP11xDBAct "Dynamic Brake Active";
+CM_ SG_ 421 PP12xPCU_Hlty "PCU Healthy";
+CM_ SG_ 421 PP12xHSCB_Closed "High Speed Circuit Breaker Closed";
+CM_ SG_ 421 PP12xZeroSpeed "ZeroSpeed";
+CM_ SG_ 421 PP12xEBRC "Emergency brake released command Feedback";
+CM_ SG_ 421 PP12xPE "Propulsion Enable Command Feedback";
+CM_ SG_ 421 PP12xFWD "Forward command Feedback";
+CM_ SG_ 421 PP12xREV "Reverse command Feedback";
+CM_ SG_ 421 PP12xACCS "Acceleration command Feedback";
+CM_ SG_ 421 PP12xDECS "Deceleration command Feedback";
+CM_ SG_ 421 PP12xNBST "Boost current command Feedback";
+CM_ SG_ 421 PP12xSC "Standby command Feedback";
+CM_ SG_ 421 PP12xHSB "High-slip brake mode";
+CM_ SG_ 421 PP12xSLFT "Self test in progress";
+CM_ SG_ 421 PP12xRBD "Train roll back";
+CM_ SG_ 421 PP12xESLV "Line input voltage 750VDC Low";
+CM_ SG_ 421 PP12x3PhHlty "480 VAC - 3 Phases Healthy For PCU Fan";
+CM_ SG_ 421 PP12xLF1A "LIM fan 1 alarm - feedback from APU";
+CM_ SG_ 421 PP12xLF2A "LIM fan 2 alarm - feedback from APU";
+CM_ SG_ 421 PP12xOSL1 "Over speed level 1";
+CM_ SG_ 421 PP12xOSL2 "Over speed level 2";
+CM_ SG_ 421 PP12xPTEContAct "PTE Control Active";
+CM_ SG_ 421 PP12xDBAct "Dynamic Brake Active";
+CM_ SG_ 406 HM11xSelValve "Selector Valve in Manual Position at End 1 (brake hand pump)";
+CM_ SG_ 406 HM11xPressSwitch "Pressure Switch End 1 has Pressure - Brake 1 Released";
+CM_ SG_ 406 HM11xTI "Train Integrity status";
+CM_ SG_ 406 HM11xA1 "Manual Mode 1 status (Manual Mode is selected in the cab)";
+CM_ SG_ 406 HM11xA2 "Manual Mode 2 status (Manual Mode is selected in the opposite cab)";
+CM_ SG_ 406 HM11xTDCLS "Train Door Closed and Locked status";
+CM_ SG_ 406 HM11xDeadManR "Dead Man Release button status";
+CM_ SG_ 406 HM11xDeadMan "Dead Man button status";
+CM_ SG_ 406 HM11xTDOL "Train Doors Open Left";
+CM_ SG_ 406 HM11xTDOR "Train Doors Open Right";
+CM_ SG_ 406 HM11xTDCL "Train Doors Close Left";
+CM_ SG_ 406 HM11xTDCR "Train Doors Close Right";
+CM_ SG_ 406 HM11xRun "RUN switch position";
+CM_ SG_ 406 HM11xEnd2 "PLC is installed at End 2";
+CM_ SG_ 406 HM11xMPI "MPI";
+CM_ SG_ 406 HM11xUncouple "Uncouple";
+CM_ SG_ 406 HM11xTBleftRel "Track Brake Left Released (TB1 on HM11) ";
+CM_ SG_ 406 HM11xTBrightRel "Track Brake Right Released (TB2 on HM11)";
+CM_ SG_ 406 HM11xTBreleaseC "Track Brakes Commanded to Release (TB1 & TB2 on HM11)";
+CM_ SG_ 406 HM11xTBapplyC "Track Brakes Commanded to Apply (TB1 & TB2 on HM11)";
+CM_ SG_ 406 HM11xCoupFace "Coupler Face Activated - Train End #1";
+CM_ SG_ 406 HM11xZSbyPass "Zero Speed Bypass";
+CM_ SG_ 406 HM11xTDCLNOSBP "TDCLNOS Bypass";
+CM_ SG_ 406 HM11qxTrainRecov "Train Recovery";
+CM_ SG_ 406 HM11qxZS "Manual control Zero Speed";
+CM_ SG_ 406 HM11qxEBtimer "EB Timer";
+CM_ SG_ 406 HM11qxBuzzer "Buzzer";
+CM_ SG_ 406 HM11qxManualMode "Manual Mode is established ";
+CM_ SG_ 406 HM11qxHeadLights "Head Lights";
+CM_ SG_ 406 HM11qxMarkerLigh "Marker Lights";
+CM_ SG_ 406 HM11qxNot_MC "No Motoring Command";
+CM_ SG_ 406 HM11qxDoorUnlock "Sum of all door close & locked status from the CanBus";
+CM_ SG_ 406 HM11qxPECLatched "PEC Relay Latched";
+CM_ SG_ 406 HM11qxPBRCLatche "PBRC Relay Latched";
+CM_ SG_ 406 HM11qxWiper_Rese "Wiper Reset";
+CM_ SG_ 406 HM11qxWiper_Low "Wiper Low";
+CM_ SG_ 406 HM11qxWiper_High "Wiper High";
+CM_ SG_ 406 HM11qxIntLight "Interior Light  (only on HM11; spare on HM12)";
+CM_ SG_ 406 HM11qxCoupStat "Coupler Status Relay  Activated - Train End #1";
+CM_ SG_ 406 HM11qxUncouple "Uncouple - Train End #1";
+CM_ SG_ 406 HM11qxHMS_Fault "HMS Fault Ligtht turned on at #1 end car";
+CM_ SG_ 406 HM11qxPBRC "Park Brake Release Command - Train end #1";
+CM_ SG_ 406 HM11xToggleBit "HMS toggle bit to indicate PDO activity (and PLC activity)";
+CM_ SG_ 406 HM11xPSA_Reset "Passenger Silent Alarm Reset";
+CM_ SG_ 406 HM11xEBRC "Emergency brake  release command ";
+CM_ SG_ 406 HM11xVATC_ZS "VATC Zero Speed Signal";
+CM_ SG_ 406 HM11xREV "Reverse command";
+CM_ SG_ 406 HM11xDEC "Deceleration Command";
+CM_ SG_ 406 HM11xFWD "Forward command";
+CM_ SG_ 406 HM11xACC "Acceleration Command";
+CM_ SG_ 409 HM12xSelValve "Selector Valve in Manual Position at End 2 (brake hand pump)";
+CM_ SG_ 409 HM12xPressSwitch "Pressure Switch End 2 has Pressure - Brake 2 Released";
+CM_ SG_ 409 HM12xTI "Train Integrity status";
+CM_ SG_ 409 HM12xA1 "Manual Mode 1 status (Manual Mode is selected in the cab)";
+CM_ SG_ 409 HM12xA2 "Manual Mode 2 status (Manual Mode is selected in the opposite cab)";
+CM_ SG_ 409 HM12xTDCLS "Train Door Closed and Locked status";
+CM_ SG_ 409 HM12xDeadManR "Dead Man Release button status";
+CM_ SG_ 409 HM12xDeadMan "Dead Man button status";
+CM_ SG_ 409 HM12xTDOL "Train Doors Open Left";
+CM_ SG_ 409 HM12xTDOR "Train Doors Open Right";
+CM_ SG_ 409 HM12xTDCL "Train Doors Close Left";
+CM_ SG_ 409 HM12xTDCR "Train Doors Close Right";
+CM_ SG_ 409 HM12xRun "RUN switch position";
+CM_ SG_ 409 HM12xEnd2 "PLC is installed at End 2";
+CM_ SG_ 409 HM12xMPI "MPI";
+CM_ SG_ 409 HM12xUncouple "Uncouple";
+CM_ SG_ 409 HM12xTBleftRel "Track Brake Left Released (TB3 on HM12)";
+CM_ SG_ 409 HM12xTBrightRel "Track Brake Right Released (TB4 on HM12)";
+CM_ SG_ 409 HM12xTBreleaseC "Track Brakes Commanded to Release (TB3 & TB4 on HM12)";
+CM_ SG_ 409 HM12xTBapplyC "Track Brakes Commanded to Apply (TB3 & TB4 on HM12)";
+CM_ SG_ 409 HM12xCoupFace "Coupler Face Activated - Train End #2";
+CM_ SG_ 409 HM12xZSbyPass "Zero Speed Bypass";
+CM_ SG_ 409 HM12xTDCLNOSBP "TDCLNOS Bypass";
+CM_ SG_ 409 HM12qxTrainRecov "Train Recovery";
+CM_ SG_ 409 HM12qxZS "Manual control Zero Speed";
+CM_ SG_ 409 HM12qxEBtimer "EB Timer";
+CM_ SG_ 409 HM12qxBuzzer "Buzzer";
+CM_ SG_ 409 HM12qxManualMode "Manual Mode is established ";
+CM_ SG_ 409 HM12qxHeadLights "Head Lights";
+CM_ SG_ 409 HM12qxMarkerLigh "Marker Lights";
+CM_ SG_ 409 HM12qxNot_MC "No Motoring Command";
+CM_ SG_ 409 HM12qxDoorUnlock "Sum of all door close & locked status from the CanBus";
+CM_ SG_ 409 HM12qxPECLatched "PEC Relay Latched";
+CM_ SG_ 409 HM12qxPBRCLatche "PBRC Relay Latched";
+CM_ SG_ 409 HM12qxWiper_Rese "Wiper Reset";
+CM_ SG_ 409 HM12qxWiper_Low "Wiper Low";
+CM_ SG_ 409 HM12qxWiper_High "Wiper High";
+CM_ SG_ 409 HM12qxIntLight "Interior Light  (only on HM11; spare on HM12)";
+CM_ SG_ 409 HM12qxCoupStat "Coupler Status Relay  Activated - Train End #2";
+CM_ SG_ 409 HM12qxUncouple "Uncouple - Train End #2";
+CM_ SG_ 409 HM12qxHMS_Fault "HMS Fault Ligtht turned on at #2 end car";
+CM_ SG_ 409 HM12qxPBRC "Park Brake Release Command - Train end #2";
+CM_ SG_ 409 HM12xToggleBit "HMS toggle bit to indicate PDO activity (and PLC activity)";
+CM_ SG_ 409 HM12xPSA_Reset "Passenger Silent Alarm Reset";
+CM_ SG_ 409 HM12xEBRC "Emergency brake  release command ";
+CM_ SG_ 409 HM12xVATC_ZS "VATC Zero Speed Signal";
+CM_ SG_ 409 HM12xREV "Reverse command";
+CM_ SG_ 409 HM12xDEC "Deceleration Command";
+CM_ SG_ 409 HM12xFWD "Forward command";
+CM_ SG_ 409 HM12xACC "Acceleration Command";
+CM_ SG_ 426 FB11xBAS "Brake Applied State";
+CM_ SG_ 426 FB11xDEC "Deceleration Command Received";
+CM_ SG_ 426 FB11xPBCOM "Parking Brake Command Feedback";
+CM_ SG_ 426 FB11xEBCOM "Emergency Brake Command Feedback";
+CM_ SG_ 426 FB11xPMRL "Pump Motor Running (local)";
+CM_ SG_ 426 FB11xEBR "Emergency Brake Relay Energized";
+CM_ SG_ 426 FB11xDValve "D Valve Command Energized";
+CM_ SG_ 426 FB11xJValve "J Valve Command Energized";
+CM_ SG_ 426 FB11xPPort "Passive Port Active Energized";
+CM_ SG_ 426 FB11xEValve "E Valve Energized";
+CM_ SG_ 426 FB11xPBA "Park Brake Applied";
+CM_ SG_ 426 FB11xWSA "Wheel Slide Correction Active";
+CM_ SG_ 426 FB11xSELV "Selector Valve Manual Release Active";
+CM_ SG_ 426 FB11xPSW4 "Pressure Switch for hand Pump has pressure";
+CM_ SG_ 428 FB12xBAS "Brake Applied State";
+CM_ SG_ 428 FB12xDEC "Deceleration Command Received";
+CM_ SG_ 428 FB12xPBCOM "Parking Brake Command Feedback";
+CM_ SG_ 428 FB12xEBCOM "Emergency Brake Command Feedback";
+CM_ SG_ 428 FB12xPMRL "Pump Motor Running (local)";
+CM_ SG_ 428 FB12xEBR "Emergency Brake Relay Energized";
+CM_ SG_ 428 FB12xDValve "D Valve Command Energized";
+CM_ SG_ 428 FB12xJValve "J Valve Command Energized";
+CM_ SG_ 428 FB12xPPort "Passive Port Active Energized";
+CM_ SG_ 428 FB12xEValve "E Valve Energized";
+CM_ SG_ 428 FB12xPBA "Park Brake Applied";
+CM_ SG_ 428 FB12xWSA "Wheel Slide Correction Active";
+CM_ SG_ 428 FB12xSELV "Selector Valve Manual Release Active";
+CM_ SG_ 428 FB12xPSW4 "Pressure Switch for hand Pump has pressure";
+CM_ SG_ 390 VN5xChgUndef "Undefined Battery Charge Level";
+CM_ SG_ 390 VN5xBatCB_Open "Battery Circuit Breaker Open";
+CM_ SG_ 390 VN5xGF_PosBus "DC Ground Fault to +VE line Bus";
+CM_ SG_ 390 VN5xGF_NegBus "DC Ground Fault to -VE line Bus";
+CM_ SG_ 390 VN5xEtimeLT60 "Charge Less Than 60 Minutes";
+CM_ SG_ 390 VN5xEtimeLT15 "Charge Less Than 15 Minutes";
+CM_ SG_ 390 VN5xBatTempFault "Battery Temperature Sensor Fault (open or shorted)";
+CM_ SG_ 390 VN5xT_Bat_High "Battery Overtemperature";
+CM_ SG_ 390 VN5xTB1LF "Track Brake End#1 Left Fault";
+CM_ SG_ 390 VN5xTB1RF "Track Brake End#1 Right Fault ";
+CM_ SG_ 390 VN5xTB2LF "Track Brake End#2 Left Fault";
+CM_ SG_ 390 VN5xTB2RF "Track Brake End#2 Right Fault";
+CM_ SG_ 390 VN5xSupplyPressL "Air Reservoir Pressure Low";
+CM_ SG_ 390 VN5xPT1PN_LowP "Low Air Suspension Pressure End#1";
+CM_ SG_ 390 VN5xPT2PN_LowP "Low Air Suspension Pressure End#2";
+CM_ SG_ 390 VN5xSupplyPressH "Air Reservoir Pressure High";
+CM_ SG_ 390 VN5xPT1PN_HighP "High Air Suspension Pressure End#1";
+CM_ SG_ 390 VN5xPT2PN_HighP "High Air Suspension Pressure End#2";
+CM_ SG_ 390 VN5xFExtingRemov "Fire Extinguisher Removed";
+CM_ SG_ 390 VN5xBAM_Release "BAM Released";
+CM_ SG_ 390 VN5xBAM_Halt "BAM Halted";
+CM_ SG_ 390 VN5xLatchedPSA "Latched Passenger Silent Alarm";
+CM_ SG_ 390 VN5xHM_ConfigControlMissmatch "HMS Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 VN5xFB_ConfigControlMissmatch "Brake Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 VN5xHVAC_ConfigControlMissmatch "HVAC Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 VN5xPCU_ConfigControlMissmatch "PCU Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 VN5xSD_ConfigControlMissmatch "Smoke Detector Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 VN5xVATC_ConfigControlMissmatch "VATC Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 Reserved "Reserved for APU in future projects
+APU Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 VN5xDC_ConfigControlMissmatch "Door Software Configuration Control Missmatch Between Equipment";
+CM_ SG_ 390 VN5xPP11_NetFail "Propulsion 11 Network Comm. Failure";
+CM_ SG_ 390 VN5xPP12_NetFail "Propulsion 12 Network Comm. Failure";
+CM_ SG_ 390 VN5xFB11_NetFail "Brake 11 Network Comm. Failure";
+CM_ SG_ 390 VN5xFB12_NetFail "Brake 12 Network Comm. Failure";
+CM_ SG_ 390 VN5xAP11_NetFail "APU Network Comm. Failure";
+CM_ SG_ 390 VN5xVA11_NetFail "HVAC 11 Network Comm. Failure";
+CM_ SG_ 390 VN5xVA12_NetFail "HVAC 12 Network Comm. Failure";
+CM_ SG_ 390 VN5xSD11_NetFail "Smoke Detector 11 Network Comm. Failure";
+CM_ SG_ 390 VN5xSD12_NetFail "Smoke Detector 12 Network Comm. Failure";
+CM_ SG_ 390 VN5xDC11_NetFail "Door 11 Network Comm. Failure";
+CM_ SG_ 390 VN5xDC12_NetFail "Door 12 Network Comm. Failure";
+CM_ SG_ 390 VN5xDC13_NetFail "Door 13 Network Comm. Failure";
+CM_ SG_ 390 VN5xDC14_NetFail "Door 14 Network Comm. Failure";
+CM_ SG_ 390 VN5xCC11_NetFail "CCU Network Comm. Failure";
+CM_ SG_ 390 VN5xVC11_NetFail "VATC 11 Network Comm. Failure";
+CM_ SG_ 390 VN5xVC12_NetFail "VATC 12 Network Comm. Failure";
+CM_ SG_ 390 VN5xHM11_NetFail "PLC 11 Network Comm. Failure";
+CM_ SG_ 390 VN5xHM12_NetFail "PLC 12 Network Comm. Failure";
+CM_ SG_ 390 VN5xIO11_NetFail "Remote I/O Network Comm. Failure";
+CM_ SG_ 430 AP11xPrechg "APU Precharge ";
+CM_ SG_ 430 AP11xSlfTst "Selftest progress";
+CM_ SG_ 430 AP11_Spare_Bit_2 "Spare";
+CM_ SG_ 430 AP11xCB1PhOK "State CB AC Single Phase";
+CM_ SG_ 430 AP11xHVAvl "APU HV Avail ";
+CM_ SG_ 430 AP11xHeater1_On "Floor Heaters Stage 1 Turned On";
+CM_ SG_ 430 AP11xHeater2_On "Floor Heaters Stage 2 Turned On";
+CM_ SG_ 430 AP11x3PhPP11F_OK "480 VAC - 3 Phases Healthy For PCU 11 Fan";
+CM_ SG_ 430 AP11x3PhPP12F_OK "480 VAC - 3 Phases Healthy For PCU 12 Fan";
+CM_ SG_ 430 AP11x3PhBP11OK "480 VAC - 3 Phases Healthy For Brake Pump 1";
+CM_ SG_ 430 AP11x3PhBP12OK "480 VAC - 3 Phases Healthy For Brake Pump 2";
+CM_ SG_ 430 AP11xInv1_Healthy "Inverter#1 Operating/Healthy";
+CM_ SG_ 430 AP11xInv2_Healthy "Inverter#2 Operating/Healthy";
+CM_ SG_ 430 AP11xLVPS_Oper "LVPS Operating";
+CM_ SG_ 430 AP11xInv1Cont2C "Inverter #1 Isol. Contactor (2) Closed";
+CM_ SG_ 430 AP11xInv2Cont3C "Inverter #2 Isol. Contactor (3) Closed";
+CM_ SG_ 430 AP11xACEBCont4C "AC Ess. Bus Contactor (4) Closed";
+CM_ SG_ 430 AP11xStandbyMode "Standby Mode";
+CM_ SG_ 434 VA11xOff "OFF";
+CM_ SG_ 434 VA11xTestCool2 "Test Cool 2";
+CM_ SG_ 434 VA11xTestHeat "Test Heat";
+CM_ SG_ 434 VA11xPreheating "Auto - Preheating";
+CM_ SG_ 434 VA11xPrecooling "Auto - Precooling";
+CM_ SG_ 434 VA11xStandbyOff "Auto - Off (Standby)";
+CM_ SG_ 434 VA11xStandbyHeat "Auto -  Standby Heat";
+CM_ SG_ 434 VA11xStandbyCool "Auto - Standby Cool";
+CM_ SG_ 434 VA11xLockedOut "Locked Out";
+CM_ SG_ 434 VA11xVentilation "Auto - Ventilation";
+CM_ SG_ 434 VA11xCool1 "Auto - Cool 1";
+CM_ SG_ 434 VA11xCool2 "Auto - Cool 2";
+CM_ SG_ 434 VA11xHeat "Auto - Heat";
+CM_ SG_ 434 VA11xReheat "Auto - Reheat";
+CM_ SG_ 434 VA11xHighAmbient "Auto - High Ambient Temperataure";
+CM_ SG_ 434 VA11xSD_Off "Auto - Off (Smoke Detected)";
+CM_ SG_ 434 VA11xACpowerOff "Auto - Off (No AC Power)";
+CM_ SG_ 434 VA11xPumpdown "Pumpdown to Off";
+CM_ SG_ 434 VA11xSAFOn "Supply Air Fan On";
+CM_ SG_ 434 VA11xAFOn "Auxiliary Fan On";
+CM_ SG_ 434 VA11xCFLS "Condenser Fan Low Speed";
+CM_ SG_ 434 VA11xCFHS "Condenser Fan High Speed";
+CM_ SG_ 434 VA11xCAOn "Compressor A On";
+CM_ SG_ 434 VA11xCBOn "Compressor B On";
+CM_ SG_ 434 VA11xCAPumpDwn "Compressor A Pumpdown";
+CM_ SG_ 434 VA11xCBPumpDwn "Compressor B Pumpdown";
+CM_ SG_ 434 VA11xTHOn "Threshold Heater On";
+CM_ SG_ 434 VA11xWHeatOn "Windshield Heater On";
+CM_ SG_ 434 VA11xTurnOnHeat1 "Turn On Stage 1 Floor Heater";
+CM_ SG_ 434 VA11xTurnOnHeat2 "Turn On Stage 2 Floor Heater";
+CM_ SG_ 434 VA11bDamper1PSP "Fresh Air Damper 1 Position Set Point (Percent)";
+CM_ SG_ 434 VA11bDamper2PSP "Fresh Air Damper 2 Position Set Point (Percent)";
+CM_ SG_ 435 VA12xOff "OFF";
+CM_ SG_ 435 VA12xTestCool2 "Test Cool 2";
+CM_ SG_ 435 VA12xTestHeat "Test Heat";
+CM_ SG_ 435 VA12xPreheating "Auto - Preheating";
+CM_ SG_ 435 VA12xPrecooling "Auto - Precooling";
+CM_ SG_ 435 VA12xStandbyOff "Auto - Off (Standby)";
+CM_ SG_ 435 VA12xStandbyHeat "Auto -  Standby Heat";
+CM_ SG_ 435 VA12xStandbyCool "Auto - Standby Cool";
+CM_ SG_ 435 VA12xLockedOut "Locked Out";
+CM_ SG_ 435 VA12xVentilation "Auto - Ventilation";
+CM_ SG_ 435 VA12xCool1 "Auto - Cool 1";
+CM_ SG_ 435 VA12xCool2 "Auto - Cool 2";
+CM_ SG_ 435 VA12xHeat "Auto - Heat";
+CM_ SG_ 435 VA12xReheat "Auto - Reheat";
+CM_ SG_ 435 VA12xHighAmbient "Auto - High Ambient Temperataure";
+CM_ SG_ 435 VA12xSD_Off "Auto - Off (Smoke Detected)";
+CM_ SG_ 435 VA12xACpowerOff "Auto - Off (No AC Power)";
+CM_ SG_ 435 VA12xPumpdown "Pumpdown to Off";
+CM_ SG_ 435 VA12xSAFOn "Supply Air Fan On";
+CM_ SG_ 435 VA12xAFOn "Auxiliary Fan On";
+CM_ SG_ 435 VA12xCFLS "Condenser Fan Low Speed";
+CM_ SG_ 435 VA12xCFHS "Condenser Fan High Speed";
+CM_ SG_ 435 VA12xCAOn "Compressor A On";
+CM_ SG_ 435 VA12xCBOn "Compressor B On";
+CM_ SG_ 435 VA12xCAPumpDwn "Compressor A Pumpdown";
+CM_ SG_ 435 VA12xCBPumpDwn "Compressor B Pumpdown";
+CM_ SG_ 435 VA12xTHOn "Threshold Heater On";
+CM_ SG_ 435 VA12xWHeatOn "Windshield Heater On";
+CM_ SG_ 435 VA12xTurnOnHeat1 "Turn On Stage 1 Floor Heater";
+CM_ SG_ 435 VA12xTurnOnHeat2 "Turn On Stage 2 Floor Heater";
+CM_ SG_ 394 VC11xInControl "VATC 1 is controlling the train";
+CM_ SG_ 394 VC11xATOA "ATO Available";
+CM_ SG_ 396 VC12xInControl "VATC 2 is controlling the train";
+CM_ SG_ 396 VC12xATOA "ATO Available";
+CM_ SG_ 676 PP11xPCULoss "PCU Loss (Temporarily Shut Down)";
+CM_ SG_ 676 PP11xLossProp "Loss of propulsion capability";
+CM_ SG_ 676 PP11xLCK "PCU locked out";
+CM_ SG_ 676 PP11xIntrnl24VFt "Internal 24V Power Supply Fault";
+CM_ SG_ 676 PP11xErorDCBusMe "DC High Voltage Bus Measurement Error";
+CM_ SG_ 676 PP11xLWA "LIM Warm ";
+CM_ SG_ 676 PP11xLHA "LIM Hot ";
+CM_ SG_ 676 PP11xTHD "PCU Hot ";
+CM_ SG_ 676 PP11xGCD "Ground fault on high voltage circuit";
+CM_ SG_ 676 PP11xHBT "Line breaker is tripped by input over current";
+CM_ SG_ 676 PP11xCFD "IGBT Gate drive unit feedback signal fault";
+CM_ SG_ 676 PP11xMOCD "Over current in the LIM";
+CM_ SG_ 676 PP11xPUD "PCU output current does not balance";
+CM_ SG_ 676 PP11xFCD "Filter capacitor pre-charging fault";
+CM_ SG_ 676 PP11xPGD1 "Velocity signal faulty - Tacho 1";
+CM_ SG_ 676 PP11xGPLVD "Gate unit supply voltage low";
+CM_ SG_ 676 PP11xCPLVD "Control electronics supply voltage Low";
+CM_ SG_ 676 PP11xWDTD "CPU watchdog monitoring";
+CM_ SG_ 676 PP11xWDT1 "Digital signal Processor Faulty";
+CM_ SG_ 676 PP11xOVD "Filter capacitor over voltage";
+CM_ SG_ 676 PP11xOVTD1 "Soft crowbar fired without command";
+CM_ SG_ 676 PP11xFRIR "Forward / Reverse command faulty";
+CM_ SG_ 676 PP11xADIR "Acceleration / Deceleration command faulty";
+CM_ SG_ 676 PP11xTMIR "Thrust magnitude signal faulty";
+CM_ SG_ 676 PP11xCHKD "CHK (Pre-charge contactor) can not be closed";
+CM_ SG_ 676 PP11xCHKDA "CHK (Pre-charge contactor) can not be opened";
+CM_ SG_ 676 PP11xHBD "HB (High speed circuit breaker) can not be closed";
+CM_ SG_ 676 PP11xHBDA "HB (High speed circuit breaker) can not be opened";
+CM_ SG_ 676 PP11xPEIR "Propulsion Enable command faulty";
+CM_ SG_ 676 PP11xOVTD2 "Soft crowbar fired with no current";
+CM_ SG_ 676 PP11xHBRDA "HBR contact faulty";
+CM_ SG_ 676 PP11xOPRDA "OPR contact faulty";
+CM_ SG_ 676 PP11xGSERR "IGBT gates start pulsing without P.E. signal";
+CM_ SG_ 676 PP11xPGD2 "Velocity signal faulty - Tacho 2";
+CM_ SG_ 676 PP11xLVB_Low "Low Voltage Bus lower than 30V";
+CM_ SG_ 676 PP11xTHPTF "LIM Temperature sensor faulty";
+CM_ SG_ 677 PP12xPCULoss "PCU Loss (Temporarily Shut Down)";
+CM_ SG_ 677 PP12xLossProp "Loss of propulsion capability";
+CM_ SG_ 677 PP12xLCK "PCU locked out";
+CM_ SG_ 677 PP12xIntrnl24VFt "Internal 24V Power Supply Fault";
+CM_ SG_ 677 PP12xErorDCBusMe "DC High Voltage Bus Measurement Error";
+CM_ SG_ 677 PP12xLWA "LIM Warm ";
+CM_ SG_ 677 PP12xLHA "LIM Hot ";
+CM_ SG_ 677 PP12xTHD "PCU Hot ";
+CM_ SG_ 677 PP12xGCD "Ground fault on high voltage circuit";
+CM_ SG_ 677 PP12xHBT "Line breaker is tripped by input over current";
+CM_ SG_ 677 PP12xCFD "IGBT Gate drive unit feedback signal fault";
+CM_ SG_ 677 PP12xMOCD "Over current in the LIM";
+CM_ SG_ 677 PP12xPUD "PCU output current does not balance";
+CM_ SG_ 677 PP12xFCD "Filter capacitor pre-charging fault";
+CM_ SG_ 677 PP12xPGD1 "Velocity signal faulty - Tacho 1";
+CM_ SG_ 677 PP12xGPLVD "Gate unit supply voltage low";
+CM_ SG_ 677 PP12xCPLVD "Control electronics supply voltage Low";
+CM_ SG_ 677 PP12xWDTD "CPU watchdog monitoring";
+CM_ SG_ 677 PP12xWDT1 "Digital signal Processor Faulty";
+CM_ SG_ 677 PP12xOVD "Filter capacitor over voltage";
+CM_ SG_ 677 PP12xOVTD1 "Soft crowbar fired without command";
+CM_ SG_ 677 PP12xFRIR "Forward / Reverse command faulty";
+CM_ SG_ 677 PP12xADIR "Acceleration / Deceleration command faulty";
+CM_ SG_ 677 PP12xTMIR "Thrust magnitude signal faulty";
+CM_ SG_ 677 PP12xCHKD "CHK (Pre-charge contactor) can not be closed";
+CM_ SG_ 677 PP12xCHKDA "CHK (Pre-charge contactor) can not be opened";
+CM_ SG_ 677 PP12xHBD "HB (High speed circuit breaker) can not be closed";
+CM_ SG_ 677 PP12xHBDA "HB (High speed circuit breaker) can not be opened";
+CM_ SG_ 677 PP12xPEIR "Propulsion Enable command faulty";
+CM_ SG_ 677 PP12xOVTD2 "Soft crowbar fired with no current";
+CM_ SG_ 677 PP12xHBRDA "HBR contact faulty";
+CM_ SG_ 677 PP12xOPRDA "OPR contact faulty";
+CM_ SG_ 677 PP12xGSERR "IGBT gates start pulsing without P.E. signal";
+CM_ SG_ 677 PP12xPGD2 "Velocity signal faulty - Tacho 2";
+CM_ SG_ 677 PP12xLVB_Low "Low Voltage Bus lower than 30V";
+CM_ SG_ 677 PP12xTHPTF "LIM Temperature sensor faulty";
+CM_ SG_ 938 FB11xCAN1 "Communication error on ESRA system bus and/ or incorrect s/w loaded";
+CM_ SG_ 938 FB11xNVA1 "Error reading net variable; internal Error   and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xNVT1 "The MB04 board reports this error when it is unable to receive at least one of the expected network variables with the initial set points. ";
+CM_ SG_ 938 FB11xIOA1 "Error reading inputs or writing outputs of this board; internal Error1  and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xACT1 "Function activation error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xCFG1 "Software configuration error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xEEP1 "EEPROM defective and/or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xCOD1 "Coding via front plug does not match internally stored node number.";
+CM_ SG_ 938 FB11xS111 "Short circuit power output POP1.";
+CM_ SG_ 938 FB11xS121 "Short circuit power output POP2.";
+CM_ SG_ 938 FB11xS211 "Short circuit power output POP3.";
+CM_ SG_ 938 FB11xS221 "Short circuit power output POP4.";
+CM_ SG_ 938 FB11xS311 "Short circuit power output POP5.";
+CM_ SG_ 938 FB11xS321 "Short circuit power output POP6.";
+CM_ SG_ 938 FB11xS411 "Short circuit power output POP7.";
+CM_ SG_ 938 FB11xS421 "Short circuit power output POP8.";
+CM_ SG_ 938 FB11xO111 "Open circuit power output POP1.";
+CM_ SG_ 938 FB11xO121 "Open circuit power output POP2.";
+CM_ SG_ 938 FB11xO211 "Open circuit power output POP3.";
+CM_ SG_ 938 FB11xO221 "Open circuit power output POP4.";
+CM_ SG_ 938 FB11xO311 "Open circuit power output POP5.";
+CM_ SG_ 938 FB11xO321 "Open circuit power output POP6.";
+CM_ SG_ 938 FB11xO411 "Open circuit power output POP7.";
+CM_ SG_ 938 FB11xO421 "Open circuit power output POP8.";
+CM_ SG_ 938 FB11xCO11 "Output stages POP1, POP2, POP3, and POP4: Safety time expired or power cut off after a short circuit.";
+CM_ SG_ 938 FB11xCO21 "Output stages POP5, POP6, POP7, and POP8: Safety time expired or power cut off after a short circuit.";
+CM_ SG_ 938 FB11xECU1 "Failsafe monitoring the MB04 processor is inoperative.";
+CM_ SG_ 938 FB11xCAN2 "Communication error on ESRA system bus and/ or incorrect s/w loaded";
+CM_ SG_ 938 FB11xNVA2 "Error by reading net variable; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xNVT2 "The EB01 board reports this error when it is unable to receive at least one of the expected network variables with the initial set points. ";
+CM_ SG_ 938 FB11xIOA2 "Error reading inputs or writing outputs of this board; internal Error  and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xACT2 "Function activation error; internal Error2   and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xCFG2 "Software configuration error; internal Error2  and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xEEP2 "EEPROM defective and/or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xCOD2 "Coding via front plug does not match internally stored node number.";
+CM_ SG_ 938 FB11xRY12 "Relay R01 Defective";
+CM_ SG_ 938 FB11xRY22 "Relay R02 Defective";
+CM_ SG_ 938 FB11xRY32 "Relay R03 Defective";
+CM_ SG_ 938 FB11xRY42 "Relay R04 Defective";
+CM_ SG_ 938 FB11xRY52 "Relay R05 Defective";
+CM_ SG_ 938 FB11xRY62 "Relay R06 Defective";
+CM_ SG_ 938 FB11xRY72 "Relay R07 Defective";
+CM_ SG_ 938 FB11xRY82 "Relay R08 Defective";
+CM_ SG_ 938 FB11xWD02 "I/O watchdog has switched off board outputs.";
+CM_ SG_ 938 FB11xCAN3 "Communication error on ESRA system bus and/ or incorrect software loaded";
+CM_ SG_ 938 FB11xNVA3 "Read error of net variable; internal Error 2 and/ or incorrect software loaded.";
+CM_ SG_ 938 FB11xNVT3 "The EB03 board reports this error when it is unable to receive at least one of the expected network variables with the initial set points. ";
+CM_ SG_ 938 FB11xIOA3 "Error reading inputs or writing outputs of this board; internal Error2  and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xACT3 "Function activation error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xCFG3 "Software configuration error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xEEP3 "EEPROM defective and/or incorrect s/w loaded.";
+CM_ SG_ 938 FB11xCOD3 "Coding via front plug does not match internally stored node number.";
+CM_ SG_ 1194 FB11x70 "Speed Sensor Fault, All Axles";
+CM_ SG_ 1194 FB11x72 "Speed Sensor Fault at One Axle";
+CM_ SG_ 1194 FB11x73 "Speed Sensor Fault, Multiple Axles";
+CM_ SG_ 1194 FB11xD01 "Slide Main Board Err / Wheel Slide Error Present";
+CM_ SG_ 1194 FB11x16 "Axle 1 Detected as Non-Rotating";
+CM_ SG_ 1194 FB11x26 "Axle 2 Detected as Non-Rotating";
+CM_ SG_ 1194 FB11x36 "Axle 3 Detected as Non-Rotating";
+CM_ SG_ 1194 FB11x46 "Axle 4 Detected as Non-Rotating";
+CM_ SG_ 1194 FB11x12_1 "Speed Sensor Axle 1 Frequency Out of Range";
+CM_ SG_ 1194 FB11x22_1 "Speed Sensor Axle 2 Frequency Out of Range";
+CM_ SG_ 1194 FB11x32_1 "Speed Sensor Axle 3 Frequency Out of Range";
+CM_ SG_ 1194 FB11x42_1 "Speed Sensor Axle 4 Frequency Out of Range";
+CM_ SG_ 1194 FB11xDV_1 "Speed Sensor Axle 1 Speed Deviates From All Others";
+CM_ SG_ 1194 FB11xDV_2 "Speed Sensor Axle 2 Speed Deviates From All Others";
+CM_ SG_ 1194 FB11xDV_3 "Speed Sensor Axle 3 Speed Deviates From All Others";
+CM_ SG_ 1194 FB11xDV_4 "Speed Sensor Axle 4 Speed Deviates From All Others";
+CM_ SG_ 1194 FB11xSLTO "Slave processor fails to respond to configuration attempt (WSP)";
+CM_ SG_ 1194 FB11xROFF "Pressure sensor offset error.";
+CM_ SG_ 1194 FB11xRABW "Regulator deviation; resultant pressure differs from commanded pressure.";
+CM_ SG_ 1194 FB11xRLRN "Fails learning procedure.";
+CM_ SG_ 1194 FB11xRLEK "Unsuccessful leakage test.";
+CM_ SG_ 1194 FB11xRVLT "Regulator unable to complete learning of pre-voltages.";
+CM_ SG_ 1194 FB11xRINT "Range error detected during init procedure";
+CM_ SG_ 1194 FB11xRATE "EHU pressure build rate is lower than expected.";
+CM_ SG_ 1194 FB11xPUMP "This fault occurs when any pump fault is annunciated.";
+CM_ SG_ 1194 FB11xPTHI "EHU System Pressure is above the normal high limit of 155 bar.";
+CM_ SG_ 1194 FB11xPTLO "EHU System Pressure is below the normal low limit of 110 bar.";
+CM_ SG_ 1194 FB11xCONT "EHU Motor Contactor Not matching contactor command.";
+CM_ SG_ 1194 FB11xSLRP "Extension board did not communicate with Main Board";
+CM_ SG_ 1194 FB11xAPUD "MB04 board unable to complete software process.";
+CM_ SG_ 1194 FB11xASTA "MB04 software process error";
+CM_ SG_ 1194 FB11xAEEP "MB04 board unable to access own EEPROM.";
+CM_ SG_ 1194 FB11xPWHI "Brake demand PWM signal is higher than 50%.";
+CM_ SG_ 1194 FB11xPWLO "Brake demand PWM signal is lower than 5%.";
+CM_ SG_ 1194 FB11xFEBR "Emergency Brake relay position does not match trainline commanded position; either open or closed.";
+CM_ SG_ 1194 FB11xFPBM "Pressure commanded for Park Brake not achieved";
+CM_ SG_ 1194 FB11xECUR "The remote ECU has stopped transmitting the 500 Hz Health Signal";
+CM_ SG_ 1194 FB11xMANP "Selector valve for the manual Handpump is in the manual position.";
+CM_ SG_ 1194 FB11xECUL "The local ECU has stopped transmitting the 500 Hz Health Signal";
+CM_ SG_ 1194 FB11xFDBD "Condition(s) sensed that is indicative of a dragging brake";
+CM_ SG_ 1194 FB11xPPRT "The Pressure indicated by the P Port PS does not match EB Trainline demanded state.";
+CM_ SG_ 1194 FB11xPWLS "PWM Brake Demand has been lost completely, but the last known value may be within valid range";
+CM_ SG_ 1194 FB11xFDBR "Requested Remote Release on remote EHM has not changed state of Remote Release Pressure Switch";
+CM_ SG_ 1194 FB11xBTOR "Active port Transducer is reading over 21.9 ma or below 3.75 ma.";
+CM_ SG_ 1194 FB11xSTOR "Supply Transducer is reading over 21.9 ma or below 3.75 ma.";
+CM_ SG_ 1194 FB11xRRAC "Remote Release Active - E and J valve are actuated and remote ECU Health has been lost";
+CM_ SG_ 1194 FB11xWSPD "Wheel slide has been disabled";
+CM_ SG_ 940 FB12xCAN1 "Communication error on ESRA system bus and/ or incorrect s/w loaded";
+CM_ SG_ 940 FB12xNVA1 "Error reading net variable; internal Error   and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xNVT1 "The MB04 board reports this error when it is unable to receive at least one of the expected network variables with the initial set points. ";
+CM_ SG_ 940 FB12xIOA1 "Error reading inputs or writing outputs of this board; internal Error1  and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xACT1 "Function activation error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xCFG1 "Software configuration error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xEEP1 "EEPROM defective and/or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xCOD1 "Coding via front plug does not match internally stored node number.";
+CM_ SG_ 940 FB12xS111 "Short circuit power output POP1.";
+CM_ SG_ 940 FB12xS121 "Short circuit power output POP2.";
+CM_ SG_ 940 FB12xS211 "Short circuit power output POP3.";
+CM_ SG_ 940 FB12xS221 "Short circuit power output POP4.";
+CM_ SG_ 940 FB12xS311 "Short circuit power output POP5.";
+CM_ SG_ 940 FB12xS321 "Short circuit power output POP6.";
+CM_ SG_ 940 FB12xS411 "Short circuit power output POP7.";
+CM_ SG_ 940 FB12xS421 "Short circuit power output POP8.";
+CM_ SG_ 940 FB12xO111 "Open circuit power output POP1.";
+CM_ SG_ 940 FB12xO121 "Open circuit power output POP2.";
+CM_ SG_ 940 FB12xO211 "Open circuit power output POP3.";
+CM_ SG_ 940 FB12xO221 "Open circuit power output POP4.";
+CM_ SG_ 940 FB12xO311 "Open circuit power output POP5.";
+CM_ SG_ 940 FB12xO321 "Open circuit power output POP6.";
+CM_ SG_ 940 FB12xO411 "Open circuit power output POP7.";
+CM_ SG_ 940 FB12xO421 "Open circuit power output POP8.";
+CM_ SG_ 940 FB12xCO11 "Output stages POP1, POP2, POP3, and POP4: Safety time expired or power cut off after a short circuit.";
+CM_ SG_ 940 FB12xCO21 "Output stages POP5, POP6, POP7, and POP8: Safety time expired or power cut off after a short circuit.";
+CM_ SG_ 940 FB12xECU1 "Failsafe monitoring the MB04 processor is inoperative.";
+CM_ SG_ 940 FB12xCAN2 "Communication error on ESRA system bus and/ or incorrect s/w loaded";
+CM_ SG_ 940 FB12xNVA2 "Error by reading net variable; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xNVT2 "The EB01 board reports this error when it is unable to receive at least one of the expected network variables with the initial set points. ";
+CM_ SG_ 940 FB12xIOA2 "Error reading inputs or writing outputs of this board; internal Error  and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xACT2 "Function activation error; internal Error2   and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xCFG2 "Software configuration error; internal Error2  and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xEEP2 "EEPROM defective and/or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xCOD2 "Coding via front plug does not match internally stored node number.";
+CM_ SG_ 940 FB12xRY12 "Relay R01 Defective";
+CM_ SG_ 940 FB12xRY22 "Relay R02 Defective";
+CM_ SG_ 940 FB12xRY32 "Relay R03 Defective";
+CM_ SG_ 940 FB12xRY42 "Relay R04 Defective";
+CM_ SG_ 940 FB12xRY52 "Relay R05 Defective";
+CM_ SG_ 940 FB12xRY62 "Relay R06 Defective";
+CM_ SG_ 940 FB12xRY72 "Relay R07 Defective";
+CM_ SG_ 940 FB12xRY82 "Relay R08 Defective";
+CM_ SG_ 940 FB12xWD02 "I/O watchdog has switched off board outputs.";
+CM_ SG_ 940 FB12xCAN3 "Communication error on ESRA system bus and/ or incorrect software loaded";
+CM_ SG_ 940 FB12xNVA3 "Read error of net variable; internal Error 2 and/ or incorrect software loaded.";
+CM_ SG_ 940 FB12xNVT3 "The EB03 board reports this error when it is unable to receive at least one of the expected network variables with the initial set points. ";
+CM_ SG_ 940 FB12xIOA3 "Error reading inputs or writing outputs of this board; internal Error2  and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xACT3 "Function activation error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xCFG3 "Software configuration error; internal Error2 and/ or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xEEP3 "EEPROM defective and/or incorrect s/w loaded.";
+CM_ SG_ 940 FB12xCOD3 "Coding via front plug does not match internally stored node number.";
+CM_ SG_ 1196 FB12x70 "Speed Sensor Fault, All Axles";
+CM_ SG_ 1196 FB12x72 "Speed Sensor Fault at One Axle";
+CM_ SG_ 1196 FB12x73 "Speed Sensor Fault, Multiple Axles";
+CM_ SG_ 1196 FB12xD01 "Slide Main Board Err / Wheel Slide Error Present";
+CM_ SG_ 1196 FB12x16 "Axle 1 Detected as Non-Rotating";
+CM_ SG_ 1196 FB12x26 "Axle 2 Detected as Non-Rotating";
+CM_ SG_ 1196 FB12x36 "Axle 3 Detected as Non-Rotating";
+CM_ SG_ 1196 FB12x46 "Axle 4 Detected as Non-Rotating";
+CM_ SG_ 1196 FB12x12_1 "Speed Sensor Axle 1 Frequency Out of Range";
+CM_ SG_ 1196 FB12x22_1 "Speed Sensor Axle 2 Frequency Out of Range";
+CM_ SG_ 1196 FB12x32_1 "Speed Sensor Axle 3 Frequency Out of Range";
+CM_ SG_ 1196 FB12x42_1 "Speed Sensor Axle 4 Frequency Out of Range";
+CM_ SG_ 1196 FB12xDV_1 "Speed Sensor Axle 1 Speed Deviates From All Others";
+CM_ SG_ 1196 FB12xDV_2 "Speed Sensor Axle 2 Speed Deviates From All Others";
+CM_ SG_ 1196 FB12xDV_3 "Speed Sensor Axle 3 Speed Deviates From All Others";
+CM_ SG_ 1196 FB12xDV_4 "Speed Sensor Axle 4 Speed Deviates From All Others";
+CM_ SG_ 1196 FB12xSLTO "Slave processor fails to respond to configuration attempt (WSP)";
+CM_ SG_ 1196 FB12xROFF "Pressure sensor offset error.";
+CM_ SG_ 1196 FB12xRABW "Regulator deviation; resultant pressure differs from commanded pressure.";
+CM_ SG_ 1196 FB12xRLRN "Fails learning procedure.";
+CM_ SG_ 1196 FB12xRLEK "Unsuccessful leakage test.";
+CM_ SG_ 1196 FB12xRVLT "Regulator unable to complete learning of pre-voltages.";
+CM_ SG_ 1196 FB12xRINT "Range error detected during init procedure";
+CM_ SG_ 1196 FB12xRATE "EHU pressure build rate is lower than expected.";
+CM_ SG_ 1196 FB12xPUMP "This fault occurs when any pump fault is annunciated.";
+CM_ SG_ 1196 FB12xPTHI "EHU System Pressure is above the normal high limit of 155 bar.";
+CM_ SG_ 1196 FB12xPTLO "EHU System Pressure is below the normal low limit of 110 bar.";
+CM_ SG_ 1196 FB12xCONT "EHU Motor Contactor Not matching contactor command.";
+CM_ SG_ 1196 FB12xSLRP "Extension board did not communicate with Main Board";
+CM_ SG_ 1196 FB12xAPUD "MB04 board unable to complete software process.";
+CM_ SG_ 1196 FB12xASTA "MB04 software process error";
+CM_ SG_ 1196 FB12xAEEP "MB04 board unable to access own EEPROM.";
+CM_ SG_ 1196 FB12xPWHI "Brake demand PWM signal is higher than 50%.";
+CM_ SG_ 1196 FB12xPWLO "Brake demand PWM signal is lower than 5%.";
+CM_ SG_ 1196 FB12xFEBR "Emergency Brake relay position does not match trainline commanded position; either open or closed.";
+CM_ SG_ 1196 FB12xFPBM "Pressure commanded for Park Brake not achieved";
+CM_ SG_ 1196 FB12xECUR "The remote ECU has stopped transmitting the 500 Hz Health Signal";
+CM_ SG_ 1196 FB12xMANP "Selector valve for the manual Handpump is in the manual position.";
+CM_ SG_ 1196 FB12xECUL "The local ECU has stopped transmitting the 500 Hz Health Signal";
+CM_ SG_ 1196 FB12xFDBD "Condition(s) sensed that is indicative of a dragging brake";
+CM_ SG_ 1196 FB12xPPRT "The Pressure indicated by the P Port PS does not match EB Trainline demanded state.";
+CM_ SG_ 1196 FB12xPWLS "PWM Brake Demand has been lost completely, but the last known value may be within valid range";
+CM_ SG_ 1196 FB12xFDBR "Requested Remote Release on remote EHM has not changed state of Remote Release Pressure Switch";
+CM_ SG_ 1196 FB12xBTOR "Active port Transducer is reading over 21.9 ma or below 3.75 ma.";
+CM_ SG_ 1196 FB12xSTOR "Supply Transducer is reading over 21.9 ma or below 3.75 ma.";
+CM_ SG_ 1196 FB12xRRAC "Remote Release Active - E and J valve are actuated and remote ECU Health has been lost";
+CM_ SG_ 1196 FB12xWSPD "Wheel slide has been disabled";
+CM_ SG_ 686 AP11xHVHigh "APU HV Overvoltage";
+CM_ SG_ 686 AP11xTstFailed "APU Selftest Failed";
+CM_ SG_ 686 AP11xInvOvrCur1 "Inverter #1 Overcurrent AC ";
+CM_ SG_ 686 AP11xInvOvrCur2 "Inverter #2 Overcurrent AC";
+CM_ SG_ 686 AP11xLVPS_OvVolt "LVPS Overvoltage";
+CM_ SG_ 686 AP11xBkBatLow1 "APU Backup battery low, Converter Control Unit and LVPS";
+CM_ SG_ 686 AP11xBkBatLow2 "APU Backup battery low, Inverter #1 and Inverter #2";
+CM_ SG_ 686 AP11_Spare_Bit_7 "Spare";
+CM_ SG_ 686 AP11xBlrCB1Opn "APU Cooling Fan 1 CB Open";
+CM_ SG_ 686 AP11xBlrCB2Opn "APU Cooling Fan 2 CB Open";
+CM_ SG_ 686 AP11xInFuseBlow1 "APU Floor Heater Section Input Fuse Blown";
+CM_ SG_ 686 AP11xInFuseBlow2 "APU Inverter #1 Input Fuse Blown";
+CM_ SG_ 686 AP11xInFuseBlow3 "APU Inverter #2 Input Fuse Blown";
+CM_ SG_ 686 AP11xInFuseBlow4 "APU DBS Input Fuse Blown";
+CM_ SG_ 686 AP11xFHS1GFD "Floor Heater Stage 1 Ground Fault Detected";
+CM_ SG_ 686 AP11xFHS2GFD "Floor Heater Stage 2 Ground Fault Detected";
+CM_ SG_ 686 AP11xInv1GFD "Inverter #1 Output Ground Fault Detected";
+CM_ SG_ 686 AP11xInv2GFD "Inverter #2 Output Ground Fault Detected";
+CM_ SG_ 686 AP11xSPhaseCBO "Single Phase CB Open";
+CM_ SG_ 686 AP11xVA11CBO "HVAC 11 CB Open";
+CM_ SG_ 686 AP11xVA12CBO "HVAC 12 CB Open";
+CM_ SG_ 686 AP11xPP11CBO "PCU 11 Cooling Fan CB Open";
+CM_ SG_ 686 AP11xPP12CBO "PCU 12 Cooling Fan CB Open";
+CM_ SG_ 686 AP11xLim1Fan1CBO "LIM 1 Cooling Fan 1 CB Open";
+CM_ SG_ 686 AP11xLim1Fan2CBO "LIM 1 Cooling Fan 2 CB Open";
+CM_ SG_ 686 AP11xLim2Fan1CBO "LIM 2 Cooling Fan 1 CB Open";
+CM_ SG_ 686 AP11xLim2Fan2CBO "LIM 2 Cooling Fan 2 CB Open";
+CM_ SG_ 686 AP11xACCBO "Air Compressor CB Open";
+CM_ SG_ 686 AP11xBPump1CBO "Brake Pump 1 CB Open";
+CM_ SG_ 686 AP11xBPump2CBO "Brake Pump 2 CB Open";
+CM_ SG_ 686 AP11xInv1Ded "Inverter #1 Dead";
+CM_ SG_ 686 AP11xInv2Ded "Inverter #2 Dead";
+CM_ SG_ 686 AP11xInv1OvCr "Inverter #1 Overcurrent ";
+CM_ SG_ 686 AP11xInv2OvCr "Inverter #2 Overcurrent ";
+CM_ SG_ 686 AP11_Spare_Bit_34 "Spare";
+CM_ SG_ 686 AP11_Spare_Bit_35 "Spare";
+CM_ SG_ 686 AP11xLVPSDed "LVPS Dead";
+CM_ SG_ 686 AP11_Spare_Bit_37 "Spare";
+CM_ SG_ 686 AP11_Spare_Bit_38 "Spare";
+CM_ SG_ 686 AP11xInComFlt "APU Internal Communication Faulty";
+CM_ SG_ 686 AP11xLVPSOTmp "LVPS overtemperature";
+CM_ SG_ 686 AP11xInv1OTmp "Inverter #1 overtemperature";
+CM_ SG_ 686 AP11xInv2OTmp "Inverter #2 overtemperature";
+CM_ SG_ 686 AP11xLim1Fan1Hot "LIM 1 Cooling Fan 1 Hot";
+CM_ SG_ 686 AP11xLim1Fan2Hot "LIM 1 Cooling Fan 2 Hot";
+CM_ SG_ 686 AP11xLim2Fan1Hot "LIM 2 Cooling Fan 1 Hot";
+CM_ SG_ 686 AP11xLim2Fan2Hot "LIM 2 Cooling Fan 2 Hot";
+CM_ SG_ 686 AP11xBatTher "Battery Temperature Thermistor Failed";
+CM_ SG_ 686 AP11xK3031fail "Essential Load Contactor 1 (K303.1) failed";
+CM_ SG_ 686 AP11xK3032fail "Essential Load Contactor 2 (K303.2) failed";
+CM_ SG_ 686 AP11xK302fail "Coupling Contactor (K302) failed";
+CM_ SG_ 686 AP11xFHC1fail "Floor Heater Contactor 1 (FHC1) failed";
+CM_ SG_ 686 AP11xFHC2fail "Floor Heater Contactor 2 (FHC2) failed";
+CM_ SG_ 686 AP11xK1061fail "Inverter #1 Precharge Contactor (K106.1) failed";
+CM_ SG_ 686 AP11xK1011fail "Inverter #1 Main Line Contactor (K101.1) failed";
+CM_ SG_ 686 AP11xK1062fail "Inverter #2 Precharge Contactor (K106.2) failed";
+CM_ SG_ 686 AP11xK1012fail "Inverter #2 Main Line Contactor (K101.2) failed";
+CM_ SG_ 946 VA11xCompA_CBT "Compressor A Circuit Breaker Tripped";
+CM_ SG_ 946 VA11xCompB_CBT "Compressor B Circuit Breaker Tripped";
+CM_ SG_ 946 VA11xOHHBT "Overhead Heater Breaker Tripped";
+CM_ SG_ 946 VA11xWHCBT "Windshield Heater Circuit Breaker Tripped";
+CM_ SG_ 946 VA11xSAFCBT "Supply Air Fan circuit Breaker Trip";
+CM_ SG_ 946 VA11xCondFBreaker "Condenser Fan circuit Breaker Trip";
+CM_ SG_ 946 VA11xAFCBT "Auxiliary Fan Circuit Breaker Tripped";
+CM_ SG_ 946 VA11xDTHCBT "Door Threshold Heater Circuit Breaker Tripped";
+CM_ SG_ 946 VA11xRATSF "Return Air Temperature Sensor Fault";
+CM_ SG_ 946 VA11xFATSF "Fresh Air Temperature Sensor Fault";
+CM_ SG_ 946 VA11xSTSF "Standby Temperature Sensor Fault";
+CM_ SG_ 946 VA11xSATS1F "Supply Air Temperature Sensor 1 Fault";
+CM_ SG_ 946 VA11xSATS2F "Supply Air Temperature Sensor 2 Fault";
+CM_ SG_ 946 VA11xRCAPSF "Refrigeant Circuit A Pressure Sensor Fault";
+CM_ SG_ 946 VA11xRCBPSF "Refrigeant Circuit B Pressure Sensor Fault";
+CM_ SG_ 946 VA11xFAD1PF "Fresh Air Damper 1 Position Fault";
+CM_ SG_ 946 VA11xFAD2PF "Fresh Air Damper 2 Position Fault";
+CM_ SG_ 946 VA11xCompA_CF "Compressor A Contactor Fault";
+CM_ SG_ 946 VA11xCompB_CF "Compressor B Contactor Fault";
+CM_ SG_ 946 VA11xSAFCF "Supply Air Fan Contactor Fault";
+CM_ SG_ 946 VA11xAFCF "Auxiliary Fan Contactor Fault";
+CM_ SG_ 946 VA11xOHH_ECF "Overhead Heater Enable Contactor Fault";
+CM_ SG_ 946 VA11xOHH_CCF "Overhead Heater Control Contactor Fault";
+CM_ SG_ 946 VA11xDoorTHCF "Door Threshold Heater Contactor Fault";
+CM_ SG_ 946 VA11xCFECF "Condenser Fan Enable Contactor Fault";
+CM_ SG_ 946 VA11xFCLHSCF "Condenser Fan Low/High Speed Contactor Fault";
+CM_ SG_ 946 VA11xWindHCF "Windshield Heater Contactor Fault";
+CM_ SG_ 946 VA11xAirFlowFlt "Air flow fault";
+CM_ SG_ 946 VA11xLowPresAFlt "Low Pressure A Fault";
+CM_ SG_ 946 VA11xLowPresBFlt "Low Pressure B Fault";
+CM_ SG_ 946 VA11xHiPresAFlt "High Pressure A Fault";
+CM_ SG_ 946 VA11xHiPresBFlt "High Pressure B Fault";
+CM_ SG_ 946 VA11xPmpDownAFlt "Pumpdown A Fault";
+CM_ SG_ 946 VA11xPmpDownBFlt "Pumpdown B Fault";
+CM_ SG_ 946 VA11xOHH_90C "Overhead Heater > 90 C";
+CM_ SG_ 946 VA11xOHH_180C "Overhead Heater > 180 C";
+CM_ SG_ 946 VA11xHot_ColdA "Hot/Cold Alarm";
+CM_ SG_ 946 VA11xSAFMO "Supply Air Fan Motor Overtemperature";
+CM_ SG_ 946 VA11xCFMO "Condenser Fan Motor Overtemperature";
+CM_ SG_ 946 VA11xAirFlowSwitchFlt "Air flow switch fault";
+CM_ SG_ 947 VA12xCompA_CBT "Compressor A Circuit Breaker Tripped";
+CM_ SG_ 947 VA12xCompB_CBT "Compressor B Circuit Breaker Tripped";
+CM_ SG_ 947 VA12xOHHBT "Overhead Heater Breaker Tripped";
+CM_ SG_ 947 VA12xWHCBT "Windshield Heater Circuit Breaker Tripped";
+CM_ SG_ 947 VA12xSAFCBT "Supply Air Fan circuit Breaker Trip";
+CM_ SG_ 947 VA12xCondFBreaker "Condenser Fan circuit Breaker Trip";
+CM_ SG_ 947 VA12xAFCBT "Auxiliary Fan Circuit Breaker Tripped";
+CM_ SG_ 947 VA12xDTHCBT "Door Threshold Heater Circuit Breaker Tripped";
+CM_ SG_ 947 VA12xRATSF "Return Air Temperature Sensor Fault";
+CM_ SG_ 947 VA12xFATSF "Fresh Air Temperature Sensor Fault";
+CM_ SG_ 947 VA12xSTSF "Standby Temperature Sensor Fault";
+CM_ SG_ 947 VA12xSATS1F "Supply Air Temperature Sensor 1 Fault";
+CM_ SG_ 947 VA12xSATS2F "Supply Air Temperature Sensor 2 Fault";
+CM_ SG_ 947 VA12xRCAPSF "Refrigeant Circuit A Pressure Sensor Fault";
+CM_ SG_ 947 VA12xRCBPSF "Refrigeant Circuit B Pressure Sensor Fault";
+CM_ SG_ 947 VA12xFAD1PF "Fresh Air Damper 1 Position Fault";
+CM_ SG_ 947 VA12xFAD2PF "Fresh Air Damper 2 Position Fault";
+CM_ SG_ 947 VA12xCompA_CF "Compressor A Contactor Fault";
+CM_ SG_ 947 VA12xCompB_CF "Compressor B Contactor Fault";
+CM_ SG_ 947 VA12xSAFCF "Supply Air Fan Contactor Fault";
+CM_ SG_ 947 VA12xAFCF "Auxiliary Fan Contactor Fault";
+CM_ SG_ 947 VA12xOHH_ECF "Overhead Heater Enable Contactor Fault";
+CM_ SG_ 947 VA12xOHH_CCF "Overhead Heater Control Contactor Fault";
+CM_ SG_ 947 VA12xDoorTHCF "Door Threshold Heater Contactor Fault";
+CM_ SG_ 947 VA12xCFECF "Condenser Fan Enable Contactor Fault";
+CM_ SG_ 947 VA12xFCLHSCF "Condenser Fan Low/High Speed Contactor Fault";
+CM_ SG_ 947 VA12xWindHCF "Windshield Heater Contactor Fault";
+CM_ SG_ 947 VA12xAirFlowFlt "Air flow fault";
+CM_ SG_ 947 VA12xLowPresAFlt "Low Pressure A Fault";
+CM_ SG_ 947 VA12xLowPresBFlt "Low Pressure B Fault";
+CM_ SG_ 947 VA12xHiPresAFlt "High Pressure A Fault";
+CM_ SG_ 947 VA12xHiPresBFlt "High Pressure B Fault";
+CM_ SG_ 947 VA12xPmpDownAFlt "Pumpdown A Fault";
+CM_ SG_ 947 VA12xPmpDownBFlt "Pumpdown B Fault";
+CM_ SG_ 947 VA12xOHH_90C "Overhead Heater > 90 C";
+CM_ SG_ 947 VA12xOHH_180C "Overhead Heater > 180 C";
+CM_ SG_ 947 VA12xHot_ColdA "Hot/Cold Alarm";
+CM_ SG_ 947 VA12xSAFMO "Supply Air Fan Motor Overtemperature";
+CM_ SG_ 947 VA12xCFMO "Condenser Fan Motor Overtemperature";
+CM_ SG_ 947 VA12xAirFlowSwitchFlt "Air flow switch fault";
+CM_ SG_ 947 VA12bDamper1PSP "Fresh Air Damper 1 Position Set Point (Percent)";
+CM_ SG_ 947 VA12bDamper2PSP "Fresh Air Damper 2 Position Set Point (Percent)";
+CM_ SG_ 662 HM11xMP_SRA1ET_Fail "SRA1ET board (EB) malfunction";
+CM_ SG_ 662 HM11xMP_K7MP_Latch_Fail "Relay K7MP (PEC) failure to latch";
+CM_ SG_ 662 HM11xMP_K7MP_Fail "Relay K7MP (PEC) malfunction";
+CM_ SG_ 662 HM11xMP_K3MP_Fail "Relay K3MP (TDCLS) malfunction";
+CM_ SG_ 662 HM11xMP_K5MP_Fail "Relay K5MP (PBRC) malfunction";
+CM_ SG_ 662 HM11xMP_K9MP_Fail "Relay K9MP malfunction";
+CM_ SG_ 662 HM11xMP_K8MP_Fail "Relay K8MP malfunction";
+CM_ SG_ 662 HM11xMP_SW4MP_Fail "Switch SW4MP (TDOL) malfunction";
+CM_ SG_ 662 HM11xMP_SW5MP_Fail "Switch SW5MP (TDOR) malfunction";
+CM_ SG_ 662 HM11xMP_SW2MP_Fail "Contacts 43/44 of RUN switch SW2MP are welded";
+CM_ SG_ 662 HM11xMP_SW4MP_SW6MP_Fail "Switch SW4MP (TDOL) or SW6MP (TDOR) contacts welded";
+CM_ SG_ 662 HM11xMP_SW4MP_Stuck "Switch SW4MP (TDOL) is stuck";
+CM_ SG_ 662 HM11xMP_SW5MP_SW7MP_Fail "Switch SW5MP (TDOR) or SW7MP (TDCR) contacts welded";
+CM_ SG_ 662 HM11xMP_SW5MP_Stuck "Switch SW5MP is stuck";
+CM_ SG_ 662 HM11xMP_SW6MP_Stuck "Switch SW6MP is stuck";
+CM_ SG_ 662 HM11xMP_SW7MP_Stuck "Switch SW7MP is stuck";
+CM_ SG_ 662 HM11xMP_K5MP_Latch_Fail "Relay K5MP (PBRC) failure to latch";
+CM_ SG_ 662 HM11xMP_K4MP_Fail "Relay K4MP (ZS) malfunction";
+CM_ SG_ 662 HM11xMP_K1MP_Fail "Relay K1MP (Manual Mode) malfunction";
+CM_ SG_ 662 HM11xMP_AT1ET_Fail "Opto-Coupler AT1ET malfunction";
+CM_ SG_ 662 HM11xMP_Obstruction "Train Obstruction";
+CM_ SG_ 662 HM11xLogAt100 "Alarm logging is full for at least one system";
+CM_ SG_ 662 HM11xAPU_Log_Full "Alarm logging for APU is almost full";
+CM_ SG_ 662 HM11xBattery_Log_Full "Alarm logging for Battery is almost full";
+CM_ SG_ 662 HM11xComms_Log_Full "Alarm logging for Communications is almost full";
+CM_ SG_ 662 HM11xDC11_Log_Full "Alarm logging for DC11 is almost full";
+CM_ SG_ 662 HM11xDC12_Log_Full "Alarm logging for DC12 is almost full";
+CM_ SG_ 662 HM11xDC13_Log_Full "Alarm logging for DC13 is almost full";
+CM_ SG_ 662 HM11xDC14_Log_Full "Alarm logging for DC14 is almost full";
+CM_ SG_ 662 HM11xFB11_Log_Full "Alarm logging for FB11 is almost full";
+CM_ SG_ 662 HM11xFB12_Log_Full "Alarm logging for FB12 is almost full";
+CM_ SG_ 662 HM11xHM11_Log_Full "Alarm logging for HM11 is almost full";
+CM_ SG_ 662 HM11xHM12_Log_Full "Alarm logging for HM12 is almost full";
+CM_ SG_ 662 HM11xVA11_Log_Full "Alarm logging for VA11 is almost full";
+CM_ SG_ 662 HM11xVA12_Log_Full "Alarm logging for VA12 is almost full";
+CM_ SG_ 662 HM11xIO11_Log_Full "Alarm logging for IO11 is almost full";
+CM_ SG_ 662 HM11xMP11_Log_Full "Alarm logging for MP11 is almost full";
+CM_ SG_ 662 HM11xMP12_Log_Full "Alarm logging for MP12 is almost full";
+CM_ SG_ 662 HM11xNet_Log_Full "Alarm logging for Network is almost full";
+CM_ SG_ 662 HM11xPP11_Log_Full "Alarm logging for PP11 is almost full";
+CM_ SG_ 662 HM11xPP12_Log_Full "Alarm logging for PP12 is almost full";
+CM_ SG_ 662 HM11xSD11_Log_Full "Alarm logging for SD11 is almost full";
+CM_ SG_ 662 HM11xSD12_Log_Full "Alarm logging for SD12 is almost full";
+CM_ SG_ 662 HM11xSD13_Log_Full "Alarm logging for SD13 is almost full";
+CM_ SG_ 662 HM11xVC11_Log_Full "Alarm logging for VC11 is almost full";
+CM_ SG_ 662 HM11xVC12_Log_Full "Alarm logging for VC12 is almost full";
+CM_ SG_ 662 HM11xVehicle_Log_Full "Alarm logging for Vehicle is almost full";
+CM_ SG_ 662 HM11xWindHeatOn "Windshield Heater Command ON";
+CM_ SG_ 665 HM12xMP_SRA1ET_Fail "SRA1ET board (EB) malfunction";
+CM_ SG_ 665 HM12xMP_K7MP_Latch_Fail "Relay K7MP (PEC) failure to latch";
+CM_ SG_ 665 HM12xMP_K7MP_Fail "Relay K7MP (PEC) malfunction";
+CM_ SG_ 665 HM12xMP_K3MP_Fail "Relay K3MP (TDCLS) malfunction";
+CM_ SG_ 665 HM12xMP_K5MP_Fail "Relay K5MP (PBRC) malfunction";
+CM_ SG_ 665 HM12xMP_K9MP_Fail "Relay K9MP malfunction";
+CM_ SG_ 665 HM12xMP_K8MP_Fail "Relay K8MP malfunction";
+CM_ SG_ 665 HM12xMP_SW4MP_Fail "Switch SW4MP (TDOL) malfunction";
+CM_ SG_ 665 HM12xMP_SW5MP_Fail "Switch SW5MP (TDOR) malfunction";
+CM_ SG_ 665 HM12xMP_SW2MP_Fail "Contacts 43/44 of RUN switch SW2MP are welded";
+CM_ SG_ 665 HM12xMP_SW4MP_SW6MP_Fail "Switch SW4MP (TDOL) or SW6MP (TDOR) contacts welded";
+CM_ SG_ 665 HM12xMP_SW4MP_Stuck "Switch SW4MP (TDOL) is stuck";
+CM_ SG_ 665 HM12xMP_SW5MP_SW7MP_Fail "Switch SW5MP (TDOR) or SW7MP (TDCR) contacts welded";
+CM_ SG_ 665 HM12xMP_SW5MP_Stuck "Switch SW5MP is stuck";
+CM_ SG_ 665 HM12xMP_SW6MP_Stuck "Switch SW6MP is stuck";
+CM_ SG_ 665 HM12xMP_SW7MP_Stuck "Switch SW7MP is stuck";
+CM_ SG_ 665 HM12xMP_K5MP_Latch_Fail "Relay K5MP (PBRC) failure to latch";
+CM_ SG_ 665 HM12xMP_K4MP_Fail "Relay K4MP (ZS) malfunction";
+CM_ SG_ 665 HM12xMP_K1MP_Fail "Relay K1MP (Manual Mode) malfunction";
+CM_ SG_ 665 HM12xMP_AT1ET_Fail "Opto-Coupler AT1ET malfunction";
+CM_ SG_ 665 HM12xMP_Obstruction "Train Obstruction";
+CM_ SG_ 665 HM12xLogAt100 "Alarm logging is full for at least one system";
+CM_ SG_ 665 HM12xAPU_Log_Full "Alarm logging for APU is almost full";
+CM_ SG_ 665 HM12xBattery_Log_Full "Alarm logging for Battery is almost full";
+CM_ SG_ 665 HM12xComms_Log_Full "Alarm logging for Communications is almost full";
+CM_ SG_ 665 HM12xDC11_Log_Full "Alarm logging for DC11 is almost full";
+CM_ SG_ 665 HM12xDC12_Log_Full "Alarm logging for DC12 is almost full";
+CM_ SG_ 665 HM12xDC13_Log_Full "Alarm logging for DC13 is almost full";
+CM_ SG_ 665 HM12xDC14_Log_Full "Alarm logging for DC14 is almost full";
+CM_ SG_ 665 HM12xFB11_Log_Full "Alarm logging for FB11 is almost full";
+CM_ SG_ 665 HM12xFB12_Log_Full "Alarm logging for FB12 is almost full";
+CM_ SG_ 665 HM12xHM11_Log_Full "Alarm logging for HM11 is almost full";
+CM_ SG_ 665 HM12xHM12_Log_Full "Alarm logging for HM12 is almost full";
+CM_ SG_ 665 HM12xVA11_Log_Full "Alarm logging for VA11 is almost full";
+CM_ SG_ 665 HM12xVA12_Log_Full "Alarm logging for VA12 is almost full";
+CM_ SG_ 665 HM12xIO11_Log_Full "Alarm logging for IO11 is almost full";
+CM_ SG_ 665 HM12xMP11_Log_Full "Alarm logging for MP11 is almost full";
+CM_ SG_ 665 HM12xMP12_Log_Full "Alarm logging for MP12 is almost full";
+CM_ SG_ 665 HM12xNet_Log_Full "Alarm logging for Network is almost full";
+CM_ SG_ 665 HM12xPP11_Log_Full "Alarm logging for PP11 is almost full";
+CM_ SG_ 665 HM12xPP12_Log_Full "Alarm logging for PP12 is almost full";
+CM_ SG_ 665 HM12xSD11_Log_Full "Alarm logging for SD11 is almost full";
+CM_ SG_ 665 HM12xSD12_Log_Full "Alarm logging for SD12 is almost full";
+CM_ SG_ 665 HM12xSD13_Log_Full "Alarm logging for SD13 is almost full";
+CM_ SG_ 665 HM12xVC11_Log_Full "Alarm logging for VC11 is almost full";
+CM_ SG_ 665 HM12xVC12_Log_Full "Alarm logging for VC12 is almost full";
+CM_ SG_ 665 HM12xVehicle_Log_Full "Alarm logging for Vehicle is almost full";
+CM_ SG_ 665 HM12xWindHeatOn "Windshield Heater Command ON";
+CM_ SG_ 410 IO11xBatt_CB2BS "Battery Circuit Breaker Closed";
+CM_ SG_ 410 IO11xCompresHlty "Air Compressor Running";
+CM_ SG_ 410 IO11xFExtingOK "Fire Extinguisher Installed";
+CM_ SG_ 410 IO11xBAM_Release "BAM Released";
+CM_ SG_ 410 IO11xBAM_Halt "BAM Halted";
+CM_ SG_ 410 IO11xPSA "Passenger Silent Alarm";
+CM_ SG_ 906 VC11xVATC_V_A1 "Emergency Brake Trainline Deenergized";
+CM_ SG_ 906 VC11xVATC_V_A2 "Unscheduled Door Opening";
+CM_ SG_ 906 VC11xVATC_V_A3 "Loss Of Vital Zero Speed";
+CM_ SG_ 906 VC11xVATC_V_A4 "Improper Travel Direction";
+CM_ SG_ 906 VC11xVATC_V_A5 "Overspeed";
+CM_ SG_ 906 VC11xVATC_V_A6 "Safe Train Separation Fault";
+CM_ SG_ 906 VC11xVATC_V_A7 "Vehicle Location Failure";
+CM_ SG_ 906 VC11xVATC_V_A8 "Loss of Train Integrity";
+CM_ SG_ 906 VC11xVATC_V_A9 "Vehicle ATC Not Initialized";
+CM_ SG_ 906 VC11xVATC_V_A10 "VATP Cross Check Failure";
+CM_ SG_ 906 VC11xVATC_V_A11 "VATC Relay Failure";
+CM_ SG_ 906 VC11xVATC_V_A12 "VATC Tachometer Failure";
+CM_ SG_ 906 VC11xVATC_V_A13 "Door Block Failure";
+CM_ SG_ 906 VC11xVATC_V_A14 "Norming Point Reader Failure";
+CM_ SG_ 906 VC11xVATC_V_A15 "Invalid Norming Point";
+CM_ SG_ 906 VC11xVATC_V_A16 "Inaccurate Station Stop - Long";
+CM_ SG_ 906 VC11xVATC_V_A17 "Train Failed To Startup";
+CM_ SG_ 906 VC11xVATC_V_A18 "Brakes Failed To Release";
+CM_ SG_ 906 VC11xVATC_V_A19 "Park Brake Failure";
+CM_ SG_ 906 VC11xVATC_V_A20 "Wayside Service Brake Command ";
+CM_ SG_ 906 VC11xVATC_V_A21 "Unscheduled Stop";
+CM_ SG_ 906 VC11xVATC_V_A22 "Train in Manual Mode";
+CM_ SG_ 906 VC11xVATC_V_A23 "VATC-Redundant VATC Serial Link Failure";
+CM_ SG_ 906 VC11xVATC_V_A24 "Wayside Performance Modification";
+CM_ SG_ 906 VC11xVATC_V_A25 "Loss of Communication with Region ATC";
+CM_ SG_ 906 VC11xVATC_V_A26 "VATC-HMS Communication Failure";
+CM_ SG_ 906 VC11xVATC_V_A27 "VATC-CANbus Controller Serial Link Failure ";
+CM_ SG_ 906 VC11xVATC_V_A28 "Velocity Miscompare";
+CM_ SG_ 906 VC11xVATC_V_A29 "Missed or Low Battery Norming Point ";
+CM_ SG_ 906 VC11xVATC_V_A30 "Obstructed Motion";
+CM_ SG_ 906 VC11xVATC_V_A31 "Close-Up Maneuver Failed";
+CM_ SG_ 906 VC11xVATC_V_A32 "Redundant VATC Halted";
+CM_ SG_ 906 VC11xVATC_V_A33 "Doors Failed to Close";
+CM_ SG_ 906 VC11xVATC_V_A34 "Doors Failed to Open";
+CM_ SG_ 906 VC11xVATC_V_A35 "Door Status Miscompare on CANbus";
+CM_ SG_ 906 VC11xVATC_V_A36 "Door Recycle Number Exceeded";
+CM_ SG_ 906 VC11xVATC_V_A37 "HMS Reduced Brake Rate Request";
+CM_ SG_ 906 VC11xVATC_V_A38 "HMS Reduced Speed Request";
+CM_ SG_ 906 VC11xVATC_V_A39 "HMS Train Hold Request";
+CM_ SG_ 906 VC11xVATC_V_A40 "Track Voltage Failure ";
+CM_ SG_ 906 VC11xVATC_V_A41 "Invalid Wheel Diameter Calculation ";
+CM_ SG_ 906 VC11xVATC_V_A42 "Departure Test Failed";
+CM_ SG_ 906 VC11xVATC_V_A43 "Departure Test Passed";
+CM_ SG_ 906 VC11xVATC_V_A44 "Inaccurate Station Stop - Short";
+CM_ SG_ 906 VC11xVATC_V_A45 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A46 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A47 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A48 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A49 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A50 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A51 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A52 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A53 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A54 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A55 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A56 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A57 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A58 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A59 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A60 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A61 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A62 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A63 "Spare";
+CM_ SG_ 906 VC11xVATC_V_A64 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A1 "Emergency Brake Trainline Deenergized";
+CM_ SG_ 908 VC12xVATC_V_A2 "Unscheduled Door Opening";
+CM_ SG_ 908 VC12xVATC_V_A3 "Loss Of Vital Zero Speed";
+CM_ SG_ 908 VC12xVATC_V_A4 "Improper Travel Direction";
+CM_ SG_ 908 VC12xVATC_V_A5 "Overspeed";
+CM_ SG_ 908 VC12xVATC_V_A6 "Safe Train Separation Fault";
+CM_ SG_ 908 VC12xVATC_V_A7 "Vehicle Location Failure";
+CM_ SG_ 908 VC12xVATC_V_A8 "Loss of Train Integrity";
+CM_ SG_ 908 VC12xVATC_V_A9 "Vehicle ATC Not Initialized";
+CM_ SG_ 908 VC12xVATC_V_A10 "VATP Cross Check Failure";
+CM_ SG_ 908 VC12xVATC_V_A11 "VATC Relay Failure";
+CM_ SG_ 908 VC12xVATC_V_A12 "VATC Tachometer Failure";
+CM_ SG_ 908 VC12xVATC_V_A13 "Door Block Failure";
+CM_ SG_ 908 VC12xVATC_V_A14 "Norming Point Reader Failure";
+CM_ SG_ 908 VC12xVATC_V_A15 "Invalid Norming Point";
+CM_ SG_ 908 VC12xVATC_V_A16 "Inaccurate Station Stop - Long";
+CM_ SG_ 908 VC12xVATC_V_A17 "Train Failed To Startup";
+CM_ SG_ 908 VC12xVATC_V_A18 "Brakes Failed To Release";
+CM_ SG_ 908 VC12xVATC_V_A19 "Park Brake Failure";
+CM_ SG_ 908 VC12xVATC_V_A20 "Wayside Service Brake Command ";
+CM_ SG_ 908 VC12xVATC_V_A21 "Unscheduled Stop";
+CM_ SG_ 908 VC12xVATC_V_A22 "Train in Manual Mode";
+CM_ SG_ 908 VC12xVATC_V_A23 "VATC-Redundant VATC Serial Link Failure";
+CM_ SG_ 908 VC12xVATC_V_A24 "Wayside Performance Modification";
+CM_ SG_ 908 VC12xVATC_V_A25 "Loss of Communication with Region ATC";
+CM_ SG_ 908 VC12xVATC_V_A26 "VATC-HMS Communication Failure";
+CM_ SG_ 908 VC12xVATC_V_A27 "VATC-CANbus Controller Serial Link Failure ";
+CM_ SG_ 908 VC12xVATC_V_A28 "Velocity Miscompare";
+CM_ SG_ 908 VC12xVATC_V_A29 "Missed or Low Battery Norming Point ";
+CM_ SG_ 908 VC12xVATC_V_A30 "Obstructed Motion";
+CM_ SG_ 908 VC12xVATC_V_A31 "Close-Up Maneuver Failed";
+CM_ SG_ 908 VC12xVATC_V_A32 "Redundant VATC Halted";
+CM_ SG_ 908 VC12xVATC_V_A33 "Doors Failed to Close";
+CM_ SG_ 908 VC12xVATC_V_A34 "Doors Failed to Open";
+CM_ SG_ 908 VC12xVATC_V_A35 "Door Status Miscompare on CANbus";
+CM_ SG_ 908 VC12xVATC_V_A36 "Door Recycle Number Exceeded";
+CM_ SG_ 908 VC12xVATC_V_A37 "HMS Reduced Brake Rate Request";
+CM_ SG_ 908 VC12xVATC_V_A38 "HMS Reduced Speed Request";
+CM_ SG_ 908 VC12xVATC_V_A39 "HMS Train Hold Request";
+CM_ SG_ 908 VC12xVATC_V_A40 "Track Voltage Failure ";
+CM_ SG_ 908 VC12xVATC_V_A41 "Invalid Wheel Diameter Calculation ";
+CM_ SG_ 908 VC12xVATC_V_A42 "Departure Test Failed";
+CM_ SG_ 908 VC12xVATC_V_A43 "Departure Test Passed";
+CM_ SG_ 908 VC12xVATC_V_A44 "Inaccurate Station Stop - Short";
+CM_ SG_ 908 VC12xVATC_V_A45 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A46 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A47 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A48 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A49 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A50 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A51 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A52 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A53 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A54 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A55 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A56 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A57 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A58 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A59 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A60 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A61 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A62 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A63 "Spare";
+CM_ SG_ 908 VC12xVATC_V_A64 "Spare";
+CM_ SG_ 1157 VN5xPP11Reset "PCU Lockout Reset";
+CM_ SG_ 1157 VN5xPP12Reset "PCU Lockout Reset";
+CM_ SG_ 1157 VN5xECU1_Reset "ECU 1 Reset";
+CM_ SG_ 1157 VN5xECU2_Reset "ECU 2 Reset";
+CM_ SG_ 1157 VN5xECU1_FltR "ECU 1 Latched Fault Reset";
+CM_ SG_ 1157 VN5xECU2_FltR "ECU 2 Latched Fault Reset";
+CM_ SG_ 1157 VN5xECU1_PumpR "ECU 1 Latched Pump Reset";
+CM_ SG_ 1157 VN5xECU2_PumpR "ECU 2 Latched Pump Reset";
+CM_ SG_ 1157 VN5bSbutton "S Button Pressed
+
+Indicates HMS is pressing S1-S4 buttons.  
+Acts as if person is pressing real S1-S4 on ESRA MMI.";
+CM_ SG_ 1157 VN5xSBMode "Fault Retrieval Mode: set=scrolling, clr=single";
+CM_ SG_ 1157 VN5xAPU_OSC "APU to override standby command";
+CM_ SG_ 1157 VN5xAPUTest "APU Selftest demand";
+CM_ SG_ 1157 VN5xVA11Auto "HVAC 11 Mode of Operation: AUTO";
+CM_ SG_ 1157 VN5xVA11Off "HVAC 11 Mode of Operation: OFF";
+CM_ SG_ 1157 VN5xVA11TstCool2 "HVAC 11 Mode of Operation: Test Cool 2";
+CM_ SG_ 1157 VN5xVA11TestHeat "HVAC 11 Mode of Operation: Test Heat";
+CM_ SG_ 1157 VN5xVA12Auto "HVAC 12 Mode of Operation: AUTO";
+CM_ SG_ 1157 VN5xVA12Off "HVAC 12 Mode of Operation: OFF";
+CM_ SG_ 1157 VN5xVA12TstCool2 "HVAC 12 Mode of Operation: Test Cool 2";
+CM_ SG_ 1157 VN5xVA12TestHeat "HVAC 12 Mode of Operation: Test Heat";
+CM_ SG_ 1157 VN5nHeat_Set "HVAC Heating Return Air Set Point 
+
+Note: VN5bHeatCool_Set = VN5nHeat_Set + VN5nCool_Set";
+CM_ SG_ 1157 VN5xSmkOff_E1 "Smoke Detector Off - End 1";
+CM_ SG_ 1157 VN5xSmkTest_E1 "Smoke Detector Test - End 1";
+CM_ SG_ 1157 VN5xSmkReset_E1 "Smoke Detector Reset - End 1";
+CM_ SG_ 1157 VN5xSmkOff_Ctr "Smoke Detector Off - Center";
+CM_ SG_ 1157 VN5xSmkTest_Ctr "Smoke Detector Test - Center";
+CM_ SG_ 1157 VN5xSmkReset_Ctr "Smoke Detector Reset - Center";
+CM_ SG_ 1157 VN5xSmkOff_E2 "Smoke Detector Off - End 2";
+CM_ SG_ 1157 VN5xSmkTest_E2 "Smoke Detector Test - End 2";
+CM_ SG_ 1157 VN5xSmkReset_E2 "Smoke Detector Reset - End 2";
+CM_ SG_ 1157 VN5xSmkToggleBit "Toggle Bit";
+CM_ SG_ 1157 VN5xTD11PLCR "Request PLC Connection - Door 1";
+CM_ SG_ 1157 VN5xTD12PLCR "Request PLC Connection - Door 2";
+CM_ SG_ 1157 VN5xTD13PLCR "Request PLC Connection - Door 3";
+CM_ SG_ 1157 VN5xTD14PLCR "Request PLC Connection - Door 4";
+CM_ SG_ 1157 VN5xTD_RB "Reboot Command";
+CM_ SG_ 1157 VN5xTD_RSF "Fault Reset Command";
+CM_ SG_ 1157 VN5xPIP1Reset "CCU PIP1 Reset";
+CM_ SG_ 1157 VN5xPIP2Reset "CCU PIP2 Reset";
+

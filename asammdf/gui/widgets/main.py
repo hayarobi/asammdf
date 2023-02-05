@@ -7,6 +7,7 @@ import platform
 from textwrap import wrap
 import webbrowser
 
+from PySide6.QtCore import Signal, QObject
 from natsort import natsorted
 import pyqtgraph as pg
 from PySide6 import QtCore, QtGui, QtWidgets
@@ -20,6 +21,10 @@ from .batch import BatchWidget
 from .file import FileWidget
 from .mdi_area import MdiAreaWidget, WithMDIArea
 from .plot import Plot
+
+
+class DbcCommunicate(QObject):
+    withDbcApp = Signal(list)
 
 
 class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
@@ -94,6 +99,9 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         self.files.tabCloseRequested.connect(self.close_file)
         self.stackedWidget.currentChanged.connect(self.mode_changed)
 
+        self.dbcSig = DbcCommunicate()
+        self.resource_path = os.path.join(os.path.split(__file__)[0], "resources")
+
         menu = self.menubar.addMenu("File")
         open_group = QtGui.QActionGroup(self)
         icon = QtGui.QIcon()
@@ -102,6 +110,11 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         action = QtGui.QAction(icon, "Open", menu)
         action.triggered.connect(self.open)
         action.setShortcut(QtGui.QKeySequence("Ctrl+O"))
+        open_group.addAction(action)
+
+        action = QtGui.QAction(icon, "OpenWithDatabase", menu)
+        action.triggered.connect(self.open_with_dbc)
+        action.setShortcut(QtGui.QKeySequence("Shift+Ctrl+O"))
         open_group.addAction(action)
 
         action = QtGui.QAction(icon, "Open folder", menu)
@@ -282,17 +295,17 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         theme_option = QtGui.QActionGroup(self)
 
         for option, tooltip in zip(
-            (
-                "0 - repeat previous sample",
-                "1 - linear interpolation",
-                "2 - hybrid interpolation",
-            ),
-            (
-                "",
-                "",
-                "channels with integer data type (raw values) that have a conversion that outputs float "
-                "values will use linear interpolation, otherwise the previous sample is used",
-            ),
+                (
+                        "0 - repeat previous sample",
+                        "1 - linear interpolation",
+                        "2 - hybrid interpolation",
+                ),
+                (
+                        "",
+                        "",
+                        "channels with integer data type (raw values) that have a conversion that outputs float "
+                        "values will use linear interpolation, otherwise the previous sample is used",
+                ),
         ):
 
             action = QtGui.QAction(option, menu)
@@ -303,7 +316,7 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
             action.triggered.connect(partial(self.set_integer_interpolation, option))
 
             if option == self._settings.value(
-                "integer_interpolation", "2 - hybrid interpolation"
+                    "integer_interpolation", "2 - hybrid interpolation"
             ):
                 action.setChecked(True)
                 action.triggered.emit()
@@ -324,7 +337,7 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
             action.triggered.connect(partial(self.set_float_interpolation, option))
 
             if option == self._settings.value(
-                "float_interpolation", "1 - linear interpolation"
+                    "float_interpolation", "1 - linear interpolation"
             ):
                 action.setChecked(True)
                 action.triggered.emit()
@@ -1250,6 +1263,13 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         else:
             self.open_batch_files(event)
 
+    def open_with_dbc(self, event):
+        if self.stackedWidget.currentIndex() in (0, 2):
+            self.open_file_and_signal(event, 1)
+            self.stackedWidget.setCurrentIndex(0)
+        else:
+            self.open_batch_files(event)
+
     def _open_file(self, file_name):
         file_name = Path(file_name)
         index = self.files.count()
@@ -1280,8 +1300,12 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
             widget.full_screen_toggled.connect(self.toggle_fullscreen)
 
             self.edit_cursor_options()
+        return widget
 
     def open_file(self, event):
+        self.open_file_and_signal(event, 0)
+
+    def open_file_and_signal(self, event, signal):
         system = platform.system().lower()
         if system == "linux":
             # see issue #567
@@ -1302,13 +1326,15 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
                 "CSV (*.csv);;MDF v3 (*.dat *.mdf);;MDF v4(*.mf4 *.mf4z);;DL3/ERG files (*.dl3 *.erg);;All files (*.csv *.dat *.mdf *.mf4 *.mf4z *.dl3 *.erg)",
                 "All files (*.csv *.dat *.mdf *.mf4 *.mf4z *.dl3 *.erg)",
             )
-
         if file_names:
             self._settings.setValue("last_opened_path", file_names[0])
             gc.collect()
-
         for file_name in natsorted(file_names):
-            self._open_file(file_name)
+            widget = self._open_file(file_name)
+            if signal == 1:
+                self.dbcSig.withDbcApp.connect(widget.load_default_can_database)
+                can_db_file = os.path.join(self.resource_path, "280-V00-BRA-030902.dbc")
+                self.dbcSig.withDbcApp.emit([can_db_file])
 
     def open_folder(self, event):
 
@@ -1328,7 +1354,7 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
             for root, dirs, files in os.walk(folder):
                 for file in natsorted(files):
                     if file.lower().endswith(
-                        (".csv", ".erg", ".dl3", ".dat", ".mdf", ".mf4", ".mf4z")
+                            (".csv", ".erg", ".dl3", ".dat", ".mdf", ".mf4", ".mf4z")
                     ):
                         self._open_file(os.path.join(root, file))
         else:
@@ -1340,9 +1366,8 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
             for root, dirs, files in os.walk(folder):
                 for file in natsorted(files):
                     if file.lower().endswith(
-                        (".csv", ".erg", ".dl3", ".dat", ".mdf", ".mf4", ".mf4z")
+                            (".csv", ".erg", ".dl3", ".dat", ".mdf", ".mf4", ".mf4z")
                     ):
-
                         row = self.batch.files_list.count()
                         self.batch.files_list.addItem(os.path.join(root, file))
                         self.batch.files_list.item(row).setIcon(icon)
@@ -1372,15 +1397,14 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
                 for path in e.mimeData().text().splitlines():
                     path = Path(path.replace(r"file:///", ""))
                     if path.suffix.lower() in (
-                        ".csv",
-                        ".zip",
-                        ".erg",
-                        ".dat",
-                        ".mdf",
-                        ".mf4",
-                        ".mf4z",
+                            ".csv",
+                            ".zip",
+                            ".erg",
+                            ".dat",
+                            ".mdf",
+                            ".mf4",
+                            ".mf4z",
                     ):
-
                         self._open_file(path)
             else:
                 icon = QtGui.QIcon()
@@ -1391,15 +1415,14 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
                 for path in e.mimeData().text().splitlines():
                     path = Path(path.replace(r"file:///", ""))
                     if path.suffix.lower() in (
-                        ".csv",
-                        ".zip",
-                        ".erg",
-                        ".dat",
-                        ".mdf",
-                        ".mf4",
-                        ".mf4z",
+                            ".csv",
+                            ".zip",
+                            ".erg",
+                            ".dat",
+                            ".mdf",
+                            ".mf4",
+                            ".mf4z",
                     ):
-
                         row = self.batch.files_list.count()
                         self.batch.files_list.addItem(str(path))
                         self.batch.files_list.item(row).setIcon(icon)

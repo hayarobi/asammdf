@@ -91,26 +91,25 @@ FRIENDLY_ATRRIBUTES = {
 
 
 class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
-
     open_new_file = QtCore.Signal(str)
     full_screen_toggled = QtCore.Signal()
     display_file_modified = QtCore.Signal(str)
 
     def __init__(
-        self,
-        file_name,
-        with_dots,
-        subplots=False,
-        subplots_link=False,
-        ignore_value2text_conversions=False,
-        display_cg_name=False,
-        line_interconnect="line",
-        line_width=1,
-        password=None,
-        hide_missing_channels=False,
-        hide_disabled_channels=False,
-        *args,
-        **kwargs,
+            self,
+            file_name,
+            with_dots,
+            subplots=False,
+            subplots_link=False,
+            ignore_value2text_conversions=False,
+            display_cg_name=False,
+            line_interconnect="line",
+            line_width=1,
+            password=None,
+            hide_missing_channels=False,
+            hide_disabled_channels=False,
+            *args,
+            **kwargs,
     ):
 
         self.default_folder = kwargs.get("default_folder", "")
@@ -423,11 +422,11 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
                 if size <= 1 << 10:
                     text = f"{size} B"
                 elif size <= 1 << 20:
-                    text = f"{size/1024:.1f} KB"
+                    text = f"{size / 1024:.1f} KB"
                 elif size <= 1 << 30:
-                    text = f"{size/1024/1024:.1f} MB"
+                    text = f"{size / 1024 / 1024:.1f} MB"
                 else:
-                    text = f"{size/1024/1024/1024:.1f} GB"
+                    text = f"{size / 1024 / 1024 / 1024:.1f} GB"
 
                 field = QtWidgets.QTreeWidgetItem()
                 field.setText(0, "Size")
@@ -445,8 +444,8 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
         if self.mdf.version >= "4.00":
             if not any(
-                group.channel_group.flags & FLAG_CG_BUS_EVENT
-                for group in self.mdf.groups
+                    group.channel_group.flags & FLAG_CG_BUS_EVENT
+                    for group in self.mdf.groups
             ):
                 self.aspects.removeTab(2)
         else:
@@ -557,7 +556,6 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
                         ico = None
 
                     if ico is not None:
-
                         icon = QtGui.QIcon()
                         icon.addPixmap(
                             QtGui.QPixmap(ico), QtGui.QIcon.Normal, QtGui.QIcon.Off
@@ -809,14 +807,14 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
                 if dlg.add_window_request:
                     options = [
-                        "New plot window",
-                        "New numeric window",
-                        "New tabular window",
-                    ] + [
-                        mdi.windowTitle()
-                        for mdi in self.mdi_area.subWindowList()
-                        if not isinstance(mdi.widget(), CANBusTrace)
-                    ]
+                                  "New plot window",
+                                  "New numeric window",
+                                  "New tabular window",
+                              ] + [
+                                  mdi.windowTitle()
+                                  for mdi in self.mdi_area.subWindowList()
+                                  if not isinstance(mdi.widget(), CANBusTrace)
+                              ]
 
                     dialog = WindowSelectionDialog(options=options, parent=self)
                     dialog.setModal(True)
@@ -948,8 +946,8 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
             loaded_display_file, hash_sum = self.loaded_display_file
             if (
-                file_name.samefile(loaded_display_file)
-                and file_name.suffix.lower() == ".dspf"
+                    file_name.samefile(loaded_display_file)
+                    and file_name.suffix.lower() == ".dspf"
             ):
                 worker = sha1()
                 worker.update(loaded_display_file.read_bytes())
@@ -1083,7 +1081,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
                     for window in info["windows"]:
                         if window["type"] == "Plot":
                             for name, definition in get_functions(
-                                window["configuration"]["channels"]
+                                    window["configuration"]["channels"]
                             ).items():
                                 if name in self.functions:
                                     if self.functions[name] != definition:
@@ -1924,13 +1922,21 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
         )
 
         if file_names:
-            for database in file_names:
-                item = QtWidgets.QListWidgetItem()
-                widget = DatabaseItem(database, bus_type="CAN")
+            self.set_database_files(file_names)
 
-                self.can_database_list.addItem(item)
-                self.can_database_list.setItemWidget(item, widget)
-                item.setSizeHint(widget.sizeHint())
+    def load_default_can_database(self, event):
+        self.set_database_files(event)
+        self.extract_bus_logging(event)
+
+    def set_database_files(self, event):
+        file_names = event
+        for database in file_names:
+            item = QtWidgets.QListWidgetItem()
+            widget = DatabaseItem(database, bus_type="CAN")
+
+            self.can_database_list.addItem(item)
+            self.can_database_list.setItemWidget(item, widget)
+            item.setSizeHint(widget.sizeHint())
 
     def load_lin_database(self, event):
         file_names, _ = QtWidgets.QFileDialog.getOpenFileNames(
@@ -1961,8 +1967,8 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
             self.full_screen_toggled.emit()
 
         elif (
-            key in (QtCore.Qt.Key_V, QtCore.Qt.Key_H, QtCore.Qt.Key_C, QtCore.Qt.Key_T)
-            and modifier == QtCore.Qt.ShiftModifier
+                key in (QtCore.Qt.Key_V, QtCore.Qt.Key_H, QtCore.Qt.Key_C, QtCore.Qt.Key_T)
+                and modifier == QtCore.Qt.ShiftModifier
         ):
             if key == QtCore.Qt.Key_V:
                 mode = "tile vertically"
@@ -1983,7 +1989,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
                 self.mdi_area.tile_horizontally()
 
         elif key == QtCore.Qt.Key_F and modifier == (
-            QtCore.Qt.ShiftModifier | QtCore.Qt.AltModifier
+                QtCore.Qt.ShiftModifier | QtCore.Qt.AltModifier
         ):
             self.toggle_frames()
 
@@ -2258,13 +2264,13 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
                 else:
                     if channel_group.flags & 0x1:
                         size = channel_group.samples_byte_nr + (
-                            channel_group.invalidation_bytes_nr << 32
+                                channel_group.invalidation_bytes_nr << 32
                         )
                     else:
                         size = (
-                            channel_group.samples_byte_nr
-                            + channel_group.invalidation_bytes_nr
-                        ) * cycles
+                                       channel_group.samples_byte_nr
+                                       + channel_group.invalidation_bytes_nr
+                               ) * cycles
 
                     if group.channel_group.acq_source:
                         source = group.channel_group.acq_source
@@ -2363,7 +2369,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
             "cut_start": self.cut_start.value(),
             "cut_stop": self.cut_stop.value(),
             "cut_time_from_zero": self.cut_time_from_zero.checkState()
-            == QtCore.Qt.Checked,
+                                  == QtCore.Qt.Checked,
             "whence": int(self.whence.checkState() == QtCore.Qt.Checked),
             "needs_resample": self.resample_group.isChecked(),
             "raster_type_step": self.raster_type_step.isChecked(),
@@ -2371,7 +2377,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
             "raster": self.raster.value(),
             "raster_channel": self.raster_channel.currentText(),
             "resample_time_from_zero": self.resample_time_from_zero.checkState()
-            == QtCore.Qt.Checked,
+                                       == QtCore.Qt.Checked,
             "output_format": self.output_format.currentText(),
         }
 
@@ -2390,14 +2396,14 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
             new = {
                 "single_time_base": self.single_time_base_mat.checkState()
-                == QtCore.Qt.Checked,
+                                    == QtCore.Qt.Checked,
                 "time_from_zero": self.time_from_zero_mat.checkState()
-                == QtCore.Qt.Checked,
+                                  == QtCore.Qt.Checked,
                 "time_as_date": self.time_as_date_mat.checkState() == QtCore.Qt.Checked,
                 "use_display_names": self.use_display_names_mat.checkState()
-                == QtCore.Qt.Checked,
+                                     == QtCore.Qt.Checked,
                 "reduce_memory_usage": self.reduce_memory_usage_mat.checkState()
-                == QtCore.Qt.Checked,
+                                       == QtCore.Qt.Checked,
                 "compression": self.export_compression_mat.currentText() == "enabled",
                 "empty_channels": self.empty_channels_mat.currentText(),
                 "mat_format": self.mat_format.currentText(),
@@ -2409,12 +2415,12 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
             new = {
                 "single_time_base": self.single_time_base_csv.checkState()
-                == QtCore.Qt.Checked,
+                                    == QtCore.Qt.Checked,
                 "time_from_zero": self.time_from_zero_csv.checkState()
-                == QtCore.Qt.Checked,
+                                  == QtCore.Qt.Checked,
                 "time_as_date": self.time_as_date_csv.checkState() == QtCore.Qt.Checked,
                 "use_display_names": self.use_display_names_csv.checkState()
-                == QtCore.Qt.Checked,
+                                     == QtCore.Qt.Checked,
                 "reduce_memory_usage": False,
                 "compression": False,
                 "empty_channels": self.empty_channels_csv.currentText(),
@@ -2435,13 +2441,13 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
             new = {
                 "single_time_base": self.single_time_base.checkState()
-                == QtCore.Qt.Checked,
+                                    == QtCore.Qt.Checked,
                 "time_from_zero": self.time_from_zero.checkState() == QtCore.Qt.Checked,
                 "time_as_date": self.time_as_date.checkState() == QtCore.Qt.Checked,
                 "use_display_names": self.use_display_names.checkState()
-                == QtCore.Qt.Checked,
+                                     == QtCore.Qt.Checked,
                 "reduce_memory_usage": self.reduce_memory_usage.checkState()
-                == QtCore.Qt.Checked,
+                                       == QtCore.Qt.Checked,
                 "compression": self.export_compression.currentText(),
                 "empty_channels": self.empty_channels.currentText(),
                 "mat_format": None,
@@ -2851,7 +2857,6 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
             progress.cancel()
 
             if handle_overwrite:
-
                 original_name = file_name
 
                 target = MDF
@@ -2967,3 +2972,6 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
     def update_selected_filter_channels(self):
         self.selected_filter_channels.clear()
         self.selected_filter_channels.addItems(sorted(self._selected_filter))
+
+    def open_database(self, event):
+        self.load_can_database(event)
