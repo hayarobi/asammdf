@@ -2847,6 +2847,7 @@ class MDF4(MDF_Common):
                     ch.name = name
                     ch.unit = signal.unit
                     ch.comment = signal.comment
+                    ch.raw_comment = signal.raw_comment
                     ch.display_names = signal.display_names
                     ch.dtype_fmt = dtype("<u8")
 
@@ -2957,6 +2958,7 @@ class MDF4(MDF_Common):
                     ch.name = name
                     ch.unit = signal.unit
                     ch.comment = signal.comment
+                    ch.raw_comment = signal.raw_comment
                     ch.display_names = signal.display_names
                     if len(sig_shape) > 1:
                         ch.dtype_fmt = dtype((sig_dtype, sig_shape[1:]))
