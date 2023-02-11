@@ -1,0 +1,7 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+<!--  for arloo  -->
+    <file alias="splash_image.png">splash_image.png</file>
+    <file alias="database-280.dbc">280-V00-BRA-030902.dbc</file>
+</qresource>
+</RCC>

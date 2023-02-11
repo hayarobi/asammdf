@@ -21,6 +21,7 @@ from .batch import BatchWidget
 from .file import FileWidget
 from .mdi_area import MdiAreaWidget, WithMDIArea
 from .plot import Plot
+from asammdf.gui.arloo import arresource_rc
 
 
 class DbcCommunicate(QObject):
@@ -1333,8 +1334,7 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
             widget = self._open_file(file_name)
             if signal == 1:
                 self.dbcSig.withDbcApp.connect(widget.load_default_can_database)
-                can_db_file = os.path.join(self.resource_path, "280-V00-BRA-030902.dbc")
-                self.dbcSig.withDbcApp.emit([can_db_file])
+                self.dbcSig.withDbcApp.emit(["./asammdf/gui/arloo/280-V00-BRA-030902.dbc"])
 
     def open_folder(self, event):
 

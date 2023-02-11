@@ -2,6 +2,10 @@
 import argparse
 import os
 import sys
+from time import sleep
+
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QSplashScreen
 
 os.environ["QT_API"] = "pyside6"
 os.environ["PYQTGRAPH_QT_LIB"] = "PySide6"
@@ -13,6 +17,7 @@ from PySide6 import QtGui, QtWidgets
 from asammdf.gui.utils import excepthook
 from asammdf.gui.widgets.main import MainWindow
 from asammdf.gui.widgets.plot import monkey_patch_pyqtgraph
+from asammdf.gui.arloo import arresource_rc
 
 sys.excepthook = excepthook
 
@@ -34,6 +39,10 @@ def main(measurements=None):
     app.setOrganizationDomain("py-asammdf")
     app.setApplicationName("py-asammdf")
 
+    pixmap = QPixmap(":/splash_image.png")
+    splash = QSplashScreen(pixmap)
+    splash.show()
+    sleep(1.0)
     main = MainWindow(args.measurements)
     app.setStyle(QtWidgets.QStyleFactory.create("Fusion"))
 
