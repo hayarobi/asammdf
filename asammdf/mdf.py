@@ -4824,7 +4824,6 @@ class MDF:
                                             timestamps=signal["t"],
                                             name=signal_name,
                                             comment=signal["comment"],
-                                            raw_comment=signal["comment"],
                                             unit=signal["unit"],
                                             invalidation_bits=signal[
                                                 "invalidation_bits"

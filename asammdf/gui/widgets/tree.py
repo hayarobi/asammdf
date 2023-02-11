@@ -72,7 +72,7 @@ def add_children(
 
         child = TreeItem(entry, ch.name, origin_uuid=origin_uuid)
         child.setText(0, ch.name)
-
+        child.setToolTip(0, ch.comment)
         dep = channel_dependencies[entry[1]]
         if version >= "4.00":
             if dep and isinstance(dep[0], tuple):

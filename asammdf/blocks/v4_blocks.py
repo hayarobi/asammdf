@@ -456,7 +456,6 @@ class Channel:
         "name",
         "unit",
         "comment",
-        "raw_comment",
         "display_names",
         "conversion",
         "source",

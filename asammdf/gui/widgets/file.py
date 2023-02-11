@@ -591,7 +591,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
                 items.append(channel_group)
 
                 channels = [
-                    HelperChannel(name=ch.name, entry=(i, j))
+                    HelperChannel(name=ch.name, comment=extract_xml_comment(ch.comment), entry=(i, j))
                     for j, ch in enumerate(group.channels)
                 ]
 

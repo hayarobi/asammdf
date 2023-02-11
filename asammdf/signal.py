@@ -94,7 +94,6 @@ class Signal(object):
         name: str = "",
         conversion: dict[str, Any] | ChannelConversionType | None = None,
         comment: str = "",
-        raw_comment: str = "",
         raw: bool = True,
         master_metadata: tuple[str, SyncType] | None = None,
         display_names: dict[str, str] | None = None,
@@ -145,7 +144,6 @@ class Signal(object):
             self.unit = unit
             self.name = name
             self.comment = comment
-            self.raw_comment = raw_comment
             self.flags = flags
             self._plot_axis = None
             self.raw = raw
