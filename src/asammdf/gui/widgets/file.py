@@ -1661,10 +1661,12 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
         if not (count1 + count2):
             return
 
+        raw_filename = os.path.splitext(self.file_name)
+        default_filename = raw_filename[0]+'_out'+raw_filename[1]
         file_name, _ = QtWidgets.QFileDialog.getSaveFileName(
             self,
             "Select output measurement file",
-            "",
+            default_filename,
             f"{filter};;All files (*.*)",
             filter,
         )
