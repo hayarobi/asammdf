@@ -1178,7 +1178,7 @@ def replace_computation_dependency(computation, old_name, new_name):
 class HelperChannel:
     __slots__ = "entry", "name", "comment", "added"
 
-    def __init__(self, entry, name, comment):
+    def __init__(self, entry, name, comment=''):
         self.name = name
         self.entry = entry
         self.comment = comment
