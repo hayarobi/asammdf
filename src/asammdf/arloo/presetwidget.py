@@ -4,8 +4,10 @@ from PySide6.QtWidgets import QWidget, QMessageBox
 
 from asammdf.arloo.model.preset_model import PresetModel
 from asammdf.arloo.ui.preset_widget import Ui_preset_widget
+from asammdf.gui.widgets.mdi_area import WithMDIArea
 
-class PresetWidget(Ui_preset_widget, QWidget):
+
+class PresetWidget(WithMDIArea, Ui_preset_widget, QWidget):
     loadClickedSignal = Signal(object, list[str])
     saveClickedSignal = Signal(object, list[str])
 

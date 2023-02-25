@@ -12,6 +12,8 @@ from natsort import natsorted
 import pyqtgraph as pg
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from ...arloo.mdffileswidget import MDFFilesWidget
+from ...arloo.model.mdf_files import MdfFiles
 from ...version import __version__ as libversion
 from ..dialogs.bus_database_manager import BusDatabaseManagerDialog
 from ..dialogs.functions_manager import FunctionsManagerDialog
@@ -105,14 +107,20 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
 
         # channel preset
         self.preset_widget = None
+        self.mdfs_widget = None
 
         menu = self.menubar.addMenu("File")
         open_group = QtGui.QActionGroup(self)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/open.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 
+        # action = QtGui.QAction(icon, "Open", menu)
+        # action.triggered.connect(self.open)
+        # action.setShortcut(QtGui.QKeySequence("Ctrl+O"))
+        # open_group.addAction(action)
+
         action = QtGui.QAction(icon, "Open", menu)
-        action.triggered.connect(self.open)
+        action.triggered.connect(self.open_single_mdf)
         action.setShortcut(QtGui.QKeySequence("Ctrl+O"))
         open_group.addAction(action)
 
@@ -1300,6 +1308,15 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
 
             self.edit_cursor_options()
         return widget
+
+    def open_single_mdf(self, event):
+        if self.mdfs_widget is not None:
+            QtWidgets.QMessageBox.warning(
+                self, "Error", "MDF window was already opened")
+            return
+        self.mdfs_widget = MDFFilesWidget()
+
+        self.files.addTab(self.mdfs_widget, "mdf_files")
 
     def open_file(self, event):
         self.open_file_and_signal(event, 0)

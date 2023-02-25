@@ -1,0 +1,91 @@
+import gc
+from pathlib import Path
+import platform
+
+from PySide6 import QtCore, QtWidgets
+from PySide6.QtCore import QSettings
+from PySide6.QtGui import QStandardItemModel, QStandardItem
+from PySide6.QtWidgets import QWidget
+from natsort import natsorted
+
+from asammdf import MDF
+from asammdf.arloo.model.mdf_files import MdfFiles
+from asammdf.arloo.ui.multifile_widget import Ui_MultiFileWidget
+from asammdf.gui.widgets.mdi_area import WithMDIArea
+
+
+class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
+    add_file = QtCore.Signal(str)
+    remove_file = QtCore.Signal(int)
+    extract_all = QtCore.Signal()
+
+    def __init__(
+            self,
+            *args,
+            **kwargs,
+    ):
+        super(Ui_MultiFileWidget, self).__init__(*args, **kwargs)
+        WithMDIArea.__init__(self)
+        self._settings = QtCore.QSettings()
+        self.setupUi(self)
+
+        self._mdfFiles = MdfFiles()
+        self._model = QStandardItemModel()
+        self.mdfListView.setModel(self._model)
+        self.extractButton.clicked.connect(self.extract)
+        self.addButton.clicked.connect(self.add_file)
+        self.removeButton.clicked.connect(self.remove_file)
+
+    def update_all_channel_trees(self):
+        # do nothing
+        pass
+
+    def add_file(self):
+        self.open_file(None)
+
+    def open_file(self, event):
+        system = platform.system().lower()
+        if system == "linux":
+            # see issue #567
+            # file extension is case sensitive on linux
+            file_names, _ = QtWidgets.QFileDialog.getOpenFileNames(
+                self,
+                "Select measurement file",
+                self._settings.value("last_opened_path", "", str),
+                "CSV (*.csv);;MDF v3 (*.dat *.mdf);;MDF v4(*.mf4 *.mf4z);;DL3/ERG files (*.dl3 *.erg);;All files (*.csv *.dat *.mdf *.mf4 *.mf4z *.dl3 *.erg)",
+                "All files (*.csv *.dat *.mdf *.mf4 *.mf4z *.dl3 *.erg)",
+                options=QtWidgets.QFileDialog.DontUseNativeDialog,
+            )
+        else:
+            file_names, _ = QtWidgets.QFileDialog.getOpenFileNames(
+                self,
+                "Select measurement file",
+                self._settings.value("last_opened_path", "", str),
+                "CSV (*.csv);;MDF v3 (*.dat *.mdf);;MDF v4(*.mf4 *.mf4z);;DL3/ERG files (*.dl3 *.erg);;All files (*.csv *.dat *.mdf *.mf4 *.mf4z *.dl3 *.erg)",
+                "All files (*.csv *.dat *.mdf *.mf4 *.mf4z *.dl3 *.erg)",
+            )
+
+        if file_names:
+            self._settings.setValue("last_opened_path", file_names[0])
+            gc.collect()
+
+        for file_name in natsorted(file_names):
+            self.append_file(file_name)
+
+    def append_file(self, file_name):
+        file_path = Path(file_name)
+        mdf_file = self._mdfFiles.make_mdf_file(file_name)
+        item = QStandardItem(mdf_file.__str__())
+        item.setData(mdf_file)
+        self._model.appendRow(item)
+
+    def remove_file(self):
+        for row in self.mdfListView.selectedIndexes():
+            self._model.takeRow(row)
+
+    def extract(self):
+        mdfs = []
+        for row in range(0, self._model.rowCount()):
+            item = self._model.item(row)
+            mdfs.append(item.data())
+        MDF.concatenate()

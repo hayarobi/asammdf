@@ -1,13 +1,10 @@
-import base64
-import os
-
 from PySide6 import QtCore, QtWidgets
-from PySide6.QtCore import QRect, QUrl, QMarginsF, QMargins
-from PySide6.QtGui import QPageSize, QPageLayout, QPageLayout, QPainter, QShortcut, QKeySequence
+from PySide6.QtCore import QRect, QMarginsF
+from PySide6.QtGui import QPageSize, QPageLayout
 from PySide6.QtPrintSupport import QPrinter
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QDialog
-from jinja2 import Environment, PackageLoader, select_autoescape, Template
+from jinja2 import Environment, PackageLoader, select_autoescape
 
 from asammdf.arloo.printhandler import PrintHandler
 from asammdf.arloo.ui.report_result_dialog import Ui_report_result_dialog
