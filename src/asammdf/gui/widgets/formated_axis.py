@@ -4,6 +4,8 @@ from datetime import datetime, timedelta, timezone
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from asammdf.gui.arloo.arloos import DEFAULT_TIME_ZONE
+
 LOCAL_TIMEZONE = datetime.now(timezone.utc).astimezone().tzinfo
 
 import numpy as np
@@ -136,7 +138,7 @@ class FormatedAxis(pg.AxisItem):
                         errors="coerce",
                     )
                     .tz_localize("UTC")
-                    .tz_convert(LOCAL_TIMEZONE)
+                    .tz_convert(DEFAULT_TIME_ZONE)
                     .astype(str)
                     .to_list()
                 )

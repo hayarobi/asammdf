@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from ..arloo.arloos import DEFAULT_TIME_ZONE
 from ...blocks import v4_constants as v4c
 from ...blocks.conversion_utils import from_dict
 from ...blocks.utils import (
@@ -2412,6 +2413,10 @@ class WithMDIArea:
             mdf = self.mdf
         else:
             mdf = None
+
+        # adjust time to set timezone (KST)
+        origin = self.mdf.start_time.astimezone(DEFAULT_TIME_ZONE)
+
         plot = Plot(
             [],
             events=events,
@@ -3280,7 +3285,6 @@ class WithMDIArea:
 
         if hasattr(self, "mdf"):
             events = []
-            origin = self.mdf.start_time
 
             if self.mdf.version >= "4.00":
                 mdf_events = list(self.mdf.events)
@@ -3337,6 +3341,8 @@ class WithMDIArea:
             else:
                 origin = self.files.widget(0).mdf.start_time
 
+        # adjust time to set timezone (KST)
+        origin = self.mdf.start_time.astimezone(DEFAULT_TIME_ZONE)
         if hasattr(self, "mdf"):
             mdf = self.mdf
         else:
