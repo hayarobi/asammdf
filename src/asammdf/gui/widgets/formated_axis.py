@@ -308,11 +308,15 @@ class FormatedAxis(pg.AxisItem):
 
     def raiseContextMenu(self, ev):
         low, high = self.range
-
+        from_time = None
         if self.orientation in ("left", "right"):
             axis = "Y"
         else:
             axis = "X"
+            if self.origin is not None:
+                from_time = self.origin + timedelta(seconds=low)
+                to_time = self.origin + timedelta(seconds=high)
+
 
         menu = QtWidgets.QMenu()
         menu.addAction(f"Edit {axis} axis scaling")
@@ -320,49 +324,82 @@ class FormatedAxis(pg.AxisItem):
         menu.addAction("Apply new axis limits")
         menu.addSeparator()
 
-        widget = QtWidgets.QWidget()
-        layout = QtWidgets.QHBoxLayout()
-        widget.setLayout(layout)
-        layout.addWidget(QtWidgets.QLabel("max:"))
 
-        upper = QtWidgets.QDoubleSpinBox()
-        upper.setDecimals(9)
-        upper.setMinimum(-1e64)
-        upper.setMaximum(1e35)
-        upper.setValue(high)
-        layout.addWidget(upper)
+        if from_time is None:
+            widget = QtWidgets.QWidget()
+            layout = QtWidgets.QHBoxLayout()
+            widget.setLayout(layout)
+            layout.addWidget(QtWidgets.QLabel("max:"))
 
-        a = QtWidgets.QWidgetAction(self)
-        a.setDefaultWidget(widget)
-        menu.addAction(a)
+            upper = QtWidgets.QDoubleSpinBox()
+            upper.setDecimals(3)
+            upper.setMinimum(-1e64)
+            upper.setMaximum(1e35)
+            upper.setValue(high)
+            layout.addWidget(upper)
 
-        widget = QtWidgets.QWidget()
-        layout = QtWidgets.QHBoxLayout()
-        widget.setLayout(layout)
-        layout.addWidget(QtWidgets.QLabel("min:"))
+            a = QtWidgets.QWidgetAction(self)
+            a.setDefaultWidget(widget)
+            menu.addAction(a)
 
-        lower = QtWidgets.QDoubleSpinBox()
-        lower.setDecimals(9)
-        lower.setMinimum(-1e64)
-        lower.setMaximum(1e35)
-        lower.setValue(low)
-        layout.addWidget(lower)
+            widget = QtWidgets.QWidget()
+            layout = QtWidgets.QHBoxLayout()
+            widget.setLayout(layout)
+            layout.addWidget(QtWidgets.QLabel("min:"))
 
-        a = QtWidgets.QWidgetAction(self)
-        a.setDefaultWidget(widget)
-        menu.addAction(a)
+            lower = QtWidgets.QDoubleSpinBox()
+            lower.setDecimals(3)
+            lower.setMinimum(-1e64)
+            lower.setMaximum(1e35)
+            lower.setValue(low)
+            layout.addWidget(lower)
+
+            a = QtWidgets.QWidgetAction(self)
+            a.setDefaultWidget(widget)
+            menu.addAction(a)
+        else:
+            widget = QtWidgets.QWidget()
+            layout = QtWidgets.QHBoxLayout()
+            widget.setLayout(layout)
+            layout.addWidget(QtWidgets.QLabel("to:"))
+            upper_time_edit = QtWidgets.QDateTimeEdit()
+            upper_time_edit.setDisplayFormat("yyyy-MM-dd hh:mm:ss")
+            upper_time_edit.setDateTime(to_time)
+            layout.addWidget(upper_time_edit)
+            a = QtWidgets.QWidgetAction(self)
+            a.setDefaultWidget(widget)
+            menu.addAction(a)
+
+            widget = QtWidgets.QWidget()
+            layout = QtWidgets.QHBoxLayout()
+            widget.setLayout(layout)
+            layout.addWidget(QtWidgets.QLabel("from:"))
+            lower_time_edit = QtWidgets.QDateTimeEdit()
+            lower_time_edit.setDisplayFormat("yyyy-MM-dd hh:mm:ss")
+            lower_time_edit.setDateTime(from_time)
+            layout.addWidget(lower_time_edit)
+            a = QtWidgets.QWidgetAction(self)
+            a.setDefaultWidget(widget)
+            menu.addAction(a)
 
         action = menu.exec_(ev.screenPos().toPoint())
 
         if action is None:
             return
-
         elif action.text() == "Apply new axis limits":
-            if self.orientation in ("left", "right"):
-                self.setRange(lower.value(), upper.value())
+            if from_time is None:
+                if self.orientation in ("left", "right"):
+                    self.setRange(lower.value(), upper.value())
+                else:
+                    self.setRange(lower.value(), upper.value())
             else:
-                self.setRange(lower.value(), upper.value())
-
+                naive_origin = self.origin.replace(tzinfo=None)
+                to_duration = upper_time_edit.dateTime().toPython() - naive_origin
+                from_duration = lower_time_edit.dateTime().toPython() - naive_origin
+                if self.orientation in ("left", "right"):
+                    self.setRange(from_duration.total_seconds(), to_duration.total_seconds())
+                else:
+                    self.setRange(from_duration.total_seconds(), to_duration.total_seconds())
         elif action.text() == "Edit Y axis scaling":
             self.scale_editor_requested.emit(self.uuid)
 
