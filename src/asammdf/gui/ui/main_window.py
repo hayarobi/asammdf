@@ -25,7 +25,7 @@ class Ui_PyMDFMainWindow(object):
     def setupUi(self, PyMDFMainWindow):
         if not PyMDFMainWindow.objectName():
             PyMDFMainWindow.setObjectName(u"PyMDFMainWindow")
-        PyMDFMainWindow.resize(800, 723)
+        PyMDFMainWindow.resize(1440, 960)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

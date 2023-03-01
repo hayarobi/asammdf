@@ -44,6 +44,8 @@ def main(measurements=None):
     splash.show()
     sleep(1.0)
     main = MainWindow(args.measurements)
+    # TODO 일단 이 기능은 막아둠. 나중에 설정 추가하면 다시 활성화
+    #main.showMaximized()
     splash.finish(main)
     app.setStyle(QtWidgets.QStyleFactory.create("Fusion"))
 
