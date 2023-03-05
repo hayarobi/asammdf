@@ -7,15 +7,14 @@ import os
 from pathlib import Path
 import re
 from tempfile import gettempdir
-from time import sleep
 from traceback import format_exc
 
+from PySide6.QtWidgets import QMessageBox
 from natsort import natsorted
 import pandas as pd
-import psutil
-import pyqtgraph as pg
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from ...arloo.presetwidget import PresetWidget
 from ...blocks.utils import extract_xml_comment, TERMINATED
 from ...blocks.v4_constants import (
     BUS_TYPE_CAN,
@@ -32,7 +31,6 @@ from ..dialogs.channel_group_info import ChannelGroupInfoDialog
 from ..dialogs.channel_info import ChannelInfoDialog
 from ..dialogs.gps_dialog import GPSDialog
 from ..dialogs.window_selection_dialog import WindowSelectionDialog
-from ..ui import resource_rc
 from ..ui.file_widget import Ui_file_widget
 from ..utils import (
     flatten_dsp,
@@ -485,6 +483,10 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
             item.setSizeHint(widget.sizeHint())
 
         self._splitter_sizes = None
+        # add preset functionality
+        self.preset_widget = None
+        self.save_preset_button.clicked.connect(self.save_preset)
+        self.load_preset_button.clicked.connect(self.load_preset)
 
     def sizeHint(self):
         return QtCore.QSize(1, 1)
@@ -1662,7 +1664,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
             return
 
         raw_filename = os.path.splitext(self.file_name)
-        default_filename = raw_filename[0]+'_out'+raw_filename[1]
+        default_filename = raw_filename[0] + '_out' + raw_filename[1]
         file_name, _ = QtWidgets.QFileDialog.getSaveFileName(
             self,
             "Select output measurement file",
@@ -1684,7 +1686,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
         )
 
     def extract_bus_logging_thread(
-        self, file_name, suffix, database_files, version, compression, progress
+            self, file_name, suffix, database_files, version, compression, progress
     ):
         file_name = Path(file_name).with_suffix(suffix)
 
@@ -1867,23 +1869,23 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
         )
 
     def extract_bus_csv_logging_thread(
-        self,
-        file_name,
-        database_files,
-        version,
-        single_time_base,
-        time_from_zero,
-        empty_channels,
-        raster,
-        time_as_date,
-        delimiter,
-        doublequote,
-        escapechar,
-        lineterminator,
-        quotechar,
-        quoting,
-        add_units,
-        progress,
+            self,
+            file_name,
+            database_files,
+            version,
+            single_time_base,
+            time_from_zero,
+            empty_channels,
+            raster,
+            time_as_date,
+            delimiter,
+            doublequote,
+            escapechar,
+            lineterminator,
+            quotechar,
+            quoting,
+            add_units,
+            progress,
     ):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/csv.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -2689,7 +2691,7 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
         self._progress = None
 
     def apply_processing_thread(
-        self, file_name, opts, version, needs_filter, channels, progress=None
+            self, file_name, opts, version, needs_filter, channels, progress=None
     ):
         output_format = opts.output_format
 
@@ -2975,3 +2977,69 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
     def open_database(self, event):
         self.load_can_database(event)
+
+    def load_preset(self, event):
+        if self.preset_widget is None:
+            self.preset_widget = PresetWidget(None)
+
+        self.preset_widget.loadClickedSignal.connect(self.handle_load)
+        self.preset_widget.showLoad()
+
+    def handle_load(self, event):
+        channels_list = event
+
+        check_dict = {}
+        for channel_name in channels_list:
+            check_dict[channel_name] = 1
+
+        iterator = QtWidgets.QTreeWidgetItemIterator(self.channels_tree)
+        while iterator.value():
+            item = iterator.value()
+            if item.childCount() > 0:
+                item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+            else:
+                if item.parent() is not None:
+                    channel_name = subPrefix(item.parent().text(0), item.text(0))
+                    if channel_name in check_dict:
+                        item.setCheckState(0, QtCore.Qt.CheckState.Checked)
+                    else:
+                        item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+                else:
+                    item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+            iterator += 1
+
+        self.preset_widget.loadClickedSignal.disconnect(self.handle_load)
+
+    def save_preset(self, event):
+        str_list = []
+        iterator = QtWidgets.QTreeWidgetItemIterator(self.channels_tree)
+        self.extractAndAppend(iterator, None, str_list)
+
+        if len(str_list) == 0:
+            QMessageBox.information(None, "ERROR", "No channels are checked.")
+            return
+
+        if self.preset_widget is None:
+            self.preset_widget = PresetWidget(None)
+
+        self.preset_widget.setSelected(str_list)
+        self.preset_widget.showSave()
+
+    def extractAndAppend(self, iterator, prefix, str_list):
+        while iterator.value():
+            item = iterator.value()
+            if item.checkState(0) == QtCore.Qt.CheckState.Checked \
+                    and item.childCount() == 0:
+                if item.parent() is not None:
+                    channel_name = subPrefix(item.parent().text(0), item.text(0))
+                else:
+                    channel_name = item.text(0)
+                str_list.append(channel_name)
+            iterator += 1
+
+
+def subPrefix(prefix, sub_prefix):
+    if prefix is None:
+        return sub_prefix
+    else:
+        return prefix + "." + sub_prefix

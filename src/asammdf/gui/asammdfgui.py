@@ -17,7 +17,6 @@ from PySide6 import QtGui, QtWidgets
 from asammdf.gui.utils import excepthook
 from asammdf.gui.widgets.main import MainWindow
 from asammdf.gui.widgets.plot import monkey_patch_pyqtgraph
-from asammdf.gui.arloo import arresource_rc
 
 sys.excepthook = excepthook
 

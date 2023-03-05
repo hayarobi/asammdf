@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'file_widget.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.1
+## Created by: Qt User Interface Compiler version 6.4.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -31,7 +31,7 @@ class Ui_file_widget(object):
     def setupUi(self, file_widget):
         if not file_widget.objectName():
             file_widget.setObjectName(u"file_widget")
-        file_widget.resize(1034, 622)
+        file_widget.resize(1034, 656)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -70,6 +70,30 @@ class Ui_file_widget(object):
         self.channels_tree.setObjectName(u"channels_tree")
 
         self.channels_layout.addWidget(self.channels_tree)
+
+        self.preset_layout = QHBoxLayout()
+        self.preset_layout.setObjectName(u"preset_layout")
+        self.preset_layout.setContentsMargins(-1, 10, -1, 10)
+        self.horizontalSpacer_6 = QSpacerItem(84, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.preset_layout.addItem(self.horizontalSpacer_6)
+
+        self.save_preset_button = QPushButton(self.verticalLayoutWidget)
+        self.save_preset_button.setObjectName(u"save_preset_button")
+
+        self.preset_layout.addWidget(self.save_preset_button)
+
+        self.load_preset_button = QPushButton(self.verticalLayoutWidget)
+        self.load_preset_button.setObjectName(u"load_preset_button")
+
+        self.preset_layout.addWidget(self.load_preset_button)
+
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.preset_layout.addItem(self.horizontalSpacer_7)
+
+
+        self.channels_layout.addLayout(self.preset_layout)
 
         self.buttons_layout = QHBoxLayout()
         self.buttons_layout.setObjectName(u"buttons_layout")
@@ -215,7 +239,7 @@ class Ui_file_widget(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 306, 619))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 385, 630))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_3 = QVBoxLayout()
@@ -726,7 +750,7 @@ class Ui_file_widget(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 985, 596))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 963, 616))
         self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
         self.groupBox_3 = QGroupBox(self.scrollAreaWidgetContents_2)
@@ -1049,6 +1073,8 @@ class Ui_file_widget(object):
 #if QT_CONFIG(tooltip)
         self.channels_tree.setToolTip(QCoreApplication.translate("file_widget", u"Double click channel to see extended information", None))
 #endif // QT_CONFIG(tooltip)
+        self.save_preset_button.setText(QCoreApplication.translate("file_widget", u"Save Preset", None))
+        self.load_preset_button.setText(QCoreApplication.translate("file_widget", u"Load Preset", None))
 #if QT_CONFIG(tooltip)
         self.load_channel_list_btn.setToolTip(QCoreApplication.translate("file_widget", u"Load offline windows", None))
 #endif // QT_CONFIG(tooltip)

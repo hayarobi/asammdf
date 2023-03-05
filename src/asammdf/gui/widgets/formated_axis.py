@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
-from asammdf.gui.arloo.arloos import DEFAULT_TIME_ZONE
+from ...arloo.arloos import DEFAULT_TIME_ZONE
 
 LOCAL_TIMEZONE = datetime.now(timezone.utc).astimezone().tzinfo
 
