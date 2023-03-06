@@ -18,6 +18,9 @@ import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 
 # imports for pyinstaller
 import pyqtgraph.functions as fn
+from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy
+
+from ...arloo.reportdialog import ReportDialog
 
 try:
     import pyqtgraph.console.template_pyside6
@@ -1529,6 +1532,16 @@ class Plot(QtWidgets.QWidget):
             plot=self.plot,
         )
 
+        ## report button
+        uhbox = QtWidgets.QHBoxLayout()
+        self.report_button = QPushButton("Report")
+        uhbox.addWidget(self.report_button)
+        horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        uhbox.addItem(horizontalSpacer)
+        self.report_button.clicked.connect(self.make_report)
+
+        vbox.addLayout(uhbox)
+
         hbox = QtWidgets.QHBoxLayout()
         hbox.setSpacing(3)
         hbox.setContentsMargins(1, 1, 1, 1)
@@ -1961,6 +1974,16 @@ class Plot(QtWidgets.QWidget):
         self.update_zoom = False
 
         self.show()
+
+
+    def make_report(self):
+        dialog = ReportDialog(self)
+        dialog.exec()
+        # if dialog.exec():
+        #     # do nothing yet
+        # else:
+        #     # do nothing yet
+
 
     def add_new_channels(self, channels, mime_data=None, destination=None, update=True):
         initial = self.channel_selection.topLevelItemCount() == 0
