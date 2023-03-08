@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="v1_2">
+    <span class="report_title">{{title}}</span>
+    <span class="report_date">{{created_date}}</span></div>
+    <span class="report_author">{{author}}</span>
+    <span class="report_description">{{description}}</span>
+    <div class="report_graph"><img src="{{graph_image}}" > </div>
+</body>
+</html> <br/><br/>
+<style>* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+}
+
+.v1_2 {
+    width: 595px;
+    height: 842px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.report_title {
+    width: 355px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 39px;
+    left: 120px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+}
+
+.report_date {
+    width: 71px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 90px;
+    left: 270px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+}
+
+.report_author {
+    width: 39px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 90px;
+    left: 466px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: right;
+}
+
+.report_description {
+    width: 518px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 123px;
+    left: 38px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+}
+
+.report_graph {
+    width: 518px;
+    height: 526px;
+    background: url("graph_1.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 259px;
+    left: 38px;
+    overflow: hidden;
+}
+
+</style>

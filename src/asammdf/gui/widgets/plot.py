@@ -18,9 +18,12 @@ import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 
 # imports for pyinstaller
 import pyqtgraph.functions as fn
-from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy
+from PySide6.QtCore import QUrl
+from PySide6.QtWebEngineWidgets import QWebEngineView
+from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog
 
 from ...arloo.reportdialog import ReportDialog
+from ...arloo.reportresultdialog import ReportResultDialog
 
 try:
     import pyqtgraph.console.template_pyside6
@@ -1978,11 +1981,10 @@ class Plot(QtWidgets.QWidget):
 
     def make_report(self):
         dialog = ReportDialog(self)
-        dialog.exec()
-        # if dialog.exec():
-        #     # do nothing yet
-        # else:
-        #     # do nothing yet
+        result = dialog.exec()
+        if result:
+            parentDialog = ReportResultDialog(self, dialog.report_data)
+            parentDialog.show()
 
 
     def add_new_channels(self, channels, mime_data=None, destination=None, update=True):

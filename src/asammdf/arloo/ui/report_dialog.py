@@ -63,7 +63,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 31), QTime(15, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -115,7 +115,7 @@ class Ui_report_dialog(object):
     # setupUi
 
     def retranslateUi(self, report_dialog):
-        report_dialog.setWindowTitle(QCoreApplication.translate("report_dialog", u"Dialog", None))
+        report_dialog.setWindowTitle(QCoreApplication.translate("report_dialog", u"Reporting", None))
         self.label.setText(QCoreApplication.translate("report_dialog", u"Title", None))
         self.label_2.setText(QCoreApplication.translate("report_dialog", u"Date", None))
         self.label_3.setText(QCoreApplication.translate("report_dialog", u"Author", None))
