@@ -26,6 +26,7 @@ class Ui_preset_widget(object):
         self.saveButton = QPushButton(preset_widget)
         self.saveButton.setObjectName(u"saveButton")
         self.saveButton.setGeometry(QRect(620, 920, 100, 32))
+        self.saveButton.setAutoDefault(True)
         self.itemListView = QListView(preset_widget)
         self.itemListView.setObjectName(u"itemListView")
         self.itemListView.setGeometry(QRect(10, 100, 711, 801))
@@ -41,11 +42,12 @@ class Ui_preset_widget(object):
         self.loadButton = QPushButton(preset_widget)
         self.loadButton.setObjectName(u"loadButton")
         self.loadButton.setGeometry(QRect(520, 920, 100, 32))
+        self.loadButton.setAutoDefault(True)
 
         self.retranslateUi(preset_widget)
 
-        self.saveButton.setDefault(False)
-        self.loadButton.setDefault(False)
+        self.saveButton.setDefault(True)
+        self.loadButton.setDefault(True)
 
 
         QMetaObject.connectSlotsByName(preset_widget)

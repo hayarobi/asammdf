@@ -34,16 +34,24 @@ class PresetWidget(Ui_preset_widget, QWidget):
         PresetModel.instance().updateItem(selected_items)
 
     def showSave(self):
+        self.saveButton.setEnabled(True)
         self.saveButton.setVisible(True)
+        self.loadButton.setEnabled(False)
         self.loadButton.setVisible(False)
+
+        self.saveButton.setFocus()
         self.show()
 
     def showLoad(self):
         # FIXME model을 singleton으로 정의하는 게 맞는 구조인지 생각해보자.
         initial_preset = self._settings.value("onePreset", [])
         PresetModel.instance().updateItem(initial_preset)
+        self.saveButton.setEnabled(False)
         self.saveButton.setVisible(False)
+        self.loadButton.setEnabled(True)
         self.loadButton.setVisible(True)
+
+        self.loadButton.setFocus()
         self.show()
 
     def save_preset(self):
