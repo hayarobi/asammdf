@@ -2,11 +2,14 @@ import base64
 import os
 
 from PySide6 import QtCore, QtWidgets
-from PySide6.QtCore import QRect, QUrl
+from PySide6.QtCore import QRect, QUrl, QMarginsF, QMargins
+from PySide6.QtGui import QPageSize, QPageLayout, QPageLayout, QPainter, QShortcut, QKeySequence
+from PySide6.QtPrintSupport import QPrinter
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QDialog
 from jinja2 import Environment, PackageLoader, select_autoescape, Template
 
+from asammdf.arloo.printhandler import PrintHandler
 from asammdf.arloo.ui.report_result_dialog import Ui_report_result_dialog
 
 
@@ -23,9 +26,14 @@ class ReportResultDialog(Ui_report_result_dialog, QDialog):
 
         self.saveButton.clicked.connect(self.save)
         self.closeButton.clicked.connect(self.reject)
+        self.printButton.clicked.connect(self.printPage)
+
+        self.printer = QPrinter()
+        self.printer.setResolution(72);
+        self.printer.setPageSize(QPageSize.PageSizeId.A4)
+        self.printer.setPageMargins(QMarginsF(12, 16, 12, 20),QPageLayout.Unit.Millimeter)
 
         self.report_data = report_data
-
         env = Environment(
             loader=PackageLoader("asammdf.arloo"),
             autoescape=select_autoescape()
@@ -58,6 +66,23 @@ class ReportResultDialog(Ui_report_result_dialog, QDialog):
         )
         if not file_name:
             return
+        self.web_view.page().printToPdf(file_name)
+        self.close()
 
     def reject(self) -> None:
         super().reject()
+
+    def printPage(self) -> None:
+        handler = PrintHandler(self)
+        handler.setView(self.web_view)
+        handler.printPreview()
+
+        # printPreviewShortCut = QShortcut(QKeySequence(Qt.CTRL + Qt.Key_P), view)
+        # printShortCut = QShortcut(QKeySequence(Qt.CTRL + Qt.SHIFT + Qt.Key_P), view)
+
+        # printPreviewShortCut.activated.connect(handler.printPreview)
+        # printShortCut.activated.connect(handler.print)
+
+        # self.printer.setOutputFileName("~/Downloads/exp.pdf")
+
+        # self.web_view.print(self.printer)
