@@ -22,7 +22,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data.title = self.titleEdit.text()
         data.date = self.dateEdit.dateTime().toPython()
         data.author = self.authorEdit.text()
-        data.description = self.descriptionEdit.document().toHtml()
+        data.description = self.descriptionEdit.document().toPlainText()
         self.report_data = data
         self._settings.setValue("report.title", data.title)
         self._settings.setValue("report.author", data.author)

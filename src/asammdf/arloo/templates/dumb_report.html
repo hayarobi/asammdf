@@ -8,8 +8,12 @@
     <span class="report_title">{{title}}</span>
     <span class="report_date">{{created_date}}</span></div>
     <span class="report_author">{{author}}</span>
-    <span class="report_description">{{description}}</span>
-    <div class="report_graph"><img src="{{graph_image}}" > </div>
+    <span class="report_description">
+        <pre>
+{{description}}
+        </pre>
+    </span>
+    <div class="report_graph"><img class="graph_image" src="{{graph_image}}" > </div>
 </body>
 </html> <br/><br/>
 <style>* {
@@ -86,7 +90,6 @@ body {
 .report_graph {
     width: 518px;
     height: 526px;
-    background: url("graph_1.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -95,6 +98,11 @@ body {
     top: 259px;
     left: 38px;
     overflow: hidden;
+}
+
+.graph_image {
+    max-width:100%;
+    max-height:100%;
 }
 
 </style>
