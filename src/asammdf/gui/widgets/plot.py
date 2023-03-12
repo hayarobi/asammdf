@@ -13,6 +13,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 import numpy as np
 import pyqtgraph as pg
+import pyqtgraph.exporters
 import pyqtgraph.canvas.CanvasTemplate_pyside6
 import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 
@@ -1518,6 +1519,10 @@ class Plot(QtWidgets.QWidget):
             allow_cursor=allow_cursor,
             plot_parent=self,
         )
+        # styles = {'color': 'r', 'font-size': '20px'}
+        # self.plot.setLabel('bottom', 'Hour (H)', **styles)
+        # self.plot.setBackground('#ffff77')
+        self.plot.showGrid(x=True, y=True)
         self.plot.zoom_changed.connect(self.zoom_changed)
 
         if self.plot.cursor1 is not None:
@@ -1978,6 +1983,20 @@ class Plot(QtWidgets.QWidget):
 
         self.show()
 
+
+    def export(self):
+        # generate something to export
+        plt = self.plot
+
+        # create an exporter instance, as an argument give it
+        # the item you wish to export
+        exporter = pg.exporters.ImageExporter(plt.plotItem)
+
+        # set export parameters if needed
+        exporter.parameters()['width'] = 1024  # (note this also affects height parameter)
+
+        # save to file
+        exporter.export('exported1.png')
 
     def make_report(self):
         dialog = ReportDialog(self)

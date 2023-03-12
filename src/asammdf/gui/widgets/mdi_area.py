@@ -2512,6 +2512,7 @@ class WithMDIArea:
             # plot.plot.viewbox.setXRange(start - padding, stop + padding, padding=0)
 
         self.windows_modified.emit()
+        plot.export()
 
         return w, plot
 

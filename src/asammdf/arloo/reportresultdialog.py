@@ -75,7 +75,7 @@ class ReportResultDialog(Ui_report_result_dialog, QDialog):
     def printPage(self) -> None:
         handler = PrintHandler(self)
         handler.setView(self.web_view)
-        handler.printPreview()
+        handler.print_preview()
 
         # printPreviewShortCut = QShortcut(QKeySequence(Qt.CTRL + Qt.Key_P), view)
         # printShortCut = QShortcut(QKeySequence(Qt.CTRL + Qt.SHIFT + Qt.Key_P), view)

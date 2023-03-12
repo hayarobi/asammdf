@@ -16,16 +16,16 @@ class PrintHandler(QObject):
     def setView(self, view):
         assert not self.view
         self.view = view
-        view.printRequested.connect(self.printPreview)
+        view.printRequested.connect(self.print_preview)
         view.printFinished.connect(self.printFinished)
 
     def print(self):
         dialog = QPrintDialog(self.printer, self.view)
         if dialog.exec() != QDialog.Accepted :
             return
-        self.printDocument(self.printer)
+        self._print_document(self.printer)
 
-    def printDocument(self, printer):
+    def _print_document(self, printer):
         self.view.print(printer)
         self._waitForResult.exec()
 
@@ -40,13 +40,13 @@ class PrintHandler(QObject):
                 painter.end()
         self._waitForResult.quit()
 
-    def printPreview(self):
+    def print_preview(self):
         if self.view is None:
             return
         if self._inPrintPreview:
             return
         self._inPrintPreview = True
         preview = QPrintPreviewDialog(self.printer, self.view)
-        preview.paintRequested.connect(self.printDocument)
+        preview.paintRequested.connect(self._print_document)
         preview.exec()
         self._inPrintPreview = False
