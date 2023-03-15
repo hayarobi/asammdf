@@ -4,3 +4,4 @@ class ReportData:
         self.date = None
         self.author = None
         self.description = None
+        self.graph_image = None

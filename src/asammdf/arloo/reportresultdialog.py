@@ -41,16 +41,10 @@ class ReportResultDialog(Ui_report_result_dialog, QDialog):
         # self.web_view.setHtml(report_data.description)
         dumb_htmlfile = "dumb_report.html"
 
-        filepath = os.getcwd()+"/src/asammdf/arloo/templates/graph_1.png"
-        binary_fc = open(filepath, 'rb').read()  # fc aka file_content
-        base64_utf8_str = base64.b64encode(binary_fc).decode('utf-8')
-        ext = filepath.split('.')[-1]
-        dataurl = f'data:image/{ext};base64,{base64_utf8_str}'
-
         template = env.get_template(dumb_htmlfile)
         rendered = template.render(title=report_data.title, author=report_data.author, created_date=report_data.date,
                                    description=report_data.description,
-                                   graph_image=dataurl)
+                                   graph_image=report_data.graph_image)
         self.web_view.setHtml(rendered)
 
     def save(self) -> None:

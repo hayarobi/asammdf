@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import base64
 import bisect
 from collections import defaultdict
 from datetime import timedelta
@@ -19,7 +20,7 @@ import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 
 # imports for pyinstaller
 import pyqtgraph.functions as fn
-from PySide6.QtCore import QUrl
+from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog
 
@@ -1984,25 +1985,26 @@ class Plot(QtWidgets.QWidget):
         self.show()
 
 
-    def export(self):
+    def getPlotImage(self):
         # generate something to export
         plt = self.plot
-
-        # create an exporter instance, as an argument give it
-        # the item you wish to export
-        exporter = pg.exporters.ImageExporter(plt.plotItem)
-
-        # set export parameters if needed
-        exporter.parameters()['width'] = 1024  # (note this also affects height parameter)
-
-        # save to file
-        exporter.export('exported1.png')
+        bytes = QByteArray()
+        buffer = QBuffer(bytes)
+        buffer.open(QIODevice.WriteOnly)
+        plt.grab().save(buffer, "PNG")  # writes pixmap into bytes in PNG format
+        return bytes
 
     def make_report(self):
+        imageBytes = self.getPlotImage()
+        base64_utf8_str = base64.b64encode(imageBytes.data()).decode('utf-8')
+        dataurl = f'data:image/png;base64,{base64_utf8_str}'
+
         dialog = ReportDialog(self)
         result = dialog.exec()
         if result:
-            parentDialog = ReportResultDialog(self, dialog.report_data)
+            report_data = dialog.report_data
+            report_data.graph_image = dataurl
+            parentDialog = ReportResultDialog(self, report_data)
             parentDialog.show()
 
 
