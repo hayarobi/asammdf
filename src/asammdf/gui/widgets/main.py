@@ -1333,8 +1333,10 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         for file_name in natsorted(file_names):
             widget = self._open_file(file_name)
             if signal == 1:
-                self.dbcSig.withDbcApp.connect(widget.load_default_can_database)
+                connection = self.dbcSig.withDbcApp.connect(widget.load_default_can_database)
                 self.dbcSig.withDbcApp.emit(["./src/asammdf/arloo/280-V00-BRA-030902.dbc"])
+                self.dbcSig.disconnect(connection)
+
 
     def open_folder(self, event):
         folder = QtWidgets.QFileDialog.getExistingDirectory(
