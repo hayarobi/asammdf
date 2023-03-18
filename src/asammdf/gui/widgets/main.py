@@ -13,6 +13,7 @@ import pyqtgraph as pg
 from PySide6 import QtCore, QtGui, QtWidgets
 
 from ...arloo.mdffileswidget import MDFFilesWidget
+from ...arloo.arloofile import ArlooFileWidget
 from ...arloo.model.mdf_files import MdfFiles
 from ...version import __version__ as libversion
 from ..dialogs.bus_database_manager import BusDatabaseManagerDialog
@@ -1315,8 +1316,20 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
                 self, "Error", "MDF window was already opened")
             return
         self.mdfs_widget = MDFFilesWidget()
-
+        self.mdfs_widget.extract_signal.connect(self.open_mdfs)
         self.files.addTab(self.mdfs_widget, "mdf_files")
+
+    def open_mdfs(self, event):
+        raw_widget = ArlooFileWidget(event.mdf, "merged_raw.mdf", False)
+
+        raw_widget.open_new_file.connect(self._open_file)
+        raw_widget.full_screen_toggled.connect(self.toggle_fullscreen)
+        connection = self.dbcSig.withDbcApp.connect(raw_widget.load_default_can_database)
+        self.dbcSig.withDbcApp.emit(["./src/asammdf/arloo/280-V00-BRA-030902.dbc"])
+        self.dbcSig.disconnect(connection)
+        #
+        # raw_widget.load_default_can_database(event.database)
+        # self.files.addTab(raw_widget, "mdf_file")
 
     def open_file(self, event):
         self.open_file_and_signal(event, 0)

@@ -22,10 +22,10 @@ class Ui_MultiFileWidget(object):
     def setupUi(self, MultiFileWidget):
         if not MultiFileWidget.objectName():
             MultiFileWidget.setObjectName(u"MultiFileWidget")
-        MultiFileWidget.resize(717, 387)
+        MultiFileWidget.resize(581, 391)
         self.verticalLayoutWidget = QWidget(MultiFileWidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 691, 321))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 561, 321))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -45,11 +45,11 @@ class Ui_MultiFileWidget(object):
         self.extractButton.setAutoDefault(True)
         self.addButton = QPushButton(MultiFileWidget)
         self.addButton.setObjectName(u"addButton")
-        self.addButton.setGeometry(QRect(598, 350, 101, 32))
+        self.addButton.setGeometry(QRect(468, 350, 101, 32))
         self.addButton.setAutoDefault(True)
         self.removeButton = QPushButton(MultiFileWidget)
         self.removeButton.setObjectName(u"removeButton")
-        self.removeButton.setGeometry(QRect(480, 350, 101, 32))
+        self.removeButton.setGeometry(QRect(350, 350, 101, 32))
         self.removeButton.setAutoDefault(True)
 
         self.retranslateUi(MultiFileWidget)
@@ -60,7 +60,7 @@ class Ui_MultiFileWidget(object):
     def retranslateUi(self, MultiFileWidget):
         MultiFileWidget.setWindowTitle(QCoreApplication.translate("MultiFileWidget", u"MDFFiles", None))
         self.extractButton.setText(QCoreApplication.translate("MultiFileWidget", u"Extract", None))
-        self.addButton.setText(QCoreApplication.translate("MultiFileWidget", u"Add File", None))
+        self.addButton.setText(QCoreApplication.translate("MultiFileWidget", u"Add Files", None))
         self.removeButton.setText(QCoreApplication.translate("MultiFileWidget", u"Remove File", None))
     # retranslateUi
 

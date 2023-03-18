@@ -5,6 +5,8 @@ from PySide6.QtCore import QAbstractListModel, QModelIndex
 from asammdf import MDF
 from asammdf.arloo.arloos import DEFAULT_TIME_ZONE
 
+DATABASE_FILE1 = "./src/asammdf/arloo/280-V00-BRA-030902.dbc"
+
 
 class MdfFiles:
     """
@@ -12,9 +14,11 @@ class MdfFiles:
     """
 
     def __init__(self, parent=None):
-        self._dbc_files = {
-            "CAN": [("./src/asammdf/arloo/280-V00-BRA-030902.dbc", 0)],
+        self.dbc_files = {
+            "CAN": [(DATABASE_FILE1, 0)],
         }
+        self.dbc_files_arr = [DATABASE_FILE1]
+
         self.mdf_files = []
 
     def append_file(self, file_path: str):
@@ -22,7 +26,7 @@ class MdfFiles:
         self.mdf_files.append(added_file)
 
     def make_mdf_file(self, file_path):
-        added_file = MdfFile(file_path, self._dbc_files)
+        added_file = MdfFile(file_path, self.dbc_files)
         return added_file
 
     def remove_file(self, idx: int):

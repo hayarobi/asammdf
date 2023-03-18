@@ -9,15 +9,16 @@ from PySide6.QtWidgets import QWidget
 from natsort import natsorted
 
 from asammdf import MDF
+from asammdf.arloo.arloofile import ArlooFileWidget
 from asammdf.arloo.model.mdf_files import MdfFiles
 from asammdf.arloo.ui.multifile_widget import Ui_MultiFileWidget
-from asammdf.gui.widgets.mdi_area import WithMDIArea
+from asammdf.gui.widgets.mdi_area import WithMDIArea, MdiAreaWidget
 
 
 class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
-    add_file = QtCore.Signal(str)
-    remove_file = QtCore.Signal(int)
-    extract_all = QtCore.Signal()
+    add_file_signal = QtCore.Signal(str)
+    remove_file_signal = QtCore.Signal(int)
+    extract_signal = QtCore.Signal(object)
 
     def __init__(
             self,
@@ -29,12 +30,15 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
         self._settings = QtCore.QSettings()
         self.setupUi(self)
 
-        self._mdfFiles = MdfFiles()
+        self._mdf_util = MdfFiles()
         self._model = QStandardItemModel()
         self.mdfListView.setModel(self._model)
         self.extractButton.clicked.connect(self.extract)
         self.addButton.clicked.connect(self.add_file)
         self.removeButton.clicked.connect(self.remove_file)
+
+        self.mdi_area = MdiAreaWidget()
+        self.mdi_area.setVisible(False)
 
     def update_all_channel_trees(self):
         # do nothing
@@ -74,7 +78,7 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
 
     def append_file(self, file_name):
         file_path = Path(file_name)
-        mdf_file = self._mdfFiles.make_mdf_file(file_name)
+        mdf_file = self._mdf_util.make_mdf_file(file_name)
         item = QStandardItem(mdf_file.__str__())
         item.setData(mdf_file)
         self._model.appendRow(item)
@@ -88,4 +92,11 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
         for row in range(0, self._model.rowCount()):
             item = self._model.item(row)
             mdfs.append(item.data())
-        MDF.concatenate()
+        merged = self._mdf_util.merge_mdf_files(mdfs)
+        self.extract_signal.emit(ExtractEvent(merged,self._mdf_util.dbc_files_arr))
+
+class ExtractEvent:
+    def __init__(self, mdf, database_arr) -> None:
+        super().__init__()
+        self.mdf = mdf
+        self.database = database_arr
