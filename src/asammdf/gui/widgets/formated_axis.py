@@ -139,6 +139,7 @@ class FormatedAxis(pg.AxisItem):
                     )
                     .tz_localize("UTC")
                     .tz_convert(DEFAULT_TIME_ZONE)
+                    .strftime("%H:%M:%S")
                     .astype(str)
                     .to_list()
                 )
