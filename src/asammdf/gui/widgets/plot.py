@@ -23,6 +23,7 @@ import pyqtgraph.functions as fn
 from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog
+from pyqtgraph import LabelItem
 
 from ...arloo.reportdialog import ReportDialog
 from ...arloo.reportresultdialog import ReportResultDialog
@@ -1809,6 +1810,8 @@ class Plot(QtWidgets.QWidget):
         self._prev_region = None
 
         self.splitter.addWidget(self.plot)
+        # self.plot_container = PlotContainer(self.plot)
+        # self.splitter.addWidget(self.plot_container)
 
         self.info = ChannelStats(
             self.x_unit,
@@ -4109,6 +4112,10 @@ class _Plot(pg.PlotWidget):
         self.flash_curve_timer.timeout.connect(self.update)
 
         self.block_zoom_signal = False
+        # add x_axis name and date
+        row_count = self.layout.rowCount()
+        text_item = LabelItem("{} ( starting {} )".format(x_axis, self.x_axis.origin))
+        self.layout.addItem(text_item, row_count, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
 
     def add_new_channels(self, channels, descriptions=None):
         descriptions = descriptions or {}
