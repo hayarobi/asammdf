@@ -4653,7 +4653,11 @@ class _Plot(pg.PlotWidget):
                                 if len(self.signal_by_uuid(uuid)[0].plot_samples)
                             ]
                         )
-
+                else:
+                    QtWidgets.QMessageBox.warning(
+                        self, "Cannot apply pattern", "No common axis items were selected"
+                    )
+                    return
                 for i, signal in enumerate(self.signals):
                     if len(signal.plot_samples):
                         if signal.uuid in self.common_axis_items:
