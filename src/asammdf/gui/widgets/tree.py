@@ -975,6 +975,9 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
             if item.pattern:
                 menu.addAction(self.tr("Edit pattern"))
             menu.addAction(self.tr("Group properties"))
+        menu.addSeparator()
+        menu.addAction(self.tr("Increase line width"))
+        menu.addAction(self.tr("Decrease line width"))
 
         action = menu.exec_(self.viewport().mapToGlobal(position))
 
@@ -1402,6 +1405,16 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
 
                 self.pattern_group_added.emit(item)
                 self.refresh()
+        elif action.text() == "Increase line width":
+            event = QtGui.QKeyEvent(
+                QtCore.QEvent.KeyPress, QtCore.Qt.Key_Plus, QtCore.Qt.ControlModifier
+            )
+            self.plot.keyPressEvent(event)
+        elif action.text() == "Decrease line width":
+            event = QtGui.QKeyEvent(
+                QtCore.QEvent.KeyPress, QtCore.Qt.Key_Minus, QtCore.Qt.ControlModifier
+            )
+            self.plot.keyPressEvent(event)
 
         self.update_channel_groups_count()
 

@@ -309,6 +309,7 @@ class PlotSignal(Signal):
         self.color = fn.mkColor(color)
         self.color_name = self.color.name()
         self.pen = fn.mkPen(color=color, style=QtCore.Qt.SolidLine)
+        self.pen_width = 1
 
         self._min = None
         self._max = None
@@ -1955,6 +1956,14 @@ class Plot(QtWidgets.QWidget):
                         QtCore.Qt.ShiftModifier,
                         QtCore.Qt.Key_Backspace,
                     ).toCombined(),
+                    QtCore.QKeyCombination(
+                        QtCore.Qt.ControlModifier,
+                        QtCore.Qt.Key_Plus,
+                    ).toCombined(),
+                    QtCore.QKeyCombination(
+                        QtCore.Qt.ControlModifier,
+                        QtCore.Qt.Key_Minus,
+                    ).toCombined(),
                 ]
             )
             | self.plot.keyboard_events
@@ -1987,6 +1996,19 @@ class Plot(QtWidgets.QWidget):
 
         self.show()
 
+    def increase_channel_line(self, event):
+        for item in self.channel_selection.selectedItems():
+            if item.type() == item.Channel:
+                if item.signal.pen_width < 5:
+                    item.signal.pen_width += 1
+        self.plot.update()
+
+    def decrease_channel_line(self, event):
+        for item in self.channel_selection.selectedItems():
+            if item.type() == item.Channel:
+                if item.signal.pen_width > 1:
+                    item.signal.pen_width -= 1
+        self.plot.update()
 
     def getPlotImage(self):
         # generate something to export
@@ -3166,7 +3188,10 @@ class Plot(QtWidgets.QWidget):
                 self.redo_zoom()
             else:
                 self.undo_zoom()
-
+        elif (key == QtCore.Qt.Key_Plus or key == QtCore.Qt.Key_Equal) and modifiers == QtCore.Qt.ControlModifier:
+            self.increase_channel_line(event)
+        elif key == QtCore.Qt.Key_Minus and modifiers == QtCore.Qt.ControlModifier:
+            self.decrease_channel_line(event)
         else:
             super().keyPressEvent(event)
 
@@ -5384,7 +5409,7 @@ class _Plot(pg.PlotWidget):
                     x, y, y_range=sig.y_range, x_start=x_start, delta=delta
                 )
 
-                sig.pen.setWidth(pen_width)
+                sig.pen.setWidth(sig.pen_width)
 
                 paint.setPen(sig.pen)
 
