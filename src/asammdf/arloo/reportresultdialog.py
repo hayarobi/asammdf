@@ -36,11 +36,11 @@ class ReportResultDialog(Ui_report_result_dialog, QDialog):
             autoescape=select_autoescape()
         )
         # self.web_view.setHtml(report_data.description)
-        dumb_htmlfile = "dumb_report.html"
+        report_template = "report_tmpl.html"
 
-        template = env.get_template(dumb_htmlfile)
-        rendered = template.render(title=report_data.title, author=report_data.author, created_date=report_data.date,
-                                   description=report_data.description,
+        template = env.get_template(report_template)
+        rendered = template.render(vehicle_number=report_data.vehicle_number, author=report_data.author, created_date=report_data.date,
+                                   work_order=report_data.work_order,
                                    graph_image=report_data.graph_image)
         self.web_view.setHtml(rendered)
 

@@ -12,19 +12,19 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self._settings = QtCore.QSettings()
         self.setupUi(self)
         self.report_data = None
-        self.titleEdit.setText(self._settings.value("report.title"))
+        self.vehicleNumberEdit.setText(self._settings.value("report.vehicle_number"))
         self.dateEdit.setDateTime(QDateTime.currentDateTime())
         self.authorEdit.setText(self._settings.value("report.author"))
 
 
     def accept(self) -> None:
         data = ReportData()
-        data.title = self.titleEdit.text()
+        data.vehicle_number = self.vehicleNumberEdit.text()
         data.date = self.dateEdit.dateTime().toPython()
         data.author = self.authorEdit.text()
-        data.description = self.descriptionEdit.document().toPlainText()
+        data.work_order = self.workOrderEdit.text()
         self.report_data = data
-        self._settings.setValue("report.title", data.title)
+        self._settings.setValue("report.vehicle_number", data.vehicle_number)
         self._settings.setValue("report.author", data.author)
 
         super().accept()

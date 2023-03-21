@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>용인 경전철 제동력 측정 보고서</title>
+
+    <style>
+        @media print {
+            body {
+                width: 21cm;
+                height: 29.7cm;
+                margin: 20mm 30mm 20mm 30mm;
+                /* change the margins as you want them to be. */
+            }
+        }
+
+        img{
+            max-width: 100%;
+            max-height: 100%;
+            display: block; /* remove extra space below image */
+        }
+
+        .report_graph {
+            width: 100%;
+            /*height: 526px;*/
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            opacity: 1;
+            /*position: absolute;*/
+            /*top: 259px;*/
+            /*left: 38px;*/
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+
+<body>
+<table width="80%" height="1000" border="0">
+    <tr>
+        <td colspan="4">CI 삽입</td>
+    </tr>
+    <tr>
+        <td colspan="4" align="center"><h1><strong>용인 경전철 제동력 측정 보고서</strong></h1></td>
+    </tr>
+    <tr>
+        <td colspan="4"><h2>1. 일반</h2></td>
+    </tr>
+    <tr>
+        <td>작업 일시</td>
+        <td>차량 번호</td>
+        <td>작업자</td>
+        <td>Work Order</td>
+    </tr>
+    <tr>
+        <td>{{created_date}}</td>
+        <td>{{vehicle_number}}</td>
+        <td>{{author}}</td>
+        <td>{{work_order}}</td>
+    </tr>
+    <tr>
+        <td colspan="4"><h2>2.측정 그래프</h2></td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <div class="report_graph"><img class="graph_image" src="{{graph_image}}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"><h2>3. 상용 제동력 측정 값</h2></td>
+    </tr>
+    <tr>
+        <td rowspan="2">END #1</td>
+        <td>1축</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>2축</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td rowspan="2">END#2</td>
+        <td>3축</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>4축</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</body>
+</html>
+

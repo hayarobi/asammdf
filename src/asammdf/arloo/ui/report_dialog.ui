@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>341</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>240</y>
+     <y>290</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -35,14 +35,17 @@
      <x>20</x>
      <y>10</y>
      <width>361</width>
-     <height>221</height>
+     <height>270</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="topMargin">
+       <number>5</number>
+      </property>
       <property name="bottomMargin">
-       <number>10</number>
+       <number>5</number>
       </property>
       <item>
        <widget class="QLabel" name="label">
@@ -53,17 +56,23 @@
          </size>
         </property>
         <property name="text">
-         <string>Title</string>
+         <string>차량번호</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="titleEdit"/>
+       <widget class="QLineEdit" name="vehicleNumberEdit"/>
       </item>
      </layout>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
       <item>
        <widget class="QLabel" name="label_2">
         <property name="minimumSize">
@@ -73,7 +82,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Date</string>
+         <string>작업일</string>
         </property>
        </widget>
       </item>
@@ -81,12 +90,12 @@
        <widget class="QDateEdit" name="dateEdit">
         <property name="dateTime">
          <datetime>
-          <hour>15</hour>
+          <hour>21</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2022</year>
           <month>12</month>
-          <day>31</day>
+          <day>30</day>
          </datetime>
         </property>
        </widget>
@@ -108,6 +117,12 @@
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
       <item>
        <widget class="QLabel" name="label_3">
         <property name="minimumSize">
@@ -117,7 +132,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Author</string>
+         <string>작업자</string>
         </property>
        </widget>
       </item>
@@ -127,22 +142,25 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
       <item>
-       <widget class="QLabel" name="label_4">
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
+       <widget class="QLabel" name="workOrderLabel">
         <property name="text">
-         <string>Description</string>
+         <string>Work Order</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QTextEdit" name="descriptionEdit"/>
+       <widget class="QLineEdit" name="workOrderEdit"/>
       </item>
      </layout>
     </item>

@@ -1,7 +1,7 @@
 class ReportData:
     def __init__(self):
-        self.title = None
+        self.vehicle_number = None
         self.date = None
         self.author = None
-        self.description = None
+        self.work_order = None
         self.graph_image = None

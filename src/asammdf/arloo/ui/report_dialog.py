@@ -17,44 +17,44 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDateEdit, QDialog,
     QDialogButtonBox, QHBoxLayout, QLabel, QLineEdit,
-    QSizePolicy, QSpacerItem, QTextEdit, QVBoxLayout,
-    QWidget)
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
         if not report_dialog.objectName():
             report_dialog.setObjectName(u"report_dialog")
-        report_dialog.resize(400, 300)
+        report_dialog.resize(400, 341)
         self.buttonBox = QDialogButtonBox(report_dialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(30, 240, 341, 32))
+        self.buttonBox.setGeometry(QRect(30, 290, 341, 32))
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.verticalLayoutWidget = QWidget(report_dialog)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 361, 221))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 361, 270))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(-1, -1, -1, 10)
+        self.horizontalLayout.setContentsMargins(-1, 5, -1, 5)
         self.label = QLabel(self.verticalLayoutWidget)
         self.label.setObjectName(u"label")
         self.label.setMinimumSize(QSize(70, 0))
 
         self.horizontalLayout.addWidget(self.label)
 
-        self.titleEdit = QLineEdit(self.verticalLayoutWidget)
-        self.titleEdit.setObjectName(u"titleEdit")
+        self.vehicleNumberEdit = QLineEdit(self.verticalLayoutWidget)
+        self.vehicleNumberEdit.setObjectName(u"vehicleNumberEdit")
 
-        self.horizontalLayout.addWidget(self.titleEdit)
+        self.horizontalLayout.addWidget(self.vehicleNumberEdit)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(-1, 5, -1, 5)
         self.label_2 = QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setMinimumSize(QSize(70, 0))
@@ -63,7 +63,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 31), QTime(15, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 30), QTime(21, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -76,6 +76,7 @@ class Ui_report_dialog(object):
 
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(-1, 5, -1, 5)
         self.label_3 = QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setMinimumSize(QSize(70, 0))
@@ -90,21 +91,21 @@ class Ui_report_dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_4)
 
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.label_4 = QLabel(self.verticalLayoutWidget)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setMinimumSize(QSize(70, 0))
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(-1, 5, 0, 5)
+        self.workOrderLabel = QLabel(self.verticalLayoutWidget)
+        self.workOrderLabel.setObjectName(u"workOrderLabel")
 
-        self.horizontalLayout_5.addWidget(self.label_4)
+        self.horizontalLayout_6.addWidget(self.workOrderLabel)
 
-        self.descriptionEdit = QTextEdit(self.verticalLayoutWidget)
-        self.descriptionEdit.setObjectName(u"descriptionEdit")
+        self.workOrderEdit = QLineEdit(self.verticalLayoutWidget)
+        self.workOrderEdit.setObjectName(u"workOrderEdit")
 
-        self.horizontalLayout_5.addWidget(self.descriptionEdit)
+        self.horizontalLayout_6.addWidget(self.workOrderEdit)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_5)
+        self.verticalLayout.addLayout(self.horizontalLayout_6)
 
 
         self.retranslateUi(report_dialog)
@@ -116,9 +117,9 @@ class Ui_report_dialog(object):
 
     def retranslateUi(self, report_dialog):
         report_dialog.setWindowTitle(QCoreApplication.translate("report_dialog", u"Reporting", None))
-        self.label.setText(QCoreApplication.translate("report_dialog", u"Title", None))
-        self.label_2.setText(QCoreApplication.translate("report_dialog", u"Date", None))
-        self.label_3.setText(QCoreApplication.translate("report_dialog", u"Author", None))
-        self.label_4.setText(QCoreApplication.translate("report_dialog", u"Description", None))
+        self.label.setText(QCoreApplication.translate("report_dialog", u"\ucc28\ub7c9\ubc88\ud638", None))
+        self.label_2.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc77c", None))
+        self.label_3.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc790", None))
+        self.workOrderLabel.setText(QCoreApplication.translate("report_dialog", u"Work Order", None))
     # retranslateUi
 
