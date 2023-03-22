@@ -21,6 +21,8 @@ BUTTON_SIZE = 16
 class FormatedAxis(pg.AxisItem):
     rangeChanged = QtCore.Signal(object, object)
     scale_editor_requested = QtCore.Signal(object)
+    set_start_time_requested = QtCore.Signal(object)
+    set_end_time_requested = QtCore.Signal(object)
 
     def __init__(self, *args, **kwargs):
         self.plus = self.minus = None
@@ -320,6 +322,10 @@ class FormatedAxis(pg.AxisItem):
 
 
         menu = QtWidgets.QMenu()
+        if axis == "Y":
+            menu.addAction(f"Set start time")
+            menu.addAction(f"Set end time")
+            menu.addSeparator()
         menu.addAction(f"Edit {axis} axis scaling")
         menu.addSeparator()
         menu.addAction("Apply new axis limits")
@@ -403,6 +409,11 @@ class FormatedAxis(pg.AxisItem):
                     self.setRange(from_duration.total_seconds(), to_duration.total_seconds())
         elif action.text() == "Edit Y axis scaling":
             self.scale_editor_requested.emit(self.uuid)
+        elif action.text() == "Set start time":
+            self.set_start_time_requested.emit(self)
+        elif action.text() == "Set end time":
+            self.set_end_time_requested.emit(self)
+
 
     def set_font_size(self, size):
         font = self.font()

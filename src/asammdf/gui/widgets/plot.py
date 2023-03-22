@@ -27,6 +27,7 @@ from pyqtgraph import LabelItem
 
 from ...arloo.reportdialog import ReportDialog
 from ...arloo.reportresultdialog import ReportResultDialog
+from ...arloo.summay import SummaryForm
 
 try:
     import pyqtgraph.console.template_pyside6
@@ -1543,6 +1544,19 @@ class Plot(QtWidgets.QWidget):
             plot=self.plot,
         )
 
+        ## summary widget
+        uhbox = QtWidgets.QHBoxLayout()
+        self.summary_form = SummaryForm(self)
+        uhbox.addWidget(self.summary_form)
+        # TODO connect event
+        self.channel_selection.currentItemChanged.connect(self.summary_form.channel_selection_row_changed)
+        #   channel 선택 (변경)시
+        self.plot.y_axis.set_start_time_requested.connect(self.update_start_time)
+        self.plot.y_axis.set_end_time_requested.connect(self.update_end_time)
+
+        #   플롯 그래프 위에서 우클릭으로 시작시각과 종료시각 선택
+        vbox.addLayout(uhbox)
+
         ## report button
         uhbox = QtWidgets.QHBoxLayout()
         self.report_button = QPushButton("Report")
@@ -1550,7 +1564,6 @@ class Plot(QtWidgets.QWidget):
         horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         uhbox.addItem(horizontalSpacer)
         self.report_button.clicked.connect(self.make_report)
-
         vbox.addLayout(uhbox)
 
         hbox = QtWidgets.QHBoxLayout()
@@ -1995,6 +2008,36 @@ class Plot(QtWidgets.QWidget):
         self.update_zoom = False
 
         self.show()
+
+    def update_start_time(self):
+        x = self.plot.get_current_timebase()
+        position = self.plot.cursor1.value()
+        next_position = self._get_next_position(position, x)
+        return self.summary_form.handle_set_start_time(next_position)
+
+    def update_end_time(self):
+        x = self.plot.get_current_timebase()
+        position = self.plot.cursor1.value()
+        next_position = self._get_next_position(position, x)
+        return self.summary_form.handle_set_end_time(next_position)
+
+    def _get_next_position(self, position, x):
+        if x.size:
+            dim = len(x)
+
+            right = np.searchsorted(x, position, side="right")
+            if right == 0:
+                next_pos = x[0]
+            elif right == dim:
+                next_pos = x[-1]
+            else:
+                if position - x[right - 1] < x[right] - position:
+                    next_pos = x[right - 1]
+                else:
+                    next_pos = x[right]
+        else:
+            next_pos = 0
+        return next_pos
 
     def increase_channel_line(self, event):
         for item in self.channel_selection.selectedItems():
