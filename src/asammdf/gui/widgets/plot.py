@@ -1523,9 +1523,7 @@ class Plot(QtWidgets.QWidget):
             allow_cursor=allow_cursor,
             plot_parent=self,
         )
-        # styles = {'color': 'r', 'font-size': '20px'}
-        # self.plot.setLabel('bottom', 'Hour (H)', **styles)
-        # self.plot.setBackground('#ffff77')
+        self.origin = origin
         self.plot.showGrid(x=True, y=True)
         self.plot.zoom_changed.connect(self.zoom_changed)
 
@@ -4180,6 +4178,7 @@ class _Plot(pg.PlotWidget):
         self.flash_curve_timer.timeout.connect(self.update)
 
         self.block_zoom_signal = False
+
         # add x_axis name and date
         row_count = self.layout.rowCount()
         text_item = LabelItem("{} ( starting {} )".format(x_axis, self.x_axis.origin))

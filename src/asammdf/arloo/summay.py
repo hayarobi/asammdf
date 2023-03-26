@@ -15,13 +15,13 @@ class SummaryForm(Ui_summaryForm, QWidget):
         self.setupUi(self)
         self._settings = QtCore.QSettings()
         self.parent_plot = parent
-        self.summary_data = SummaryData()
+        self.summary_data = SummaryData(self.parent_plot.origin)
         self.summary_data.valueChangedSignal.connect(self.update_fields)
 
     def update_fields(self, event):
         self.channelNameLabel.setText(self.summary_data.channel_name())
-        self.startTimeEdit.setText(str(self.summary_data.start_time))
-        self.endTimeEdit.setText(str(self.summary_data.end_time))
+        self.startTimeEdit.setText(str(self.summary_data.get_start_time()))
+        self.endTimeEdit.setText(str(self.summary_data.get_end_time()))
         self.minimumEdit.setText(str(self.summary_data.minimum))
         self.maximumEdit.setText(str(self.summary_data.maximum))
         self.averageEdit.setText(str(self.summary_data.average))
@@ -36,7 +36,7 @@ class SummaryForm(Ui_summaryForm, QWidget):
                 self.info_uuid = uuid
                 selected_channel = item.signal
 
-        self.summary_data.set_signal(selected_channel)
+        self.summary_data.set_signal(selected_channel, self.parent_plot.origin)
 
     def handle_set_start_time(self, start_time):
         self.summary_data.set_start_time(start_time)
