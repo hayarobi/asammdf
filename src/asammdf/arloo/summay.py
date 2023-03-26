@@ -1,3 +1,4 @@
+import datetime
 import logging
 
 from PySide6.QtWidgets import QWidget
@@ -6,6 +7,10 @@ from qtpy import QtCore
 from asammdf.arloo.model.summaydata import SummaryData
 from asammdf.arloo.ui.summary_form import Ui_summaryForm
 from asammdf.gui.widgets.tree import ChannelsTreeItem
+
+
+def time_to_str(time: datetime):
+    return time.strftime("%Y-%m-%d %H-%M-%S")
 
 
 class SummaryForm(Ui_summaryForm, QWidget):
@@ -20,8 +25,8 @@ class SummaryForm(Ui_summaryForm, QWidget):
 
     def update_fields(self, event):
         self.channelNameLabel.setText(self.summary_data.channel_name())
-        self.startTimeEdit.setText(str(self.summary_data.get_start_time()))
-        self.endTimeEdit.setText(str(self.summary_data.get_end_time()))
+        self.startTimeEdit.setText(time_to_str(self.summary_data.get_start_time()))
+        self.endTimeEdit.setText(time_to_str(self.summary_data.get_end_time()))
         self.minimumEdit.setText(str(self.summary_data.minimum))
         self.maximumEdit.setText(str(self.summary_data.maximum))
         self.averageEdit.setText(str(self.summary_data.average))

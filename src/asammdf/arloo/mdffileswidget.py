@@ -5,12 +5,13 @@ import platform
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import QSettings
 from PySide6.QtGui import QStandardItemModel, QStandardItem
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QMessageBox
 from natsort import natsorted
 
 from asammdf import MDF
 from asammdf.arloo.arloofile import ArlooFileWidget
 from asammdf.arloo.model.mdf_files import MdfFiles
+from asammdf.arloo.summay import time_to_str
 from asammdf.arloo.ui.multifile_widget import Ui_MultiFileWidget
 from asammdf.gui.widgets.mdi_area import WithMDIArea, MdiAreaWidget
 
@@ -79,17 +80,29 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
     def append_file(self, file_name):
         file_path = Path(file_name)
         mdf_file = self._mdf_util.make_mdf_file(file_name)
-        item = QStandardItem(mdf_file.__str__())
-        item.setData(mdf_file)
-        self._model.appendRow(item)
+        # items = []
+        # item_start_time = QStandardItem(time_to_str(mdf_file.start_time))
+        # item_start_time.setData(mdf_file.start_time)
+        # item_size = QStandardItem(str(3))
+        item_mdf = QStandardItem(mdf_file.__str__())
+        item_mdf.setData(mdf_file)
+        # items.append(item_start_time)
+        # items.append(item_size)
+        # items.append(item_mdf)
+        self._model.appendRow(item_mdf)
 
     def remove_file(self):
         for row in self.mdfListView.selectedIndexes():
-            self._model.takeRow(row)
+            self._model.removeRow(row.row())
 
     def extract(self):
         mdfs = []
-        for row in range(0, self._model.rowCount()):
+        file_count = self._model.rowCount()
+        if file_count == 0:
+            QMessageBox.information(self, 'no files', 'add files first', QMessageBox.Ok)
+            return
+
+        for row in range(0, file_count):
             item = self._model.item(row)
             mdfs.append(item.data())
         merged = self._mdf_util.merge_mdf_files(mdfs)

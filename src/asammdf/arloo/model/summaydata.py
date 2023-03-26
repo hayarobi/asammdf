@@ -45,7 +45,7 @@ class SummaryData(QObject):
             return UNDEFINED
         else:
             time = self.origin_time + timedelta(seconds=self.start_time)
-            return time.strftime("%Y-%m-%d %H-%M-%S")
+            return time
 
     def set_end_time(self, end_time):
         if end_time is None:
@@ -59,7 +59,7 @@ class SummaryData(QObject):
             return UNDEFINED
         else:
             time = self.origin_time + timedelta(seconds=self.end_time)
-            return time.strftime("%Y-%m-%d %H-%M-%S")
+            return time
 
     def _calculate(self):
         if (self.signal is None or
