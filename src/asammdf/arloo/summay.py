@@ -1,7 +1,7 @@
 import datetime
 import logging
 
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QMessageBox
 from qtpy import QtCore
 
 from asammdf.arloo.model.summaydata import SummaryData
@@ -10,7 +10,10 @@ from asammdf.gui.widgets.tree import ChannelsTreeItem
 
 
 def time_to_str(time: datetime):
-    return time.strftime("%Y-%m-%d %H-%M-%S")
+    if time is None:
+        return "_"
+    else:
+        return time.strftime("%Y-%m-%d %H-%M-%S")
 
 
 class SummaryForm(Ui_summaryForm, QWidget):
@@ -44,7 +47,18 @@ class SummaryForm(Ui_summaryForm, QWidget):
         self.summary_data.set_signal(selected_channel, self.parent_plot.origin)
 
     def handle_set_start_time(self, start_time):
-        self.summary_data.set_start_time(start_time)
+        if not self.summary_data.set_start_time(start_time):
+            QMessageBox.critical(
+                self,
+                "Can't set start time",
+                "start time must before end time",
+            )
 
     def handle_set_end_time(self, end_time):
-        self.summary_data.set_end_time(end_time)
+        if not self.summary_data.set_end_time(end_time):
+            QMessageBox.critical(
+                self,
+                "Can't set end time",
+                "end time must after start time",
+            )
+

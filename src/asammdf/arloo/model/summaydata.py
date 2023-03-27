@@ -4,7 +4,8 @@ from PySide6.QtCore import Signal, QObject
 from future.backports.datetime import timedelta
 
 UNDEFINED = ''
-
+START_NOT_SELECTED = -10.0
+END_NOT_SELECTED = 10000000000.0
 
 class SummaryData(QObject):
     valueChangedSignal = Signal(object)
@@ -12,8 +13,8 @@ class SummaryData(QObject):
     def __init__(self, origin_time):
         super().__init__(None)
         self.signal = None
-        self.start_time = UNDEFINED
-        self.end_time = UNDEFINED
+        self.start_time = START_NOT_SELECTED
+        self.end_time = END_NOT_SELECTED
         self.origin_time = origin_time
         self._clear()
 
@@ -35,36 +36,42 @@ class SummaryData(QObject):
 
     def set_start_time(self, start_time):
         if start_time is None:
-            self.start_time = UNDEFINED
+            self.start_time = START_NOT_SELECTED
         else:
+            if start_time >= self.end_time:
+                return False
             self.start_time = start_time
         self._calculate()
+        return True
 
     def get_start_time(self):
-        if self.signal is None or self.start_time == UNDEFINED:
-            return UNDEFINED
+        if self.start_time == START_NOT_SELECTED:
+            return None
         else:
             time = self.origin_time + timedelta(seconds=self.start_time)
             return time
 
     def set_end_time(self, end_time):
         if end_time is None:
-            self.end_time = UNDEFINED
+            self.end_time = END_NOT_SELECTED
         else:
+            if end_time <= self.start_time:
+                return False
             self.end_time = end_time
         self._calculate()
+        return True
 
     def get_end_time(self):
-        if self.signal is None or self.end_time == UNDEFINED:
-            return UNDEFINED
+        if self.end_time == END_NOT_SELECTED:
+            return None
         else:
             time = self.origin_time + timedelta(seconds=self.end_time)
             return time
 
     def _calculate(self):
         if (self.signal is None or
-                self.start_time == UNDEFINED or
-                self.end_time == UNDEFINED):
+                self.start_time == START_NOT_SELECTED or
+                self.end_time == END_NOT_SELECTED):
             self._clear()
         else:
             values = self._collect_values(self.signal, self.start_time, self.end_time)

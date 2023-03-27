@@ -39,9 +39,10 @@ class ReportResultDialog(Ui_report_result_dialog, QDialog):
         report_template = "report_tmpl.html"
 
         template = env.get_template(report_template)
-        rendered = template.render(vehicle_number=report_data.vehicle_number, author=report_data.author, created_date=report_data.date,
+        rendered = template.render(data=report_data, vehicle_number=report_data.vehicle_number, author=report_data.author, created_date=report_data.date,
                                    work_order=report_data.work_order,
-                                   graph_image=report_data.graph_image)
+                                   graph_image=report_data.graph_image
+                                   )
         self.web_view.setHtml(rendered)
 
     def save(self) -> None:
