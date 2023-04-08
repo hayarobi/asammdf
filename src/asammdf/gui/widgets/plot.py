@@ -3925,6 +3925,10 @@ class _Plot(pg.PlotWidget):
         self.viewbox.sigYRangeChanged.connect(self.y_changed)
         self.viewbox.sigRangeChangedManually.connect(self.y_changed)
 
+        # 배경색 변경
+        self.setBackground('w')
+        self.backgroundBrush().setColor('w')
+
         self.x_axis = FormatedAxis(
             "bottom", maxTickLength=5, background=self.backgroundBrush().color()
         )
@@ -4179,9 +4183,11 @@ class _Plot(pg.PlotWidget):
 
         self.block_zoom_signal = False
 
-        # add x_axis name and date
+        # X축 이름과 날짜 표시
         row_count = self.layout.rowCount()
-        text_item = LabelItem("{} ( starting {} )".format(x_axis, self.x_axis.origin))
+        text_item = LabelItem()
+        text_item.setAttr('color', "#444400")
+        text_item.setText("{} ( starting {} )".format(x_axis, self.x_axis.origin))
         self.layout.addItem(text_item, row_count, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
 
     def add_new_channels(self, channels, descriptions=None):

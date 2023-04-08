@@ -120,19 +120,24 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         # action.setShortcut(QtGui.QKeySequence("Ctrl+O"))
         # open_group.addAction(action)
 
-        action = QtGui.QAction(icon, "Open", menu)
+        action = QtGui.QAction(icon, "New Convert Work", menu)
         action.triggered.connect(self.open_single_mdf)
+        action.setShortcut(QtGui.QKeySequence("Ctrl+N"))
+        open_group.addAction(action)
+
+        action = QtGui.QAction(icon, "Open MDF file", menu)
+        action.triggered.connect(self.open)
         action.setShortcut(QtGui.QKeySequence("Ctrl+O"))
         open_group.addAction(action)
 
-        action = QtGui.QAction(icon, "OpenWithDatabase", menu)
-        action.triggered.connect(self.open_with_dbc)
-        action.setShortcut(QtGui.QKeySequence("Shift+Ctrl+O"))
-        open_group.addAction(action)
-
-        action = QtGui.QAction(icon, "Open folder", menu)
-        action.triggered.connect(self.open_folder)
-        open_group.addAction(action)
+        # action = QtGui.QAction(icon, "OpenWithDatabase", menu)
+        # action.triggered.connect(self.open_with_dbc)
+        # action.setShortcut(QtGui.QKeySequence("Shift+Ctrl+O"))
+        # open_group.addAction(action)
+        #
+        # action = QtGui.QAction(icon, "Open folder", menu)
+        # action.triggered.connect(self.open_folder)
+        # open_group.addAction(action)
 
         menu.addActions(open_group.actions())
 

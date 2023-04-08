@@ -3,6 +3,7 @@
 from datetime import datetime, timedelta, timezone
 
 from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6.QtGui import QColor
 
 from ...arloo.arloos import DEFAULT_TIME_ZONE
 
@@ -52,6 +53,8 @@ class FormatedAxis(pg.AxisItem):
                 self.scene().addItem(self.minus)
 
             self.setWidth(48)
+        # 펜 색상을 배경의 반대색으로 설정
+        self._pen.setColor('b')
 
         self.set_pen(self._pen)
 
