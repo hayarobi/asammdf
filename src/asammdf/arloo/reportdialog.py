@@ -45,6 +45,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.axis4Edit.textChanged.connect(self.updateAxis4Pound)
 
         self.report_data = None
+        self.subjectEdit.setText(self._settings.value("report.subject"))
         self.vehicleNumberEdit.setText(self._settings.value("report.vehicle_number"))
         self.dateEdit.setDateTime(QDateTime.currentDateTime())
         self.authorEdit.setText(self._settings.value("report.author"))
@@ -62,6 +63,8 @@ class ReportDialog(Ui_report_dialog, QDialog):
             return
 
         data = ReportData()
+        # FIXME 타이틀 영역 추가하여 받아오도록 처리하자.
+        data.subject = self.subjectEdit.text()
         data.vehicle_number = self.vehicleNumberEdit.text()
         data.date = self.dateEdit.dateTime().toPython().astimezone(DEFAULT_TIME_ZONE).strftime("%Y-%m-%d")
         data.author = self.authorEdit.text()
@@ -77,6 +80,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data.axis_4_yp = to_pound(data.axis_4_si)
 
         self.report_data = data
+        self._settings.setValue("report.subject", data.subject)
         self._settings.setValue("report.vehicle_number", data.vehicle_number)
         self._settings.setValue("report.author", data.author)
 

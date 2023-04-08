@@ -20,7 +20,7 @@ import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 
 # imports for pyinstaller
 import pyqtgraph.functions as fn
-from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer
+from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer, QFile, QDataStream
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog
 from pyqtgraph import LabelItem
@@ -28,6 +28,7 @@ from pyqtgraph import LabelItem
 from ...arloo.reportdialog import ReportDialog
 from ...arloo.reportresultdialog import ReportResultDialog
 from ...arloo.summay import SummaryForm
+from ...arloo import arresource
 
 try:
     import pyqtgraph.console.template_pyside6
@@ -2065,11 +2066,19 @@ class Plot(QtWidgets.QWidget):
         base64_utf8_str = base64.b64encode(imageBytes.data()).decode('utf-8')
         dataurl = f'data:image/png;base64,{base64_utf8_str}'
 
+        stream = QFile(':/everCI.png')
+        if stream.open(QFile.ReadOnly):
+            base64_utf8_str = base64.b64encode(stream.readAll().data()).decode('utf-8')
+            ci_dataurl = f'data:image/png;base64,{base64_utf8_str}'
+            stream.close()
+        else:
+            print(stream.errorString())
         dialog = ReportDialog(self)
         result = dialog.exec()
         if result:
             report_data = dialog.report_data
             report_data.graph_image = dataurl
+            report_data.ci_image = ci_dataurl
             parentDialog = ReportResultDialog(self, report_data)
             parentDialog.show()
 

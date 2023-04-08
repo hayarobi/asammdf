@@ -6,6 +6,7 @@ from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QDialog
 from jinja2 import Environment, PackageLoader, select_autoescape
 
+from asammdf.arloo.model import report_data
 from asammdf.arloo.printhandler import PrintHandler
 from asammdf.arloo.ui.report_result_dialog import Ui_report_result_dialog
 
@@ -41,7 +42,8 @@ class ReportResultDialog(Ui_report_result_dialog, QDialog):
         template = env.get_template(report_template)
         rendered = template.render(data=report_data, vehicle_number=report_data.vehicle_number, author=report_data.author, created_date=report_data.date,
                                    work_order=report_data.work_order,
-                                   graph_image=report_data.graph_image
+                                   graph_image=report_data.graph_image,
+                                   ci_image=report_data.ci_image
                                    )
         self.web_view.setHtml(rendered)
 

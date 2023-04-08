@@ -23,18 +23,34 @@ class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
         if not report_dialog.objectName():
             report_dialog.setObjectName(u"report_dialog")
-        report_dialog.resize(400, 536)
+        report_dialog.resize(400, 621)
         self.buttonBox = QDialogButtonBox(report_dialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(30, 490, 341, 32))
+        self.buttonBox.setGeometry(QRect(30, 570, 341, 32))
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.verticalLayoutWidget = QWidget(report_dialog)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 361, 471))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 362, 551))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.label_12 = QLabel(self.verticalLayoutWidget)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setMinimumSize(QSize(70, 0))
+
+        self.horizontalLayout_3.addWidget(self.label_12)
+
+        self.subjectEdit = QLineEdit(self.verticalLayoutWidget)
+        self.subjectEdit.setObjectName(u"subjectEdit")
+
+        self.horizontalLayout_3.addWidget(self.subjectEdit)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
+
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(-1, 5, -1, 5)
@@ -63,7 +79,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 30), QTime(3, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 29), QTime(18, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -96,6 +112,7 @@ class Ui_report_dialog(object):
         self.horizontalLayout_6.setContentsMargins(-1, 5, 0, 5)
         self.workOrderLabel = QLabel(self.verticalLayoutWidget)
         self.workOrderLabel.setObjectName(u"workOrderLabel")
+        self.workOrderLabel.setMinimumSize(QSize(70, 0))
 
         self.horizontalLayout_6.addWidget(self.workOrderLabel)
 
@@ -244,11 +261,12 @@ class Ui_report_dialog(object):
     # setupUi
 
     def retranslateUi(self, report_dialog):
-        report_dialog.setWindowTitle(QCoreApplication.translate("report_dialog", u"Reporting", None))
+        report_dialog.setWindowTitle(QCoreApplication.translate("report_dialog", u"\ub9ac\ud3ec\ud2b8", None))
+        self.label_12.setText(QCoreApplication.translate("report_dialog", u"\uc8fc\uc81c", None))
         self.label.setText(QCoreApplication.translate("report_dialog", u"\ucc28\ub7c9\ubc88\ud638", None))
         self.label_2.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc77c", None))
         self.label_3.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc790", None))
-        self.workOrderLabel.setText(QCoreApplication.translate("report_dialog", u"Work Order", None))
+        self.workOrderLabel.setText(QCoreApplication.translate("report_dialog", u"\uc7a5\uc560\uc77c\uc2dc ", None))
         self.workOrderLabel_2.setText(QCoreApplication.translate("report_dialog", u"Axis 1", None))
         self.label_4.setText(QCoreApplication.translate("report_dialog", u"kN", None))
         self.label_8.setText(QCoreApplication.translate("report_dialog", u"lbs", None))
