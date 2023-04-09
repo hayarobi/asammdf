@@ -26,6 +26,7 @@ from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy
 from pyqtgraph import LabelItem
 
 from ...arloo.reportdialog import ReportDialog
+from ...arloo.reportmaker import ReportMaker
 from ...arloo.reportresultdialog import ReportResultDialog
 from ...arloo.summay import SummaryForm
 from ...arloo import arresource
@@ -1557,12 +1558,13 @@ class Plot(QtWidgets.QWidget):
         vbox.addLayout(uhbox)
 
         ## report button
+        self.report_maker = ReportMaker(self)
         uhbox = QtWidgets.QHBoxLayout()
         self.report_button = QPushButton("Report")
         uhbox.addWidget(self.report_button)
         horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         uhbox.addItem(horizontalSpacer)
-        self.report_button.clicked.connect(self.make_report)
+        self.report_button.clicked.connect(self.report_maker.make_report)
         vbox.addLayout(uhbox)
 
         hbox = QtWidgets.QHBoxLayout()
@@ -2051,37 +2053,6 @@ class Plot(QtWidgets.QWidget):
                 if item.signal.pen_width > 1:
                     item.signal.pen_width -= 1
         self.plot.update()
-
-    def getPlotImage(self):
-        # generate something to export
-        plt = self.plot
-        bytes = QByteArray()
-        buffer = QBuffer(bytes)
-        buffer.open(QIODevice.WriteOnly)
-        plt.grab().save(buffer, "PNG")  # writes pixmap into bytes in PNG format
-        return bytes
-
-    def make_report(self):
-        imageBytes = self.getPlotImage()
-        base64_utf8_str = base64.b64encode(imageBytes.data()).decode('utf-8')
-        dataurl = f'data:image/png;base64,{base64_utf8_str}'
-
-        stream = QFile(':/everCI.png')
-        if stream.open(QFile.ReadOnly):
-            base64_utf8_str = base64.b64encode(stream.readAll().data()).decode('utf-8')
-            ci_dataurl = f'data:image/png;base64,{base64_utf8_str}'
-            stream.close()
-        else:
-            print(stream.errorString())
-        dialog = ReportDialog(self)
-        result = dialog.exec()
-        if result:
-            report_data = dialog.report_data
-            report_data.graph_image = dataurl
-            report_data.ci_image = ci_dataurl
-            parentDialog = ReportResultDialog(self, report_data)
-            parentDialog.show()
-
 
     def add_new_channels(self, channels, mime_data=None, destination=None, update=True):
         initial = self.channel_selection.topLevelItemCount() == 0

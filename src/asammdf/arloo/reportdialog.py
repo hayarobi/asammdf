@@ -29,11 +29,14 @@ def is_float(value):
     except:
         return False
 
+
 class ReportDialog(Ui_report_dialog, QDialog):
     def __init__(self, parent):
         super().__init__(parent)
         self._settings = QtCore.QSettings()
         self.setupUi(self)
+
+        self.signals = parent.plot.signals
 
         self.axis1Edit.setValidator(QDoubleValidator())
         self.axis2Edit.setValidator(QDoubleValidator())
@@ -108,5 +111,3 @@ class ReportDialog(Ui_report_dialog, QDialog):
             ypEdit.setText(f"{value_yp:.1f}")
         except:
             ypEdit.setText("")
-
-

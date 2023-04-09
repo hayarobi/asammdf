@@ -30,9 +30,9 @@ class SummaryForm(Ui_summaryForm, QWidget):
         self.channelNameLabel.setText(self.summary_data.channel_name())
         self.startTimeEdit.setText(time_to_str(self.summary_data.get_start_time()))
         self.endTimeEdit.setText(time_to_str(self.summary_data.get_end_time()))
-        self.minimumEdit.setText(str(self.summary_data.minimum))
-        self.maximumEdit.setText(str(self.summary_data.maximum))
-        self.averageEdit.setText(str(self.summary_data.average))
+        self.minimumEdit.setText(str(self.summary_data.minimum()))
+        self.maximumEdit.setText(str(self.summary_data.maximum()))
+        self.averageEdit.setText(str(self.summary_data.average()))
         self.update()
 
     def channel_selection_row_changed(self, current, previous):

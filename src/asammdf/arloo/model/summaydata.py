@@ -1,38 +1,38 @@
-from datetime import datetime
-
 from PySide6.QtCore import Signal, QObject
 from future.backports.datetime import timedelta
 
-UNDEFINED = ''
-START_NOT_SELECTED = -10.0
-END_NOT_SELECTED = 10000000000.0
+from asammdf.arloo.model.signal_summary import SignalSummary, UNDEFINED, START_NOT_SELECTED, END_NOT_SELECTED
 
+DUMMY_SIGNAL = SignalSummary(None, "select channel!")
 class SummaryData(QObject):
     valueChangedSignal = Signal(object)
 
     def __init__(self, origin_time):
         super().__init__(None)
-        self.signal = None
+        self.signal = DUMMY_SIGNAL
         self.start_time = START_NOT_SELECTED
         self.end_time = END_NOT_SELECTED
         self.origin_time = origin_time
-        self._clear()
 
     def _clear(self):
-        self.minimum = UNDEFINED
-        self.maximum = UNDEFINED
-        self.average = UNDEFINED
+        self.signal = DUMMY_SIGNAL
 
     def channel_name(self):
-        if self.signal is None:
-            return "select channel!"
-        else:
-            return self.signal.name
+        return self.signal.name
+
+    def minimum(self):
+        return self.signal.minimum
+
+    def maximum(self):
+        return self.signal.maximum
+
+    def average(self):
+        return self.signal.average
 
     def set_signal(self, signal, origin_time):
-        self.signal = signal
         self.origin_time = origin_time
-        self._calculate()
+        self.signal = SignalSummary(signal, signal.name, self.start_time, self.end_time)
+        self.valueChangedSignal.emit(self)
 
     def set_start_time(self, start_time):
         if start_time is None:
@@ -41,7 +41,9 @@ class SummaryData(QObject):
             if start_time >= self.end_time:
                 return False
             self.start_time = start_time
-        self._calculate()
+        if self.signal is not None:
+            self.signal.set_time_range(self.start_time, self.end_time)
+            self.valueChangedSignal.emit(self)
         return True
 
     def get_start_time(self):
@@ -58,7 +60,9 @@ class SummaryData(QObject):
             if end_time <= self.start_time:
                 return False
             self.end_time = end_time
-        self._calculate()
+        if self.signal is not None:
+            self.signal.set_time_range(self.start_time, self.end_time)
+            self.valueChangedSignal.emit(self)
         return True
 
     def get_end_time(self):
