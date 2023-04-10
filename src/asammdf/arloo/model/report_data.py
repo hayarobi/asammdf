@@ -10,13 +10,11 @@ class ReportData:
         self.work_order = None
         self.graph_image = None
         self.ci_image = None
-        self.events = []
-        self.axis_1_si = 0.0
-        self.axis_2_si = 0.0
-        self.axis_3_si = 0.0
-        self.axis_4_si = 0.0
+        self.start_time = None
+        self.end_time = None
+        self.summaries = []
 
-    def add_event(self, event: SignalSummary):
-        self.events.append(event)
+    def add_summary(self, event: SignalSummary):
+        self.summaries.append(event)
 
 

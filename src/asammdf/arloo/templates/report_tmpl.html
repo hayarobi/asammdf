@@ -15,7 +15,7 @@
             }
         }
 
-        img{
+        img {
             max-width: 100%;
             max-height: 100%;
             display: block; /* remove extra space below image */
@@ -71,29 +71,28 @@
         </td>
     </tr>
     <tr>
-        <td colspan="4"><h2>3. 상용 제동력 측정 값</h2></td>
-    </tr>
-    <tr>
-        <td rowspan="2">END #1</td>
-        <td>1축</td>
-        <td>{{data.axis_1_si|round(3)}} kN</td>
-        <td>{{data.axis_1_yp|round(1)}} lbs</td>
-    </tr>
-    <tr>
-        <td>2축</td>
-        <td>{{data.axis_2_si|round(3)}} kN</td>
-        <td>{{data.axis_2_yp|round(1)}} lbs</td>
-    </tr>
-    <tr>
-        <td rowspan="2">END#2</td>
-        <td>3축</td>
-        <td>{{data.axis_3_si|round(3)}} kN</td>
-        <td>{{data.axis_3_yp|round(1)}} lbs</td>
-    </tr>
-    <tr>
-        <td>4축</td>
-        <td>{{data.axis_4_si|round(3)}} kN</td>
-        <td>{{data.axis_4_yp|round(1)}} lbs</td>
+        <td colspan="4">
+            <table width="100%">
+                <tr>
+                    <td width="25%">이름</td>
+                    <td width="15%">{{data.start_time.strftime('%H:%M:%S')}}</td>
+                    <td width="15%">{{data.end_time.strftime('%H:%M:%S')}}</td>
+                    <td width="15%">최소값</td>
+                    <td width="15%">최대값</td>
+                    <td width="15%">평균값</td>
+                </tr>
+                {% for item in data.summaries %}
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{"%.2f"|format(item.first_value)}}</td>
+                    <td>{{"%.2f"|format(item.last_value)}}</td>
+                    <td>{{"%.2f"|format(item.minimum)}}</td>
+                    <td>{{"%.2f"|format(item.maximum)}}</td>
+                    <td>{{"%.2f"|format(item.average)}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
     </tr>
 </table>
 </body>

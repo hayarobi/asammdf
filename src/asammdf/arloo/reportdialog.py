@@ -1,7 +1,7 @@
 from PySide6 import QtCore
 from PySide6.QtCore import QDateTime
 from PySide6.QtGui import QIntValidator, QDoubleValidator
-from PySide6.QtWidgets import QDialog, QMessageBox
+from PySide6.QtWidgets import QDialog, QMessageBox, QTreeWidgetItem
 from numpy import double
 
 from asammdf.arloo.arloos import DEFAULT_TIME_ZONE
@@ -31,21 +31,19 @@ def is_float(value):
 
 
 class ReportDialog(Ui_report_dialog, QDialog):
-    def __init__(self, parent):
+    def __init__(self, parent, signal_summaries):
         super().__init__(parent)
         self._settings = QtCore.QSettings()
         self.setupUi(self)
 
-        self.signals = parent.plot.signals
-
-        self.axis1Edit.setValidator(QDoubleValidator())
-        self.axis2Edit.setValidator(QDoubleValidator())
-        self.axis3Edit.setValidator(QDoubleValidator())
-        self.axis4Edit.setValidator(QDoubleValidator())
-        self.axis1Edit.textChanged.connect(self.updateAxis1Pound)
-        self.axis2Edit.textChanged.connect(self.updateAxis2Pound)
-        self.axis3Edit.textChanged.connect(self.updateAxis3Pound)
-        self.axis4Edit.textChanged.connect(self.updateAxis4Pound)
+        self._signal_summaries = signal_summaries
+        for signal_summary in signal_summaries:
+            sig_item = QTreeWidgetItem(self.summaries_widget)
+            sig_item.setText(0, signal_summary.name)
+            sig_item.setText(1, str(signal_summary.samples))
+            sig_item.setText(2, str(signal_summary.minimum))
+            sig_item.setText(3, str(signal_summary.maximum))
+            sig_item.setText(4, str(signal_summary.average))
 
         self.report_data = None
         self.subjectEdit.setText(self._settings.value("report.subject"))
@@ -54,17 +52,6 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.authorEdit.setText(self._settings.value("report.author"))
 
     def accept(self) -> None:
-        if (not is_float(self.axis1Edit.text()) or
-                not is_float(self.axis2Edit.text()) or
-                not is_float(self.axis3Edit.text()) or
-                not is_float(self.axis4Edit.text())):
-            QMessageBox.critical(
-                self,
-                "No value",
-                "valid axis values are required",
-            )
-            return
-
         data = ReportData()
         # FIXME 타이틀 영역 추가하여 받아오도록 처리하자.
         data.subject = self.subjectEdit.text()
@@ -73,14 +60,6 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data.author = self.authorEdit.text()
         data.work_order = self.workOrderEdit.text()
         data.work_order = self.workOrderEdit.text()
-        data.axis_1_si = to_number(self.axis1Edit.text())
-        data.axis_1_yp = to_pound(data.axis_1_si)
-        data.axis_2_si = to_number(self.axis2Edit.text())
-        data.axis_2_yp = to_pound(data.axis_2_si)
-        data.axis_3_si = to_number(self.axis3Edit.text())
-        data.axis_3_yp = to_pound(data.axis_3_si)
-        data.axis_4_si = to_number(self.axis4Edit.text())
-        data.axis_4_yp = to_pound(data.axis_4_si)
 
         self.report_data = data
         self._settings.setValue("report.subject", data.subject)

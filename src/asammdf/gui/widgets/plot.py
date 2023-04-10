@@ -1558,7 +1558,7 @@ class Plot(QtWidgets.QWidget):
         vbox.addLayout(uhbox)
 
         ## report button
-        self.report_maker = ReportMaker(self)
+        self.report_maker = ReportMaker(self, self.summary_form.summary_data)
         uhbox = QtWidgets.QHBoxLayout()
         self.report_button = QPushButton("Report")
         uhbox.addWidget(self.report_button)

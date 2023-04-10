@@ -13,7 +13,7 @@ def time_to_str(time: datetime):
     if time is None:
         return "_"
     else:
-        return time.strftime("%Y-%m-%d %H-%M-%S")
+        return time.strftime("%Y-%m-%d %H:%M:%S")
 
 
 class SummaryForm(Ui_summaryForm, QWidget):
@@ -47,7 +47,7 @@ class SummaryForm(Ui_summaryForm, QWidget):
         self.summary_data.set_signal(selected_channel, self.parent_plot.origin)
 
     def handle_set_start_time(self, start_time):
-        if not self.summary_data.set_start_time(start_time):
+        if not self.summary_data.set_start_delta(start_time):
             QMessageBox.critical(
                 self,
                 "Can't set start time",
@@ -55,7 +55,7 @@ class SummaryForm(Ui_summaryForm, QWidget):
             )
 
     def handle_set_end_time(self, end_time):
-        if not self.summary_data.set_end_time(end_time):
+        if not self.summary_data.set_end_delta(end_time):
             QMessageBox.critical(
                 self,
                 "Can't set end time",

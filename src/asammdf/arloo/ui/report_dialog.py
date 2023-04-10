@@ -16,22 +16,23 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDateEdit, QDialog,
-    QDialogButtonBox, QHBoxLayout, QLabel, QLineEdit,
-    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+    QDialogButtonBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QSizePolicy, QSpacerItem, QTreeWidget,
+    QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
         if not report_dialog.objectName():
             report_dialog.setObjectName(u"report_dialog")
-        report_dialog.resize(400, 621)
+        report_dialog.resize(444, 631)
         self.buttonBox = QDialogButtonBox(report_dialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(30, 570, 341, 32))
+        self.buttonBox.setGeometry(QRect(80, 580, 341, 32))
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.verticalLayoutWidget = QWidget(report_dialog)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 362, 551))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 411, 551))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -79,7 +80,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 29), QTime(18, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 29), QTime(9, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -124,133 +125,11 @@ class Ui_report_dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
 
-        self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(-1, 5, 0, 5)
-        self.workOrderLabel_2 = QLabel(self.verticalLayoutWidget)
-        self.workOrderLabel_2.setObjectName(u"workOrderLabel_2")
+        self.summaries_widget = QTreeWidget(self.verticalLayoutWidget)
+        self.summaries_widget.setObjectName(u"summaries_widget")
+        self.summaries_widget.setColumnCount(5)
 
-        self.horizontalLayout_7.addWidget(self.workOrderLabel_2)
-
-        self.axis1Edit = QLineEdit(self.verticalLayoutWidget)
-        self.axis1Edit.setObjectName(u"axis1Edit")
-
-        self.horizontalLayout_7.addWidget(self.axis1Edit)
-
-        self.label_4 = QLabel(self.verticalLayoutWidget)
-        self.label_4.setObjectName(u"label_4")
-
-        self.horizontalLayout_7.addWidget(self.label_4)
-
-        self.axis1PoundEdit = QLineEdit(self.verticalLayoutWidget)
-        self.axis1PoundEdit.setObjectName(u"axis1PoundEdit")
-        self.axis1PoundEdit.setEnabled(False)
-
-        self.horizontalLayout_7.addWidget(self.axis1PoundEdit)
-
-        self.label_8 = QLabel(self.verticalLayoutWidget)
-        self.label_8.setObjectName(u"label_8")
-
-        self.horizontalLayout_7.addWidget(self.label_8)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_7)
-
-        self.horizontalLayout_8 = QHBoxLayout()
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(-1, 5, 0, 5)
-        self.workOrderLabel_3 = QLabel(self.verticalLayoutWidget)
-        self.workOrderLabel_3.setObjectName(u"workOrderLabel_3")
-
-        self.horizontalLayout_8.addWidget(self.workOrderLabel_3)
-
-        self.axis2Edit = QLineEdit(self.verticalLayoutWidget)
-        self.axis2Edit.setObjectName(u"axis2Edit")
-
-        self.horizontalLayout_8.addWidget(self.axis2Edit)
-
-        self.label_5 = QLabel(self.verticalLayoutWidget)
-        self.label_5.setObjectName(u"label_5")
-
-        self.horizontalLayout_8.addWidget(self.label_5)
-
-        self.axis2PoundEdit = QLineEdit(self.verticalLayoutWidget)
-        self.axis2PoundEdit.setObjectName(u"axis2PoundEdit")
-        self.axis2PoundEdit.setEnabled(False)
-
-        self.horizontalLayout_8.addWidget(self.axis2PoundEdit)
-
-        self.label_9 = QLabel(self.verticalLayoutWidget)
-        self.label_9.setObjectName(u"label_9")
-
-        self.horizontalLayout_8.addWidget(self.label_9)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_8)
-
-        self.horizontalLayout_9 = QHBoxLayout()
-        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(-1, 5, 0, 5)
-        self.workOrderLabel_4 = QLabel(self.verticalLayoutWidget)
-        self.workOrderLabel_4.setObjectName(u"workOrderLabel_4")
-
-        self.horizontalLayout_9.addWidget(self.workOrderLabel_4)
-
-        self.axis3Edit = QLineEdit(self.verticalLayoutWidget)
-        self.axis3Edit.setObjectName(u"axis3Edit")
-
-        self.horizontalLayout_9.addWidget(self.axis3Edit)
-
-        self.label_6 = QLabel(self.verticalLayoutWidget)
-        self.label_6.setObjectName(u"label_6")
-
-        self.horizontalLayout_9.addWidget(self.label_6)
-
-        self.axis3PoundEdit = QLineEdit(self.verticalLayoutWidget)
-        self.axis3PoundEdit.setObjectName(u"axis3PoundEdit")
-        self.axis3PoundEdit.setEnabled(False)
-
-        self.horizontalLayout_9.addWidget(self.axis3PoundEdit)
-
-        self.label_10 = QLabel(self.verticalLayoutWidget)
-        self.label_10.setObjectName(u"label_10")
-
-        self.horizontalLayout_9.addWidget(self.label_10)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_9)
-
-        self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(-1, 5, 0, 5)
-        self.workOrderLabel_5 = QLabel(self.verticalLayoutWidget)
-        self.workOrderLabel_5.setObjectName(u"workOrderLabel_5")
-
-        self.horizontalLayout_10.addWidget(self.workOrderLabel_5)
-
-        self.axis4Edit = QLineEdit(self.verticalLayoutWidget)
-        self.axis4Edit.setObjectName(u"axis4Edit")
-
-        self.horizontalLayout_10.addWidget(self.axis4Edit)
-
-        self.label_7 = QLabel(self.verticalLayoutWidget)
-        self.label_7.setObjectName(u"label_7")
-
-        self.horizontalLayout_10.addWidget(self.label_7)
-
-        self.axis4PoundEdit = QLineEdit(self.verticalLayoutWidget)
-        self.axis4PoundEdit.setObjectName(u"axis4PoundEdit")
-        self.axis4PoundEdit.setEnabled(False)
-
-        self.horizontalLayout_10.addWidget(self.axis4PoundEdit)
-
-        self.label_11 = QLabel(self.verticalLayoutWidget)
-        self.label_11.setObjectName(u"label_11")
-
-        self.horizontalLayout_10.addWidget(self.label_11)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_10)
+        self.verticalLayout.addWidget(self.summaries_widget)
 
 
         self.retranslateUi(report_dialog)
@@ -267,17 +146,11 @@ class Ui_report_dialog(object):
         self.label_2.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc77c", None))
         self.label_3.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc790", None))
         self.workOrderLabel.setText(QCoreApplication.translate("report_dialog", u"\uc7a5\uc560\uc77c\uc2dc ", None))
-        self.workOrderLabel_2.setText(QCoreApplication.translate("report_dialog", u"Axis 1", None))
-        self.label_4.setText(QCoreApplication.translate("report_dialog", u"kN", None))
-        self.label_8.setText(QCoreApplication.translate("report_dialog", u"lbs", None))
-        self.workOrderLabel_3.setText(QCoreApplication.translate("report_dialog", u"Axis 2", None))
-        self.label_5.setText(QCoreApplication.translate("report_dialog", u"kN", None))
-        self.label_9.setText(QCoreApplication.translate("report_dialog", u"lbs", None))
-        self.workOrderLabel_4.setText(QCoreApplication.translate("report_dialog", u"Axis 3", None))
-        self.label_6.setText(QCoreApplication.translate("report_dialog", u"kN", None))
-        self.label_10.setText(QCoreApplication.translate("report_dialog", u"lbs", None))
-        self.workOrderLabel_5.setText(QCoreApplication.translate("report_dialog", u"Axis 4", None))
-        self.label_7.setText(QCoreApplication.translate("report_dialog", u"kN", None))
-        self.label_11.setText(QCoreApplication.translate("report_dialog", u"lbs", None))
+        ___qtreewidgetitem = self.summaries_widget.headerItem()
+        ___qtreewidgetitem.setText(4, QCoreApplication.translate("report_dialog", u"\ud3c9\uade0", None));
+        ___qtreewidgetitem.setText(3, QCoreApplication.translate("report_dialog", u"\ucd5c\ub300\uac12", None));
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("report_dialog", u"\ucd5c\uc18c\uac12", None));
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("report_dialog", u"\uc0d8\ud50c\uc218", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("report_dialog", u"\uc774\ub984", None));
     # retranslateUi
 

@@ -27,10 +27,12 @@ class SignalSummary:
         self._calculate()
 
     def _calculate(self):
-        if (self.start_time == START_NOT_SELECTED or
-                self.end_time == END_NOT_SELECTED):
-            self._clear_values()
+        if self.signal is None:
             return
+        # if (self.start_time == START_NOT_SELECTED or
+        #         self.end_time == END_NOT_SELECTED):
+        #     self._clear_values()
+        #     return
 
         values = self._collect_values(self.signal, self.start_time, self.end_time)
         if len(values) == 0:
@@ -39,6 +41,8 @@ class SignalSummary:
             self.samples = len(values)
             minimum = None
             maximum = None
+            self.first_value = values[0]
+            self.last_value = values[self.samples - 1]
             value_sum = 0.0
             for val in values:
                 value_sum += val
