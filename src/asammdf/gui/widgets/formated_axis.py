@@ -4,6 +4,8 @@ from datetime import datetime, timedelta, timezone
 
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtGui import QColor
+from PySide6.QtWidgets import QMessageBox
+from numpy import number
 
 from ...arloo.arloos import DEFAULT_TIME_ZONE
 
@@ -25,7 +27,7 @@ class FormatedAxis(pg.AxisItem):
     set_start_time_requested = QtCore.Signal(object)
     set_end_time_requested = QtCore.Signal(object)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, positioner, *args, **kwargs):
         self.plus = self.minus = None
         self.uuid = kwargs.pop("uuid", None)
         self.background = kwargs.pop("background", fn.mkColor("#000000"))
@@ -55,6 +57,7 @@ class FormatedAxis(pg.AxisItem):
             self.setWidth(48)
         # 펜 색상을 배경의 반대색으로 설정
         self._pen.setColor('b')
+        self.positioner = positioner
 
         self.set_pen(self._pen)
 
@@ -325,10 +328,14 @@ class FormatedAxis(pg.AxisItem):
 
 
         menu = QtWidgets.QMenu()
-        if axis == "Y":
-            menu.addAction(f"Set start time")
-            menu.addAction(f"Set end time")
-            menu.addSeparator()
+        if axis == "X":
+            if self.origin is not None:
+                pos = self.positioner.get_pointer_pos(ev.scenePos())
+                current_time = self.origin + timedelta(seconds=pos.x())
+                current_time_str = current_time.strftime("%H:%M:%S")
+                menu.addAction(f"Set start time to {current_time_str}")
+                menu.addAction(f"Set end time to {current_time_str}")
+                menu.addSeparator()
         menu.addAction(f"Edit {axis} axis scaling")
         menu.addSeparator()
         menu.addAction("Apply new axis limits")
@@ -398,25 +405,48 @@ class FormatedAxis(pg.AxisItem):
             return
         elif action.text() == "Apply new axis limits":
             if from_time is None:
-                if self.orientation in ("left", "right"):
-                    self.setRange(lower.value(), upper.value())
-                else:
-                    self.setRange(lower.value(), upper.value())
+                lower_value = lower.value()
+                upper_value = upper.value()
             else:
-                naive_origin = self.origin.replace(tzinfo=None)
-                to_duration = upper_time_edit.dateTime().toPython() - naive_origin
-                from_duration = lower_time_edit.dateTime().toPython() - naive_origin
-                if self.orientation in ("left", "right"):
-                    self.setRange(from_duration.total_seconds(), to_duration.total_seconds())
-                else:
-                    self.setRange(from_duration.total_seconds(), to_duration.total_seconds())
+                lower_value, upper_value = self.get_range_values_from_edit(lower_time_edit, upper_time_edit)
+            self.update_range(lower_value, upper_value)
         elif action.text() == "Edit Y axis scaling":
             self.scale_editor_requested.emit(self.uuid)
-        elif action.text() == "Set start time":
-            self.set_start_time_requested.emit(self)
-        elif action.text() == "Set end time":
-            self.set_end_time_requested.emit(self)
+        elif action.text().startswith("Set start time"):
+            lower_value, upper_value = self.get_range_values_from_edit(lower_time_edit, upper_time_edit)
+            if pos.x() > upper_value:
+                QMessageBox.critical(
+                    self,
+                    "Can't set start time",
+                    "start time must before end time",
+                )
+                return
+            # self.update_range(pos.x(), upper_value)
+            self.set_start_time_requested.emit(pos)
+        elif action.text().startswith("Set end time"):
+            lower_value, upper_value = self.get_range_values_from_edit(lower_time_edit, upper_time_edit)
+            if pos.x() < lower_value:
+                QMessageBox.critical(
+                    self,
+                    "Can't set end time",
+                    "end time must after start time",
+                )
+            # self.update_range(lower_value, pos.x())
+            self.set_end_time_requested.emit(pos)
 
+    def update_range(self, lower_value, upper_value):
+        if self.orientation in ("left", "right"):
+            self.setRange(lower_value, upper_value)
+        else:
+            self.setRange(lower_value, upper_value)
+
+    def get_range_values_from_edit(self, lower_time_edit, upper_time_edit):
+        naive_origin = self.origin.replace(tzinfo=None)
+        to_duration = upper_time_edit.dateTime().toPython() - naive_origin
+        from_duration = lower_time_edit.dateTime().toPython() - naive_origin
+        lower_value = from_duration.total_seconds()
+        upper_value = to_duration.total_seconds()
+        return lower_value, upper_value
 
     def set_font_size(self, size):
         font = self.font()

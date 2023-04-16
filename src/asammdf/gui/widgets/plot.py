@@ -1551,8 +1551,8 @@ class Plot(QtWidgets.QWidget):
         # TODO connect event
         self.channel_selection.currentItemChanged.connect(self.summary_form.channel_selection_row_changed)
         #   channel 선택 (변경)시
-        self.plot.y_axis.set_start_time_requested.connect(self.update_start_time)
-        self.plot.y_axis.set_end_time_requested.connect(self.update_end_time)
+        self.plot.x_axis.set_start_time_requested.connect(self.update_start_time)
+        self.plot.x_axis.set_end_time_requested.connect(self.update_end_time)
 
         #   플롯 그래프 위에서 우클릭으로 시작시각과 종료시각 선택
         vbox.addLayout(uhbox)
@@ -2010,16 +2010,36 @@ class Plot(QtWidgets.QWidget):
 
         self.show()
 
-    def update_start_time(self):
+    def update_start_time(self, pos):
+        offset = pos.x()
         x = self.plot.get_current_timebase()
-        position = self.plot.cursor1.value()
-        next_position = self._get_next_position(position, x)
+        next_position = self._get_next_position(offset, x)
+
+        if self.plot.cursor_start is None:
+            self.plot.cursor_start = Cursor(
+                pos=pos, angle=90, movable=False, pen="black", hoverPen="black"
+            )
+            self.plot.viewbox.addItem(self.plot.cursor_start, ignoreBounds=True)
+            self.plot.cursor_start.show()
+        else:
+            self.plot.cursor_start.setPos(pos)
+
         return self.summary_form.handle_set_start_time(next_position)
 
-    def update_end_time(self):
+    def update_end_time(self, pos):
+        offset = pos.x()
         x = self.plot.get_current_timebase()
-        position = self.plot.cursor1.value()
-        next_position = self._get_next_position(position, x)
+        next_position = self._get_next_position(offset, x)
+
+        if self.plot.cursor_end is None:
+            self.plot.cursor_end = Cursor(
+                pos=pos, angle=90, movable=False, pen="black", hoverPen="black"
+            )
+            self.plot.viewbox.addItem(self.plot.cursor_end, ignoreBounds=True)
+            self.plot.cursor_end.show()
+        else:
+            self.plot.cursor_end.setPos(pos)
+
         return self.summary_form.handle_set_end_time(next_position)
 
     def _get_next_position(self, position, x):
@@ -3910,7 +3930,7 @@ class _Plot(pg.PlotWidget):
         self.backgroundBrush().setColor('w')
 
         self.x_axis = FormatedAxis(
-            "bottom", maxTickLength=5, background=self.backgroundBrush().color()
+            self, "bottom", maxTickLength=5, background=self.backgroundBrush().color()
         )
 
         if x_axis == "time":
@@ -3923,7 +3943,7 @@ class _Plot(pg.PlotWidget):
         self.x_axis.origin = origin
 
         self.y_axis = FormatedAxis(
-            "left", maxTickLength=-5, background=self.backgroundBrush().color()
+            self, "left", maxTickLength=-5, background=self.backgroundBrush().color()
         )
         self.y_axis.setWidth(48)
 
@@ -4169,6 +4189,13 @@ class _Plot(pg.PlotWidget):
         text_item.setAttr('color', "#444400")
         text_item.setText("{} ( starting {} )".format(x_axis, self.x_axis.origin))
         self.layout.addItem(text_item, row_count, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        # start, end cursor
+        self.cursor_start = None
+        self.cursor_end = None
+
+    def get_pointer_pos(self, scenePos):
+        pos = self.plot_item.vb.mapSceneToView(scenePos)
+        return pos
 
     def add_new_channels(self, channels, descriptions=None):
         descriptions = descriptions or {}
@@ -4550,6 +4577,7 @@ class _Plot(pg.PlotWidget):
             position = axis
 
             axis = FormatedAxis(
+                self,
                 "left",
                 pen=sig.pen,
                 textPen=sig.pen,
