@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>444</width>
-    <height>631</height>
+    <height>708</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>리포트</string>
@@ -17,7 +23,7 @@
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>580</y>
+     <y>660</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -35,7 +41,7 @@
      <x>20</x>
      <y>10</y>
      <width>411</width>
-     <height>551</height>
+     <height>641</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -110,7 +116,7 @@
        <widget class="QDateEdit" name="dateEdit">
         <property name="dateTime">
          <datetime>
-          <hour>9</hour>
+          <hour>0</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2022</year>
@@ -189,6 +195,16 @@
        <widget class="QLineEdit" name="workOrderEdit"/>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string> 설명</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="descriptionEdit"/>
     </item>
     <item>
      <widget class="QTreeWidget" name="summaries_widget">

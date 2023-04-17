@@ -17,22 +17,27 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDateEdit, QDialog,
     QDialogButtonBox, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QSizePolicy, QSpacerItem, QTreeWidget,
-    QTreeWidgetItem, QVBoxLayout, QWidget)
+    QLineEdit, QSizePolicy, QSpacerItem, QTextEdit,
+    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
         if not report_dialog.objectName():
             report_dialog.setObjectName(u"report_dialog")
-        report_dialog.resize(444, 631)
+        report_dialog.resize(444, 708)
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(report_dialog.sizePolicy().hasHeightForWidth())
+        report_dialog.setSizePolicy(sizePolicy)
         self.buttonBox = QDialogButtonBox(report_dialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(80, 580, 341, 32))
+        self.buttonBox.setGeometry(QRect(80, 660, 341, 32))
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.verticalLayoutWidget = QWidget(report_dialog)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 411, 551))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 411, 641))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -80,7 +85,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 29), QTime(9, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 29), QTime(0, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -125,6 +130,16 @@ class Ui_report_dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
 
+        self.label_4 = QLabel(self.verticalLayoutWidget)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout.addWidget(self.label_4)
+
+        self.descriptionEdit = QTextEdit(self.verticalLayoutWidget)
+        self.descriptionEdit.setObjectName(u"descriptionEdit")
+
+        self.verticalLayout.addWidget(self.descriptionEdit)
+
         self.summaries_widget = QTreeWidget(self.verticalLayoutWidget)
         self.summaries_widget.setObjectName(u"summaries_widget")
         self.summaries_widget.setColumnCount(5)
@@ -146,6 +161,7 @@ class Ui_report_dialog(object):
         self.label_2.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc77c", None))
         self.label_3.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc790", None))
         self.workOrderLabel.setText(QCoreApplication.translate("report_dialog", u"\uc7a5\uc560\uc77c\uc2dc ", None))
+        self.label_4.setText(QCoreApplication.translate("report_dialog", u" \uc124\uba85", None))
         ___qtreewidgetitem = self.summaries_widget.headerItem()
         ___qtreewidgetitem.setText(4, QCoreApplication.translate("report_dialog", u"\ud3c9\uade0", None));
         ___qtreewidgetitem.setText(3, QCoreApplication.translate("report_dialog", u"\ucd5c\ub300\uac12", None));

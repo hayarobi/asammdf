@@ -1,3 +1,5 @@
+from pydoc import html
+
 from PySide6 import QtCore
 from PySide6.QtCore import QDateTime
 from PySide6.QtGui import QIntValidator, QDoubleValidator
@@ -59,7 +61,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data.date = self.dateEdit.dateTime().toPython().astimezone(DEFAULT_TIME_ZONE).strftime("%Y-%m-%d")
         data.author = self.authorEdit.text()
         data.work_order = self.workOrderEdit.text()
-        data.work_order = self.workOrderEdit.text()
+        data.description = html.escape(self.descriptionEdit.toHtml())
 
         self.report_data = data
         self._settings.setValue("report.subject", data.subject)

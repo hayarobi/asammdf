@@ -34,6 +34,11 @@
             overflow: hidden;
         }
 
+        .report_description {
+            width: 100%;
+            border: none;
+        }
+
     </style>
 </head>
 
@@ -57,10 +62,10 @@
         <td>Work Order</td>
     </tr>
     <tr>
-        <td>{{created_date}}</td>
-        <td>{{vehicle_number}}</td>
-        <td>{{author}}</td>
-        <td>{{work_order}}</td>
+        <td>{{data.date}}</td>
+        <td>{{data.vehicle_number}}</td>
+        <td>{{data.author}}</td>
+        <td>{{data.work_order}}</td>
     </tr>
     <tr>
         <td colspan="4"><h2>2.측정 그래프</h2></td>
@@ -68,6 +73,11 @@
     <tr>
         <td colspan="4">
             <div class="report_graph"><img class="graph_image" src="{{graph_image}}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <iframe class="report_description" srcdoc="{{data.description}}"> </iframe>
         </td>
     </tr>
     <tr>

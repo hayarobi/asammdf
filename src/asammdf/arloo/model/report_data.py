@@ -12,6 +12,7 @@ class ReportData:
         self.ci_image = None
         self.start_time = None
         self.end_time = None
+        self.description = None
         self.summaries = []
 
     def add_summary(self, event: SignalSummary):
