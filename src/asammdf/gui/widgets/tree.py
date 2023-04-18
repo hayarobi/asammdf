@@ -910,7 +910,7 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
         menu.addAction(self.tr("Paste channel structure [Ctrl+V]"))
 
         if item and item.type() == ChannelsTreeItem.Channel:
-            menu.addAction(self.tr("Rename channel"))
+            menu.addAction(self.tr("채널 이름 변경"))
         elif item and item.type() == ChannelsTreeItem.Group and not item.pattern:
             menu.addAction(self.tr("Rename group"))
         menu.addSeparator()
@@ -1360,16 +1360,17 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
                 text = text.strip()
                 item.name = text
 
-        elif action.text() == "Rename channel":
+        elif action.text() == "채널 이름 변경":
             text, ok = QtWidgets.QInputDialog.getText(
                 self,
-                "Rename channel",
-                "New channel name:",
+                "채널 이름 변경",
+                "새 채널명:",
                 text=item.text(item.NameColumn),
             )
             if ok and text.strip():
                 text = text.strip()
                 item.name = text
+                item.signal.view_name = text
 
         elif action.text() == "Edit pattern":
             pattern = dict(item.pattern)

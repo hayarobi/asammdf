@@ -61,7 +61,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data.date = self.dateEdit.dateTime().toPython().astimezone(DEFAULT_TIME_ZONE).strftime("%Y-%m-%d")
         data.author = self.authorEdit.text()
         data.work_order = self.workOrderEdit.text()
-        data.description = html.escape(self.descriptionEdit.toHtml())
+        data.description = self.descriptionEdit.toHtml()
 
         self.report_data = data
         self._settings.setValue("report.subject", data.subject)

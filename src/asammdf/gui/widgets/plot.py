@@ -330,6 +330,11 @@ class PlotSignal(Signal):
 
         self.mode = getattr(signal, "mode", "phys")
         self.trim(*(trim_info or (None, None, 1900)))
+        # 이름을 위한 추가 설정
+        self.view_name = self.name
+
+    def set_alias_name(self, new_name):
+        self.alias_name = new_name
 
     @property
     def avg(self):
@@ -5864,16 +5869,16 @@ class _Plot(pg.PlotWidget):
                 axis.setLabel(self.common_axis_label)
 
         else:
-            if len(sig.name) <= 32:
+            if len(sig.view_name) <= 32:
                 if sig.unit:
-                    axis.setLabel(f"{sig.name} [{sig.unit}]")
+                    axis.setLabel(f"{sig.view_name} [{sig.unit}]")
                 else:
-                    axis.setLabel(f"{sig.name}")
+                    axis.setLabel(f"{sig.view_name}")
             else:
                 if sig.unit:
-                    axis.setLabel(f"{sig.name[:29]}...  [{sig.unit}]")
+                    axis.setLabel(f"{sig.view_name[:29]}...  [{sig.unit}]")
                 else:
-                    axis.setLabel(f"{sig.name[:29]}...")
+                    axis.setLabel(f"{sig.view_name[:29]}...")
 
             axis.set_pen(sig.pen)
             axis.setTextPen(sig.pen)

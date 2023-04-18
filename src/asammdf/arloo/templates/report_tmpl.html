@@ -36,10 +36,21 @@
 
         .report_description {
             width: 100%;
+            overflow-x: hidden;
+            overflow: auto;
             border: none;
         }
 
     </style>
+
+    <script type="text/javascript">
+        function calcHeight() {
+            const iFrame1 = document.getElementById('iframe1');
+            const the_height = iFrame1.contentWindow.document.body.scrollHeight;
+            iFrame1.height = the_height+20;
+            iFrame1.style.overflow = "hidden";
+        }
+    </script>
 </head>
 
 <body>
@@ -77,7 +88,9 @@
     </tr>
     <tr>
         <td colspan="4">
-            <iframe class="report_description" srcdoc="{{data.description}}"> </iframe>
+            <iframe class="report_description" id="iframe1" onload="calcHeight();" scrolling="no"
+                     srcdoc="{{data.description}}
+            "></iframe>
         </td>
     </tr>
     <tr>
