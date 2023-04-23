@@ -17,27 +17,27 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDateEdit, QDialog, QHBoxLayout,
     QHeaderView, QLabel, QLayout, QLineEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QTextEdit,
-    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QTreeWidget,
+    QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
         if not report_dialog.objectName():
             report_dialog.setObjectName(u"report_dialog")
         report_dialog.setWindowModality(Qt.NonModal)
-        report_dialog.resize(938, 708)
+        report_dialog.resize(1160, 708)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(report_dialog.sizePolicy().hasHeightForWidth())
         report_dialog.setSizePolicy(sizePolicy)
-        report_dialog.setMinimumSize(QSize(938, 708))
-        report_dialog.setMaximumSize(QSize(938, 708))
+        report_dialog.setMinimumSize(QSize(1160, 708))
+        report_dialog.setMaximumSize(QSize(1160, 708))
         report_dialog.setSizeGripEnabled(False)
         report_dialog.setModal(True)
         self.verticalLayoutWidget = QWidget(report_dialog)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 411, 631))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 661, 641))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -85,7 +85,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 26), QTime(18, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 25), QTime(15, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -130,15 +130,26 @@ class Ui_report_dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
 
+        self.descriptionAreaLayout = QVBoxLayout()
+        self.descriptionAreaLayout.setObjectName(u"descriptionAreaLayout")
         self.label_4 = QLabel(self.verticalLayoutWidget)
         self.label_4.setObjectName(u"label_4")
 
-        self.verticalLayout.addWidget(self.label_4)
+        self.descriptionAreaLayout.addWidget(self.label_4)
 
-        self.descriptionEdit = QTextEdit(self.verticalLayoutWidget)
-        self.descriptionEdit.setObjectName(u"descriptionEdit")
+        self.editorHolder = QWidget(self.verticalLayoutWidget)
+        self.editorHolder.setObjectName(u"editorHolder")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.editorHolder.sizePolicy().hasHeightForWidth())
+        self.editorHolder.setSizePolicy(sizePolicy1)
+        self.editorHolder.setMinimumSize(QSize(0, 220))
 
-        self.verticalLayout.addWidget(self.descriptionEdit)
+        self.descriptionAreaLayout.addWidget(self.editorHolder)
+
+
+        self.verticalLayout.addLayout(self.descriptionAreaLayout)
 
         self.summaries_widget = QTreeWidget(self.verticalLayoutWidget)
         self.summaries_widget.setObjectName(u"summaries_widget")
@@ -148,13 +159,13 @@ class Ui_report_dialog(object):
 
         self.verticalLayoutWidget_2 = QWidget(report_dialog)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(460, 10, 454, 640))
+        self.verticalLayoutWidget_2.setGeometry(QRect(690, 10, 454, 640))
         self.previewLayout = QVBoxLayout(self.verticalLayoutWidget_2)
         self.previewLayout.setObjectName(u"previewLayout")
         self.previewLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayoutWidget = QWidget(report_dialog)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(20, 650, 891, 41))
+        self.horizontalLayoutWidget.setGeometry(QRect(20, 660, 1121, 41))
         self.horizontalLayout_5 = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)

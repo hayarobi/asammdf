@@ -2,16 +2,15 @@ from pydoc import html
 
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import QDateTime, QTimer
-from PySide6.QtGui import QIntValidator, QDoubleValidator
 from PySide6.QtWebEngineWidgets import QWebEngineView
-from PySide6.QtWidgets import QDialog, QMessageBox, QTreeWidgetItem
+from PySide6.QtWidgets import QDialog, QMessageBox, QTreeWidgetItem, QVBoxLayout, QLabel
 from jinja2 import Environment, PackageLoader, select_autoescape
-from numpy import double
 
 from asammdf.arloo.arloos import DEFAULT_TIME_ZONE
 from asammdf.arloo.model.report_data import ReportData
 from asammdf.arloo.printhandler import PrintHandler
 from asammdf.arloo.ui.report_dialog import Ui_report_dialog
+from asammdf.arloo.widgets.wysiwygedit import WysiwygEdit
 
 POUNDS_RATIO = 4.448
 
@@ -57,6 +56,13 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.vehicleNumberEdit.setText(self._settings.value("report.vehicle_number"))
         self.dateEdit.setDateTime(QDateTime.currentDateTime())
         self.authorEdit.setText(self._settings.value("report.author"))
+
+        # wysiwyg editor 추가
+        # self.wysiwygEdit = WysiwygEdit()
+        editorLayout = QVBoxLayout(self.editorHolder)
+        self.wysiwygEdit = WysiwygEdit()
+        editorLayout.addWidget(self.wysiwygEdit)
+        self.descriptionEdit = self.wysiwygEdit.editor
 
         # preview 영역 구성
         self.web_view = QWebEngineView(self.verticalLayoutWidget_2)
@@ -157,3 +163,4 @@ class ReportDialog(Ui_report_dialog, QDialog):
         handler.setView(self.web_view)
         handler.print_preview()
         self.save_to_settings()
+
