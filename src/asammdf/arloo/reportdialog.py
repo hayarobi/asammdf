@@ -1,13 +1,16 @@
 from pydoc import html
 
-from PySide6 import QtCore
-from PySide6.QtCore import QDateTime
+from PySide6 import QtCore, QtWidgets
+from PySide6.QtCore import QDateTime, QTimer
 from PySide6.QtGui import QIntValidator, QDoubleValidator
+from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QDialog, QMessageBox, QTreeWidgetItem
+from jinja2 import Environment, PackageLoader, select_autoescape
 from numpy import double
 
 from asammdf.arloo.arloos import DEFAULT_TIME_ZONE
 from asammdf.arloo.model.report_data import ReportData
+from asammdf.arloo.printhandler import PrintHandler
 from asammdf.arloo.ui.report_dialog import Ui_report_dialog
 
 POUNDS_RATIO = 4.448
@@ -33,13 +36,15 @@ def is_float(value):
 
 
 class ReportDialog(Ui_report_dialog, QDialog):
-    def __init__(self, parent, signal_summaries):
+    def __init__(self, parent, data_provider):
         super().__init__(parent)
+
         self._settings = QtCore.QSettings()
         self.setupUi(self)
+        self._data_provider = data_provider
 
-        self._signal_summaries = signal_summaries
-        for signal_summary in signal_summaries:
+        self._signal_summaries = data_provider.signal_summaries
+        for signal_summary in self._signal_summaries:
             sig_item = QTreeWidgetItem(self.summaries_widget)
             sig_item.setText(0, signal_summary.name)
             sig_item.setText(1, str(signal_summary.samples))
@@ -53,42 +58,102 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.dateEdit.setDateTime(QDateTime.currentDateTime())
         self.authorEdit.setText(self._settings.value("report.author"))
 
+        # preview 영역 구성
+        self.web_view = QWebEngineView(self.verticalLayoutWidget_2)
+        self.previewLayout.addWidget(self.web_view)
+        self.web_view.setZoomFactor(0.75)
+        # self.web_view.setHtml("<html><body></body></html>")
+        self.init_webview()
+
+        # 입력값 변경 감지부
+        self.timer = QTimer()
+        self.timer.setSingleShot(True)
+        self.timer.setInterval(1000)
+        self.timer.timeout.connect(self.update_preview)
+        self.subjectEdit.textEdited.connect(self.update_render_timer)
+        self.vehicleNumberEdit.textEdited.connect(self.update_render_timer)
+        self.authorEdit.textEdited.connect(self.update_render_timer)
+        self.dateEdit.dateChanged.connect(self.update_render_timer)
+        self.descriptionEdit.textChanged.connect(self.update_render_timer)
+
+        self.saveButton.clicked.connect(self.save_to_pdf)
+        self.closeButton.clicked.connect(self.reject)
+        self.printButton.clicked.connect(self.printPage)
+
+    def init_webview(self):
+        env = Environment(
+            loader=PackageLoader("asammdf.arloo"),
+            autoescape=select_autoescape()
+        )
+        # self.web_view.setHtml(report_data.description)
+        report_template = "report_tmpl.html"
+        self.preview_template = env.get_template(report_template)
+        # 최초 preview를 보여주는 용도
+        self.update_preview()
+
+    def update_render_timer(self):
+        self.timer.start()
+
+    def update_preview(self,*args,**kwargs):
+        report_data = self.refresh_report_data()
+        rendered = self.preview_template.render(data=report_data,
+                                   graph_image=report_data.graph_image,
+                                   ci_image=report_data.ci_image
+                                   )
+        self.web_view.setHtml(rendered)
+
     def accept(self) -> None:
+        self.refresh_report_data()
+
+        super().accept()
+
+    def refresh_report_data(self):
         data = ReportData()
-        # FIXME 타이틀 영역 추가하여 받아오도록 처리하자.
         data.subject = self.subjectEdit.text()
         data.vehicle_number = self.vehicleNumberEdit.text()
+        data.start_time = self._data_provider.start_time
+        data.end_time = self._data_provider.end_time
+        data.summaries = self._data_provider.signal_summaries
         data.date = self.dateEdit.dateTime().toPython().astimezone(DEFAULT_TIME_ZONE).strftime("%Y-%m-%d")
         data.author = self.authorEdit.text()
         data.work_order = self.workOrderEdit.text()
         data.description = self.descriptionEdit.toHtml()
-
+        data.ci_image = self._data_provider.ci_dataurl
+        data.graph_image = self._data_provider.graph_dataurl
         self.report_data = data
-        self._settings.setValue("report.subject", data.subject)
-        self._settings.setValue("report.vehicle_number", data.vehicle_number)
-        self._settings.setValue("report.author", data.author)
+        return self.report_data
 
-        super().accept()
+    def save_to_settings(self):
+        self._settings.setValue("report.subject", self.report_data.subject)
+        self._settings.setValue("report.vehicle_number", self.report_data.vehicle_number)
+        self._settings.setValue("report.author", self.report_data.author)
 
     def reject(self) -> None:
         super().reject()
 
-    def updateAxis1Pound(self, stringValue):
-        self.updateEdit(stringValue, self.axis1PoundEdit)
+    def save_to_pdf(self) -> None:
+        filter = "PDF files (*.pdf)"
+        suffix = ".pdf"
 
-    def updateAxis2Pound(self, stringValue):
-        self.updateEdit(stringValue, self.axis2PoundEdit)
+        file_name, _ = QtWidgets.QFileDialog.getSaveFileName(
+            self,
+            "Select report file to Save",
+            None,
+            f"{filter};;All files (*.*)",
+            filter,
+        )
+        if not file_name:
+            return
+        self.web_view.page().printToPdf(file_name)
+        self.save_to_settings()
+        # self.close()
 
-    def updateAxis3Pound(self, stringValue):
-        self.updateEdit(stringValue, self.axis3PoundEdit)
+    def reject(self) -> None:
+        super().reject()
 
-    def updateAxis4Pound(self, stringValue):
-        self.updateEdit(stringValue, self.axis4PoundEdit)
-
-    def updateEdit(self, stringValue, ypEdit):
-        try:
-            value_si = to_number(stringValue)
-            value_yp = to_pound(value_si)
-            ypEdit.setText(f"{value_yp:.1f}")
-        except:
-            ypEdit.setText("")
+    def printPage(self) -> None:
+        self.refresh_report_data()
+        handler = PrintHandler(self)
+        handler.setView(self.web_view)
+        handler.print_preview()
+        self.save_to_settings()

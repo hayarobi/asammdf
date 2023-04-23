@@ -15,29 +15,29 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractButton, QApplication, QDateEdit, QDialog,
-    QDialogButtonBox, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QSizePolicy, QSpacerItem, QTextEdit,
+from PySide6.QtWidgets import (QApplication, QDateEdit, QDialog, QHBoxLayout,
+    QHeaderView, QLabel, QLayout, QLineEdit,
+    QPushButton, QSizePolicy, QSpacerItem, QTextEdit,
     QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
         if not report_dialog.objectName():
             report_dialog.setObjectName(u"report_dialog")
-        report_dialog.resize(444, 708)
+        report_dialog.setWindowModality(Qt.NonModal)
+        report_dialog.resize(938, 708)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(report_dialog.sizePolicy().hasHeightForWidth())
         report_dialog.setSizePolicy(sizePolicy)
-        self.buttonBox = QDialogButtonBox(report_dialog)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(80, 660, 341, 32))
-        self.buttonBox.setOrientation(Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+        report_dialog.setMinimumSize(QSize(938, 708))
+        report_dialog.setMaximumSize(QSize(938, 708))
+        report_dialog.setSizeGripEnabled(False)
+        report_dialog.setModal(True)
         self.verticalLayoutWidget = QWidget(report_dialog)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 411, 641))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 411, 631))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -85,7 +85,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 29), QTime(0, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 26), QTime(18, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -146,10 +146,44 @@ class Ui_report_dialog(object):
 
         self.verticalLayout.addWidget(self.summaries_widget)
 
+        self.verticalLayoutWidget_2 = QWidget(report_dialog)
+        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
+        self.verticalLayoutWidget_2.setGeometry(QRect(460, 10, 454, 640))
+        self.previewLayout = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.previewLayout.setObjectName(u"previewLayout")
+        self.previewLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayoutWidget = QWidget(report_dialog)
+        self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
+        self.horizontalLayoutWidget.setGeometry(QRect(20, 650, 891, 41))
+        self.horizontalLayout_5 = QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.horizontalLayout_5.setContentsMargins(20, 0, 20, 0)
+        self.closeButton = QPushButton(self.horizontalLayoutWidget)
+        self.closeButton.setObjectName(u"closeButton")
+
+        self.horizontalLayout_5.addWidget(self.closeButton)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+
+        self.printButton = QPushButton(self.horizontalLayoutWidget)
+        self.printButton.setObjectName(u"printButton")
+
+        self.horizontalLayout_5.addWidget(self.printButton)
+
+        self.saveButton = QPushButton(self.horizontalLayoutWidget)
+        self.saveButton.setObjectName(u"saveButton")
+        self.saveButton.setAutoDefault(True)
+
+        self.horizontalLayout_5.addWidget(self.saveButton)
+
 
         self.retranslateUi(report_dialog)
-        self.buttonBox.accepted.connect(report_dialog.accept)
-        self.buttonBox.rejected.connect(report_dialog.reject)
+
+        self.saveButton.setDefault(False)
+
 
         QMetaObject.connectSlotsByName(report_dialog)
     # setupUi
@@ -168,5 +202,8 @@ class Ui_report_dialog(object):
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("report_dialog", u"\ucd5c\uc18c\uac12", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("report_dialog", u"\uc0d8\ud50c\uc218", None));
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("report_dialog", u"\uc774\ub984", None));
+        self.closeButton.setText(QCoreApplication.translate("report_dialog", u"\ub2eb\uae30", None))
+        self.printButton.setText(QCoreApplication.translate("report_dialog", u"\uc778\uc1c4", None))
+        self.saveButton.setText(QCoreApplication.translate("report_dialog", u"PDF\uc800\uc7a5", None))
     # retranslateUi
 

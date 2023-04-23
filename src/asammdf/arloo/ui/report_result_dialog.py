@@ -22,7 +22,7 @@ class Ui_report_result_dialog(object):
     def setupUi(self, report_result_dialog):
         if not report_result_dialog.objectName():
             report_result_dialog.setObjectName(u"report_result_dialog")
-        report_result_dialog.resize(1041, 1129)
+        report_result_dialog.resize(734, 900)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -30,7 +30,7 @@ class Ui_report_result_dialog(object):
         report_result_dialog.setSizePolicy(sizePolicy)
         self.horizontalLayoutWidget = QWidget(report_result_dialog)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(20, 1070, 1011, 51))
+        self.horizontalLayoutWidget.setGeometry(QRect(20, 830, 691, 51))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
