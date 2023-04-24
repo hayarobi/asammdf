@@ -912,7 +912,7 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
         if item and item.type() == ChannelsTreeItem.Channel:
             menu.addAction(self.tr("채널 이름 변경"))
         elif item and item.type() == ChannelsTreeItem.Group and not item.pattern:
-            menu.addAction(self.tr("Rename group"))
+            menu.addAction(self.tr("채널 그룹 이름"))
         menu.addSeparator()
 
         if item is not None and item.type() == item.Group and item.isDisabled():
@@ -978,6 +978,7 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
         menu.addSeparator()
         menu.addAction(self.tr("Increase line width"))
         menu.addAction(self.tr("Decrease line width"))
+        menu.addAction(self.tr("채널 그래프 서식"))
 
         action = menu.exec_(self.viewport().mapToGlobal(position))
 
@@ -1416,6 +1417,8 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
                 QtCore.QEvent.KeyPress, QtCore.Qt.Key_Minus, QtCore.Qt.ControlModifier
             )
             self.plot.keyPressEvent(event)
+        elif action.text() == "채널 그래프 서식":
+            self.plot.open_channel_style(None)
 
         self.update_channel_groups_count()
 

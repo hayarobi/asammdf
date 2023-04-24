@@ -21,6 +21,7 @@ import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 # imports for pyinstaller
 import pyqtgraph.functions as fn
 from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer, QFile, QDataStream
+from PySide6.QtGui import QPen
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog
 from pyqtgraph import LabelItem
@@ -30,6 +31,8 @@ from ...arloo.reportmaker import ReportMaker
 from ...arloo.reportresultdialog import ReportResultDialog
 from ...arloo.summay import SummaryForm
 from ...arloo import arresource
+from ...arloo.widgets import channelstyledialog
+from ...arloo.widgets.channelstyledialog import ChannelStyleDialog
 
 try:
     import pyqtgraph.console.template_pyside6
@@ -332,6 +335,16 @@ class PlotSignal(Signal):
         self.trim(*(trim_info or (None, None, 1900)))
         # 이름을 위한 추가 설정
         self.view_name = self.name
+        # 선 스타일
+        self.pen_style = self.pen.style()
+        # NoPen, SolidLine, DashLine, DotLine, DashDotLine, DashDotDotLine
+
+    def set_pen_style(self, style: dict):
+        self.pen_style = style.get('style')
+        self.pen.setStyle(self.pen_style)
+        self.pen_width = style.get('width')
+        self.set_color(style.get('color'))
+
 
     def set_alias_name(self, new_name):
         self.alias_name = new_name
@@ -1060,7 +1073,8 @@ class PlotSignal(Signal):
 
     def set_color(self, color):
         self.color = color
-        self.pen = fn.mkPen(color=color, style=QtCore.Qt.SolidLine)
+        # FIXME 기존 펜에서 색상만 바꾸면 될 듯 한데...
+        self.pen = fn.mkPen(color=color, style=self.pen_style)
 
     def set_home(self, y_range=None):
         self.home = y_range or self.y_range
@@ -2078,6 +2092,13 @@ class Plot(QtWidgets.QWidget):
                 if item.signal.pen_width > 1:
                     item.signal.pen_width -= 1
         self.plot.update()
+
+    def set_channel_line_style(self, style_info):
+        for item in self.channel_selection.selectedItems():
+            if item.type() == item.Channel:
+                item.color = style_info['color']
+                item.signal.set_pen_style(style_info)
+                self.plot.update()
 
     def add_new_channels(self, channels, mime_data=None, destination=None, update=True):
         initial = self.channel_selection.topLevelItemCount() == 0
@@ -3240,6 +3261,17 @@ class Plot(QtWidgets.QWidget):
             self.decrease_channel_line(event)
         else:
             super().keyPressEvent(event)
+
+    def open_channel_style(self, event):
+        selected = None
+        for item in self.channel_selection.selectedItems():
+            if item.type() == item.Channel:
+                selected = item.signal
+                break
+        if selected is not None:
+            dialog = ChannelStyleDialog(selected)
+            if dialog.exec():
+                self.set_channel_line_style(dialog.style_info)
 
     @property
     def line_width(self):
