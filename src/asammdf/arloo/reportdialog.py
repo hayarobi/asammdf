@@ -1,4 +1,5 @@
-from pydoc import html
+from datetime import datetime
+from pathlib import Path
 
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import QDateTime, QTimer
@@ -13,7 +14,7 @@ from asammdf.arloo.ui.report_dialog import Ui_report_dialog
 from asammdf.arloo.widgets.wysiwygedit import WysiwygEdit
 
 POUNDS_RATIO = 4.448
-
+GRAPH_HEIGHT = 400
 
 def to_number(value_str):
     return float(value_str)
@@ -81,8 +82,10 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.authorEdit.textEdited.connect(self.update_render_timer)
         self.dateEdit.dateChanged.connect(self.update_render_timer)
         self.descriptionEdit.textChanged.connect(self.update_render_timer)
+        self.sizeRatioBox.valueChanged.connect(self.update_render_timer)
+        self.keepAspectRatioCheckBox.stateChanged.connect(self.update_render_timer)
 
-        self.saveButton.clicked.connect(self.save_to_pdf)
+        self.saveButton.clicked.connect(self.save_to)
         self.closeButton.clicked.connect(self.reject)
         self.printButton.clicked.connect(self.printPage)
 
@@ -107,6 +110,11 @@ class ReportDialog(Ui_report_dialog, QDialog):
                                    ci_image=report_data.ci_image
                                    )
         self.web_view.setHtml(rendered)
+        nowstr = datetime.now().strftime("%H%M%S")
+        # downloads_path = str(Path.home() / "Downloads")
+        f = open(Path.joinpath(Path.home(),'Downloads','preview_'+nowstr+'.html'), 'w', encoding='utf-8')
+        f.write(rendered)
+        f.close()
 
     def accept(self) -> None:
         self.refresh_report_data()
@@ -126,6 +134,10 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data.description = self.descriptionEdit.toHtml()
         data.ci_image = self._data_provider.ci_dataurl
         data.graph_image = self._data_provider.graph_dataurl
+
+        ratioValue = self.sizeRatioBox.value()
+        data.g_height = GRAPH_HEIGHT * ratioValue / 100
+        data.keep_aspect_ratio = self.keepAspectRatioCheckBox.isChecked()
         self.report_data = data
         return self.report_data
 
@@ -137,7 +149,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
     def reject(self) -> None:
         super().reject()
 
-    def save_to_pdf(self) -> None:
+    def save_to(self) -> None:
         filter = "PDF files (*.pdf)"
         suffix = ".pdf"
 

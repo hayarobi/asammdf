@@ -21,6 +21,15 @@
             display: block; /* remove extra space below image */
         }
 
+        .graph_image {
+        {% if data.g_height > 10 %}
+            height: {{data.g_height}}px;
+            {% if data.keep_aspect_ratio == False %}
+                width: 100%;
+            {% endif %}
+        {% endif %}
+        }
+
         .report_subject {
             font-size: xxx-large;
             font-weight: bolder;
@@ -89,7 +98,7 @@
     <tr>
         <td colspan="4"><h2>2.측정 그래프</h2></td>
     </tr>
-    <tr>
+    <tr style="min-height: 5%">
         <td colspan="4">
             <div class="report_graph"><img class="graph_image" src="{{graph_image}}"></div>
         </td>

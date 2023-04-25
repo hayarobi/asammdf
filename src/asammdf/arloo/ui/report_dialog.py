@@ -15,10 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDateEdit, QDialog, QHBoxLayout,
-    QHeaderView, QLabel, QLayout, QLineEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QTreeWidget,
-    QTreeWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDateEdit, QDialog,
+    QHBoxLayout, QHeaderView, QLabel, QLayout,
+    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QTreeWidget, QTreeWidgetItem, QVBoxLayout,
+    QWidget)
 
 class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
@@ -85,7 +86,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 25), QTime(15, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 25), QTime(6, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -129,6 +130,43 @@ class Ui_report_dialog(object):
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
+
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.label_5 = QLabel(self.verticalLayoutWidget)
+        self.label_5.setObjectName(u"label_5")
+
+        self.horizontalLayout_8.addWidget(self.label_5)
+
+        self.sizeRatioBox = QSpinBox(self.verticalLayoutWidget)
+        self.sizeRatioBox.setObjectName(u"sizeRatioBox")
+        self.sizeRatioBox.setMinimum(10)
+        self.sizeRatioBox.setMaximum(300)
+        self.sizeRatioBox.setSingleStep(10)
+        self.sizeRatioBox.setValue(100)
+
+        self.horizontalLayout_8.addWidget(self.sizeRatioBox)
+
+        self.label_6 = QLabel(self.verticalLayoutWidget)
+        self.label_6.setObjectName(u"label_6")
+
+        self.horizontalLayout_8.addWidget(self.label_6)
+
+        self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_3)
+
+        self.keepAspectRatioCheckBox = QCheckBox(self.verticalLayoutWidget)
+        self.keepAspectRatioCheckBox.setObjectName(u"keepAspectRatioCheckBox")
+
+        self.horizontalLayout_8.addWidget(self.keepAspectRatioCheckBox)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_4)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_8)
 
         self.descriptionAreaLayout = QVBoxLayout()
         self.descriptionAreaLayout.setObjectName(u"descriptionAreaLayout")
@@ -206,6 +244,9 @@ class Ui_report_dialog(object):
         self.label_2.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc77c", None))
         self.label_3.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc790", None))
         self.workOrderLabel.setText(QCoreApplication.translate("report_dialog", u"\uc7a5\uc560\uc77c\uc2dc ", None))
+        self.label_5.setText(QCoreApplication.translate("report_dialog", u"\uadf8\ub798\ud504 \ud06c\uae30 \uc870\uc808", None))
+        self.label_6.setText(QCoreApplication.translate("report_dialog", u"%", None))
+        self.keepAspectRatioCheckBox.setText(QCoreApplication.translate("report_dialog", u"\ube44\uc728 \uc720\uc9c0", None))
         self.label_4.setText(QCoreApplication.translate("report_dialog", u" \uc124\uba85", None))
         ___qtreewidgetitem = self.summaries_widget.headerItem()
         ___qtreewidgetitem.setText(4, QCoreApplication.translate("report_dialog", u"\ud3c9\uade0", None));
