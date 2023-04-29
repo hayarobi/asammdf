@@ -485,8 +485,8 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
         self._splitter_sizes = None
         # add preset functionality
         self.preset_widget = None
-        self.save_preset_button.clicked.connect(self.save_preset)
-        self.load_preset_button.clicked.connect(self.load_preset)
+        self.add_preset_button.clicked.connect(self.add_preset)
+        self.manage_preset_button.clicked.connect(self.manage_preset)
 
     def sizeHint(self):
         return QtCore.QSize(1, 1)
@@ -2978,12 +2978,12 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
     def open_database(self, event):
         self.load_can_database(event)
 
-    def load_preset(self, event):
+    def manage_preset(self, event):
         if self.preset_widget is None:
             self.preset_widget = PresetWidget(None)
 
         self.preset_widget.loadClickedSignal.connect(self.handle_load)
-        self.preset_widget.showLoad()
+        self.preset_widget.show_manage_window()
 
     def handle_load(self, event):
         channels_list = event
@@ -3010,20 +3010,44 @@ class FileWidget(WithMDIArea, Ui_file_widget, QtWidgets.QWidget):
 
         self.preset_widget.loadClickedSignal.disconnect(self.handle_load)
 
-    def save_preset(self, event):
+    def add_preset(self, event):
         str_list = []
         iterator = QtWidgets.QTreeWidgetItemIterator(self.channels_tree)
         self.extractAndAppend(iterator, None, str_list)
 
         if len(str_list) == 0:
-            QMessageBox.information(None, "ERROR", "No channels are checked.")
+            QMessageBox.information(None, "ERROR", "저장할 채널을 선택해 주세요.")
             return
 
         if self.preset_widget is None:
             self.preset_widget = PresetWidget(None)
 
-        self.preset_widget.setSelected(str_list)
-        self.preset_widget.showSave()
+        retry = True
+        while retry:
+            retry = self.try_save_preset(retry, str_list)
+
+    def try_save_preset(self, retry, str_list):
+        preset_name, ok = QtWidgets.QInputDialog.getText(
+            self,
+            "프리셋 추가",
+            "프리셋 이름:",
+        )
+        if not ok:
+            retry = False
+        else:
+            preset_name = preset_name.strip()
+            if not preset_name:
+                QMessageBox.warning(None, "ERROR", "프리셋 이름을 써 주세요")
+            else:
+                # 이름 중복 검사
+                if self.preset_widget.has_preset(preset_name):
+                    QMessageBox.warning(None, "ERROR", "같은 이름이 이미 있습니다")
+                else:
+                    retry = False
+                    self.preset_widget.add_preset(preset_name, str_list)
+                    QMessageBox.information(None, "저장완료", "저장되었습니다.")
+
+        return retry
 
     def extractAndAppend(self, iterator, prefix, str_list):
         while iterator.value():

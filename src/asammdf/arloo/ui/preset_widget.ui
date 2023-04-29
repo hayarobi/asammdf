@@ -6,89 +6,162 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>764</width>
-    <height>969</height>
+    <width>1150</width>
+    <height>724</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Form</string>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
-  <widget class="QPushButton" name="saveButton">
-   <property name="geometry">
-    <rect>
-     <x>620</x>
-     <y>920</y>
-     <width>100</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Save</string>
-   </property>
-   <property name="autoDefault">
-    <bool>true</bool>
-   </property>
-   <property name="default">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QListView" name="itemListView">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>711</width>
-     <height>801</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>70</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Preset Name</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="presetNameEdit">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>70</y>
-     <width>181</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
+  <property name="minimumSize">
+   <size>
+    <width>1150</width>
+    <height>724</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1150</width>
+    <height>724</height>
+   </size>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>프리셋 목록</string>
+  </property>
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>920</y>
-     <width>100</width>
+     <x>840</x>
+     <y>680</y>
+     <width>141</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
-    <string>Cancel</string>
+    <string>닫기</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>1131</width>
+     <height>661</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,1,1">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="groupLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="maximumSize">
+         <size>
+          <width>350</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>프리셋</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListView" name="groupListView">
+        <property name="minimumSize">
+         <size>
+          <width>350</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>350</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="2">
+     <layout class="QVBoxLayout" name="channelsLayout">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>채널 목록</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListView" name="channelsListView"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="renameButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>680</y>
+     <width>121</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>이름 변경</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteButton">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>680</y>
+     <width>121</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>삭제</string>
    </property>
   </widget>
   <widget class="QPushButton" name="loadButton">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>920</y>
-     <width>100</width>
+     <x>1000</x>
+     <y>680</y>
+     <width>141</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
-    <string>Load</string>
+    <string>프리셋 로드</string>
    </property>
    <property name="autoDefault">
     <bool>true</bool>

@@ -6,6 +6,9 @@ from time import sleep
 
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QSplashScreen
+from qtpy import QtCore
+
+from asammdf.arloo.model.preset_model import init_preset
 
 os.environ["QT_API"] = "pyside6"
 os.environ["PYQTGRAPH_QT_LIB"] = "PySide6"
@@ -43,8 +46,8 @@ def main(measurements=None):
     splash = QSplashScreen(pixmap)
     splash.show()
     sleep(1.0)
+    init_preset()
     main = MainWindow(args.measurements)
-    # TODO 일단 이 기능은 막아둠. 나중에 설정 추가하면 다시 활성화
     main.showMaximized()
     splash.finish(main)
     app.setStyle(QtWidgets.QStyleFactory.create("Fusion"))

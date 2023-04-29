@@ -78,15 +78,15 @@ class Ui_file_widget(object):
 
         self.preset_layout.addItem(self.horizontalSpacer_6)
 
-        self.save_preset_button = QPushButton(self.verticalLayoutWidget)
-        self.save_preset_button.setObjectName(u"save_preset_button")
+        self.add_preset_button = QPushButton(self.verticalLayoutWidget)
+        self.add_preset_button.setObjectName(u"add_preset_button")
 
-        self.preset_layout.addWidget(self.save_preset_button)
+        self.preset_layout.addWidget(self.add_preset_button)
 
-        self.load_preset_button = QPushButton(self.verticalLayoutWidget)
-        self.load_preset_button.setObjectName(u"load_preset_button")
+        self.manage_preset_button = QPushButton(self.verticalLayoutWidget)
+        self.manage_preset_button.setObjectName(u"manage_preset_button")
 
-        self.preset_layout.addWidget(self.load_preset_button)
+        self.preset_layout.addWidget(self.manage_preset_button)
 
         self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -239,7 +239,7 @@ class Ui_file_widget(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 385, 630))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 400, 630))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_3 = QVBoxLayout()
@@ -1073,8 +1073,8 @@ class Ui_file_widget(object):
 #if QT_CONFIG(tooltip)
         self.channels_tree.setToolTip(QCoreApplication.translate("file_widget", u"Double click channel to see extended information", None))
 #endif // QT_CONFIG(tooltip)
-        self.save_preset_button.setText(QCoreApplication.translate("file_widget", u"Save Preset", None))
-        self.load_preset_button.setText(QCoreApplication.translate("file_widget", u"Load Preset", None))
+        self.add_preset_button.setText(QCoreApplication.translate("file_widget", u"\ud504\ub9ac\uc14b \ucd94\uac00", None))
+        self.manage_preset_button.setText(QCoreApplication.translate("file_widget", u"\ud504\ub9ac\uc14b \uad00\ub9ac", None))
 #if QT_CONFIG(tooltip)
         self.load_channel_list_btn.setToolTip(QCoreApplication.translate("file_widget", u"Load offline windows", None))
 #endif // QT_CONFIG(tooltip)
