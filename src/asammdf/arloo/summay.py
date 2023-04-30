@@ -50,15 +50,15 @@ class SummaryForm(Ui_summaryForm, QWidget):
         if not self.summary_data.set_start_delta(start_time):
             QMessageBox.critical(
                 self,
-                "Can't set start time",
-                "start time must before end time",
+                "시작 시각 설정 실패",
+                "시작 시각이 종료 시각보다 늦습니다.",
             )
 
     def handle_set_end_time(self, end_time):
         if not self.summary_data.set_end_delta(end_time):
             QMessageBox.critical(
                 self,
-                "Can't set end time",
-                "end time must after start time",
+                "종료 시각 설정 실패",
+                "종료 시각이 시작 시각보다 빠릅니다.",
             )
 

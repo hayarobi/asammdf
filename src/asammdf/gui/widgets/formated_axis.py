@@ -333,8 +333,8 @@ class FormatedAxis(pg.AxisItem):
                 pos = self.positioner.get_pointer_pos(ev.scenePos())
                 current_time = self.origin + timedelta(seconds=pos.x())
                 current_time_str = current_time.strftime("%H:%M:%S")
-                menu.addAction(f"Set start time to {current_time_str}")
-                menu.addAction(f"Set end time to {current_time_str}")
+                menu.addAction(f"시작 시각을 {current_time_str}로 설정")
+                menu.addAction(f"종료 시각을 {current_time_str}로 설정")
                 menu.addSeparator()
         menu.addAction(f"Edit {axis} axis scaling")
         menu.addSeparator()
@@ -412,24 +412,24 @@ class FormatedAxis(pg.AxisItem):
             self.update_range(lower_value, upper_value)
         elif action.text() == "Edit Y axis scaling":
             self.scale_editor_requested.emit(self.uuid)
-        elif action.text().startswith("Set start time"):
+        elif action.text().startswith("시작 시각을 "):
             lower_value, upper_value = self.get_range_values_from_edit(lower_time_edit, upper_time_edit)
             if pos.x() > upper_value:
                 QMessageBox.critical(
                     self,
-                    "Can't set start time",
-                    "start time must before end time",
+                    "시작 시각 설정 실패",
+                    "시작 시각이 종료 시각보다 늦습니다.",
                 )
                 return
             # self.update_range(pos.x(), upper_value)
             self.set_start_time_requested.emit(pos)
-        elif action.text().startswith("Set end time"):
+        elif action.text().startswith("종료 시각을 "):
             lower_value, upper_value = self.get_range_values_from_edit(lower_time_edit, upper_time_edit)
             if pos.x() < lower_value:
                 QMessageBox.critical(
                     self,
-                    "Can't set end time",
-                    "end time must after start time",
+                    "종료 시각 설정 실패",
+                    "종료 시각이 시작 시각보다 빠릅니다.",
                 )
             # self.update_range(lower_value, pos.x())
             self.set_end_time_requested.emit(pos)

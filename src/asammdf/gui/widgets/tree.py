@@ -893,21 +893,22 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
             iterator += 1
 
         self.context_menu = menu = QtWidgets.QMenu()
+        etc_menu = QtWidgets.QMenu("기타")
         menu.addAction(self.tr(f"{count} items in the list, {enabled} enabled"))
         menu.addSeparator()
 
-        menu.addAction(self.tr(f"Add channel group [Shift+Insert]"))
-        menu.addAction(self.tr(f"Add pattern based channel group [Ctrl+Insert]"))
-        menu.addSeparator()
+        etc_menu.addAction(self.tr(f"Add channel group [Shift+Insert]"))
+        etc_menu.addAction(self.tr(f"Add pattern based channel group [Ctrl+Insert]"))
+        etc_menu.addSeparator()
 
         if item and item.type() == ChannelsTreeItem.Channel:
-            menu.addAction(self.tr("Copy names [Ctrl+N]"))
-            menu.addAction(self.tr("Copy names and values"))
-            menu.addAction(self.tr("Copy display properties [Ctrl+Shift+C]"))
-            menu.addAction(self.tr("Paste display properties [Ctrl+Shift+V]"))
+            etc_menu.addAction(self.tr("Copy names [Ctrl+N]"))
+            etc_menu.addAction(self.tr("Copy names and values"))
+            etc_menu.addAction(self.tr("Copy display properties [Ctrl+Shift+C]"))
+            etc_menu.addAction(self.tr("Paste display properties [Ctrl+Shift+V]"))
 
-        menu.addAction(self.tr("Copy channel structure [Ctrl+C]"))
-        menu.addAction(self.tr("Paste channel structure [Ctrl+V]"))
+        etc_menu.addAction(self.tr("Copy channel structure [Ctrl+C]"))
+        etc_menu.addAction(self.tr("Paste channel structure [Ctrl+V]"))
 
         if item and item.type() == ChannelsTreeItem.Channel:
             menu.addAction(self.tr("채널 이름 변경"))
@@ -917,68 +918,68 @@ class ChannelsTreeWidget(QtWidgets.QTreeWidget):
 
         if item is not None and item.type() == item.Group and item.isDisabled():
             menu.addAction(self.tr("Activate group"))
-        menu.addAction(self.tr("Deactivate groups"))
-        menu.addAction(self.tr("Enable all"))
-        menu.addAction(self.tr("Disable all"))
+        etc_menu.addAction(self.tr("Deactivate groups"))
+        etc_menu.addAction(self.tr("Enable all"))
+        etc_menu.addAction(self.tr("Disable all"))
         if item:
-            menu.addAction(self.tr("Disable all but this"))
-        menu.addSeparator()
+            etc_menu.addAction(self.tr("Disable all but this"))
+        etc_menu.addSeparator()
         if self.hide_disabled_channels:
             show_disabled_channels = "Show disabled items"
         else:
             show_disabled_channels = "Hide disabled items"
-        menu.addAction(self.tr(show_disabled_channels))
+        etc_menu.addAction(self.tr(show_disabled_channels))
         if self.hide_missing_channels:
             show_missing_channels = "Show missing items"
         else:
             show_missing_channels = "Hide missing items"
-        menu.addAction(self.tr(show_missing_channels))
-        menu.addSeparator()
+        etc_menu.addAction(self.tr(show_missing_channels))
+        etc_menu.addSeparator()
 
-        menu.addAction(self.tr("Edit Y axis scaling [Ctrl+G]"))
+        etc_menu.addAction(self.tr("Edit Y axis scaling [Ctrl+G]"))
         if item and item.type() == ChannelsTreeItem.Channel:
-            menu.addAction(self.tr("Add to common Y axis"))
-            menu.addAction(self.tr("Remove from common Y axis"))
-        menu.addSeparator()
+            etc_menu.addAction(self.tr("Add to common Y axis"))
+            etc_menu.addAction(self.tr("Remove from common Y axis"))
+        etc_menu.addSeparator()
 
-        menu.addAction(self.tr("Set color [C]"))
-        menu.addAction(self.tr("Set precision"))
-        menu.addAction(self.tr("Set color ranges [Ctrl+R]"))
-        menu.addAction(self.tr("Set channel conversion"))
-        menu.addAction(self.tr("Set channel comment"))
-        menu.addAction(self.tr("Set unit"))
-        menu.addSeparator()
+        etc_menu.addAction(self.tr("Set color [C]"))
+        etc_menu.addAction(self.tr("Set precision"))
+        etc_menu.addAction(self.tr("Set color ranges [Ctrl+R]"))
+        etc_menu.addAction(self.tr("Set channel conversion"))
+        etc_menu.addAction(self.tr("Set channel comment"))
+        etc_menu.addAction(self.tr("Set unit"))
+        etc_menu.addSeparator()
 
         if item and item.type() == ChannelsTreeItem.Channel:
-            menu.addSeparator()
-            menu.addAction(self.tr("Relative time base shift"))
-            menu.addAction(self.tr("Set time base start offset"))
+            etc_menu.addSeparator()
+            etc_menu.addAction(self.tr("Relative time base shift"))
+            etc_menu.addAction(self.tr("Set time base start offset"))
 
             if item.signal.flags & Signal.Flags.computed:
-                menu.addSeparator()
-                menu.addAction(self.tr("Edit this computed channel"))
+                etc_menu.addSeparator()
+                etc_menu.addAction(self.tr("Edit this computed channel"))
 
             try:
                 import scipy
 
-                menu.addAction(self.tr("Compute FFT"))
+                etc_menu.addAction(self.tr("Compute FFT"))
             except ImportError:
                 pass
-            menu.addSeparator()
+            etc_menu.addSeparator()
         if item:
-            menu.addAction(self.tr("Delete [Del]"))
-            menu.addSeparator()
-        menu.addAction(self.tr("Toggle details"))
+            etc_menu.addAction(self.tr("Delete [Del]"))
+            etc_menu.addSeparator()
+        etc_menu.addAction(self.tr("Toggle details"))
         if item and item.type() == ChannelsTreeItem.Channel:
-            menu.addAction(self.tr("File/Computation properties"))
+            etc_menu.addAction(self.tr("File/Computation properties"))
         elif item and item.type() == ChannelsTreeItem.Group:
             if item.pattern:
-                menu.addAction(self.tr("Edit pattern"))
-            menu.addAction(self.tr("Group properties"))
-        menu.addSeparator()
-        menu.addAction(self.tr("Increase line width"))
-        menu.addAction(self.tr("Decrease line width"))
+                etc_menu.addAction(self.tr("Edit pattern"))
+            etc_menu.addAction(self.tr("Group properties"))
+        etc_menu.addSeparator()
         menu.addAction(self.tr("채널 그래프 서식"))
+        menu.addSeparator()
+        menu.addMenu(etc_menu)
 
         action = menu.exec_(self.viewport().mapToGlobal(position))
 
