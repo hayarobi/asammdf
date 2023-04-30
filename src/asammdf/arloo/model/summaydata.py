@@ -66,6 +66,9 @@ class SummaryData(QObject):
         return True
 
     def get_end_time(self):
+        """
+        :return: datatime 값 혹은 None을 리턴한다.
+        """
         if self.end_delta == END_NOT_SELECTED:
             return None
         else:

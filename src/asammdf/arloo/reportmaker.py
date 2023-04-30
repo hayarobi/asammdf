@@ -73,5 +73,9 @@ class ReportMaker:
             summaries.append(signal_summary)
         return summaries
 
+    def get_start_time(self):
+        return self.summary_data.get_start_time()
 
+    def get_end_time(self):
+        return self.summary_data.get_end_time()
 
