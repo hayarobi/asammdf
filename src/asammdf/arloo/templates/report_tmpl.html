@@ -6,14 +6,26 @@
     <title>용인 경전철 제동력 측정 보고서</title>
 
     <style>
-        @media print {
-            body {
-                width: 21cm;
-                height: 29.7cm;
-                /*margin: 20mm 30mm 20mm 30mm;*/
-                /* change the margins as you want them to be. */
-            }
+        @page {
+            width: 21cm;
+            height: 29.7cm;
+            margin: 20mm 25mm 20mm 25mm;
+            /*margin: 0mm 0mm 0mm 0mm;*/
+            /*change the margins as you want them to be. */
         }
+
+        body {
+            margin: 25mm 20mm 25mm 20mm;
+        }
+
+        /*@media print {*/
+        /*    body {*/
+        /*        width: 21cm;*/
+        /*        height: 29.7cm;*/
+        /*        !*margin: 20mm 30mm 20mm 30mm;*!*/
+        /*        !* change the margins as you want them to be. *!*/
+        /*    }*/
+        /*}*/
 
         img {
             max-width: 100%;
@@ -21,12 +33,32 @@
             display: block; /* remove extra space below image */
         }
 
+
+        .ci_area {
+            alignment: left;
+        }
+
+        .ci_image {
+            width: 25%;
+        }
+
+        .header {
+            text-align: center;
+        }
+
         .report_subject {
+            alignment: center;
             font-size: xxx-large;
             font-weight: bolder;
             font-family: sans-serif;
         }
 
+        #meta_area {
+            alignment: center;
+        }
+        .meta_block {
+            display: inline-block;
+        }
         .report_graph {
             width: 100%;
             /*height: 526px;*/
@@ -53,24 +85,23 @@
         function calcHeight() {
             const iFrame1 = document.getElementById('iframe1');
             const the_height = iFrame1.contentWindow.document.body.scrollHeight;
-            iFrame1.height = the_height+20;
+            iFrame1.height = the_height + 20;
             iFrame1.style.overflow = "hidden";
         }
     </script>
 </head>
 
 <body>
-<table width="80%" align="center" height="1000" border="0">
-    <tr>
-        <td align="left" width="30%">
-            <div class="report_graph"><img class="ci_image" src="{{ci_image}}"></div>
-        </td>
-        <td colspan="3" align="center"> &nbsp;
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4" align="center"><h1 class="report_subject">{{data.subject}}</h1></td>
-    </tr>
+<!--<div class="paddings">-->
+<!--</div>-->
+<div class="ci_area">
+    <img class="ci_image" src="{{ci_image}}">
+</div>
+<div class="header">
+    <h1 class="report_subject">{{data.subject}}</h1>
+</div>
+
+<table width="100%" align="center" border="0">
     <tr>
         <td colspan="4"><h2>1. 일반</h2></td>
     </tr>
@@ -78,7 +109,7 @@
         <td>작업 일시</td>
         <td>차량 번호</td>
         <td>작업자</td>
-        <td>Work Order</td>
+        <td>장애 일시</td>
     </tr>
     <tr>
         <td>{{data.date}}</td>
@@ -86,46 +117,40 @@
         <td>{{data.author}}</td>
         <td>{{data.work_order}}</td>
     </tr>
-    <tr>
-        <td colspan="4"><h2>2.측정 그래프</h2></td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <div class="report_graph"><img class="graph_image" src="{{graph_image}}"></div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <iframe class="report_description" id="iframe1" onload="calcHeight();" scrolling="no"
-                     srcdoc="{{data.description}}
-            "></iframe>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <table width="100%">
-                <tr>
-                    <td width="25%">이름</td>
-                    <td width="15%">{{data.start_time.strftime('%H:%M:%S')}}</td>
-                    <td width="15%">{{data.end_time.strftime('%H:%M:%S')}}</td>
-                    <td width="15%">최소값</td>
-                    <td width="15%">최대값</td>
-                    <td width="15%">평균값</td>
-                </tr>
-                {% for item in data.summaries %}
-                <tr>
-                    <td>{{item.name}}</td>
-                    <td>{{"%.2f"|format(item.first_value)}}</td>
-                    <td>{{"%.2f"|format(item.last_value)}}</td>
-                    <td>{{"%.2f"|format(item.minimum)}}</td>
-                    <td>{{"%.2f"|format(item.maximum)}}</td>
-                    <td>{{"%.2f"|format(item.average)}}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-    </tr>
 </table>
+</div>
+<div id="graph_area">
+    <h2>2.측정 그래프</h2>
+    <div class="report_graph"><img class="graph_image" src="{{graph_image}}"></div>
+</div>
+<div id="description_area">
+    <iframe class="report_description" id="iframe1" onload="calcHeight();" scrolling="no"
+            srcdoc="{{data.description}}
+            "></iframe>
+</div>
+
+<div id="summary_area">
+    <table width="100%">
+        <tr>
+            <td width="25%">이름</td>
+            <td width="15%">{{data.start_time.strftime('%H:%M:%S')}}</td>
+            <td width="15%">{{data.end_time.strftime('%H:%M:%S')}}</td>
+            <td width="15%">최소값</td>
+            <td width="15%">최대값</td>
+            <td width="15%">평균값</td>
+        </tr>
+        {% for item in data.summaries %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{"%.2f"|format(item.first_value)}}</td>
+            <td>{{"%.2f"|format(item.last_value)}}</td>
+            <td>{{"%.2f"|format(item.minimum)}}</td>
+            <td>{{"%.2f"|format(item.maximum)}}</td>
+            <td>{{"%.2f"|format(item.average)}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 </body>
 </html>
 

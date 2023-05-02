@@ -35,6 +35,7 @@ class Ui_preset_widget(object):
         self.cancelButton = QPushButton(preset_widget)
         self.cancelButton.setObjectName(u"cancelButton")
         self.cancelButton.setGeometry(QRect(840, 680, 141, 32))
+        self.cancelButton.setAutoDefault(True)
         self.horizontalLayoutWidget = QWidget(preset_widget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
         self.horizontalLayoutWidget.setGeometry(QRect(10, 10, 1131, 661))

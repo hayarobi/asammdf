@@ -29,6 +29,7 @@ class PresetWidget(WithMDIArea, Ui_preset_widget, QWidget):
 
         # 그룹 선택이 변경될 때
         self.groupListView.clicked.connect(self._update_itemsView)
+        self.groupListView.doubleClicked.connect(self.load_preset)
 
         # active
         self._data_model = PresetModel.instance()

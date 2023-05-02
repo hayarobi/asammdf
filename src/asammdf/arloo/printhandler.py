@@ -1,6 +1,7 @@
 from PySide6.QtCore import QObject, QPointF, QEventLoop, QMargins
 from PySide6.QtGui import QFont, QPainter, QPageLayout
 from PySide6.QtPrintSupport import QPrinter, QPrintDialog, QPrintPreviewDialog
+from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import QDialog
 
 
@@ -10,11 +11,13 @@ class PrintHandler(QObject):
         self.view = None;
         self.printer = QPrinter()
         self.printer.setResolution(72)
-        self.printer.setPageMargins(QMargins(20, 25, 20, 25), QPageLayout.Millimeter)
+        # self.printer.setPageMargins(QMargins(0, 0, 0, 0), QPageLayout.Millimeter)
+        # self.printer.setPageMargins(QMargins(20, 25, 20, 25), QPageLayout.Millimeter)
+        self.printer.setFullPage(True)
         self._waitForResult = QEventLoop()
-        self._inPrintPreview = False;
+        self._inPrintPreview = False
 
-    def setView(self, view):
+    def setView(self, view: QWebEngineView):
         assert not self.view
         self.view = view
         view.printRequested.connect(self.print_preview)
@@ -27,8 +30,10 @@ class PrintHandler(QObject):
         self._print_document(self.printer)
 
     def _print_document(self, printer):
+        # prev_zoom_factor = self.view.zoomFactor()
         self.view.print(printer)
         self._waitForResult.exec()
+        # self.view.setZoomFactor(prev_zoom_factor)
 
     def printFinished(self, success):
         if not success:

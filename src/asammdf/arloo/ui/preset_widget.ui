@@ -46,6 +46,9 @@
    <property name="text">
     <string>닫기</string>
    </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
