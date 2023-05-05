@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import base64
 import bisect
+import pathlib
 from collections import defaultdict
 from datetime import timedelta
 from functools import lru_cache, partial, reduce
 import os
+from os import path
 from pathlib import Path
 from tempfile import gettempdir
 from threading import Lock
@@ -20,12 +22,13 @@ import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 
 # imports for pyinstaller
 import pyqtgraph.functions as fn
-from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer, QFile, QDataStream
+from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer, QFile, QDataStream, QDateTime
 from PySide6.QtGui import QPen
 from PySide6.QtWebEngineWidgets import QWebEngineView
-from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog
+from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog, QMessageBox
 from pyqtgraph import LabelItem
 
+from ...arloo.model.csv_exporter import ExportOption, CsvExporter
 from ...arloo.reportdialog import ReportDialog
 from ...arloo.reportmaker import ReportMaker
 from ...arloo.reportresultdialog import ReportResultDialog
@@ -334,7 +337,7 @@ class PlotSignal(Signal):
         self.mode = getattr(signal, "mode", "phys")
         self.trim(*(trim_info or (None, None, 1900)))
         # 이름을 위한 추가 설정
-        self.view_name = self.name
+        self.original_name = self.name
         # 선 스타일
         self.pen_style = self.pen.style()
         # NoPen, SolidLine, DashLine, DotLine, DashDotLine, DashDotDotLine
@@ -344,10 +347,6 @@ class PlotSignal(Signal):
         self.pen.setStyle(self.pen_style)
         self.pen_width = style.get('width')
         self.set_color(style.get('color'))
-
-
-    def set_alias_name(self, new_name):
-        self.alias_name = new_name
 
     @property
     def avg(self):
@@ -1578,13 +1577,8 @@ class Plot(QtWidgets.QWidget):
 
         ## report button
         self.report_maker = ReportMaker(self, self.summary_form.summary_data)
-        uhbox = QtWidgets.QHBoxLayout()
-        self.report_button = QPushButton("Report")
-        uhbox.addWidget(self.report_button)
-        horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        uhbox.addItem(horizontalSpacer)
-        self.report_button.clicked.connect(self.report_maker.make_report)
-        vbox.addLayout(uhbox)
+        self.summary_form.reportButton.clicked.connect(self.report_maker.make_report)
+        self.summary_form.exportButton.clicked.connect(self.export_to_csv)
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.setSpacing(3)
@@ -2092,6 +2086,30 @@ class Plot(QtWidgets.QWidget):
                 if item.signal.pen_width > 1:
                     item.signal.pen_width -= 1
         self.plot.update()
+
+    def export_to_csv(self):
+        summary_data = self.summary_form.summary_data
+        opts = ExportOption()
+        datestr = QDateTime.currentDateTime().toString("yyyyMMddHHmm")
+        opts.export_dir = self.make_dir_path(datestr)
+        opts.file_prefix = 'export-'
+        if summary_data.get_start_time() is not None:
+            opts.start_offset = summary_data.start_delta
+        if summary_data.get_end_time() is not None:
+            opts.end_offset = summary_data.end_delta
+
+        # 채널 선택하는 부분
+        opts.filter_channel = True
+        opts.channels = self.plot.signals
+
+        QMessageBox.information(None, "내보내기", f"{opts.export_dir} 폴더 아래로 내보내기를 합니다.")
+        exporter = CsvExporter(self.mdf)
+        to_file = exporter.exportToFile(opts)
+
+    def make_dir_path(self, datestr):
+        mdf_dirname = Path(self.mdf.name).stem
+        dir_name = f"{mdf_dirname}-{datestr}"
+        return dir_name
 
     def set_channel_line_style(self, style_info):
         for item in self.channel_selection.selectedItems():
@@ -5901,16 +5919,16 @@ class _Plot(pg.PlotWidget):
                 axis.setLabel(self.common_axis_label)
 
         else:
-            if len(sig.view_name) <= 32:
+            if len(sig.name) <= 32:
                 if sig.unit:
-                    axis.setLabel(f"{sig.view_name} [{sig.unit}]")
+                    axis.setLabel(f"{sig.name} [{sig.unit}]")
                 else:
-                    axis.setLabel(f"{sig.view_name}")
+                    axis.setLabel(f"{sig.name}")
             else:
                 if sig.unit:
-                    axis.setLabel(f"{sig.view_name[:29]}...  [{sig.unit}]")
+                    axis.setLabel(f"{sig.name[:29]}...  [{sig.unit}]")
                 else:
-                    axis.setLabel(f"{sig.view_name[:29]}...")
+                    axis.setLabel(f"{sig.name[:29]}...")
 
             axis.set_pen(sig.pen)
             axis.setTextPen(sig.pen)

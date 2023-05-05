@@ -16,23 +16,24 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLineEdit,
-    QSizePolicy, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
 class Ui_summaryForm(object):
     def setupUi(self, summaryForm):
         if not summaryForm.objectName():
             summaryForm.setObjectName(u"summaryForm")
-        summaryForm.resize(349, 244)
+        summaryForm.resize(349, 280)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(summaryForm.sizePolicy().hasHeightForWidth())
         summaryForm.setSizePolicy(sizePolicy)
-        summaryForm.setMinimumSize(QSize(0, 244))
-        summaryForm.setMaximumSize(QSize(16777215, 244))
+        summaryForm.setMinimumSize(QSize(0, 280))
+        summaryForm.setMaximumSize(QSize(16777215, 280))
         self.verticalLayoutWidget = QWidget(summaryForm)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 331, 228))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 331, 270))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -133,6 +134,25 @@ class Ui_summaryForm(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.reportButton = QPushButton(self.verticalLayoutWidget)
+        self.reportButton.setObjectName(u"reportButton")
+
+        self.horizontalLayout_5.addWidget(self.reportButton)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
+        self.exportButton = QPushButton(self.verticalLayoutWidget)
+        self.exportButton.setObjectName(u"exportButton")
+
+        self.horizontalLayout_5.addWidget(self.exportButton)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
+
 
         self.retranslateUi(summaryForm)
 
@@ -147,5 +167,7 @@ class Ui_summaryForm(object):
         self.label_3.setText(QCoreApplication.translate("summaryForm", u"Min", None))
         self.label_4.setText(QCoreApplication.translate("summaryForm", u"Max", None))
         self.label_5.setText(QCoreApplication.translate("summaryForm", u"Average", None))
+        self.reportButton.setText(QCoreApplication.translate("summaryForm", u"\ub9ac\ud3ec\ud2b8", None))
+        self.exportButton.setText(QCoreApplication.translate("summaryForm", u"CSV \ub0b4\ubcf4\ub0b4\uae30", None))
     # retranslateUi
 
