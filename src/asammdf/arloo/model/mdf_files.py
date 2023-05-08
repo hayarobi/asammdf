@@ -46,6 +46,8 @@ class MdfFile:
         self._raw_data = MDF(file_path, version='4.10')
         self._parsed = self._raw_data.extract_bus_logging(database_files=databases)
         self.start_time = self._raw_data.start_time.astimezone(DEFAULT_TIME_ZONE)
-        self.sample_count = self._raw_data
+        # FIXME 구할 방법을 찾아보자.
+        self.end_time = self.start_time
+        self.sample_count = 0
     def __str__(self) -> str:
         return "{} : {} ".format(self.start_time, self.file_name)

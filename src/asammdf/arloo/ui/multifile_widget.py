@@ -15,42 +15,60 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QListView, QPushButton,
-    QSizePolicy, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QHeaderView, QPushButton,
+    QSizePolicy, QSpacerItem, QTableView, QVBoxLayout,
+    QWidget)
 
 class Ui_MultiFileWidget(object):
     def setupUi(self, MultiFileWidget):
         if not MultiFileWidget.objectName():
             MultiFileWidget.setObjectName(u"MultiFileWidget")
-        MultiFileWidget.resize(581, 391)
+        MultiFileWidget.resize(1024, 459)
+        MultiFileWidget.setMinimumSize(QSize(1024, 0))
         self.verticalLayoutWidget = QWidget(MultiFileWidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 561, 321))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 10, 1001, 441))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.mdfListView = QListView(self.verticalLayoutWidget)
+        self.mdfListView = QTableView(self.verticalLayoutWidget)
         self.mdfListView.setObjectName(u"mdfListView")
 
         self.verticalLayout.addWidget(self.mdfListView)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.mergeSaveButton = QPushButton(self.verticalLayoutWidget)
+        self.mergeSaveButton.setObjectName(u"mergeSaveButton")
+        self.mergeSaveButton.setAutoDefault(True)
 
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.horizontalLayout_2.addWidget(self.mergeSaveButton)
 
-        self.extractButton = QPushButton(MultiFileWidget)
-        self.extractButton.setObjectName(u"extractButton")
-        self.extractButton.setGeometry(QRect(10, 350, 111, 32))
-        self.extractButton.setAutoDefault(True)
-        self.addButton = QPushButton(MultiFileWidget)
-        self.addButton.setObjectName(u"addButton")
-        self.addButton.setGeometry(QRect(468, 350, 101, 32))
-        self.addButton.setAutoDefault(True)
-        self.removeButton = QPushButton(MultiFileWidget)
+        self.batchConvertButton = QPushButton(self.verticalLayoutWidget)
+        self.batchConvertButton.setObjectName(u"batchConvertButton")
+        self.batchConvertButton.setAutoDefault(True)
+
+        self.horizontalLayout_2.addWidget(self.batchConvertButton)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
+        self.removeButton = QPushButton(self.verticalLayoutWidget)
         self.removeButton.setObjectName(u"removeButton")
-        self.removeButton.setGeometry(QRect(350, 350, 101, 32))
         self.removeButton.setAutoDefault(True)
+
+        self.horizontalLayout_2.addWidget(self.removeButton)
+
+        self.addButton = QPushButton(self.verticalLayoutWidget)
+        self.addButton.setObjectName(u"addButton")
+        self.addButton.setAutoDefault(True)
+
+        self.horizontalLayout_2.addWidget(self.addButton)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
 
         self.retranslateUi(MultiFileWidget)
 
@@ -59,8 +77,9 @@ class Ui_MultiFileWidget(object):
 
     def retranslateUi(self, MultiFileWidget):
         MultiFileWidget.setWindowTitle(QCoreApplication.translate("MultiFileWidget", u"MDFFiles", None))
-        self.extractButton.setText(QCoreApplication.translate("MultiFileWidget", u"Extract", None))
-        self.addButton.setText(QCoreApplication.translate("MultiFileWidget", u"Add Files", None))
-        self.removeButton.setText(QCoreApplication.translate("MultiFileWidget", u"Remove File", None))
+        self.mergeSaveButton.setText(QCoreApplication.translate("MultiFileWidget", u"\ubcd1\ud569 \uc800\uc7a5", None))
+        self.batchConvertButton.setText(QCoreApplication.translate("MultiFileWidget", u"\uac1c\ubcc4 \uc77c\uad04 \uc800\uc7a5", None))
+        self.removeButton.setText(QCoreApplication.translate("MultiFileWidget", u"\ud30c\uc77c \uc0ad\uc81c", None))
+        self.addButton.setText(QCoreApplication.translate("MultiFileWidget", u"\ud30c\uc77c \ucd94\uac00", None))
     # retranslateUi
 

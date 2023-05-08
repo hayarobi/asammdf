@@ -1,9 +1,10 @@
 import gc
+import operator
 from pathlib import Path
 import platform
 
 from PySide6 import QtCore, QtWidgets
-from PySide6.QtCore import QSettings
+from PySide6.QtCore import QSettings, QAbstractTableModel, Qt, Signal
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtWidgets import QWidget, QMessageBox
 from natsort import natsorted
@@ -14,6 +15,50 @@ from asammdf.arloo.model.mdf_files import MdfFiles
 from asammdf.arloo.summay import time_to_str
 from asammdf.arloo.ui.multifile_widget import Ui_MultiFileWidget
 from asammdf.gui.widgets.mdi_area import WithMDIArea, MdiAreaWidget
+
+
+class MdfTableModel(QAbstractTableModel):
+    def __init__(self, parent, mylist, header, *args):
+        QAbstractTableModel.__init__(self, parent, *args)
+        self.mylist = mylist
+        self.header = header
+
+    def rowCount(self, parent):
+        return len(self.mylist)
+
+    def columnCount(self, parent):
+        return len(self.header)
+
+    def data(self, index, role):
+        if not index.isValid():
+            return None
+        elif role != Qt.DisplayRole:
+            return None
+        return self.mylist[index.row()][index.column()]
+
+    def headerData(self, col, orientation, role):
+        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+            return self.header[col]
+        return None
+
+    def sort(self, col, order):
+        """sort table by given column number col"""
+        self.layoutAboutToBeChanged.emit()
+        self.mylist = sorted(self.mylist,
+                             key=operator.itemgetter(col))
+        if order == Qt.DescendingOrder:
+            self.mylist.reverse()
+        self.layoutChanged.emit()
+
+    def appendRow(self, item):
+        self.mylist.append(item)
+        self.mylist = sorted(self.mylist,
+                             key=operator.itemgetter(1))
+        self.rowsInserted.emit(None, 0, len(self.mylist)-1)
+
+    def removeRow(self, row):
+        del self.mylist[row]
+        self.rowsRemoved.emit(None, row, row)
 
 
 class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
@@ -32,9 +77,14 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
         self.setupUi(self)
 
         self._mdf_util = MdfFiles()
-        self._model = QStandardItemModel()
+        # 테이블 뷰 초기화
+        header = ['파일명', '시작 시각', '종료 시각', '샘플 갯수']
+        self._model = MdfTableModel(self, [], header)
+        self.mdfListView.setColumnWidth(0, 512)
         self.mdfListView.setModel(self._model)
-        self.extractButton.clicked.connect(self.extract)
+        self.mergeSaveButton.clicked.connect(self.merge_convert)
+        self.batchConvertButton.clicked.connect(self.batch_convert)
+
         self.addButton.clicked.connect(self.add_file)
         self.removeButton.clicked.connect(self.remove_file)
 
@@ -84,29 +134,43 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
         # item_start_time = QStandardItem(time_to_str(mdf_file.start_time))
         # item_start_time.setData(mdf_file.start_time)
         # item_size = QStandardItem(str(3))
-        item_mdf = QStandardItem(mdf_file.__str__())
-        item_mdf.setData(mdf_file)
-        # items.append(item_start_time)
-        # items.append(item_size)
-        # items.append(item_mdf)
+        item_mdf = (mdf_file.file_name, mdf_file.start_time, mdf_file.end_time, mdf_file.sample_count, mdf_file)
         self._model.appendRow(item_mdf)
 
     def remove_file(self):
         for row in self.mdfListView.selectedIndexes():
             self._model.removeRow(row.row())
 
-    def extract(self):
+    def merge_convert(self):
         mdfs = []
         file_count = self._model.rowCount()
         if file_count == 0:
-            QMessageBox.information(self, 'no files', 'add files first', QMessageBox.Ok)
+            QMessageBox.information(self, '병합 실패', '입력 파일을 먼저 추가해 주세요', QMessageBox.Ok)
             return
 
         for row in range(0, file_count):
             item = self._model.item(row)
             mdfs.append(item.data())
         merged = self._mdf_util.merge_mdf_files(mdfs)
-        self.extract_signal.emit(ExtractEvent(merged,self._mdf_util.dbc_files_arr))
+        self.extract_signal.emit(ExtractEvent(merged, self._mdf_util.dbc_files_arr))
+
+    def batch_convert(self):
+        """
+        입력 파일을 개별적으로 저장하기
+        :return:
+        """
+        # 구현하자
+        mdfs = []
+        file_count = self._model.rowCount()
+        if file_count == 0:
+            QMessageBox.information(self, 'no files', '변환할 파일이 없습니다.', QMessageBox.Ok)
+            return
+
+        # TODO 디렉토리 선택 대화창 띄우기
+
+        # TODO 파일을 순회하며 저장하기.
+        QMessageBox.information(self, 'Not Implemented', 'Not Implemented yet.', QMessageBox.Ok)
+
 
 class ExtractEvent:
     def __init__(self, mdf, database_arr) -> None:
