@@ -1,18 +1,15 @@
 import gc
 import operator
-from pathlib import Path
 import platform
+from pathlib import Path
 
 from PySide6 import QtCore, QtWidgets
-from PySide6.QtCore import QSettings, QAbstractTableModel, Qt, Signal
-from PySide6.QtGui import QStandardItemModel, QStandardItem
+from PySide6.QtCore import QAbstractTableModel, Qt, QDateTime
 from PySide6.QtWidgets import QWidget, QMessageBox
 from natsort import natsorted
 
-from asammdf import MDF
-from asammdf.arloo.arloofile import ArlooFileWidget
+from asammdf.arloo.arloos import DEFAULT_Q_TIME_ZONE
 from asammdf.arloo.model.mdf_files import MdfFiles
-from asammdf.arloo.summay import time_to_str
 from asammdf.arloo.ui.multifile_widget import Ui_MultiFileWidget
 from asammdf.gui.widgets.mdi_area import WithMDIArea, MdiAreaWidget
 
@@ -54,7 +51,7 @@ class MdfTableModel(QAbstractTableModel):
         self.mylist.append(item)
         self.mylist = sorted(self.mylist,
                              key=operator.itemgetter(1))
-        self.rowsInserted.emit(None, 0, len(self.mylist)-1)
+        self.rowsInserted.emit(None, 0, len(self.mylist) - 1)
 
     def removeRow(self, row):
         del self.mylist[row]
@@ -78,10 +75,13 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
 
         self._mdf_util = MdfFiles()
         # 테이블 뷰 초기화
-        header = ['파일명', '시작 시각', '종료 시각', '샘플 갯수']
+        header = ['파일명', '시작 시각', '종료 시각', '평균 샘플 갯수']
         self._model = MdfTableModel(self, [], header)
-        self.mdfListView.setColumnWidth(0, 512)
+        self.mdfListView.setColumnWidth(1, 512)
+        self.mdfListView.setColumnWidth(2, 192)
+        self.mdfListView.setColumnWidth(3, 192)
         self.mdfListView.setModel(self._model)
+        self.mdfListView.updateGeometry()
         self.mergeSaveButton.clicked.connect(self.merge_convert)
         self.batchConvertButton.clicked.connect(self.batch_convert)
 
@@ -130,11 +130,9 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
     def append_file(self, file_name):
         file_path = Path(file_name)
         mdf_file = self._mdf_util.make_mdf_file(file_name)
-        # items = []
-        # item_start_time = QStandardItem(time_to_str(mdf_file.start_time))
-        # item_start_time.setData(mdf_file.start_time)
-        # item_size = QStandardItem(str(3))
-        item_mdf = (mdf_file.file_name, mdf_file.start_time, mdf_file.end_time, mdf_file.sample_count, mdf_file)
+
+        item_mdf = (mdf_file.file_name, self.to_qdatetime(mdf_file.start_time),
+                    self.to_qdatetime(mdf_file.end_time), mdf_file.sample_count, mdf_file)
         self._model.appendRow(item_mdf)
 
     def remove_file(self):
@@ -170,6 +168,9 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
 
         # TODO 파일을 순회하며 저장하기.
         QMessageBox.information(self, 'Not Implemented', 'Not Implemented yet.', QMessageBox.Ok)
+
+    def to_qdatetime(self, py_dt):
+        return QDateTime.fromSecsSinceEpoch(py_dt.timestamp(), DEFAULT_Q_TIME_ZONE)
 
 
 class ExtractEvent:
