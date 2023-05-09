@@ -117,8 +117,8 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data = ReportData()
         data.subject = self.subjectEdit.text()
         data.vehicle_number = self.vehicleNumberEdit.text()
-        data.start_time = self._data_provider.start_time
-        data.end_time = self._data_provider.end_time
+        data.start_time = self._data_provider.get_start_time()
+        data.end_time = self._data_provider.get_end_time()
         data.summaries = self._data_provider.signal_summaries
         data.date = self.dateEdit.dateTime().toPython().astimezone(DEFAULT_TIME_ZONE).strftime("%Y-%m-%d")
         data.author = self.authorEdit.text()
