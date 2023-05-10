@@ -20,10 +20,10 @@ class MdfTableModel(QAbstractTableModel):
         self.mylist = mylist
         self.header = header
 
-    def rowCount(self, parent):
+    def rowCount(self, parent=None):
         return len(self.mylist)
 
-    def columnCount(self, parent):
+    def columnCount(self, parent=None):
         return len(self.header)
 
     def data(self, index, role):
@@ -57,6 +57,11 @@ class MdfTableModel(QAbstractTableModel):
         del self.mylist[row]
         self.rowsRemoved.emit(None, row, row)
 
+    def get_mdf_list(self):
+        result_list = []
+        for tup in self.mylist:
+            result_list.append(tup[4])
+        return result_list
 
 class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
     add_file_signal = QtCore.Signal(str)
@@ -141,14 +146,14 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
 
     def merge_convert(self):
         mdfs = []
-        file_count = self._model.rowCount()
+        file_count = self._model.rowCount(None)
         if file_count == 0:
             QMessageBox.information(self, '병합 실패', '입력 파일을 먼저 추가해 주세요', QMessageBox.Ok)
             return
-
-        for row in range(0, file_count):
-            item = self._model.item(row)
-            mdfs.append(item.data())
+        mdfs = self._model.get_mdf_list()
+        # for row in range(0, file_count):
+        #     item = self._model.item(row)
+        #     mdfs.append(item.data())
         merged = self._mdf_util.merge_mdf_files(mdfs)
         self.extract_signal.emit(ExtractEvent(merged, self._mdf_util.dbc_files_arr))
 
