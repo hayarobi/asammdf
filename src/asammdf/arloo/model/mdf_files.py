@@ -66,5 +66,8 @@ class MdfFile:
         self.end_time = self.start_time + avr_offset
         self.sample_count = avr_samples
 
+    def get_parsed(self):
+        return self._parsed
+
     def __str__(self) -> str:
         return "{} : {} ".format(self.start_time, self.file_name)

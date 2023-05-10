@@ -5,11 +5,12 @@ from pathlib import Path
 
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import QAbstractTableModel, Qt, QDateTime
-from PySide6.QtWidgets import QWidget, QMessageBox
+from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from natsort import natsorted
 
+from asammdf import MDF
 from asammdf.arloo.arloos import DEFAULT_Q_TIME_ZONE
-from asammdf.arloo.model.mdf_files import MdfFiles
+from asammdf.arloo.model.mdf_files import MdfFiles, MdfFile
 from asammdf.arloo.ui.multifile_widget import Ui_MultiFileWidget
 from asammdf.gui.widgets.mdi_area import WithMDIArea, MdiAreaWidget
 
@@ -62,6 +63,7 @@ class MdfTableModel(QAbstractTableModel):
         for tup in self.mylist:
             result_list.append(tup[4])
         return result_list
+
 
 class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
     add_file_signal = QtCore.Signal(str)
@@ -163,16 +165,33 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
         :return:
         """
         # 구현하자
-        mdfs = []
         file_count = self._model.rowCount()
         if file_count == 0:
             QMessageBox.information(self, 'no files', '변환할 파일이 없습니다.', QMessageBox.Ok)
             return
 
         # TODO 디렉토리 선택 대화창 띄우기
+        mdfs = self._model.get_mdf_list()
+        first_mdf:MdfFile = mdfs[0]
+        directory = QFileDialog.getExistingDirectory(self, "저장할 폴더 선택", Path(first_mdf.file_name).parent.name,
+                                                     QFileDialog.DontResolveSymlinks)
+        if not directory:
+            return
 
+        parent = Path(directory)
         # TODO 파일을 순회하며 저장하기.
-        QMessageBox.information(self, 'Not Implemented', 'Not Implemented yet.', QMessageBox.Ok)
+        for mdf in mdfs:
+            original_name = Path(mdf.file_name)
+            file_name = str(original_name.stem)+"_out"+str(original_name.suffix)
+            file_name = parent.joinpath(file_name)
+            result = mdf.get_parsed().save(
+                dst=file_name,
+                compression=0,
+                overwrite=False,
+                progress=None,
+            )
+
+        # QMessageBox.information(self, 'Not Implemented', 'Not Implemented yet.', QMessageBox.Ok)
 
     def to_qdatetime(self, py_dt):
         return QDateTime.fromSecsSinceEpoch(py_dt.timestamp(), DEFAULT_Q_TIME_ZONE)
