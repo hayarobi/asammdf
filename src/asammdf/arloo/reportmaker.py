@@ -8,7 +8,6 @@ from asammdf.arloo.model.summaydata import SummaryData
 from asammdf.arloo.reportdialog import ReportDialog
 from asammdf.arloo.reportresultdialog import ReportResultDialog
 
-
 class ReportMaker:
     # 재활용을 하는 객체이다.
     def __init__(self, plot, summry_data:SummaryData):
@@ -21,13 +20,15 @@ class ReportMaker:
     def make_report(self):
         start_time = self.summary_data.get_start_time()
         if start_time is None:
-            # FIXME 코드스멜 시그널 선택을 명시적으로 하지 않아도 시작과 종료 시각은 따로 있을 수 있다.
             self.start_time = self.summary_data.origin_time
         end_time = self.summary_data.get_end_time()
         self.graph_dataurl = self.get_plot_graph_dataurl()
         if end_time is None:
-            # FIXME 코드스멜 시그널 선택을 명시적으로 하지 않아도 시작과 종료 시각은 따로 있을 수 있다.
-            self.end_time = self.summary_data.origin_time + timedelta(seconds=1000000)
+            largest_offset = 0
+            for sig in self.plot_widget.plot.signals:
+                if largest_offset < sig.timestamps[-1]:
+                    largest_offset = sig.timestamps[-1]
+            self.end_time = self.summary_data.origin_time + timedelta(seconds=largest_offset)
         self.signal_summaries = self.get_signal_summaries(self.summary_data.start_delta
                                                      , self.summary_data.end_delta)
 
@@ -74,8 +75,16 @@ class ReportMaker:
         return summaries
 
     def get_start_time(self):
-        return self.summary_data.get_start_time()
+        start_time = self.summary_data.get_start_time()
+        if start_time:
+            return start_time
+        else:
+            return self.summary_data.origin_time
 
     def get_end_time(self):
-        return self.summary_data.get_end_time()
+        end_time = self.summary_data.get_end_time()
+        if end_time:
+            return end_time
+        else:
+            return self.summary_data.origin_time + timedelta(seconds=1000000)
 

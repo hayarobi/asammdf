@@ -5,11 +5,11 @@ END_NOT_SELECTED = 10000000000.0
 
 
 class SignalSummary:
-    def __init__(self, signal=None, name=None, start_time=START_NOT_SELECTED, end_time=END_NOT_SELECTED):
+    def __init__(self, signal=None, name=None, start_delta=START_NOT_SELECTED, end_delta=END_NOT_SELECTED):
         self.name = name
         self.signal = signal
-        self.start_time = start_time
-        self.end_time = end_time
+        self.start_delta = start_delta
+        self.end_delta = end_delta
 
         # 파이썬은 무조건 이리 정의해야하나? _clear_values() 함수와 내용이 중복된다.
         self.samples = 0
@@ -22,8 +22,8 @@ class SignalSummary:
         self._calculate()
 
     def set_time_range(self, start_time, end_time):
-        self.start_time = start_time
-        self.end_time = end_time
+        self.start_delta = start_time
+        self.end_delta = end_time
         self._calculate()
 
     def _calculate(self):
@@ -34,7 +34,7 @@ class SignalSummary:
         #     self._clear_values()
         #     return
 
-        values = self._collect_values(self.signal, self.start_time, self.end_time)
+        values = self._collect_values(self.signal, self.start_delta, self.end_delta)
         if len(values) == 0:
             self._clear_values()
         else:

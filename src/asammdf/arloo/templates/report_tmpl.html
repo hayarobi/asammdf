@@ -133,8 +133,8 @@
     <table width="100%">
         <tr>
             <td width="25%">이름</td>
-            <td width="15%">{{data.start_time.strftime('%H:%M:%S')}}</td>
-            <td width="15%">{{data.end_time.strftime('%H:%M:%S')}}</td>
+            <td width="15%">{{data.start_time.strftime('%H:%M:%S') if data.start_time else ''}}</td>
+            <td width="15%">{{data.end_time.strftime('%H:%M:%S') if data.end_time else ''}}</td>
             <td width="15%">최소값</td>
             <td width="15%">최대값</td>
             <td width="15%">평균값</td>
