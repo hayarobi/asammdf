@@ -1,3 +1,4 @@
+from pathlib import Path
 from pydoc import html
 
 from PySide6 import QtCore, QtWidgets
@@ -80,12 +81,21 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.vehicleNumberEdit.textEdited.connect(self.update_render_timer)
         self.authorEdit.textEdited.connect(self.update_render_timer)
         self.dateEdit.dateChanged.connect(self.update_render_timer)
+        self.graphRatioSpinBox.valueChanged.connect(self.handle_ratio_change)
         self.descriptionEdit.textChanged.connect(self.update_render_timer)
 
         self.saveButton.clicked.connect(self.save_to_pdf)
         self.closeButton.clicked.connect(self.reject)
         self.printButton.clicked.connect(self.printPage)
 
+        if True:
+            self.saveHtmlButton.setVisible(False)
+            self.saveHtmlButton.setEnabled(False)
+        else:
+            self.saveHtmlButton.setEnabled(True)
+            self.saveHtmlButton.setVisible(True)
+            self.saveHtmlButton.clicked.connect(self.save_as_html)
+            self.last_rendered = ''
     def init_webview(self):
         env = Environment(
             loader=PackageLoader("asammdf.arloo"),
@@ -97,6 +107,9 @@ class ReportDialog(Ui_report_dialog, QDialog):
         # 최초 preview를 보여주는 용도
         self.update_preview()
 
+    def handle_ratio_change(self, changed_value):
+        self.update_render_timer()
+
     def update_render_timer(self):
         self.timer.start()
 
@@ -106,6 +119,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
                                    graph_image=report_data.graph_image,
                                    ci_image=report_data.ci_image
                                    )
+        self.last_rendered = rendered
         self.web_view.setHtml(rendered)
 
     def accept(self) -> None:
@@ -114,6 +128,8 @@ class ReportDialog(Ui_report_dialog, QDialog):
         super().accept()
 
     def refresh_report_data(self):
+        value = self.graphRatioSpinBox.value()
+
         data = ReportData()
         data.subject = self.subjectEdit.text()
         data.vehicle_number = self.vehicleNumberEdit.text()
@@ -126,6 +142,8 @@ class ReportDialog(Ui_report_dialog, QDialog):
         data.description = self.descriptionEdit.toHtml()
         data.ci_image = self._data_provider.ci_dataurl
         data.graph_image = self._data_provider.graph_dataurl
+        data.graph_width = round(self._data_provider.base_width*self._data_provider.base_ratio)
+        data.graph_height = round(self._data_provider.base_height*self._data_provider.base_ratio * value/100)
         self.report_data = data
         return self.report_data
 
@@ -153,7 +171,12 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.web_view.page().printToPdf(file_name)
         self.save_to_settings()
         # self.close()
-
+    def save_as_html(self) -> None:
+        qtime = QDateTime.currentDateTime().toPython().astimezone(DEFAULT_TIME_ZONE).strftime("%H%M%S")
+        home = Path.home()
+        text_file = open(home.joinpath("Downloads",f"report_{qtime}.html"), "w")
+        n = text_file.write(self.last_rendered)
+        text_file.close()
     def reject(self) -> None:
         super().reject()
 

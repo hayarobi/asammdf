@@ -2,15 +2,19 @@ import base64
 from datetime import timedelta
 
 from PySide6.QtCore import QFile, QByteArray, QBuffer, QIODevice
+from PySide6.QtGui import QPixmap
 
 from asammdf.arloo.model.signal_summary import START_NOT_SELECTED, SignalSummary
 from asammdf.arloo.model.summaydata import SummaryData
 from asammdf.arloo.reportdialog import ReportDialog
 from asammdf.arloo.reportresultdialog import ReportResultDialog
 
+DEFAULT_IMAGE_WIDTH = 600
+
+
 class ReportMaker:
     # 재활용을 하는 객체이다.
-    def __init__(self, plot, summry_data:SummaryData):
+    def __init__(self, plot, summry_data: SummaryData):
         self.plot_widget = plot
         self.summary_data = summry_data
         self.ci_dataurl = self.get_ci_iamge_dataurl()
@@ -30,7 +34,7 @@ class ReportMaker:
                     largest_offset = sig.timestamps[-1]
             self.end_time = self.summary_data.origin_time + timedelta(seconds=largest_offset)
         self.signal_summaries = self.get_signal_summaries(self.summary_data.start_delta
-                                                     , self.summary_data.end_delta)
+                                                          , self.summary_data.end_delta)
 
         dialog = ReportDialog(self.plot_widget, self)
         result = dialog.exec()
@@ -60,7 +64,13 @@ class ReportMaker:
         image_bytes = QByteArray()
         buffer = QBuffer(image_bytes)
         buffer.open(QIODevice.WriteOnly)
-        plt.grab().save(buffer, "PNG")  # writes pixmap into bytes in PNG format
+        pixmap: QPixmap = plt.grab()
+
+        self.base_width = pixmap.width()
+        self.base_height = pixmap.height()
+        self.base_ratio = DEFAULT_IMAGE_WIDTH/self.base_width
+
+        pixmap.save(buffer, "PNG")  # writes pixmap into bytes in PNG format
         base64_utf8_str = base64.b64encode(image_bytes.data()).decode('utf-8')
         dataurl = f'data:image/png;base64,{base64_utf8_str}'
 
@@ -87,4 +97,3 @@ class ReportMaker:
             return end_time
         else:
             return self.summary_data.origin_time + timedelta(seconds=1000000)
-

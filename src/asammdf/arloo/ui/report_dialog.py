@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDateEdit, QDialog, QHBoxLayout,
     QHeaderView, QLabel, QLayout, QLineEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QTreeWidget,
-    QTreeWidgetItem, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
+    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_report_dialog(object):
     def setupUi(self, report_dialog):
@@ -85,7 +85,7 @@ class Ui_report_dialog(object):
 
         self.dateEdit = QDateEdit(self.verticalLayoutWidget)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 25), QTime(15, 0, 0)))
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 24), QTime(21, 0, 0)))
 
         self.horizontalLayout_2.addWidget(self.dateEdit)
 
@@ -129,6 +129,36 @@ class Ui_report_dialog(object):
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
+
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.label_5 = QLabel(self.verticalLayoutWidget)
+        self.label_5.setObjectName(u"label_5")
+
+        self.horizontalLayout_7.addWidget(self.label_5)
+
+        self.graphRatioSpinBox = QSpinBox(self.verticalLayoutWidget)
+        self.graphRatioSpinBox.setObjectName(u"graphRatioSpinBox")
+        self.graphRatioSpinBox.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.graphRatioSpinBox.setMinimum(10)
+        self.graphRatioSpinBox.setMaximum(300)
+        self.graphRatioSpinBox.setSingleStep(10)
+        self.graphRatioSpinBox.setValue(100)
+
+        self.horizontalLayout_7.addWidget(self.graphRatioSpinBox)
+
+        self.label_6 = QLabel(self.verticalLayoutWidget)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setMaximumSize(QSize(25, 16777215))
+
+        self.horizontalLayout_7.addWidget(self.label_6)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_3)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_7)
 
         self.descriptionAreaLayout = QVBoxLayout()
         self.descriptionAreaLayout.setObjectName(u"descriptionAreaLayout")
@@ -179,6 +209,12 @@ class Ui_report_dialog(object):
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
 
+        self.saveHtmlButton = QPushButton(self.horizontalLayoutWidget)
+        self.saveHtmlButton.setObjectName(u"saveHtmlButton")
+        self.saveHtmlButton.setEnabled(False)
+
+        self.horizontalLayout_5.addWidget(self.saveHtmlButton)
+
         self.printButton = QPushButton(self.horizontalLayoutWidget)
         self.printButton.setObjectName(u"printButton")
 
@@ -206,6 +242,8 @@ class Ui_report_dialog(object):
         self.label_2.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc77c", None))
         self.label_3.setText(QCoreApplication.translate("report_dialog", u"\uc791\uc5c5\uc790", None))
         self.workOrderLabel.setText(QCoreApplication.translate("report_dialog", u"\uc7a5\uc560\uc77c\uc2dc ", None))
+        self.label_5.setText(QCoreApplication.translate("report_dialog", u"\uadf8\ub798\ud504 \ub192\uc774 \ube44\uc728", None))
+        self.label_6.setText(QCoreApplication.translate("report_dialog", u"%", None))
         self.label_4.setText(QCoreApplication.translate("report_dialog", u" \uc124\uba85", None))
         ___qtreewidgetitem = self.summaries_widget.headerItem()
         ___qtreewidgetitem.setText(4, QCoreApplication.translate("report_dialog", u"\ud3c9\uade0", None));
@@ -214,6 +252,7 @@ class Ui_report_dialog(object):
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("report_dialog", u"\uc0d8\ud50c\uc218", None));
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("report_dialog", u"\uc774\ub984", None));
         self.closeButton.setText(QCoreApplication.translate("report_dialog", u"\ub2eb\uae30", None))
+        self.saveHtmlButton.setText(QCoreApplication.translate("report_dialog", u"HTML\uc800\uc7a5", None))
         self.printButton.setText(QCoreApplication.translate("report_dialog", u"\uc778\uc1c4", None))
         self.saveButton.setText(QCoreApplication.translate("report_dialog", u"PDF\uc800\uc7a5", None))
     # retranslateUi
