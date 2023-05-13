@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
-import base64
 import bisect
-import pathlib
-from collections import defaultdict
 from datetime import timedelta
 from functools import lru_cache, partial, reduce
 import os
-from os import path
 from pathlib import Path
 from tempfile import gettempdir
 from threading import Lock
@@ -16,25 +12,17 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 import numpy as np
 import pyqtgraph as pg
-import pyqtgraph.exporters
-import pyqtgraph.canvas.CanvasTemplate_pyside6
-import pyqtgraph.canvas.TransformGuiTemplate_pyside6
 
 # imports for pyinstaller
 import pyqtgraph.functions as fn
-from PySide6.QtCore import QUrl, QIODevice, QByteArray, QBuffer, QFile, QDataStream, QDateTime
-from PySide6.QtGui import QPen
-from PySide6.QtWebEngineWidgets import QWebEngineView
-from PySide6.QtWidgets import QPushButton, QSpacerItem, QSpacerItem, QSizePolicy, QDialog, QMessageBox
+from PySide6.QtCore import QDateTime
+from PySide6.QtWidgets import QMessageBox
 from pyqtgraph import LabelItem
 
+from .formatted_x_axis import FormattedXAxis
 from ...arloo.model.csv_exporter import ExportOption, CsvExporter
-from ...arloo.reportdialog import ReportDialog
 from ...arloo.reportmaker import ReportMaker
-from ...arloo.reportresultdialog import ReportResultDialog
-from ...arloo.summay import SummaryForm
-from ...arloo import arresource
-from ...arloo.widgets import channelstyledialog
+from asammdf.arloo.widgets.summayform import SummaryForm
 from ...arloo.widgets.channelstyledialog import ChannelStyleDialog
 
 try:
@@ -56,7 +44,7 @@ PLOT_BUFFER_SIZE = 4000
 
 from ...blocks.conversion_utils import from_dict, to_dict
 from ...blocks.utils import target_byte_order
-from ..utils import FONT_SIZE, timeit, value_as_str
+from ..utils import FONT_SIZE, value_as_str
 from .viewbox import ViewBoxWithCursor
 
 try:
@@ -3984,7 +3972,7 @@ class _Plot(pg.PlotWidget):
         self.setBackground('w')
         self.backgroundBrush().setColor('w')
 
-        self.x_axis = FormatedAxis(
+        self.x_axis = FormattedXAxis(
             self, "bottom", maxTickLength=5, background=self.backgroundBrush().color()
         )
 
@@ -3996,6 +3984,7 @@ class _Plot(pg.PlotWidget):
             fmt = "phys"
         self.x_axis.format = fmt
         self.x_axis.origin = origin
+        self.x_axis.adjustXRange.connect(self.set_x_range)
 
         self.y_axis = FormatedAxis(
             self, "left", maxTickLength=-5, background=self.backgroundBrush().color()
@@ -5969,7 +5958,7 @@ class _Plot(pg.PlotWidget):
     def set_locked(self, locked):
         self.locked = locked
         for axis in self.axes:
-            if isinstance(axis, FormatedAxis):
+            if isinstance(axis, FormatedAxis) or isinstance(axis, FormattedXAxis):
                 axis.locked = locked
 
         self.viewbox.setMouseEnabled(y=not self.locked)
@@ -6093,6 +6082,11 @@ class _Plot(pg.PlotWidget):
             axis.update()
 
         self.update()
+
+    def set_x_range(self, uuid, x_range, emit=True):
+        update = False
+        self.setXRange(x_range[0], x_range[1], update=update)
+        dummy = False
 
     def set_y_range(self, uuid, y_range, emit=True):
         update = False

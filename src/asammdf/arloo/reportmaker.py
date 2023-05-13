@@ -9,7 +9,7 @@ from asammdf.arloo.model.summaydata import SummaryData
 from asammdf.arloo.reportdialog import ReportDialog
 from asammdf.arloo.reportresultdialog import ReportResultDialog
 
-DEFAULT_IMAGE_WIDTH = 600
+DEFAULT_IMAGE_WIDTH = 500
 
 
 class ReportMaker:
@@ -54,9 +54,10 @@ class ReportMaker:
             base64_utf8_str = base64.b64encode(stream.readAll().data()).decode('utf-8')
             ci_dataurl = f'data:image/png;base64,{base64_utf8_str}'
             stream.close()
+            return ci_dataurl
         else:
             print(stream.errorString())
-        return ci_dataurl
+            return ''
 
     def get_plot_graph_dataurl(self):
         # generate something to export
