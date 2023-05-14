@@ -333,66 +333,12 @@ class FormattedXAxis(pg.AxisItem):
             menu.addAction(f"종료 시각을 {time_in_cursor_str}로 설정")
             menu.addSeparator()
         menu.addAction("표시 시간 범위 조정")
-        # menu.addAction("Apply new axis limits")
+        if self.locked:
+            menu.addAction("X축 스크롤 고정 해제")
+        else:
+            menu.addAction("X축 스크롤 고정")
         menu.addSeparator()
 
-
-        # if from_time is None:
-        #     widget = QtWidgets.QWidget()
-        #     layout = QtWidgets.QHBoxLayout()
-        #     widget.setLayout(layout)
-        #     layout.addWidget(QtWidgets.QLabel("max:"))
-        #
-        #     upper = QtWidgets.QDoubleSpinBox()
-        #     upper.setDecimals(3)
-        #     upper.setMinimum(-1e64)
-        #     upper.setMaximum(1e35)
-        #     upper.setValue(high)
-        #     layout.addWidget(upper)
-        #
-        #     a = QtWidgets.QWidgetAction(self)
-        #     a.setDefaultWidget(widget)
-        #     menu.addAction(a)
-        #
-        #     widget = QtWidgets.QWidget()
-        #     layout = QtWidgets.QHBoxLayout()
-        #     widget.setLayout(layout)
-        #     layout.addWidget(QtWidgets.QLabel("min:"))
-        #
-        #     lower = QtWidgets.QDoubleSpinBox()
-        #     lower.setDecimals(3)
-        #     lower.setMinimum(-1e64)
-        #     lower.setMaximum(1e35)
-        #     lower.setValue(low)
-        #     layout.addWidget(lower)
-        #
-        #     a = QtWidgets.QWidgetAction(self)
-        #     a.setDefaultWidget(widget)
-        #     menu.addAction(a)
-        # else:
-        #     widget = QtWidgets.QWidget()
-        #     layout = QtWidgets.QHBoxLayout()
-        #     widget.setLayout(layout)
-        #     layout.addWidget(QtWidgets.QLabel("시작 시각:"))
-        #     lower_time_edit = QtWidgets.QLineEdit()
-        #     lower_time_edit.setText(from_time.strftime("%H:%M:%S"))
-        #     lower_time_edit.setValidator(self.validator)
-        #     layout.addWidget(lower_time_edit)
-        #     a = QtWidgets.QWidgetAction(self)
-        #     a.setDefaultWidget(widget)
-        #     menu.addAction(a)
-        #
-        #     widget = QtWidgets.QWidget()
-        #     layout = QtWidgets.QHBoxLayout()
-        #     widget.setLayout(layout)
-        #     layout.addWidget(QtWidgets.QLabel("끝 시각:"))
-        #     upper_time_edit = QtWidgets.QLineEdit()
-        #     upper_time_edit.setText(to_time.strftime("%H:%M:%S"))
-        #     upper_time_edit.setValidator(self.validator)
-        #     layout.addWidget(upper_time_edit)
-        #     a = QtWidgets.QWidgetAction(self)
-        #     a.setDefaultWidget(widget)
-        #     menu.addAction(a)
 
         action = menu.exec_(ev.screenPos().toPoint())
 
@@ -432,6 +378,8 @@ class FormattedXAxis(pg.AxisItem):
             # self.update_range(lower_value, pos.x())
             self.arloo_range[1] = pos.x()
             self.set_end_time_requested.emit(pos)
+        elif action.text().startswith("X축 스크롤 고정"):
+            self.locked = not self.locked
 
     def update_range(self, lower_value, upper_value):
         if self.orientation in ("left", "right"):
