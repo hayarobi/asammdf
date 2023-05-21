@@ -3982,6 +3982,8 @@ class _Plot(pg.PlotWidget):
                 fmt = "phys"
         else:
             fmt = "phys"
+        # 시간축은 기본이 date로 표시하기
+        fmt = "date"
         self.x_axis.format = fmt
         self.x_axis.origin = origin
         self.x_axis.adjustXRange.connect(self.set_x_range)
