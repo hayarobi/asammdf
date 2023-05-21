@@ -194,7 +194,7 @@ class MDFFilesWidget(WithMDIArea, Ui_MultiFileWidget, QWidget):
         # QMessageBox.information(self, 'Not Implemented', 'Not Implemented yet.', QMessageBox.Ok)
 
     def to_qdatetime(self, py_dt):
-        return QDateTime.fromSecsSinceEpoch(py_dt.timestamp(), DEFAULT_Q_TIME_ZONE)
+        return QDateTime.fromSecsSinceEpoch(round(py_dt.timestamp()), DEFAULT_Q_TIME_ZONE)
 
 
 class ExtractEvent:

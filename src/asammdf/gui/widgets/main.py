@@ -110,7 +110,7 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         self.preset_widget = None
         self.mdfs_widget = None
 
-        menu = self.menubar.addMenu("File")
+        menu = self.menubar.addMenu("파일")
         open_group = QtGui.QActionGroup(self)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/open.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -120,12 +120,12 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         # action.setShortcut(QtGui.QKeySequence("Ctrl+O"))
         # open_group.addAction(action)
 
-        action = QtGui.QAction(icon, "New Convert Work", menu)
+        action = QtGui.QAction(icon, "새 변환 작업", menu)
         action.triggered.connect(self.open_single_mdf)
         action.setShortcut(QtGui.QKeySequence("Ctrl+N"))
         open_group.addAction(action)
 
-        action = QtGui.QAction(icon, "Open MDF file", menu)
+        action = QtGui.QAction(icon, "MDF 파일 열기", menu)
         action.triggered.connect(self.open)
         action.setShortcut(QtGui.QKeySequence("Ctrl+O"))
         open_group.addAction(action)
@@ -143,18 +143,18 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
 
         menu.addSeparator()
 
-        open_group = QtGui.QActionGroup(self)
-        action = QtGui.QAction(icon, "Open configuration", menu)
-        action.triggered.connect(self.open_configuration)
-        open_group.addAction(action)
-
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        action = QtGui.QAction(icon, "Save configuration", menu)
-        action.triggered.connect(self.save_configuration)
-        open_group.addAction(action)
-
-        menu.addActions(open_group.actions())
+        # open_group = QtGui.QActionGroup(self)
+        # action = QtGui.QAction(icon, "Open configuration", menu)
+        # action.triggered.connect(self.open_configuration)
+        # open_group.addAction(action)
+        #
+        # icon = QtGui.QIcon()
+        # icon.addPixmap(QtGui.QPixmap(":/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        # action = QtGui.QAction(icon, "Save configuration", menu)
+        # action.triggered.connect(self.save_configuration)
+        # open_group.addAction(action)
+        #
+        # menu.addActions(open_group.actions())
 
         # mode_actions
         mode_actions = QtGui.QActionGroup(self)
@@ -179,30 +179,31 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         action.triggered.connect(partial(self.stackedWidget.setCurrentIndex, 2))
         mode_actions.addAction(action)
 
-        menu = QtWidgets.QMenu("Mode", self.menubar)
-        menu.addActions(mode_actions.actions())
-        self.menubar.addMenu(menu)
-
-        # managers
-        actions = QtGui.QActionGroup(self)
-
-        action = QtGui.QAction("{: <20}\tF6".format("Functions manager"), menu)
-        action.triggered.connect(self.functions_manager)
-        action.setShortcut("F6")
-        actions.addAction(action)
-
-        action = QtGui.QAction("{: <20}".format("Bus database manager"), menu)
-        action.triggered.connect(self.bus_database_manager)
-        actions.addAction(action)
-
-        menu = QtWidgets.QMenu("Managers", self.menubar)
-        menu.addActions(actions.actions())
-        self.menubar.addMenu(menu)
+        # menu = QtWidgets.QMenu("Mode", self.menubar)
+        # menu.addActions(mode_actions.actions())
+        # self.menubar.addMenu(menu)
+        #
+        # # managers
+        # actions = QtGui.QActionGroup(self)
+        #
+        # action = QtGui.QAction("{: <20}\tF6".format("Functions manager"), menu)
+        # action.triggered.connect(self.functions_manager)
+        # action.setShortcut("F6")
+        # actions.addAction(action)
+        #
+        # action = QtGui.QAction("{: <20}".format("Bus database manager"), menu)
+        # action.triggered.connect(self.bus_database_manager)
+        # actions.addAction(action)
+        #
+        # menu = QtWidgets.QMenu("Managers", self.menubar)
+        # menu.addActions(actions.actions())
+        # self.menubar.addMenu(menu)
 
         # settings
 
-        menu = QtWidgets.QMenu("Settings", self.menubar)
-        self.menubar.addMenu(menu)
+        menu = QtWidgets.QMenu("세팅", self.menubar)
+        # 하위 메뉴 정리가 덜 되서 막음
+        # self.menubar.addMenu(menu)
 
         # sub plots
         subplot_action = QtGui.QAction("Sub-windows", menu)
@@ -809,7 +810,7 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         action.setShortcut(QtGui.QKeySequence("Alt+I"))
         cursors_actions.addAction(action)
 
-        self.plot_menu = QtWidgets.QMenu("Plot", self.menubar)
+        self.plot_menu = QtWidgets.QMenu("플롯 그래프", self.menubar)
         self.plot_menu.addAction(fullscreen)
         self.plot_menu.addSeparator()
         self.plot_menu.addActions(plot_actions.actions())
@@ -827,7 +828,7 @@ class MainWindow(WithMDIArea, Ui_PyMDFMainWindow, QtWidgets.QMainWindow):
         self.plot_menu.addActions(info.actions())
         self.menubar.addMenu(self.plot_menu)
 
-        menu = self.menubar.addMenu("Help")
+        menu = self.menubar.addMenu("도움말")
         open_group = QtGui.QActionGroup(self)
         action = QtGui.QAction("Online documentation", menu)
         action.triggered.connect(self.help)
