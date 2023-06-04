@@ -12,6 +12,7 @@ from tempfile import gettempdir
 from traceback import format_exc
 from zipfile import ZIP_DEFLATED, ZipFile
 
+from PySide6.QtWidgets import QMessageBox
 from natsort import natsorted
 import numpy as np
 import pandas as pd
@@ -2079,6 +2080,18 @@ class WithMDIArea:
             ]
         else:
             mime_data = signals
+
+        if len(signals) > 10:
+            ret = QMessageBox.warning(
+                self,
+                "너무 많은 신호 개수",
+                f"선택한 신호가 {len(signals)}개 입니다. 그래도 도표를 그리시겠습니까?",
+                QMessageBox.Ok|QMessageBox.Cancel,
+                defaultButton=QMessageBox.Ok,
+            )
+            # 취소를 누르면 플롯 창은 안 띄운다.
+            if ret == QMessageBox.Cancel:
+                return
 
         flatten_entries = get_flatten_entries_from_mime(mime_data)
         uuids = set(entry["origin_uuid"] for entry in flatten_entries)
