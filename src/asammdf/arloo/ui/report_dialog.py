@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'report_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.2
+## Created by: Qt User Interface Compiler version 6.2.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -25,19 +25,19 @@ class Ui_report_dialog(object):
         if not report_dialog.objectName():
             report_dialog.setObjectName(u"report_dialog")
         report_dialog.setWindowModality(Qt.NonModal)
-        report_dialog.resize(1160, 708)
+        report_dialog.resize(1280, 900)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(report_dialog.sizePolicy().hasHeightForWidth())
         report_dialog.setSizePolicy(sizePolicy)
-        report_dialog.setMinimumSize(QSize(1160, 708))
-        report_dialog.setMaximumSize(QSize(1160, 708))
+        report_dialog.setMinimumSize(QSize(1280, 900))
+        report_dialog.setMaximumSize(QSize(1280, 900))
         report_dialog.setSizeGripEnabled(False)
         report_dialog.setModal(True)
         self.verticalLayoutWidget = QWidget(report_dialog)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 661, 641))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 10, 701, 841))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -174,7 +174,7 @@ class Ui_report_dialog(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.editorHolder.sizePolicy().hasHeightForWidth())
         self.editorHolder.setSizePolicy(sizePolicy1)
-        self.editorHolder.setMinimumSize(QSize(0, 220))
+        self.editorHolder.setMinimumSize(QSize(0, 300))
 
         self.descriptionAreaLayout.addWidget(self.editorHolder)
 
@@ -189,13 +189,13 @@ class Ui_report_dialog(object):
 
         self.verticalLayoutWidget_2 = QWidget(report_dialog)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(690, 10, 454, 640))
+        self.verticalLayoutWidget_2.setGeometry(QRect(730, 10, 541, 841))
         self.previewLayout = QVBoxLayout(self.verticalLayoutWidget_2)
         self.previewLayout.setObjectName(u"previewLayout")
         self.previewLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayoutWidget = QWidget(report_dialog)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(20, 660, 1121, 41))
+        self.horizontalLayoutWidget.setGeometry(QRect(20, 850, 1251, 41))
         self.horizontalLayout_5 = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)

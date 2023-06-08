@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1160</width>
-    <height>708</height>
+    <width>1280</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,14 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1160</width>
-    <height>708</height>
+    <width>1280</width>
+    <height>900</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1160</width>
-    <height>708</height>
+    <width>1280</width>
+    <height>900</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -45,8 +45,8 @@
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>661</width>
-     <height>641</height>
+     <width>701</width>
+     <height>841</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -277,7 +277,7 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>220</height>
+          <height>300</height>
          </size>
         </property>
        </widget>
@@ -321,10 +321,10 @@
   <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>690</x>
+     <x>730</x>
      <y>10</y>
-     <width>454</width>
-     <height>640</height>
+     <width>541</width>
+     <height>841</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="previewLayout"/>
@@ -333,8 +333,8 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>660</y>
-     <width>1121</width>
+     <y>850</y>
+     <width>1251</width>
      <height>41</height>
     </rect>
    </property>
