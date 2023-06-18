@@ -81,6 +81,7 @@ class ReportDialog(Ui_report_dialog, QDialog):
         self.vehicleNumberEdit.textEdited.connect(self.update_render_timer)
         self.authorEdit.textEdited.connect(self.update_render_timer)
         self.dateEdit.dateChanged.connect(self.update_render_timer)
+        self.workOrderEdit.textEdited.connect(self.update_render_timer)
         self.graphRatioSpinBox.valueChanged.connect(self.handle_ratio_change)
         self.descriptionEdit.textChanged.connect(self.update_render_timer)
 
