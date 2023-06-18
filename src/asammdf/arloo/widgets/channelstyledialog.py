@@ -48,7 +48,7 @@ class ChannelStyleDialog(Ui_ChannelStyleDialog, QDialog):
 
     def accept(self) -> None:
         self.style_info['width'] = int(self.lineWidthBox.currentText())
-        self.style_info['style'] = self.lineStyleBox.currentData(ROLE_LINE_STYLE)
+        self.style_info['style'] = QtCore.Qt.PenStyle(self.lineStyleBox.currentData(ROLE_LINE_STYLE))
         self.style_info['color'] = self.line_color
         super().accept()
 

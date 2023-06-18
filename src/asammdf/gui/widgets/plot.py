@@ -220,7 +220,6 @@ class PlotSignal(Signal):
             encoding=signal.encoding,
             flags=signal.flags,
         )
-
         self._pos = np.empty(2 * PLOT_BUFFER_SIZE, dtype="i4")
         self._plot_samples = np.empty(2 * PLOT_BUFFER_SIZE, dtype="i1")
         self._plot_timestamps = np.empty(2 * PLOT_BUFFER_SIZE, dtype="f8")
@@ -326,6 +325,7 @@ class PlotSignal(Signal):
         self.trim(*(trim_info or (None, None, 1900)))
         # 이름을 위한 추가 설정
         self.original_name = self.name
+        self.view_name = self.name
         # 선 스타일
         self.pen_style = self.pen.style()
         # NoPen, SolidLine, DashLine, DotLine, DashDotLine, DashDotDotLine
