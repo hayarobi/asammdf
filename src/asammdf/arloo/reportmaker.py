@@ -4,6 +4,7 @@ from datetime import timedelta
 from PySide6.QtCore import QFile, QByteArray, QBuffer, QIODevice
 from PySide6.QtGui import QPixmap
 
+from asammdf.arloo import arresource
 from asammdf.arloo.model.signal_summary import START_NOT_SELECTED, SignalSummary
 from asammdf.arloo.model.summaydata import SummaryData
 from asammdf.arloo.reportdialog import ReportDialog
@@ -49,7 +50,7 @@ class ReportMaker:
         #     result_dialog.show()
 
     def get_ci_iamge_dataurl(self):
-        stream = QFile(':/everCI.png')
+        stream = QFile(u':/everCI.png')
         if stream.open(QFile.ReadOnly):
             base64_utf8_str = base64.b64encode(stream.readAll().data()).decode('utf-8')
             ci_dataurl = f'data:image/png;base64,{base64_utf8_str}'
