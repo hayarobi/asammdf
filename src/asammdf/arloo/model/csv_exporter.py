@@ -1,5 +1,6 @@
 import logging
 from math import inf
+from os import path
 from pathlib import Path
 
 from numpy import inf
@@ -40,6 +41,7 @@ class CsvExporter(object):
         self.mdf.configure(read_fragment_size=split_size)
 
         mdf = self.mdf
+        parent_dir = mdf.name.parent
 
         if opts.filter_channel:
             channel_names = {}
@@ -89,12 +91,12 @@ class CsvExporter(object):
         escape_char = None
         quote_char = '"'
 
-        export_dir = Path(opts.export_dir)
-        if not export_dir.exists():
-            export_dir.mkdir()
+        target_dir = Path(parent_dir).joinpath(opts.export_dir)
+        if not target_dir.exists():
+            target_dir.mkdir()
         kwargs = {
             "fmt": "csv",
-            "filename": export_dir.joinpath(opts.file_prefix),
+            "filename": target_dir.joinpath(opts.file_prefix),
             # "single_time_base": False,
             "channel_names": channel_names,
             "use_display_names": opts.use_display_names,
