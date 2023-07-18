@@ -2080,7 +2080,7 @@ class Plot(QtWidgets.QWidget):
         opts = ExportOption()
         datestr = QDateTime.currentDateTime().toString("yyyyMMddHHmm")
         opts.export_dir = self.make_dir_path(datestr)
-        opts.file_prefix = 'export-'
+        opts.file_prefix = 'export'
         if summary_data.get_start_time() is not None:
             opts.start_offset = summary_data.start_delta
         if summary_data.get_end_time() is not None:
@@ -2096,7 +2096,7 @@ class Plot(QtWidgets.QWidget):
 
     def make_dir_path(self, datestr):
         mdf_dirname = Path(self.mdf.name).stem
-        dir_name = f"{mdf_dirname}-{datestr}"
+        dir_name = f"export-{datestr}"
         return dir_name
 
     def set_channel_line_style(self, style_info):

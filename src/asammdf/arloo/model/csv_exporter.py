@@ -35,6 +35,8 @@ class CsvExporter(object):
         super().__init__()
         self.doublequote = None
         self.mdf = mdf
+        self.group_mapper = {} # 당분간은 안 씀
+        self.reverse_index = {}
 
     def exportToFile(self, opts: ExportOption):
         split_size = 0
@@ -46,9 +48,14 @@ class CsvExporter(object):
         if opts.filter_channel:
             channel_names = {}
             filter_channels = []
+            reverse_idx = 0
             for sig in opts.channels:
                 channel_names[sig.original_name] = sig.name
                 filter_channels.append((None, sig.group_index, sig.channel_index))
+                if sig.group_index not in self.group_mapper:
+                    self.group_mapper[sig.group_index] = reverse_idx
+                    self.reverse_index[reverse_idx] = sig.group_index
+                    reverse_idx += 1
             logger.debug(f"filter channels {opts.channels}")
 
             result = self.mdf.filter(
@@ -98,7 +105,6 @@ class CsvExporter(object):
             "fmt": "csv",
             "filename": target_dir.joinpath(opts.file_prefix),
             # "single_time_base": False,
-            "channel_names": channel_names,
             "use_display_names": opts.use_display_names,
             "time_as_date": opts.time_as_date,
             "format": "csv",
@@ -109,5 +115,5 @@ class CsvExporter(object):
             "quotechar": quote_char,
         }
 
-        mdf_exporter = MDFCsvExporter()
+        mdf_exporter = MDFCsvExporter(channel_names, self.reverse_index)
         mdf_exporter.export(mdf, **kwargs)

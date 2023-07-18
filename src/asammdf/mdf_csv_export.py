@@ -17,6 +17,11 @@ logger = logging.getLogger("mdf.export.csv")
 
 
 class MDFCsvExporter:
+    def __init__(self, channel_names, reverse_index) -> None:
+        super().__init__()
+        self._channel_names = channel_names
+        self._reverse_index = reverse_index
+
     def export(
         self,
         mdf: MDF,
@@ -153,7 +158,7 @@ class MDFCsvExporter:
         single_time_base = kwargs.get("single_time_base", False)
         raster = kwargs.get("raster", None)
         time_from_zero = kwargs.get("time_from_zero", True)
-        channel_names_dict = kwargs.get("channel_names", [])
+        channel_names_dict = self._channel_names
         use_display_names = kwargs.get("use_display_names", True)
         empty_channels = kwargs.get("empty_channels", "skip")
         format = kwargs.get("format", "5")
@@ -372,14 +377,13 @@ class MDFCsvExporter:
             ):
                 if progress is not None and progress.stop:
                     return TERMINATED
-
-                message = f"Exporting group {i+1} of {gp_count}"
+                original_group = self._reverse_index[i]
+                message = f"Exporting group {i+1} of {gp_count} : originally group {original_group}"
                 logger.info(message)
 
                 if len(virtual_group.groups) == 1:
-                    comment = mdf.groups[
-                        virtual_group.groups[0]
-                    ].channel_group.comment
+                    selected_group = mdf.groups[virtual_group.groups[0]]
+                    comment = selected_group.channel_group.comment
                 else:
                     comment = ""
 
@@ -388,11 +392,11 @@ class MDFCsvExporter:
                         comment = comment.replace(char, "_")
                     group_csv_name = (
                         filename.parent
-                        / f"{filename.stem}.ChannelGroup_{i}_{comment}.csv"
+                        / f"ChannelGroup_{original_group}_{comment}.csv"
                     )
                 else:
                     group_csv_name = (
-                        filename.parent / f"{filename.stem}.ChannelGroup_{i}.csv"
+                        filename.parent / f"ChannelGroup_{original_group}.csv"
                     )
 
                 df = mdf.get_group(
